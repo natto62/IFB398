@@ -19,8 +19,7 @@ namespace MiCareApp.Droid
         private List<FinanceData> Items;
         private Context ThisContext;
 
-        public MyListViewAdapter(Context context, List<FinanceData> items)
-        {
+        public MyListViewAdapter(Context context, List<FinanceData> items) {
             Items = items;
             ThisContext = context;
         }

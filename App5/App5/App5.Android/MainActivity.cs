@@ -44,26 +44,35 @@ namespace MiCareApp.Droid
             //Names = new List<string>();
             //Incomes = new List<string>();
 
-
+            //add items
             dataItems.Add(new FinanceData("Bill", "Person", 64, "male", 843.65));
             dataItems.Add(new FinanceData("Sarah", "Thingy", 72, "female", 412.80));
             dataItems.Add(new FinanceData("Brian", "Brown", 101, "male", 124.30));
+            dataItems.Add(new FinanceData("Moe", "Whato", 57, "male", 354.16));
+            dataItems.Add(new FinanceData("Lesli", "Crump", 68, "female", 784.98));
+            dataItems.Add(new FinanceData("Olivia", "Something", 81, "female", 87.83));
+
+            TextView NumItems = FindViewById<TextView>(Resource.Id.txtNumFinanceData);
+            NumItems.Text = dataItems.Count.ToString();
 
             //foreach (FinanceData data in dataItems) {
             //    Names.Add(data.GetFirstName());
             //    Incomes.Add(data.GetIncome());
             //}
 
+            //setup adapter
             dataList = FindViewById<ListView>(Resource.Id.DataList);
 
             MyListViewAdapter adapter = new MyListViewAdapter(this, dataItems);
 
             dataList.Adapter = adapter;
 
+            //setup buttons at the top of the page which are used to sort the list based on the button pushed
             Button FName = FindViewById<Button>(Resource.Id.FirstNameText);
             Button LName = FindViewById<Button>(Resource.Id.LastNameText);
             Button IncomeList = FindViewById<Button>(Resource.Id.IncomeText);
 
+            //setup button for sorting the list based on first names
             FName.Click += delegate {
                 if (clickNumFName == 0) {
                     dataItems.Sort(delegate (FinanceData one, FinanceData two) {
@@ -72,6 +81,7 @@ namespace MiCareApp.Droid
                     clickNumFName++;
                     clickNumLName = 0;
                     clickNumIncome = 0;
+                //reverse list if clicked a second time in a row
                 } else {
                     dataItems.Reverse();
                     clickNumFName = 0;
@@ -79,6 +89,7 @@ namespace MiCareApp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
+            //setup button for sorting the list based on last names
             LName.Click += delegate {
                 if (clickNumLName == 0) {
                     dataItems.Sort(delegate (FinanceData one, FinanceData two) {
@@ -87,13 +98,15 @@ namespace MiCareApp.Droid
                     clickNumLName++;
                     clickNumFName = 0;
                     clickNumIncome = 0;
-                } else  {
+                //reverse list if clicked a second time in a row
+                } else {
                     dataItems.Reverse();
                     clickNumLName = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };
 
+            //setup button for sorting the list based on incomes
             IncomeList.Click += delegate {
                 if (clickNumIncome == 0) {
                     dataItems.Sort(delegate (FinanceData one, FinanceData two) {
@@ -102,6 +115,7 @@ namespace MiCareApp.Droid
                     clickNumIncome++;
                     clickNumLName = 0;
                     clickNumFName = 0;
+                //reverse list if clicked a second time in a row
                 } else {
                     dataItems.Reverse();
                     clickNumIncome = 0;
@@ -109,16 +123,15 @@ namespace MiCareApp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
-            
-
+            //if an item in the list is clicked, then create a pop up window with more information on the item clicked
             dataList.ItemClick += DataList_ItemClick;
 
         }
 
+        //create a pop up window with more information
         void DataList_ItemClick(object sender, AdapterView.ItemClickEventArgs e) {
-            //go to an information page with more info
             FragmentTransaction transaction = FragmentManager.BeginTransaction();
-            MoreInfo info = new MoreInfo();
+            MoreInfo info = new MoreInfo(dataItems[e.Position]);
             info.Show(transaction, "dialog fragment");
         }
     }
