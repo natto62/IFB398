@@ -20,7 +20,7 @@ namespace App5.Droid
 
             var view = inflater.Inflate(Resource.Layout.DataPage2, container, false);
 
-            return view;
+            return view; 
         }
 
 

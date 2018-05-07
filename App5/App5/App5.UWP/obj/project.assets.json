@@ -6661,11 +6661,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.UWP\\MiCareAppUWP.csproj",
+      "projectUniqueName": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.UWP\\MiCareAppUWP.csproj",
       "projectName": "MiCareAppUWP",
-      "projectPath": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.UWP\\MiCareAppUWP.csproj",
+      "projectPath": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.UWP\\MiCareAppUWP.csproj",
       "packagesPath": "C:\\Users\\Captain\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.UWP\\obj\\",
+      "outputPath": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.UWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

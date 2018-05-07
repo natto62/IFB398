@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:weightSum="100">
-        <TextView
+        <Button
             android:text="First Name"
             android:layout_width="match_parent"
             android:layout_weight="25"
@@ -17,7 +17,7 @@
             android:textSize="15sp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp" />
-        <TextView
+        <Button
             android:text="Last Name"
             android:layout_width="match_parent"
             android:layout_weight="25"
@@ -26,7 +26,7 @@
             android:textSize="15sp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp" />
-        <TextView
+        <Button
             android:text="Income"
             android:layout_width="match_parent"
             android:layout_weight="25"
@@ -35,7 +35,7 @@
             android:textSize="15sp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp" />
-        <TextView
+        <Button
             android:text="Status"
             android:layout_width="match_parent"
             android:layout_weight="25"

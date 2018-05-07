@@ -21,6 +21,10 @@ namespace MiCareApp.Droid
 
         private List<FinanceData> dataItems;
 
+        private int clickNumFName = 0;
+        private int clickNumLName = 0;
+        private int clickNumIncome = 0;
+
         //private List<string> Names;
         
         //private List<string> Incomes;
@@ -55,6 +59,58 @@ namespace MiCareApp.Droid
             MyListViewAdapter adapter = new MyListViewAdapter(this, dataItems);
 
             dataList.Adapter = adapter;
+
+            Button FName = FindViewById<Button>(Resource.Id.FirstNameText);
+            Button LName = FindViewById<Button>(Resource.Id.LastNameText);
+            Button IncomeList = FindViewById<Button>(Resource.Id.IncomeText);
+
+            FName.Click += delegate {
+                if (clickNumFName == 0) {
+                    dataItems.Sort(delegate (FinanceData one, FinanceData two) {
+                        return string.Compare(one.GetFirstName(), two.GetFirstName());
+                    });
+                    clickNumFName++;
+                    clickNumLName = 0;
+                    clickNumIncome = 0;
+                } else {
+                    dataItems.Reverse();
+                    clickNumFName = 0;
+                }
+                adapter.NotifyDataSetChanged();
+            };
+
+            LName.Click += delegate {
+                if (clickNumLName == 0) {
+                    dataItems.Sort(delegate (FinanceData one, FinanceData two) {
+                        return string.Compare(one.GetLastName(), two.GetLastName());
+                    });
+                    clickNumLName++;
+                    clickNumFName = 0;
+                    clickNumIncome = 0;
+                } else  {
+                    dataItems.Reverse();
+                    clickNumLName = 0;
+                }
+                adapter.NotifyDataSetChanged();
+            };
+
+            IncomeList.Click += delegate {
+                if (clickNumIncome == 0) {
+                    dataItems.Sort(delegate (FinanceData one, FinanceData two) {
+                        return one.GetIncomeAsDouble().CompareTo(two.GetIncomeAsDouble());
+                    });
+                    clickNumIncome++;
+                    clickNumLName = 0;
+                    clickNumFName = 0;
+                } else {
+                    dataItems.Reverse();
+                    clickNumIncome = 0;
+                }
+                adapter.NotifyDataSetChanged();
+            };
+
+            
+
             dataList.ItemClick += DataList_ItemClick;
 
         }

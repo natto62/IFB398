@@ -698,11 +698,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.iOS\\MiCareApp.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.iOS\\MiCareApp.iOS.csproj",
       "projectName": "MiCareApp.iOS",
-      "projectPath": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.iOS\\MiCareApp.iOS.csproj",
+      "projectPath": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.iOS\\MiCareApp.iOS.csproj",
       "packagesPath": "C:\\Users\\Captain\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.iOS\\obj\\",
+      "outputPath": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

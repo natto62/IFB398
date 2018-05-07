@@ -43,9 +43,9 @@ namespace MiCareApp.Droid
             return LastName;
         }
 
-        //retrieve age value
-        public int GetAge()  {
-            return Age;
+        //retrieve age value as string
+        public string GetAge()  {
+            return Age.ToString();
         }
 
         //retrieve gender value
@@ -56,6 +56,11 @@ namespace MiCareApp.Droid
         //retrieve income value as string
         public string GetIncome() {
             return Income.ToString();
+        }
+
+        //retrieve income value as double
+        public double GetIncomeAsDouble() {
+            return Income;
         }
 
         //retrieve the number of income data available

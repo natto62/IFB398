@@ -690,11 +690,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.Android\\MiCareApp.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.Android\\MiCareApp.Android.csproj",
       "projectName": "MiCareApp.Android",
-      "projectPath": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.Android\\MiCareApp.Android.csproj",
+      "projectPath": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.Android\\MiCareApp.Android.csproj",
       "packagesPath": "C:\\Users\\Captain\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Captain\\source\\repos\\App5\\App5\\App5.Android\\obj\\",
+      "outputPath": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
