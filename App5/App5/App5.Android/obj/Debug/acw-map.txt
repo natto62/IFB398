@@ -2,6 +2,10 @@ App5.Droid.MoreInfo, App5.Android;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
 App5.Droid.MoreInfo, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
 App5.Droid.MoreInfo;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
 app5.droid.MoreInfo;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
+MiCareApp.Droid.ItemPage, App5.Android;md574177612645b31f0ca9f83df1c638cfa.ItemPage
+MiCareApp.Droid.ItemPage, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.ItemPage
+MiCareApp.Droid.ItemPage;md574177612645b31f0ca9f83df1c638cfa.ItemPage
+micareapp.droid.ItemPage;md574177612645b31f0ca9f83df1c638cfa.ItemPage
 MiCareApp.Droid.MainActivity, App5.Android;md574177612645b31f0ca9f83df1c638cfa.MainActivity
 MiCareApp.Droid.MainActivity, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.MainActivity
 MiCareApp.Droid.MainActivity;md574177612645b31f0ca9f83df1c638cfa.MainActivity

@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v24</xs:documentation>
-    <xs:documentation>7/05/2018 2:30:53 PM</xs:documentation>
+    <xs:documentation>18/05/2018 1:50:55 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1352,6 +1352,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -2141,6 +2142,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -2853,6 +2855,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -3542,6 +3545,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -5485,6 +5489,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -6174,6 +6179,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -7389,6 +7395,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -8078,6 +8085,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -9762,6 +9770,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -10451,6 +10460,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -11198,6 +11208,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -11887,6 +11898,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -12660,6 +12672,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -13590,6 +13603,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -14348,6 +14362,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -15218,6 +15233,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -16088,6 +16104,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -16777,6 +16794,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -18092,6 +18110,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -18881,6 +18900,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -19670,6 +19690,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -20798,6 +20819,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -22025,6 +22047,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -22714,6 +22737,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -23575,6 +23599,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -24445,6 +24470,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -25146,6 +25172,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -26016,6 +26043,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -27077,6 +27105,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -27766,6 +27795,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -30521,6 +30551,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -32947,6 +32978,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -33817,6 +33849,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -34506,6 +34539,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
@@ -35437,6 +35471,7 @@
             <xs:enumeration value="@drawable/ic_vol_type_tv_dark" />
             <xs:enumeration value="@drawable/ic_vol_type_tv_light" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/micare" />
             <xs:enumeration value="@drawable/mr_button_connected_dark" />
             <xs:enumeration value="@drawable/mr_button_connected_light" />
             <xs:enumeration value="@drawable/mr_button_connecting_dark" />
