@@ -2808,8 +2808,50 @@ namespace App5.Droid
 			// aapt resource value: 0x7f08008b
 			public const int SignInBtn = 2131230859;
 			
+			// aapt resource value: 0x7f0800ca
+			public const int SignInEmail = 2131230922;
+			
+			// aapt resource value: 0x7f0800cd
+			public const int SignInExecute = 2131230925;
+			
+			// aapt resource value: 0x7f0800cb
+			public const int SignInPassW = 2131230923;
+			
+			// aapt resource value: 0x7f0800c9
+			public const int SignInTitle = 2131230921;
+			
+			// aapt resource value: 0x7f0800cc
+			public const int SignInTxt = 2131230924;
+			
 			// aapt resource value: 0x7f08008d
 			public const int SignUpBtn = 2131230861;
+			
+			// aapt resource value: 0x7f0800d3
+			public const int SignUpCPassW = 2131230931;
+			
+			// aapt resource value: 0x7f0800d4
+			public const int SignUpDate = 2131230932;
+			
+			// aapt resource value: 0x7f0800d1
+			public const int SignUpEmail = 2131230929;
+			
+			// aapt resource value: 0x7f0800d6
+			public const int SignUpExecute = 2131230934;
+			
+			// aapt resource value: 0x7f0800cf
+			public const int SignUpFirstName = 2131230927;
+			
+			// aapt resource value: 0x7f0800d0
+			public const int SignUpLastName = 2131230928;
+			
+			// aapt resource value: 0x7f0800d2
+			public const int SignUpPassW = 2131230930;
+			
+			// aapt resource value: 0x7f0800ce
+			public const int SignUpTitle = 2131230926;
+			
+			// aapt resource value: 0x7f0800d5
+			public const int SignUpTxt = 2131230933;
 			
 			// aapt resource value: 0x7f080094
 			public const int StatusColour = 2131230868;
@@ -3048,8 +3090,8 @@ namespace App5.Droid
 			// aapt resource value: 0x7f080048
 			public const int list_item = 2131230792;
 			
-			// aapt resource value: 0x7f0800cc
-			public const int masked = 2131230924;
+			// aapt resource value: 0x7f0800da
+			public const int masked = 2131230938;
 			
 			// aapt resource value: 0x7f0800b8
 			public const int media_actions = 2131230904;
@@ -3249,8 +3291,8 @@ namespace App5.Droid
 			// aapt resource value: 0x7f080017
 			public const int showTitle = 2131230743;
 			
-			// aapt resource value: 0x7f0800c9
-			public const int sliding_tabs = 2131230921;
+			// aapt resource value: 0x7f0800d7
+			public const int sliding_tabs = 2131230935;
 			
 			// aapt resource value: 0x7f08007a
 			public const int smallLabel = 2131230842;
@@ -3333,8 +3375,8 @@ namespace App5.Droid
 			// aapt resource value: 0x7f080057
 			public const int title_template = 2131230807;
 			
-			// aapt resource value: 0x7f0800ca
-			public const int toolbar = 2131230922;
+			// aapt resource value: 0x7f0800d8
+			public const int toolbar = 2131230936;
 			
 			// aapt resource value: 0x7f080029
 			public const int top = 2131230761;
@@ -3390,8 +3432,8 @@ namespace App5.Droid
 			// aapt resource value: 0x7f08000e
 			public const int view_offset_helper = 2131230734;
 			
-			// aapt resource value: 0x7f0800cb
-			public const int visible = 2131230923;
+			// aapt resource value: 0x7f0800d9
+			public const int visible = 2131230937;
 			
 			// aapt resource value: 0x7f0800aa
 			public const int volume_item_container = 2131230890;
@@ -3691,13 +3733,19 @@ namespace App5.Droid
 			public const int select_dialog_singlechoice_material = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int support_simple_spinner_dropdown_item = 2130903109;
+			public const int SignIn = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int Tabbar = 2130903110;
+			public const int SignUp = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int Toolbar = 2130903111;
+			public const int support_simple_spinner_dropdown_item = 2130903111;
+			
+			// aapt resource value: 0x7f030048
+			public const int Tabbar = 2130903112;
+			
+			// aapt resource value: 0x7f030049
+			public const int Toolbar = 2130903113;
 			
 			static Layout()
 			{

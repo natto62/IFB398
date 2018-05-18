@@ -2,6 +2,10 @@ App5.Droid.MoreInfo, App5.Android;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
 App5.Droid.MoreInfo, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
 App5.Droid.MoreInfo;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
 app5.droid.MoreInfo;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
+App5.Droid.SignUp, App5.Android;md5de47df706dc937e5e021bb38f069bff2.SignUp
+App5.Droid.SignUp, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5de47df706dc937e5e021bb38f069bff2.SignUp
+App5.Droid.SignUp;md5de47df706dc937e5e021bb38f069bff2.SignUp
+app5.droid.SignUp;md5de47df706dc937e5e021bb38f069bff2.SignUp
 MiCareApp.Droid.ItemPage, App5.Android;md574177612645b31f0ca9f83df1c638cfa.ItemPage
 MiCareApp.Droid.ItemPage, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.ItemPage
 MiCareApp.Droid.ItemPage;md574177612645b31f0ca9f83df1c638cfa.ItemPage
@@ -14,6 +18,10 @@ MiCareApp.Droid.MyListViewAdapter, App5.Android;md574177612645b31f0ca9f83df1c638
 MiCareApp.Droid.MyListViewAdapter, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.MyListViewAdapter
 MiCareApp.Droid.MyListViewAdapter;md574177612645b31f0ca9f83df1c638cfa.MyListViewAdapter
 micareapp.droid.MyListViewAdapter;md574177612645b31f0ca9f83df1c638cfa.MyListViewAdapter
+MiCareApp.Droid.SignIn, App5.Android;md574177612645b31f0ca9f83df1c638cfa.SignIn
+MiCareApp.Droid.SignIn, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.SignIn
+MiCareApp.Droid.SignIn;md574177612645b31f0ca9f83df1c638cfa.SignIn
+micareapp.droid.SignIn;md574177612645b31f0ca9f83df1c638cfa.SignIn
 Android.Support.V4.Widget.SearchViewCompat/IOnCloseListenerImplementor, Xamarin.Android.Support.Compat;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat+IOnCloseListenerImplementor, Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat.IOnCloseListenerImplementor;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor

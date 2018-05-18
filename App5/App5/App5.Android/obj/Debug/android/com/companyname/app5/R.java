@@ -3028,7 +3028,21 @@ containing a value of this type.
         public static final int LastNameText=0x7f080092;
         public static final int OptionsButton=0x7f080090;
         public static final int SignInBtn=0x7f08008b;
+        public static final int SignInEmail=0x7f0800ca;
+        public static final int SignInExecute=0x7f0800cd;
+        public static final int SignInPassW=0x7f0800cb;
+        public static final int SignInTitle=0x7f0800c9;
+        public static final int SignInTxt=0x7f0800cc;
         public static final int SignUpBtn=0x7f08008d;
+        public static final int SignUpCPassW=0x7f0800d3;
+        public static final int SignUpDate=0x7f0800d4;
+        public static final int SignUpEmail=0x7f0800d1;
+        public static final int SignUpExecute=0x7f0800d6;
+        public static final int SignUpFirstName=0x7f0800cf;
+        public static final int SignUpLastName=0x7f0800d0;
+        public static final int SignUpPassW=0x7f0800d2;
+        public static final int SignUpTitle=0x7f0800ce;
+        public static final int SignUpTxt=0x7f0800d5;
         public static final int StatusColour=0x7f080094;
         public static final int action0=0x7f0800b5;
         public static final int action_bar=0x7f080064;
@@ -3108,7 +3122,7 @@ containing a value of this type.
         public static final int linearLayout1=0x7f080077;
         public static final int listMode=0x7f08000f;
         public static final int list_item=0x7f080048;
-        public static final int masked=0x7f0800cc;
+        public static final int masked=0x7f0800da;
         public static final int media_actions=0x7f0800b8;
         public static final int middle=0x7f080022;
         public static final int mini=0x7f08003e;
@@ -3175,7 +3189,7 @@ containing a value of this type.
         public static final int showCustom=0x7f080015;
         public static final int showHome=0x7f080016;
         public static final int showTitle=0x7f080017;
-        public static final int sliding_tabs=0x7f0800c9;
+        public static final int sliding_tabs=0x7f0800d7;
         public static final int smallLabel=0x7f08007a;
         public static final int snackbar_action=0x7f080081;
         public static final int snackbar_text=0x7f080080;
@@ -3203,7 +3217,7 @@ containing a value of this type.
         public static final int title=0x7f08004a;
         public static final int titleDividerNoCustom=0x7f080059;
         public static final int title_template=0x7f080057;
-        public static final int toolbar=0x7f0800ca;
+        public static final int toolbar=0x7f0800d8;
         public static final int top=0x7f080029;
         public static final int topPanel=0x7f080056;
         public static final int touch_outside=0x7f08007e;
@@ -3222,7 +3236,7 @@ containing a value of this type.
         public static final int view1=0x7f08008a;
         public static final int view2=0x7f08008e;
         public static final int view_offset_helper=0x7f08000e;
-        public static final int visible=0x7f0800cb;
+        public static final int visible=0x7f0800d9;
         public static final int volume_item_container=0x7f0800aa;
         public static final int withText=0x7f080027;
         public static final int wrap_content=0x7f08001f;
@@ -3315,9 +3329,11 @@ containing a value of this type.
         public static final int select_dialog_item_material=0x7f030042;
         public static final int select_dialog_multichoice_material=0x7f030043;
         public static final int select_dialog_singlechoice_material=0x7f030044;
-        public static final int support_simple_spinner_dropdown_item=0x7f030045;
-        public static final int tabbar=0x7f030046;
-        public static final int toolbar=0x7f030047;
+        public static final int signin=0x7f030045;
+        public static final int signup=0x7f030046;
+        public static final int support_simple_spinner_dropdown_item=0x7f030047;
+        public static final int tabbar=0x7f030048;
+        public static final int toolbar=0x7f030049;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f090015;

@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace MiCareApp.Droid
 {
-    [Activity(Label = "ItemPage")]
+    [Activity(Label = "ItemPage", Theme = "@style/MainTheme")]
     public class ItemPage : Activity
     {
         //int number;
@@ -145,8 +145,7 @@ namespace MiCareApp.Droid
         }
 
         //create a pop up window with more information
-        void DataList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
+        void DataList_ItemClick(object sender, AdapterView.ItemClickEventArgs e) {
             FragmentTransaction transaction = FragmentManager.BeginTransaction();
             MoreInfo info = new MoreInfo(dataItems[e.Position]);
             info.Show(transaction, "dialog fragment");

@@ -26,10 +26,34 @@ namespace MiCareApp.Droid
             //global::Xamarin.Forms.Forms.Init(this, bundle);
             //LoadApplication(new App());
 
+
             Button signIn = FindViewById<Button>(Resource.Id.SignInBtn);
 
-            signIn.Click += delegate { StartActivity(typeof(ItemPage)); };
+            signIn.Click += SignIn_ItemClick;
 
+            Button signUp = FindViewById<Button>(Resource.Id.SignUpBtn);
+
+            signUp.Click += SignUp_ItemClick;
+
+        }
+
+        //create a pop up window with more information
+        void SignIn_ItemClick(object sender, EventArgs e) {
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+
+            //this user object only used for testing
+            DateTime TempTime = new DateTime(2018, 1, 1, 9, 20, 00);
+            User tempUser = new User("Brian", "Who", "super1@blabla.com", "qwerty1", TempTime);
+
+            SignIn SignInPopUp = new SignIn(tempUser);
+            SignInPopUp.Show(transaction, "dialog fragment");
+        }
+
+        //create a pop up window with more information
+        void SignUp_ItemClick(object sender, EventArgs e) {
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            SignUp SignUpPopUp = new SignUp();
+            SignUpPopUp.Show(transaction, "dialog fragment");
         }
 
     }
