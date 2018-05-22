@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.App5">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.App5" android:installLocation="internalOnly">
   <!--suppress UsesMinSdkAttributes-->
   <uses-sdk android:minSdkVersion="15" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <application android:label="App5.Android" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:label="ItemPage" android:theme="@style/MainTheme" android:name="md574177612645b31f0ca9f83df1c638cfa.ItemPage" />
-    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="App5" android:theme="@style/MainTheme" android:name="md574177612645b31f0ca9f83df1c638cfa.MainActivity">
+  <application android:label="MiCareApp.Android" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
+    <activity android:label="IntroPage" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage" />
+    <activity android:label="ItemPage" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.ItemPage" />
+    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="App5" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

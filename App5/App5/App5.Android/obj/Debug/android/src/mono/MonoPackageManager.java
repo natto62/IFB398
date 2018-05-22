@@ -105,8 +105,8 @@ public class MonoPackageManager {
 
 class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
-		/* We need to ensure that "App5.Android.dll" comes first in this list. */
-		"App5.Android.dll",
+		/* We need to ensure that "MiCareApp.Android.dll" comes first in this list. */
+		"MiCareApp.Android.dll",
 		"FormsViewGroup.dll",
 		"Xamarin.Android.Support.Animated.Vector.Drawable.dll",
 		"Xamarin.Android.Support.Annotations.dll",
@@ -131,5 +131,5 @@ class MonoPackageManager_Resources {
 	};
 	public static final String[] Dependencies = new String[]{
 	};
-	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_24";
+	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_25";
 }

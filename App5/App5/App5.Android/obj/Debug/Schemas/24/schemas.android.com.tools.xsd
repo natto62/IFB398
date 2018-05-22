@@ -2,7 +2,7 @@
 <xs:schema xmlns:tools="http://schemas.android.com/tools" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/tools" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v24</xs:documentation>
-    <xs:documentation>18/05/2018 5:06:43 PM</xs:documentation>
+    <xs:documentation>22/05/2018 7:54:50 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="layout">
     <xs:annotation>
@@ -56,6 +56,7 @@
             <xs:enumeration value="@layout/design_navigation_menu_item" />
             <xs:enumeration value="@layout/design_text_input_password_icon" />
             <xs:enumeration value="@layout/home" />
+            <xs:enumeration value="@layout/intropage" />
             <xs:enumeration value="@layout/maintitle" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -167,6 +168,7 @@
             <xs:enumeration value="@layout/design_navigation_menu_item" />
             <xs:enumeration value="@layout/design_text_input_password_icon" />
             <xs:enumeration value="@layout/home" />
+            <xs:enumeration value="@layout/intropage" />
             <xs:enumeration value="@layout/maintitle" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -278,6 +280,7 @@
             <xs:enumeration value="@layout/design_navigation_menu_item" />
             <xs:enumeration value="@layout/design_text_input_password_icon" />
             <xs:enumeration value="@layout/home" />
+            <xs:enumeration value="@layout/intropage" />
             <xs:enumeration value="@layout/maintitle" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -389,6 +392,7 @@
             <xs:enumeration value="@layout/design_navigation_menu_item" />
             <xs:enumeration value="@layout/design_text_input_password_icon" />
             <xs:enumeration value="@layout/home" />
+            <xs:enumeration value="@layout/intropage" />
             <xs:enumeration value="@layout/maintitle" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />

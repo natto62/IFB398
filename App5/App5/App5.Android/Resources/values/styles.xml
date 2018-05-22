@@ -28,4 +28,8 @@
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>
+
+  <style name="SignInUpAnimation">
+    <item name="android:windowEnterAnimation">@drawable/FromBottom</item>
+  </style>
 </resources>

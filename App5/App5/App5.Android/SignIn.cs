@@ -5,6 +5,8 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -41,7 +43,7 @@ namespace MiCareApp.Droid
                 if (String.Equals(EmailTxt.Text, UserObject.GetEmail())) {
                     if (String.Equals(PasswordTxt.Text, UserObject.GetPassword())) {
                         //move from fragment to activity
-                        StartActivity(new Intent(Activity, typeof(ItemPage)));
+                        StartActivity(new Intent(Activity, typeof(IntroPage)));
                     } else {
                         SignInTxt.Text = "Sorry, that password is incorrect";
                     }
@@ -52,6 +54,13 @@ namespace MiCareApp.Droid
             };
 
             return view;
+        }
+
+        public override void OnActivityCreated(Bundle savedInstanceState) {
+
+            base.OnActivityCreated(savedInstanceState);
+            Dialog.Window.SetBackgroundDrawable(new ColorDrawable(Color.Transparent));
+            Dialog.Window.Attributes.WindowAnimations = Resource.Style.SignInUpAnimation;
         }
     }
 }

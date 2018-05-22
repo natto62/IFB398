@@ -1,27 +1,31 @@
-App5.Droid.MoreInfo, App5.Android;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
-App5.Droid.MoreInfo, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
-App5.Droid.MoreInfo;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
-app5.droid.MoreInfo;md5de47df706dc937e5e021bb38f069bff2.MoreInfo
-App5.Droid.SignUp, App5.Android;md5de47df706dc937e5e021bb38f069bff2.SignUp
-App5.Droid.SignUp, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5de47df706dc937e5e021bb38f069bff2.SignUp
-App5.Droid.SignUp;md5de47df706dc937e5e021bb38f069bff2.SignUp
-app5.droid.SignUp;md5de47df706dc937e5e021bb38f069bff2.SignUp
-MiCareApp.Droid.ItemPage, App5.Android;md574177612645b31f0ca9f83df1c638cfa.ItemPage
-MiCareApp.Droid.ItemPage, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.ItemPage
-MiCareApp.Droid.ItemPage;md574177612645b31f0ca9f83df1c638cfa.ItemPage
-micareapp.droid.ItemPage;md574177612645b31f0ca9f83df1c638cfa.ItemPage
-MiCareApp.Droid.MainActivity, App5.Android;md574177612645b31f0ca9f83df1c638cfa.MainActivity
-MiCareApp.Droid.MainActivity, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.MainActivity
-MiCareApp.Droid.MainActivity;md574177612645b31f0ca9f83df1c638cfa.MainActivity
-micareapp.droid.MainActivity;md574177612645b31f0ca9f83df1c638cfa.MainActivity
-MiCareApp.Droid.MyListViewAdapter, App5.Android;md574177612645b31f0ca9f83df1c638cfa.MyListViewAdapter
-MiCareApp.Droid.MyListViewAdapter, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.MyListViewAdapter
-MiCareApp.Droid.MyListViewAdapter;md574177612645b31f0ca9f83df1c638cfa.MyListViewAdapter
-micareapp.droid.MyListViewAdapter;md574177612645b31f0ca9f83df1c638cfa.MyListViewAdapter
-MiCareApp.Droid.SignIn, App5.Android;md574177612645b31f0ca9f83df1c638cfa.SignIn
-MiCareApp.Droid.SignIn, App5.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md574177612645b31f0ca9f83df1c638cfa.SignIn
-MiCareApp.Droid.SignIn;md574177612645b31f0ca9f83df1c638cfa.SignIn
-micareapp.droid.SignIn;md574177612645b31f0ca9f83df1c638cfa.SignIn
+App5.Droid.MoreInfo, MiCareApp.Android;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
+App5.Droid.MoreInfo, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
+App5.Droid.MoreInfo;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
+app5.droid.MoreInfo;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
+MiCareApp.Droid.IntroPage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage
+MiCareApp.Droid.IntroPage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage
+MiCareApp.Droid.IntroPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage
+micareapp.droid.IntroPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage
+MiCareApp.Droid.ItemPage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.ItemPage
+MiCareApp.Droid.ItemPage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.ItemPage
+MiCareApp.Droid.ItemPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.ItemPage
+micareapp.droid.ItemPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.ItemPage
+MiCareApp.Droid.MainActivity, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity
+MiCareApp.Droid.MainActivity, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity
+MiCareApp.Droid.MainActivity;md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity
+micareapp.droid.MainActivity;md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity
+MiCareApp.Droid.MyListViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.MyListViewAdapter
+MiCareApp.Droid.MyListViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.MyListViewAdapter
+MiCareApp.Droid.MyListViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.MyListViewAdapter
+micareapp.droid.MyListViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.MyListViewAdapter
+MiCareApp.Droid.SignIn, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
+MiCareApp.Droid.SignIn, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
+MiCareApp.Droid.SignIn;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
+micareapp.droid.SignIn;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
+MiCareApp.Droid.SignUp, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
+MiCareApp.Droid.SignUp, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
+MiCareApp.Droid.SignUp;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
+micareapp.droid.SignUp;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
 Android.Support.V4.Widget.SearchViewCompat/IOnCloseListenerImplementor, Xamarin.Android.Support.Compat;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat+IOnCloseListenerImplementor, Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat.IOnCloseListenerImplementor;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor

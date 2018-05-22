@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v24</xs:documentation>
-    <xs:documentation>18/05/2018 5:06:43 PM</xs:documentation>
+    <xs:documentation>22/05/2018 7:54:50 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1199,6 +1199,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -1989,6 +1990,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -2702,6 +2704,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -3392,6 +3395,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -5336,6 +5340,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -6026,6 +6031,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -7242,6 +7248,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -7932,6 +7939,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -9617,6 +9625,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -10307,6 +10316,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -11055,6 +11065,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -11745,6 +11756,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -12519,6 +12531,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -13450,6 +13463,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -14209,6 +14223,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -15080,6 +15095,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -15951,6 +15967,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -16641,6 +16658,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -17957,6 +17975,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -18747,6 +18766,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -19537,6 +19557,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -20666,6 +20687,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -21894,6 +21916,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -22584,6 +22607,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -23446,6 +23470,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -24317,6 +24342,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -25019,6 +25045,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -25890,6 +25917,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -26952,6 +26980,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -27642,6 +27671,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -30398,6 +30428,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -32825,6 +32856,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -33696,6 +33728,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -34386,6 +34419,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
@@ -35318,6 +35352,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
             <xs:enumeration value="@drawable/design_fab_background" />
