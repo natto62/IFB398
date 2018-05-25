@@ -68,16 +68,38 @@
         android:layout_height="70px"
         android:layout_weight="1"
         android:id="@+id/view1" />
-    <Button
-        android:text="Sign Out"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="15sp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/buttonstyles"
-        android:id="@+id/SignOutBtn"
+        android:layout_weight="0"
         android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp" />
+        android:layout_marginRight="40dp"
+        android:weightSum="100">
+        <Button
+            android:text="Help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:textSize="15sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/buttonstyles"
+            android:id="@+id/HelpBtn" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:id="@+id/view1" />
+        <Button
+            android:text="Sign Out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:textSize="15sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/buttonstyles"
+            android:id="@+id/SignOutBtn" />
+    </LinearLayout>
 </LinearLayout>

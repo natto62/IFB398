@@ -20,18 +20,18 @@ namespace MiCareApp.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
             SetContentView(Resource.Layout.IntroPage);
 
-
+            //Finance Menu
             Button FinanceBtn = FindViewById<Button>(Resource.Id.FinanceBtn);
+            FinanceBtn.Click += delegate { StartActivity(typeof(FinanceMenu)); };
 
-            FinanceBtn.Click += delegate { StartActivity(typeof(ItemPage)); };
+            //Occupancy Menu
+            Button OccupancyBtn = FindViewById<Button>(Resource.Id.OccupancyBtn);
+            OccupancyBtn.Click += delegate { StartActivity(typeof(OccupancyMenu)); };
 
-
-
+            //Sign Out
             Button SignOutBtn = FindViewById<Button>(Resource.Id.SignOutBtn);
-
             SignOutBtn.Click += delegate { StartActivity(typeof(MainActivity)); };
 
 

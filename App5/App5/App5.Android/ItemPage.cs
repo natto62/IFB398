@@ -140,7 +140,7 @@ namespace MiCareApp.Droid
 
             Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
 
-            backBtn.Click += delegate { StartActivity(typeof(IntroPage)); };
+            backBtn.Click += delegate { StartActivity(typeof(FinanceMenu)); };
 
         }
 

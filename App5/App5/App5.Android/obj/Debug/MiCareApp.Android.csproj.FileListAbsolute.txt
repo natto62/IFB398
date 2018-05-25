@@ -150,6 +150,9 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\and
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\drawable\tablebuttonstyles.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\financialdatalist.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\occupancydatalist.xml
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\MiCareApp.Android.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\MiCareApp.Android.dll.mdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb

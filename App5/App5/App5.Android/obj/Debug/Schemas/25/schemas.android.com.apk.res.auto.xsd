@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>22/05/2018 8:30:16 PM</xs:documentation>
+    <xs:documentation>25/05/2018 4:15:46 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1389,6 +1389,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -2181,6 +2182,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -2896,6 +2898,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -3588,6 +3591,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -5535,6 +5539,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -6227,6 +6232,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -7445,6 +7451,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -8137,6 +8144,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -9824,6 +9832,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -10516,6 +10525,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -11266,6 +11276,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -11958,6 +11969,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -12734,6 +12746,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -13667,6 +13680,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -14429,6 +14443,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -15303,6 +15318,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -16177,6 +16193,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -16869,6 +16886,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -18187,6 +18205,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -18979,6 +18998,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -19771,6 +19791,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -20903,6 +20924,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -22134,6 +22156,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -22826,6 +22849,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -23690,6 +23714,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -24564,6 +24589,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -25268,6 +25294,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -26142,6 +26169,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -27206,6 +27234,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -27898,6 +27927,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -30658,6 +30688,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -33089,6 +33120,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -33963,6 +33995,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -34655,6 +34688,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -35590,6 +35624,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
