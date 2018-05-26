@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:weightSum="99">
+    <TextView
+        android:text="Invoice ID"
+        android:layout_width="match_parent"
+        android:layout_weight="36"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtInvoiceIDAgency"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+    <TextView
+        android:text="Amount"
+        android:layout_width="match_parent"
+        android:layout_weight="33"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAmountAgency"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+    <TextView
+        android:text="Date"
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDateAgency"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+</LinearLayout>

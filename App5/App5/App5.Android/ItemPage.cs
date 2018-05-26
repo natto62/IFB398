@@ -66,7 +66,7 @@ namespace MiCareApp.Droid
             //setup adapter
             dataList = FindViewById<ListView>(Resource.Id.DataList);
 
-            MyListViewAdapter adapter = new MyListViewAdapter(this, dataItems);
+            HomeCarePackageViewAdapter adapter = new HomeCarePackageViewAdapter(this, dataItems);
 
             dataList.Adapter = adapter;
 

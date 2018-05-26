@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
   <Jars>
+    <Jar>obj\Debug\lp\0\jl\formsviewgroup.jar</Jar>
+    <Jar>obj\Debug\lp\3\jl\support-annotations.jar</Jar>
     <Jar>C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\lp\0\jl\formsviewgroup.jar</Jar>
     <Jar>C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\lp\10\jl\bin\classes.jar</Jar>
     <Jar>C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\lp\11\jl\bin\classes.jar</Jar>

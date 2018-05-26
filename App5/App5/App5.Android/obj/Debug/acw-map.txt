@@ -2,6 +2,14 @@ App5.Droid.MoreInfo, MiCareApp.Android;md57a30dc1fe1034f6ad919fc99834ac28e.MoreI
 App5.Droid.MoreInfo, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
 App5.Droid.MoreInfo;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
 app5.droid.MoreInfo;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
+MiCareApp.Droid.AgencyUsageViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsageViewAdapter
+MiCareApp.Droid.AgencyUsageViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsageViewAdapter
+MiCareApp.Droid.AgencyUsageViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsageViewAdapter
+micareapp.droid.AgencyUsageViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsageViewAdapter
+MiCareApp.Droid.BrokerageHoursViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.BrokerageHoursViewAdapter
+MiCareApp.Droid.BrokerageHoursViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.BrokerageHoursViewAdapter
+MiCareApp.Droid.BrokerageHoursViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.BrokerageHoursViewAdapter
+micareapp.droid.BrokerageHoursViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.BrokerageHoursViewAdapter
 MiCareApp.Droid.FinanceMenu, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.FinanceMenu
 MiCareApp.Droid.FinanceMenu, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.FinanceMenu
 MiCareApp.Droid.FinanceMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.FinanceMenu
@@ -18,14 +26,22 @@ MiCareApp.Droid.MainActivity, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef
 MiCareApp.Droid.MainActivity, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity
 MiCareApp.Droid.MainActivity;md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity
 micareapp.droid.MainActivity;md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity
-MiCareApp.Droid.MyListViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.MyListViewAdapter
-MiCareApp.Droid.MyListViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.MyListViewAdapter
-MiCareApp.Droid.MyListViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.MyListViewAdapter
-micareapp.droid.MyListViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.MyListViewAdapter
+MiCareApp.Droid.HomeCarePackageViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.HomeCarePackageViewAdapter
+MiCareApp.Droid.HomeCarePackageViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.HomeCarePackageViewAdapter
+MiCareApp.Droid.HomeCarePackageViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.HomeCarePackageViewAdapter
+micareapp.droid.HomeCarePackageViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.HomeCarePackageViewAdapter
 MiCareApp.Droid.OccupancyMenu, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyMenu
 MiCareApp.Droid.OccupancyMenu, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyMenu
 MiCareApp.Droid.OccupancyMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyMenu
 micareapp.droid.OccupancyMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyMenu
+MiCareApp.Droid.OccupancyViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyViewAdapter
+MiCareApp.Droid.OccupancyViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyViewAdapter
+MiCareApp.Droid.OccupancyViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyViewAdapter
+micareapp.droid.OccupancyViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyViewAdapter
+MiCareApp.Droid.SalariesWagesViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.SalariesWagesViewAdapter
+MiCareApp.Droid.SalariesWagesViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SalariesWagesViewAdapter
+MiCareApp.Droid.SalariesWagesViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.SalariesWagesViewAdapter
+micareapp.droid.SalariesWagesViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.SalariesWagesViewAdapter
 MiCareApp.Droid.SignIn, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
 MiCareApp.Droid.SignIn, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
 MiCareApp.Droid.SignIn;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
@@ -34,6 +50,10 @@ MiCareApp.Droid.SignUp, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.Si
 MiCareApp.Droid.SignUp, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
 MiCareApp.Droid.SignUp;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
 micareapp.droid.SignUp;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
+MiCareApp.Droid.StaffViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffViewAdapter
+MiCareApp.Droid.StaffViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffViewAdapter
+MiCareApp.Droid.StaffViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffViewAdapter
+micareapp.droid.StaffViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffViewAdapter
 Android.Support.V4.Widget.SearchViewCompat/IOnCloseListenerImplementor, Xamarin.Android.Support.Compat;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat+IOnCloseListenerImplementor, Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat.IOnCloseListenerImplementor;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor

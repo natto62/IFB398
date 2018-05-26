@@ -60,18 +60,23 @@
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="25.4.0.2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgencyUsageViewAdapter.cs" />
+    <Compile Include="BrokerageHoursViewAdapter.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="FinanceMenu.cs" />
     <Compile Include="IntroPage.cs" />
     <Compile Include="ItemPage.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MoreInfo.cs" />
-    <Compile Include="MyListViewAdapter.cs" />
+    <Compile Include="HomeCarePackageViewAdapter.cs" />
     <Compile Include="OccupancyMenu.cs" />
+    <Compile Include="OccupancyViewAdapter.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalariesWagesViewAdapter.cs" />
     <Compile Include="SignIn.cs" />
     <Compile Include="SignUp.cs" />
+    <Compile Include="StaffViewAdapter.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +107,21 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\OccupancyDataList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AgencyUsageTable.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\BrokerageHoursTable.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\OccupancyTable.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\StaffTable.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SalariesWagesTable.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

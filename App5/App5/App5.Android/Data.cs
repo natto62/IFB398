@@ -92,22 +92,22 @@ namespace MiCareApp.Droid
         protected DateTime Date;
         protected double Balance;
 
-        public BankBalance(DateTime dateInput, double balanceInput) {
-            this.Date = dateInput;
-            this.Balance = balanceInput;
+        public BankBalance(DateTime Date, double Balance) {
+            this.Date = Date;
+            this.Balance = Balance;
         }
 
         public double GetBankBalance() {
             return Balance;
         }
 
-        public DateTime GetBankBalanceDate() {
+        public DateTime GetDate() {
             return Date;
         }
 
-        public void UpdateBankBalance(DateTime dateInput, double balanceInput) {
-            this.Date = dateInput;
-            this.Balance = balanceInput;
+        public void UpdateBankBalance(DateTime Date, double Balance) {
+            this.Date = Date;
+            this.Balance = Balance;
         }
 
 
@@ -120,18 +120,18 @@ namespace MiCareApp.Droid
         protected double Amount;
         protected int FacilityID;
 
-        public AgencyUsageData(DateTime dateInput, int invoiceIdInput, double amountInput, int facilityIdInput) {
-            this.Date = dateInput;
-            this.InvoiceID = invoiceIdInput;
-            this.Amount = amountInput;
-            this.FacilityID = facilityIdInput;
+        public AgencyUsageData(DateTime Date, int InvoiceID, double Amount, int FacilityID) {
+            this.Date = Date;
+            this.InvoiceID = InvoiceID;
+            this.Amount = Amount;
+            this.FacilityID = FacilityID;
         }
 
-        public DateTime GetAgencyUsageDate() {
+        public DateTime GetDate() {
             return Date;
         }
 
-        public int GetAgencyUsageInvoiceID() {
+        public int GetInvoiceID() {
             return InvoiceID;
         }
 
@@ -139,7 +139,7 @@ namespace MiCareApp.Droid
             return Amount;
         }
 
-        public int GetAgencyUsageFacilityID() {
+        public int GetFacilityID() {
             return FacilityID;
         }
     }
@@ -150,14 +150,29 @@ namespace MiCareApp.Droid
         protected int BrokerageID;
         protected int Hours;
         protected int FacilityID;
-        //dont know why I put the 'this.Date' instead of just 'Date'
-        public BrokerageHoursData(DateTime dateInput, int brokerageIdInput, int hoursInput, int facilityIdInput) {
-            this.Date = dateInput;
-            this.BrokerageID = brokerageIdInput;
-            this.Hours = hoursInput;
-            this.FacilityID = facilityIdInput;
+
+        public BrokerageHoursData(DateTime Date, int BrokerageID, int Hours, int FacilityID) {
+            this.Date = Date;
+            this.BrokerageID = BrokerageID;
+            this.Hours = Hours;
+            this.FacilityID = FacilityID;
         }
 
+        public DateTime GetDate() {
+            return Date;
+        }
+
+        public int GetBrokerageID() {
+            return BrokerageID;
+        }
+
+        public int GetBrokerageHours() {
+            return Hours;
+        }
+
+        public int GetFacilityID() {
+            return FacilityID;
+        }
     }
 
     public class HomeCarePackageData {
@@ -168,14 +183,33 @@ namespace MiCareApp.Droid
         protected string PackageLevel;
         protected double PackageIncome;
 
-        public HomeCarePackageData(int residentIdInput, string residentFirstNameInput, string residentLastNameInput, string packageLevelInput, double packageIncomeInput) {
-            ResidentID = residentIdInput;
-            ResidentFirstName = residentFirstNameInput;
-            ResidentLastName = residentLastNameInput;
-            PackageLevel = packageLevelInput;
-            PackageIncome = packageIncomeInput;
+        public HomeCarePackageData(int ResidentID, string ResidentFirstName, string ResidentLastName, string PackageLevel, double PackageIncome) {
+            this.ResidentID = ResidentID;
+            this.ResidentFirstName = ResidentFirstName;
+            this.ResidentLastName = ResidentLastName;
+            this.PackageLevel = PackageLevel;
+            this.PackageIncome = PackageIncome;
         }
 
+        public int GetResidentID() {
+            return ResidentID;
+        }
+
+        public string GetResidentFirstName() {
+            return ResidentFirstName;
+        }
+
+        public string GetResidentLastName() {
+            return ResidentLastName;
+        }
+
+        public string GetPackageLevel() {
+            return PackageLevel;
+        }
+
+        public double GetPackageIncome() {
+            return PackageIncome;
+        }
     }
 
     public class OccupancyData {
@@ -186,14 +220,33 @@ namespace MiCareApp.Droid
         protected int Occupancy;
         protected int Concessional;
 
-        public OccupancyData(DateTime dateInput, int facilityIDInput, int careTypeIDInput, int occupancyInput, int concessionalInput) {
-            Date = dateInput;
-            FacilityID = facilityIDInput;
-            CareTypeID = careTypeIDInput;
-            Occupancy = occupancyInput;
-            Concessional = concessionalInput;
+        public OccupancyData(DateTime Date, int FacilityID, int CareTypeID, int Occupancy, int Concessional) {
+            this.Date = Date;
+            this.FacilityID = FacilityID;
+            this.CareTypeID = CareTypeID;
+            this.Occupancy = Occupancy;
+            this.Concessional = Concessional;
         }
-        
+
+        public DateTime GetDate() {
+            return Date;
+        }
+
+        public int GetFacilityID() {
+            return FacilityID;
+        }
+
+        public int GetCareTypeID() {
+            return CareTypeID;
+        }
+
+        public int GetOccupancy() {
+            return Occupancy;
+        }
+
+        public int GetConcessional() {
+            return Concessional;
+        }
 
     }
 
@@ -207,16 +260,43 @@ namespace MiCareApp.Droid
         protected int LongServiceLeaveAcrewed;
         protected int ServiceLeaveAcrewed;
 
-        public StaffData(int staffIDInput, int facilityIDInput, string staffFirstNameInput, string staffLastNameInput, int annualLeaveAcrewedInput, int longServiceLeaveAcrewedInput, int serviceLeaveAcrewedInput) {
-            StaffID = staffIDInput;
-            FacilityID = facilityIDInput;
-            StaffFirstName = staffFirstNameInput;
-            StaffLastName = staffLastNameInput;
-            AnnualLeaveAcrewed = annualLeaveAcrewedInput;
-            LongServiceLeaveAcrewed = longServiceLeaveAcrewedInput;
-            ServiceLeaveAcrewed = serviceLeaveAcrewedInput;
+        public StaffData(int StaffID, int FacilityID, string StaffFirstName, string StaffLastName, int AnnualLeaveAcrewed, int LongServiceLeaveAcrewed, int ServiceLeaveAcrewed) {
+            this.StaffID = StaffID;
+            this.FacilityID = FacilityID;
+            this.StaffFirstName = StaffFirstName;
+            this.StaffLastName = StaffLastName;
+            this.AnnualLeaveAcrewed = AnnualLeaveAcrewed;
+            this.LongServiceLeaveAcrewed = LongServiceLeaveAcrewed;
+            this.ServiceLeaveAcrewed = ServiceLeaveAcrewed;
         }
 
+        public int GetStaffID() {
+            return StaffID;
+        }
+
+        public int GetFacilityID() {
+            return FacilityID;
+        }
+
+        public string GetStaffFirstName() {
+            return StaffFirstName;
+        }
+
+        public string GetStaffLastName() {
+            return StaffLastName;
+        }
+
+        public int GetAnnualLeaveAcrewed() {
+            return AnnualLeaveAcrewed;
+        }
+
+        public int GetLongServiceLeaveAcrewed() {
+            return LongServiceLeaveAcrewed;
+        }
+
+        public int GetServiceLeaveAcrewed() {
+            return ServiceLeaveAcrewed;
+        }
 
     }
 
@@ -226,13 +306,23 @@ namespace MiCareApp.Droid
         protected int FacilityID;
         protected double Income;
 
-        public IncomeData(DateTime dateInput, int facilityIdInput, double incomeInput) {
-            Date = dateInput;
-            FacilityID = facilityIdInput;
-            Income = incomeInput;
+        public IncomeData(DateTime Date, int FacilityID, double Income) {
+            this.Date = Date;
+            this.FacilityID = FacilityID;
+            this.Income = Income;
         }
 
+        public DateTime GetDate() {
+            return Date;
+        }
 
+        public int GetFacilityID() {
+            return FacilityID;
+        }
+
+        public double GetIncome() {
+            return Income;
+        }
     }
 
     public class SalariesWagesData {
@@ -242,11 +332,27 @@ namespace MiCareApp.Droid
         protected double RosteredCost;
         protected double Budget;
 
-        public SalariesWagesData(DateTime dateInput, int facilityIdInput, double rosteredCostInput, double budgetInput) {
-            Date = dateInput;
-            FacilityID = facilityIdInput;
-            RosteredCost = rosteredCostInput;
-            Budget = budgetInput;
+        public SalariesWagesData(DateTime Date, int FacilityID, double RosteredCost, double Budget) {
+            this.Date = Date;
+            this.FacilityID = FacilityID;
+            this.RosteredCost = RosteredCost;
+            this.Budget = Budget;
+        }
+
+        public DateTime GetDate() {
+            return Date;
+        }
+
+        public int GetFacilityID() {
+            return FacilityID;
+        }
+
+        public double GetRosteredCost() {
+            return RosteredCost;
+        }
+
+        public double GetBudget() {
+            return Budget;
         }
 
     }
