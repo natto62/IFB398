@@ -14,12 +14,12 @@ using App5.Droid;
 
 namespace MiCareApp.Droid 
 {
-    class HomeCarePackageViewAdapter : BaseAdapter<FinanceData>
+    class HomeCarePackageViewAdapter : BaseAdapter<HomeCarePackageData>
     {
-        private List<FinanceData> Items;
+        private List<HomeCarePackageData> Items;
         private Context Context;
 
-        public HomeCarePackageViewAdapter(Context context, List<FinanceData> items) {
+        public HomeCarePackageViewAdapter(Context context, List<HomeCarePackageData> items) {
             Items = items;
             Context = context;
         }
@@ -35,7 +35,7 @@ namespace MiCareApp.Droid
             return position;
         }
 
-        public override FinanceData this[int position] {
+        public override HomeCarePackageData this[int position] {
             get { return Items[position]; }
         }
 
@@ -45,33 +45,21 @@ namespace MiCareApp.Droid
             View row = convertView;
 
             if (row == null) {
-                row = LayoutInflater.From(Context).Inflate(Resource.Layout.DataPage, null, false);
+                row = LayoutInflater.From(Context).Inflate(Resource.Layout.HomeCarePackageTable, null, false);
             }
 
-            TextView txtFName = row.FindViewById<TextView>(Resource.Id.txtFName);
-            txtFName.Text = Items[position].GetFirstName();
+            TextView txtFNameHomeCare = row.FindViewById<TextView>(Resource.Id.txtFNameHomeCare);
+            txtFNameHomeCare.Text = Items[position].GetResidentFirstName();
 
-            TextView txtLName = row.FindViewById<TextView>(Resource.Id.txtLName);
-            txtLName.Text = Items[position].GetLastName();
+            TextView txtLNameHomeCare = row.FindViewById<TextView>(Resource.Id.txtLNameHomeCare);
+            txtLNameHomeCare.Text = Items[position].GetResidentLastName();
 
-            TextView txtIncome = row.FindViewById<TextView>(Resource.Id.txtIncome);
-            txtIncome.Text = "$ " + Items[position].GetIncome();
+            TextView txtPackageLevelHomeCare = row.FindViewById<TextView>(Resource.Id.txtPackageLevelHomeCare);
+            txtPackageLevelHomeCare.Text = Items[position].GetPackageLevel();
 
-            TextView txtStatus = row.FindViewById<TextView>(Resource.Id.txtStatus);
-            //txtStatus.SetBackgroundResource(Resource.Drawable.Corners);
-            if (Items[position].IsGreen())
-            {
-                txtStatus.SetBackgroundColor(Color.Green);
-            } else if (Items[position].IsRed())
-            {
-                txtStatus.SetBackgroundColor(Color.Red);
-            } else
-            {
-                txtStatus.SetBackgroundColor(Color.Yellow);
-            }
-            
-            txtStatus.Text = " ";
-            
+            TextView txtPackageIncomeHomeCare = row.FindViewById<TextView>(Resource.Id.txtPackageIncomeHomeCare);
+            txtPackageIncomeHomeCare.Text = "$ " + Items[position].GetPackageIncome().ToString();
+
 
             return row;
         }

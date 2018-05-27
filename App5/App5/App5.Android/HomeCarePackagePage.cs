@@ -14,13 +14,13 @@ using Android.Widget;
 namespace MiCareApp.Droid
 {
     [Activity(Label = "ItemPage", Theme = "@style/MainTheme")]
-    public class ItemPage : Activity
+    public class HomeCarePackagePage : Activity
     {
         //int number;
 
         private ListView dataList;
 
-        private List<FinanceData> dataItems;
+        private List<HomeCarePackageData> dataItems;
 
         private int clickNumFName = 0;
         private int clickNumLName = 0;
@@ -38,11 +38,11 @@ namespace MiCareApp.Droid
 
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.MainTitle);
+            SetContentView(Resource.Layout.HomeCarePackagePage);
             //global::Xamarin.Forms.Forms.Init(this, bundle);
             //LoadApplication(new App());
 
-            dataItems = new List<FinanceData>();
+            dataItems = new List<HomeCarePackageData>();
             //Names = new List<string>();
             //Incomes = new List<string>();
 
@@ -52,12 +52,10 @@ namespace MiCareApp.Droid
             //}
 
             //add items
-            dataItems.Add(new FinanceData("Bill", "Person", 64, "male", 843.65));
-            dataItems.Add(new FinanceData("Sarah", "Thingy", 72, "female", 412.80));
-            dataItems.Add(new FinanceData("Brian", "Brown", 101, "male", 124.30));
-            dataItems.Add(new FinanceData("Moe", "Whato", 57, "male", 354.16));
-            dataItems.Add(new FinanceData("Lesli", "Crump", 68, "female", 784.98));
-            dataItems.Add(new FinanceData("Olivia", "Something", 81, "female", 87.83));
+            dataItems.Add(new HomeCarePackageData(1,"Bill", "Person", "2", 843.65));
+            dataItems.Add(new HomeCarePackageData(2,"Sarah", "Thingy", "3", 412.80));
+            dataItems.Add(new HomeCarePackageData(3,"Brian", "Brown", "2", 124.30));
+
 
             //Display the number of items at the bottom of the page
             TextView NumItems = FindViewById<TextView>(Resource.Id.txtNumFinanceData);
@@ -71,16 +69,16 @@ namespace MiCareApp.Droid
             dataList.Adapter = adapter;
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
-            Button FName = FindViewById<Button>(Resource.Id.FirstNameText);
-            Button LName = FindViewById<Button>(Resource.Id.LastNameText);
-            Button IncomeList = FindViewById<Button>(Resource.Id.IncomeText);
+            Button FName = FindViewById<Button>(Resource.Id.FirstNameTextHomeCare);
+            Button LName = FindViewById<Button>(Resource.Id.LastNameTextHomeCare);
+            Button IncomeList = FindViewById<Button>(Resource.Id.PackageIncomeText);
 
             //setup button for sorting the list based on first names
             FName.Click += delegate {
                 if (clickNumFName == 0)
                 {
-                    dataItems.Sort(delegate (FinanceData one, FinanceData two) {
-                        return string.Compare(one.GetFirstName(), two.GetFirstName());
+                    dataItems.Sort(delegate (HomeCarePackageData one, HomeCarePackageData two) {
+                        return string.Compare(one.GetResidentFirstName(), two.GetResidentFirstName());
                     });
                     clickNumFName++;
                     clickNumLName = 0;
@@ -99,8 +97,8 @@ namespace MiCareApp.Droid
             LName.Click += delegate {
                 if (clickNumLName == 0)
                 {
-                    dataItems.Sort(delegate (FinanceData one, FinanceData two) {
-                        return string.Compare(one.GetLastName(), two.GetLastName());
+                    dataItems.Sort(delegate (HomeCarePackageData one, HomeCarePackageData two) {
+                        return string.Compare(one.GetResidentLastName(), two.GetResidentLastName());
                     });
                     clickNumLName++;
                     clickNumFName = 0;
@@ -119,8 +117,8 @@ namespace MiCareApp.Droid
             IncomeList.Click += delegate {
                 if (clickNumIncome == 0)
                 {
-                    dataItems.Sort(delegate (FinanceData one, FinanceData two) {
-                        return one.GetIncomeAsDouble().CompareTo(two.GetIncomeAsDouble());
+                    dataItems.Sort(delegate (HomeCarePackageData one, HomeCarePackageData two) {
+                        return one.GetPackageIncome().CompareTo(two.GetPackageIncome());
                     });
                     clickNumIncome++;
                     clickNumLName = 0;

@@ -183,12 +183,15 @@ namespace MiCareApp.Droid
         protected string PackageLevel;
         protected double PackageIncome;
 
+        protected static double SumOfPackageIncome;
+
         public HomeCarePackageData(int ResidentID, string ResidentFirstName, string ResidentLastName, string PackageLevel, double PackageIncome) {
             this.ResidentID = ResidentID;
             this.ResidentFirstName = ResidentFirstName;
             this.ResidentLastName = ResidentLastName;
             this.PackageLevel = PackageLevel;
             this.PackageIncome = PackageIncome;
+            SumOfPackageIncome += PackageIncome;
         }
 
         public int GetResidentID() {
@@ -210,6 +213,9 @@ namespace MiCareApp.Droid
         public double GetPackageIncome() {
             return PackageIncome;
         }
+
+        //HCP Income against budget will be calculated through sum of Package_Income
+
     }
 
     public class OccupancyData {

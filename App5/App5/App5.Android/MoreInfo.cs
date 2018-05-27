@@ -16,17 +16,15 @@ namespace App5.Droid
 { 
     class MoreInfo : DialogFragment
     {
-        private FinanceData dataObject;
+        private HomeCarePackageData dataObject;
 
         private TextView FName;
         private TextView LName;
-        private TextView Age;
-        private TextView Gender;
         private TextView Income;
-        private TextView Status;
+        private TextView Level;
 
         //import the finance data item based on the item clicked 
-        public MoreInfo(FinanceData data) {
+        public MoreInfo(HomeCarePackageData data) {
             dataObject = data;
         }
 
@@ -38,32 +36,16 @@ namespace App5.Droid
 
             //change the text based on the item clicked on the list
             FName = view.FindViewById<TextView>(Resource.Id.txtFName);
-            FName.Text = dataObject.GetFirstName();
+            FName.Text = dataObject.GetResidentFirstName();
 
             LName = view.FindViewById<TextView>(Resource.Id.txtLName);
-            LName.Text = dataObject.GetLastName();
+            LName.Text = dataObject.GetResidentLastName();
 
-            Age = view.FindViewById<TextView>(Resource.Id.txtAge);
-            Age.Text = dataObject.GetAge();
-
-            Gender = view.FindViewById<TextView>(Resource.Id.txtGender);
-            Gender.Text = dataObject.GetGender();
+            Level = view.FindViewById<TextView>(Resource.Id.txtLevel);
+            Level.Text = dataObject.GetPackageLevel();
 
             Income = view.FindViewById<TextView>(Resource.Id.txtIncome);
-            Income.Text = "$ " + dataObject.GetIncome();
-
-            Status = view.FindViewById<TextView>(Resource.Id.txtStatus);
-            if (dataObject.IsGreen()) {
-                Status.SetBackgroundColor(Color.Green);
-            } else if (dataObject.IsRed()) {
-                Status.SetBackgroundColor(Color.Red);
-            } else {
-                Status.SetBackgroundColor(Color.Yellow);
-            }
-
-            Status.Text = " ";
-
-
+            Income.Text = "$ " + dataObject.GetPackageIncome().ToString();
 
             return view; 
         }

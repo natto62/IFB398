@@ -19,10 +19,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/BackButton"
             android:layout_marginTop="5dp"
+            android:background="@drawable/buttonstyles"
             android:layout_marginBottom="5dp"
             android:textSize="15sp" />
         <TextView
-            android:text="Financial Data"
+            android:text="Occupancy"
             android:layout_width="wrap_content"
             android:layout_weight="98"
             android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/OptionsButton"
             android:textSize="15sp"
+            android:background="@drawable/buttonstyles"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp" />
     </LinearLayout>
@@ -48,38 +50,38 @@
         android:layout_weight="0"
         android:weightSum="100">
         <Button
-            android:text="First Name"
+            android:text="Occupancy"
             android:layout_width="match_parent"
             android:layout_weight="25"
             android:layout_height="fill_parent"
-            android:id="@+id/FirstNameText"
+            android:id="@+id/OccupancyTextOccupancy"
             android:textSize="12sp"
             android:textColor="@color/abc_secondary_text_material_light"
             android:background="@drawable/tablebuttonstyles" />
         <Button
-            android:text="Last Name"
+            android:text="Concessional"
             android:layout_width="match_parent"
             android:layout_weight="25"
             android:layout_height="fill_parent"
-            android:id="@+id/LastNameText"
+            android:id="@+id/ConcessionalTextOccupancy"
             android:textSize="12sp"
             android:textColor="@color/abc_secondary_text_material_light"
             android:background="@drawable/tablebuttonstyles" />
         <Button
-            android:text="Income"
+            android:text="Vacancy"
             android:layout_width="match_parent"
             android:layout_weight="25"
             android:layout_height="fill_parent"
-            android:id="@+id/IncomeText"
+            android:id="@+id/VacancyTextOccupancy"
             android:textSize="12sp"
             android:textColor="@color/abc_secondary_text_material_light"
             android:background="@drawable/tablebuttonstyles" />
         <Button
-            android:text="Status"
+            android:text="Date"
             android:layout_width="match_parent"
             android:layout_weight="25"
             android:layout_height="fill_parent"
-            android:id="@+id/StatusColour"
+            android:id="@+id/DateTextOccupancy"
             android:textSize="12sp"
             android:textColor="@color/abc_secondary_text_material_light"
             android:background="@drawable/tablebuttonstyles" />
@@ -103,7 +105,7 @@
         android:layout_weight="1"
         android:weightSum="100">
         <TextView
-            android:text="Number of Financial Data Items Available:"
+            android:text="Number of Occupancy Data Items Available:"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:id="@+id/txtFinanceData"

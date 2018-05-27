@@ -27,20 +27,10 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp" />
     <TextView
-        android:text="Age"
+        android:text="Level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtAge"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp" />
-    <TextView
-        android:text="Gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtGender"
+        android:id="@+id/txtLevel"
         android:textSize="15sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
@@ -51,16 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtIncome"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp" />
-    <TextView
-        android:text="Status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtStatus"
         android:textSize="15sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
