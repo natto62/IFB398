@@ -28,6 +28,12 @@ namespace MiCareApp.Droid
 
             dataItems = new List<StaffData>();
 
+            //setup Spinner
+            Spinner spinner = FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinner.Adapter = SpinnerAdapter;
+
             //setup adapter
             dataList = FindViewById<ListView>(Resource.Id.DataList);
 

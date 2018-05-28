@@ -32,4 +32,12 @@
   <style name="SignInUpAnimation">
     <item name="android:windowEnterAnimation">@drawable/FromBottom</item>
   </style>
+
+
+  <string-array name="FacilityArray">
+    <item>Avondrust Village</item>
+    <item>Beatrix Village</item>
+    <item>Princess Margriet Village</item>
+    <item>Prins Willem Alexander Village</item>
+  </string-array>
 </resources>
