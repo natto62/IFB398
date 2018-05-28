@@ -182,6 +182,8 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\occupancypage.xml
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\salarieswagespage.xml
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\staffpage.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\drawable\optionsicon.png
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\drawable\backbuttonicon.png
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\MiCareApp.Android.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\MiCareApp.Android.dll.mdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb

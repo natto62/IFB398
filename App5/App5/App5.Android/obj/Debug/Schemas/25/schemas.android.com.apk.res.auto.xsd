@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>27/05/2018 8:08:38 PM</xs:documentation>
+    <xs:documentation>28/05/2018 7:52:50 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1200,6 +1200,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -1389,6 +1390,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -1993,6 +1995,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -2182,6 +2185,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -2709,6 +2713,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -2898,6 +2903,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -3402,6 +3408,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -3591,6 +3598,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -5350,6 +5358,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -5539,6 +5548,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -6043,6 +6053,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -6232,6 +6243,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -7262,6 +7274,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -7451,6 +7464,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -7955,6 +7969,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -8144,6 +8159,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -9643,6 +9659,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -9832,6 +9849,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -10336,6 +10354,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -10525,6 +10544,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -11087,6 +11107,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -11276,6 +11297,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -11780,6 +11802,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -11969,6 +11992,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -12557,6 +12581,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -12746,6 +12771,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -13491,6 +13517,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -13680,6 +13707,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -14254,6 +14282,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -14443,6 +14472,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -15129,6 +15159,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -15318,6 +15349,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -16004,6 +16036,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -16193,6 +16226,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -16697,6 +16731,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -16886,6 +16921,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -18016,6 +18052,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -18205,6 +18242,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -18809,6 +18847,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -18998,6 +19037,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -19602,6 +19642,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -19791,6 +19832,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -20735,6 +20777,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -20924,6 +20967,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -21967,6 +22011,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -22156,6 +22201,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -22660,6 +22706,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -22849,6 +22896,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -23525,6 +23573,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -23714,6 +23763,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -24400,6 +24450,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -24589,6 +24640,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -25105,6 +25157,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -25294,6 +25347,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -25980,6 +26034,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -26169,6 +26224,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -27045,6 +27101,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -27234,6 +27291,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -27738,6 +27796,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -27927,6 +27986,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -30499,6 +30559,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -30688,6 +30749,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -32931,6 +32993,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -33120,6 +33183,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -33806,6 +33870,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -33995,6 +34060,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -34499,6 +34565,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -34688,6 +34755,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
@@ -35435,6 +35503,7 @@
             <xs:enumeration value="@drawable/abc_vector_test" />
             <xs:enumeration value="@drawable/avd_hide_password" />
             <xs:enumeration value="@drawable/avd_show_password" />
+            <xs:enumeration value="@drawable/backbuttonicon" />
             <xs:enumeration value="@drawable/buttonstyles" />
             <xs:enumeration value="@drawable/corners" />
             <xs:enumeration value="@drawable/design_bottom_navigation_item_background" />
@@ -35624,6 +35693,7 @@
             <xs:enumeration value="@drawable/notification_template_icon_low_bg" />
             <xs:enumeration value="@drawable/notification_tile_bg" />
             <xs:enumeration value="@drawable/notify_panel_notification_icon_bg" />
+            <xs:enumeration value="@drawable/optionsicon" />
             <xs:enumeration value="@drawable/tablebuttonstyles" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
