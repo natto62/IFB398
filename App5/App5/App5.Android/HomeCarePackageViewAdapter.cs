@@ -55,7 +55,7 @@ namespace MiCareApp.Droid
             txtLNameHomeCare.Text = Items[position].GetResidentLastName();
 
             TextView txtPackageLevelHomeCare = row.FindViewById<TextView>(Resource.Id.txtPackageLevelHomeCare);
-            txtPackageLevelHomeCare.Text = Items[position].GetPackageLevel();
+            txtPackageLevelHomeCare.Text = Items[position].GetPackageLevel().ToString();
 
             TextView txtPackageIncomeHomeCare = row.FindViewById<TextView>(Resource.Id.txtPackageIncomeHomeCare);
             txtPackageIncomeHomeCare.Text = "$ " + Items[position].GetPackageIncome().ToString();

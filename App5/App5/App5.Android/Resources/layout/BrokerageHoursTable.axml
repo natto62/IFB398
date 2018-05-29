@@ -7,18 +7,9 @@
     android:minHeight="25px"
     android:weightSum="99">
     <TextView
-        android:text="Brokerage ID"
-        android:layout_width="match_parent"
-        android:layout_weight="36"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtBrokerageIDBrokerage"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp" />
-    <TextView
         android:text="Hours"
         android:layout_width="match_parent"
-        android:layout_weight="33"
+        android:layout_weight="50"
         android:layout_height="wrap_content"
         android:id="@+id/txtHoursBrokerage"
         android:textSize="15sp"
@@ -27,7 +18,7 @@
     <TextView
         android:text="Date"
         android:layout_width="match_parent"
-        android:layout_weight="30"
+        android:layout_weight="50"
         android:layout_height="wrap_content"
         android:id="@+id/txtDateBrokerage"
         android:textSize="15sp"

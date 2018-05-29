@@ -35,6 +35,7 @@
 
 
   <string-array name="FacilityArray">
+    <item>- Select a Facility -</item>
     <item>Avondrust Village</item>
     <item>Beatrix Village</item>
     <item>Princess Margriet Village</item>

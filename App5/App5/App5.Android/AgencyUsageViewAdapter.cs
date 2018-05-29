@@ -53,12 +53,9 @@ namespace MiCareApp.Droid
             TextView txtDateAgency = row.FindViewById<TextView>(Resource.Id.txtDateAgency);
             txtDateAgency.Text = Items[position].GetDate().ToShortDateString();
 
-            TextView txtInvoiceIDAgency = row.FindViewById<TextView>(Resource.Id.txtInvoiceIDAgency);
-            txtInvoiceIDAgency.Text = Items[position].GetInvoiceID().ToString();
-
             TextView txtAmountAgency = row.FindViewById<TextView>(Resource.Id.txtAmountAgency);
             txtAmountAgency.Text = "$ " + Items[position].GetAgencyUsageAmount().ToString();
-
+            
             return row;
         }
 

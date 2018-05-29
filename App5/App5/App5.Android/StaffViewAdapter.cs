@@ -58,13 +58,13 @@ namespace MiCareApp.Droid
             txtLNameStaff.Text = Items[position].GetStaffLastName();
 
             TextView txtAnnualLeaveStaff = row.FindViewById<TextView>(Resource.Id.txtAnnualLeaveStaff);
-            txtAnnualLeaveStaff.Text = "$ " + Items[position].GetAnnualLeaveAcrewed().ToString();
+            txtAnnualLeaveStaff.Text = Items[position].GetAnnualLeaveAcrewed().ToString();
 
             TextView txtLongServiceLeaveStaff = row.FindViewById<TextView>(Resource.Id.txtLongServiceLeaveStaff);
-            txtLongServiceLeaveStaff.Text = "$ " + Items[position].GetLongServiceLeaveAcrewed().ToString();
+            txtLongServiceLeaveStaff.Text = Items[position].GetLongServiceLeaveAcrewed().ToString();
 
             TextView txtServiceLeaveStaff = row.FindViewById<TextView>(Resource.Id.txtServiceLeaveStaff);
-            txtServiceLeaveStaff.Text = "$ " + Items[position].GetServiceLeaveAcrewed().ToString();
+            txtServiceLeaveStaff.Text = Items[position].GetServiceLeaveAcrewed().ToString();
 
             return row;
         }

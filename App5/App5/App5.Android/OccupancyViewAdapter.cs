@@ -58,7 +58,7 @@ namespace MiCareApp.Droid
             txtOccupancyOccupancy.Text = Items[position].GetOccupancy().ToString();
 
             TextView txtConcessionalOccupancy = row.FindViewById<TextView>(Resource.Id.txtConcessionalOccupancy);
-            txtConcessionalOccupancy.Text = "$ " + Items[position].GetConcessional().ToString();
+            txtConcessionalOccupancy.Text = Items[position].GetConcessional().ToString();
 
             TextView txtVacancyOccupancy = row.FindViewById<TextView>(Resource.Id.txtVacancyOccupancy);
             txtVacancyOccupancy.Text = " ";

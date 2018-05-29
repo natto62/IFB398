@@ -85,18 +85,9 @@
         android:layout_weight="0"
         android:weightSum="100">
         <Button
-            android:text="Invoice ID"
-            android:layout_width="match_parent"
-            android:layout_weight="36"
-            android:layout_height="fill_parent"
-            android:id="@+id/InvoiceIDTextAgency"
-            android:textSize="12sp"
-            android:textColor="@color/abc_secondary_text_material_light"
-            android:background="@drawable/tablebuttonstyles" />
-        <Button
             android:text="Amount"
             android:layout_width="match_parent"
-            android:layout_weight="33"
+            android:layout_weight="50"
             android:layout_height="fill_parent"
             android:id="@+id/AmountTextAgency"
             android:textSize="12sp"
@@ -105,7 +96,7 @@
         <Button
             android:text="Date"
             android:layout_width="match_parent"
-            android:layout_weight="30"
+            android:layout_weight="50"
             android:layout_height="fill_parent"
             android:id="@+id/DateTextAgency"
             android:textSize="12sp"

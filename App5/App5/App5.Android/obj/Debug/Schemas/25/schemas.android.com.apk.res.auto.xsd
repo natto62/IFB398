@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>28/05/2018 8:32:12 PM</xs:documentation>
+    <xs:documentation>29/05/2018 7:47:48 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1871,6 +1871,7 @@
             <xs:enumeration value="@string/path_password_eye_mask_visible" />
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
+            <xs:enumeration value="@string/SpinnerPrompt" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
@@ -6724,6 +6725,7 @@
             <xs:enumeration value="@string/path_password_eye_mask_visible" />
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
+            <xs:enumeration value="@string/SpinnerPrompt" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
@@ -13294,6 +13296,7 @@
             <xs:enumeration value="@string/path_password_eye_mask_visible" />
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
+            <xs:enumeration value="@string/SpinnerPrompt" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
@@ -17402,6 +17405,7 @@
             <xs:enumeration value="@string/path_password_eye_mask_visible" />
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
+            <xs:enumeration value="@string/SpinnerPrompt" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
@@ -17514,6 +17518,7 @@
             <xs:enumeration value="@string/path_password_eye_mask_visible" />
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
+            <xs:enumeration value="@string/SpinnerPrompt" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
@@ -18723,6 +18728,7 @@
             <xs:enumeration value="@string/path_password_eye_mask_visible" />
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
+            <xs:enumeration value="@string/SpinnerPrompt" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
@@ -19518,6 +19524,7 @@
             <xs:enumeration value="@string/path_password_eye_mask_visible" />
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
+            <xs:enumeration value="@string/SpinnerPrompt" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
@@ -21448,6 +21455,7 @@
             <xs:enumeration value="@string/path_password_eye_mask_visible" />
             <xs:enumeration value="@string/path_password_strike_through" />
             <xs:enumeration value="@string/search_menu_title" />
+            <xs:enumeration value="@string/SpinnerPrompt" />
             <xs:enumeration value="@string/status_bar_notification_info_overflow" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />

@@ -47,7 +47,7 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/OptionsIcon" />
     </LinearLayout>
-  <LinearLayout
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="35dp"
@@ -85,18 +85,9 @@
         android:layout_weight="0"
         android:weightSum="100">
         <Button
-            android:text="Brokerage ID"
-            android:layout_width="match_parent"
-            android:layout_weight="36"
-            android:layout_height="fill_parent"
-            android:id="@+id/BrokerageIDTextBrokerage"
-            android:textSize="12sp"
-            android:textColor="@color/abc_secondary_text_material_light"
-            android:background="@drawable/tablebuttonstyles" />
-        <Button
             android:text="Hours"
             android:layout_width="match_parent"
-            android:layout_weight="33"
+            android:layout_weight="50"
             android:layout_height="fill_parent"
             android:id="@+id/HoursTextBrokerage"
             android:textSize="12sp"
@@ -105,7 +96,7 @@
         <Button
             android:text="Date"
             android:layout_width="match_parent"
-            android:layout_weight="30"
+            android:layout_weight="50"
             android:layout_height="fill_parent"
             android:id="@+id/DateTextBrokerage"
             android:textSize="12sp"

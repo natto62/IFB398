@@ -54,9 +54,6 @@ namespace MiCareApp.Droid
             TextView txtDateBrokerage = row.FindViewById<TextView>(Resource.Id.txtDateBrokerage);
             txtDateBrokerage.Text = Items[position].GetDate().ToShortDateString();
 
-            TextView txtBrokerageIDBrokerage = row.FindViewById<TextView>(Resource.Id.txtBrokerageIDBrokerage);
-            txtBrokerageIDBrokerage.Text = Items[position].GetBrokerageID().ToString();
-
             TextView txtHoursBrokerage = row.FindViewById<TextView>(Resource.Id.txtHoursBrokerage);
             txtHoursBrokerage.Text = Items[position].GetBrokerageHours().ToString();
 

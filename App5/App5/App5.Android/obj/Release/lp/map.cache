@@ -20,3 +20,9 @@ Xamarin.Forms.Core
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
+Google.Protobuf
+MySql.Data
+System.Configuration.ConfigurationManager
+System.Security.AccessControl
+System.Security.Permissions
+System.Security.Principal.Windows

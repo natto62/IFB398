@@ -25,10 +25,12 @@ namespace MiCareApp.Droid
         private int clickNumFName = 0;
         private int clickNumLName = 0;
         private int clickNumIncome = 0;
+        private int clcikNumLevel = 0;
 
         //private List<string> Names;
 
         //private List<string> Incomes;
+        private HomeCarePackageViewAdapter adapter;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -43,6 +45,7 @@ namespace MiCareApp.Droid
             //LoadApplication(new App());
 
             dataItems = new List<HomeCarePackageData>();
+
             //Names = new List<string>();
             //Incomes = new List<string>();
 
@@ -52,9 +55,20 @@ namespace MiCareApp.Droid
             //}
 
             //add items
-            dataItems.Add(new HomeCarePackageData(1,"Bill", "Person", "2", 843.65));
-            dataItems.Add(new HomeCarePackageData(2,"Sarah", "Thingy", "3", 412.80));
-            dataItems.Add(new HomeCarePackageData(3,"Brian", "Brown", "2", 124.30));
+            dataItems.Add(new HomeCarePackageData(1,"Mia", "Carter", 1, 106));
+            dataItems.Add(new HomeCarePackageData(2,"Michael", "Howard", 1, 176));
+            dataItems.Add(new HomeCarePackageData(3,"Logan", "Watson", 2, 100));
+            dataItems.Add(new HomeCarePackageData(4, "Harper", "Simmons", 3, 140));
+            dataItems.Add(new HomeCarePackageData(5, "Olivia", "Ross", 2, 204));
+            dataItems.Add(new HomeCarePackageData(6, "James", "Smith", 1, 148));
+            dataItems.Add(new HomeCarePackageData(7, "Sally", "Johnson", 4, 188));
+            dataItems.Add(new HomeCarePackageData(8, "Jim", "Williams", 1, 266));
+            dataItems.Add(new HomeCarePackageData(9, "Sophia", "Jones", 1, 278));
+            dataItems.Add(new HomeCarePackageData(10, "Jackson", "Brown", 2, 127));
+            dataItems.Add(new HomeCarePackageData(11, "Lucas", "Davis", 1, 223));
+            dataItems.Add(new HomeCarePackageData(12, "Liam", "Miller", 4, 157));
+            dataItems.Add(new HomeCarePackageData(13, "Noah", "Scot", 3, 194));
+            dataItems.Add(new HomeCarePackageData(14, "Riley", "Hill", 3, 211));
 
 
             //Display the number of items at the bottom of the page
@@ -64,13 +78,14 @@ namespace MiCareApp.Droid
             //setup adapter
             dataList = FindViewById<ListView>(Resource.Id.DataList);
 
-            HomeCarePackageViewAdapter adapter = new HomeCarePackageViewAdapter(this, dataItems);
+            adapter = new HomeCarePackageViewAdapter(this, dataItems);
 
             dataList.Adapter = adapter;
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
             Button FName = FindViewById<Button>(Resource.Id.FirstNameTextHomeCare);
             Button LName = FindViewById<Button>(Resource.Id.LastNameTextHomeCare);
+            Button PackageLevel = FindViewById<Button>(Resource.Id.PackageLevelText);
             Button IncomeList = FindViewById<Button>(Resource.Id.PackageIncomeText);
 
             //setup button for sorting the list based on first names
@@ -83,6 +98,7 @@ namespace MiCareApp.Droid
                     clickNumFName++;
                     clickNumLName = 0;
                     clickNumIncome = 0;
+                    clcikNumLevel = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -103,12 +119,34 @@ namespace MiCareApp.Droid
                     clickNumLName++;
                     clickNumFName = 0;
                     clickNumIncome = 0;
+                    clcikNumLevel = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
                 {
                     dataItems.Reverse();
                     clickNumLName = 0;
+                }
+                adapter.NotifyDataSetChanged();
+            };
+
+            //setup button for sorting the list based on package levels
+            PackageLevel.Click += delegate {
+                if (clcikNumLevel == 0)
+                {
+                    dataItems.Sort(delegate (HomeCarePackageData one, HomeCarePackageData two) {
+                        return one.GetPackageLevel().CompareTo(two.GetPackageLevel());
+                    });
+                    clcikNumLevel++;
+                    clickNumLName = 0;
+                    clickNumFName = 0;
+                    clickNumIncome = 0;
+                    //reverse list if clicked a second time in a row
+                }
+                else
+                {
+                    dataItems.Reverse();
+                    clcikNumLevel = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };
@@ -123,6 +161,7 @@ namespace MiCareApp.Droid
                     clickNumIncome++;
                     clickNumLName = 0;
                     clickNumFName = 0;
+                    clcikNumLevel = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -148,5 +187,6 @@ namespace MiCareApp.Droid
             MoreInfo info = new MoreInfo(dataItems[e.Position]);
             info.Show(transaction, "dialog fragment");
         }
+
     }
 }

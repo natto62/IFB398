@@ -42,7 +42,7 @@ namespace App5.Droid
             LName.Text = dataObject.GetResidentLastName();
 
             Level = view.FindViewById<TextView>(Resource.Id.txtLevel);
-            Level.Text = dataObject.GetPackageLevel();
+            Level.Text = dataObject.GetPackageLevel().ToString();
 
             Income = view.FindViewById<TextView>(Resource.Id.txtIncome);
             Income.Text = "$ " + dataObject.GetPackageIncome().ToString();
