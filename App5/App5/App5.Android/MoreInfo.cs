@@ -47,6 +47,14 @@ namespace App5.Droid
             Income = view.FindViewById<TextView>(Resource.Id.txtIncome);
             Income.Text = "$ " + dataObject.GetPackageIncome().ToString();
 
+            if (dataObject.IsGreen()){
+                view.SetBackgroundColor(Color.LightGreen);
+            } else if (dataObject.IsRed()){
+                view.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+            } else {
+                view.SetBackgroundColor(Color.LightYellow);
+            }
+
             return view; 
         }
 

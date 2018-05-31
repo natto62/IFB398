@@ -60,7 +60,14 @@ namespace MiCareApp.Droid
             TextView txtPackageIncomeHomeCare = row.FindViewById<TextView>(Resource.Id.txtPackageIncomeHomeCare);
             txtPackageIncomeHomeCare.Text = "$ " + Items[position].GetPackageIncome().ToString();
 
-
+            if (Items[position].IsGreen()){
+                row.SetBackgroundColor(Color.LightGreen);
+            } else if (Items[position].IsRed()) {
+                row.SetBackgroundColor(Color.Argb(80,255,128,128));
+            } else {
+                row.SetBackgroundColor(Color.LightYellow);
+            }
+            
             return row;
         }
 

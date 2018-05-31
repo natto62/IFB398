@@ -191,7 +191,10 @@ namespace MiCareApp.Droid
 
             Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
 
-            backBtn.Click += delegate { StartActivity(typeof(OccupancyMenu)); };
+            backBtn.Click += delegate {
+                backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
+                StartActivity(typeof(OccupancyMenu));
+            };
         }
 
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)

@@ -4,46 +4,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/linearLayout1"
-    android:minWidth="25px"
-    android:minHeight="25px">
-    <TextView
-        android:text="First Name"
+    android:background="@drawable/CornersBasic">
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtFName"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp" />
-    <TextView
-        android:text="Last Name"
+        android:layout_marginTop="10dp"
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:text="First Name"
+            android:id="@+id/txtFName"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:text="Last Name"
+            android:id="@+id/txtLName"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtLName"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp" />
-    <TextView
-        android:text="Level"
+        android:layout_marginTop="10dp"
+        android:id="@+id/linearLayout3">
+        <TextView
+            android:text="Level:  "
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/textView1" />
+        <TextView
+            android:text="Level"
+            android:id="@+id/txtLevel"
+            android:textSize="15sp"
+            android:layout_marginRight="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtLevel"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp" />
-    <TextView
-        android:text="Income"
+        android:layout_marginTop="10dp"
+        android:id="@+id/linearLayout4">
+        <TextView
+            android:text="Income: "
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:textSize="15sp"
+            android:id="@+id/textView2" />
+        <TextView
+            android:text="Income"
+            android:id="@+id/txtIncome"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtIncome"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp" />
+        android:id="@+id/linearLayout5">
+        <Button
+            android:text="Graph History"
+            android:textColor="@color/abc_primary_text_material_light"
+            android:textSize="15sp"
+            android:background="@drawable/buttonstyles"
+            android:id="@+id/button1"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </LinearLayout>

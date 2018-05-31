@@ -257,6 +257,32 @@ namespace MiCareApp.Droid
         {
             return show;
         }
+
+        //if the income is above or equal to 250.00 return true
+        public bool IsGreen()
+        {
+            if (PackageIncome >= 250.0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //if the income is less than 150.00 return true
+        public bool IsRed()
+        {
+            if (PackageIncome < 150.0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
     public class OccupancyData {
