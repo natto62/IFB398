@@ -3173,7 +3173,7 @@ containing a value of this type.
         public static int linearLayout5=0x7f08008c;
         public static int listMode=0x7f08000f;
         public static int list_item=0x7f080048;
-        public static int masked=0x7f080119;
+        public static int masked=0x7f08011a;
         public static int media_actions=0x7f0800da;
         public static int middle=0x7f080022;
         public static int mini=0x7f08003e;
@@ -3309,7 +3309,8 @@ containing a value of this type.
         public static int view1=0x7f08009e;
         public static int view2=0x7f0800ab;
         public static int view_offset_helper=0x7f08000e;
-        public static int visible=0x7f080118;
+        public static int viewpager=0x7f080118;
+        public static int visible=0x7f080119;
         public static int volume_item_container=0x7f0800cc;
         public static int withText=0x7f080027;
         public static int wrap_content=0x7f08001f;
@@ -3421,6 +3422,7 @@ containing a value of this type.
         public static int support_simple_spinner_dropdown_item=0x7f030055;
         public static int tabbar=0x7f030056;
         public static int toolbar=0x7f030057;
+        public static int viewpager=0x7f030058;
     }
     public static final class string {
         public static int SpinnerPrompt=0x7f09003e;

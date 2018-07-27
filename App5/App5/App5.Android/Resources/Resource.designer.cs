@@ -3250,8 +3250,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080048
 			public const int list_item = 2131230792;
 			
-			// aapt resource value: 0x7f080119
-			public const int masked = 2131231001;
+			// aapt resource value: 0x7f08011a
+			public const int masked = 2131231002;
 			
 			// aapt resource value: 0x7f0800da
 			public const int media_actions = 2131230938;
@@ -3659,7 +3659,10 @@ namespace MiCareApp.Droid
 			public const int view_offset_helper = 2131230734;
 			
 			// aapt resource value: 0x7f080118
-			public const int visible = 2131231000;
+			public const int viewpager = 2131231000;
+			
+			// aapt resource value: 0x7f080119
+			public const int visible = 2131231001;
 			
 			// aapt resource value: 0x7f0800cc
 			public const int volume_item_container = 2131230924;
@@ -4014,6 +4017,9 @@ namespace MiCareApp.Droid
 			
 			// aapt resource value: 0x7f030057
 			public const int Toolbar = 2130903127;
+			
+			// aapt resource value: 0x7f030058
+			public const int ViewPager = 2130903128;
 			
 			static Layout()
 			{

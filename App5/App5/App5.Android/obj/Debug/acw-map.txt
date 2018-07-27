@@ -2,6 +2,10 @@ App5.Droid.MoreInfo, MiCareApp.Android;md57a30dc1fe1034f6ad919fc99834ac28e.MoreI
 App5.Droid.MoreInfo, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
 App5.Droid.MoreInfo;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
 app5.droid.MoreInfo;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
+MiCareApp.Droid.Activity1, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1
+MiCareApp.Droid.Activity1, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1
+MiCareApp.Droid.Activity1;md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1
+micareapp.droid.Activity1;md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1
 MiCareApp.Droid.AgencyUsagePage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsagePage
 MiCareApp.Droid.AgencyUsagePage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsagePage
 MiCareApp.Droid.AgencyUsagePage;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsagePage
@@ -66,6 +70,10 @@ MiCareApp.Droid.SignUp, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.Si
 MiCareApp.Droid.SignUp, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
 MiCareApp.Droid.SignUp;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
 micareapp.droid.SignUp;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignUp
+MiCareApp.Droid.SlidingTabMenu, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabMenu
+MiCareApp.Droid.SlidingTabMenu, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabMenu
+MiCareApp.Droid.SlidingTabMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabMenu
+micareapp.droid.SlidingTabMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabMenu
 MiCareApp.Droid.StaffPage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffPage
 MiCareApp.Droid.StaffPage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffPage
 MiCareApp.Droid.StaffPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffPage

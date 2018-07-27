@@ -14,7 +14,7 @@ using Android.Widget;
 namespace MiCareApp.Droid
 {
     [Activity(Label = "ItemPage", Theme = "@style/MainTheme")]
-    public class HomeCarePackagePage : Activity
+    public class HomeCarePackagePage : Android.Support.V4.App.Fragment
     {
         //int number;
 
@@ -33,14 +33,14 @@ namespace MiCareApp.Droid
         private HomeCarePackageViewAdapter adapter;
 
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             //TabLayoutResource = Resource.Layout.Tabbar;
             //ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(savedInstanceState);
+            base.OnCreateView(inflater, container, savedInstanceState);
 
-            SetContentView(Resource.Layout.HomeCarePackagePage);
+            View view = inflater.Inflate(Resource.Layout.HomeCarePackagePage, container, false);
             //global::Xamarin.Forms.Forms.Init(this, bundle);
             //LoadApplication(new App());
 
@@ -72,21 +72,21 @@ namespace MiCareApp.Droid
 
 
             //Display the number of items at the bottom of the page
-            TextView NumItems = FindViewById<TextView>(Resource.Id.txtNumFinanceData);
+            TextView NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
             NumItems.Text = dataItems.Count.ToString();
 
             //setup adapter
-            dataList = FindViewById<ListView>(Resource.Id.DataList);
+            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
 
-            adapter = new HomeCarePackageViewAdapter(this, dataItems);
+            adapter = new HomeCarePackageViewAdapter(view.Context, dataItems);
 
             dataList.Adapter = adapter;
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
-            Button FName = FindViewById<Button>(Resource.Id.FirstNameTextHomeCare);
-            Button LName = FindViewById<Button>(Resource.Id.LastNameTextHomeCare);
-            Button PackageLevel = FindViewById<Button>(Resource.Id.PackageLevelText);
-            Button IncomeList = FindViewById<Button>(Resource.Id.PackageIncomeText);
+            Button FName = view.FindViewById<Button>(Resource.Id.FirstNameTextHomeCare);
+            Button LName = view.FindViewById<Button>(Resource.Id.LastNameTextHomeCare);
+            Button PackageLevel = view.FindViewById<Button>(Resource.Id.PackageLevelText);
+            Button IncomeList = view.FindViewById<Button>(Resource.Id.PackageIncomeText);
 
             //setup button for sorting the list based on first names
             FName.Click += delegate {
@@ -175,20 +175,21 @@ namespace MiCareApp.Droid
             //if an item in the list is clicked, then create a pop up window with more information on the item clicked
             dataList.ItemClick += DataList_ItemClick;
 
-            Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
+            Button backBtn = view.FindViewById<Button>(Resource.Id.BackButton);
 
             backBtn.Click += delegate {
                 backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
-                StartActivity(typeof(FinanceMenu));
+                StartActivity(new Intent(Activity, typeof(FinanceMenu)));
             };
 
+            return view;
         }
 
         //create a pop up window with more information
         void DataList_ItemClick(object sender, AdapterView.ItemClickEventArgs e) {
-            FragmentTransaction transaction = FragmentManager.BeginTransaction();
-            MoreInfo info = new MoreInfo(dataItems[e.Position]);
-            info.Show(transaction, "dialog fragment");
+          //  FragmentTransaction transaction = FragmentManager.BeginTransaction();
+          //  MoreInfo info = new MoreInfo(dataItems[e.Position]);
+          //  info.Show(transaction, "dialog fragment");
         }
 
     }

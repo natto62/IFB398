@@ -117,6 +117,8 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\R.c
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\uploadflags.txt
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\drawable\backbuttoniconclicked.png
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\drawable\cornersbasic.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\MiCareApp.Android.csprojResolveAssemblyReference.cache
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\viewpager.xml
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\Mono.Android.pdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\Mono.Data.Sqlite.pdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\mscorlib.pdb

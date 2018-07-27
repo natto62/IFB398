@@ -27,19 +27,20 @@ namespace MiCareApp.Droid
 
             //AgencyBtn
             Button AgencyBtn = FindViewById<Button>(Resource.Id.AgencyBtn);
-            AgencyBtn.Click += delegate { StartActivity(typeof(AgencyUsagePage)); };
+            AgencyBtn.Click += delegate { StartActivity(typeof(Activity1)); };
+            // AgencyBtn.Click += delegate { StartActivity(typeof(AgencyUsagePage)); };
 
             //BrokerageBtn
             Button BrokerageBtn = FindViewById<Button>(Resource.Id.BrokerageBtn);
-            BrokerageBtn.Click += delegate { StartActivity(typeof(BrokerageHoursPage)); };
+          //  BrokerageBtn.Click += delegate { StartActivity(typeof(BrokerageHoursPage)); };
 
             //Home Care Packages button
             Button HomeCareBtn = FindViewById<Button>(Resource.Id.HomeCareBtn);
-            HomeCareBtn.Click += delegate { StartActivity(typeof(HomeCarePackagePage)); };
+          //  HomeCareBtn.Click += delegate { StartActivity(typeof(HomeCarePackagePage)); };
 
             //SalariesBtn
             Button SalariesBtn = FindViewById<Button>(Resource.Id.SalariesBtn);
-            SalariesBtn.Click += delegate { StartActivity(typeof(SalariesWagesPage)); };
+          //  SalariesBtn.Click += delegate { StartActivity(typeof(SalariesWagesPage)); };
 
 
         }

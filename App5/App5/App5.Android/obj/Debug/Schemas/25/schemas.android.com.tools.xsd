@@ -2,7 +2,7 @@
 <xs:schema xmlns:tools="http://schemas.android.com/tools" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/tools" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>1/06/2018 12:56:34 PM</xs:documentation>
+    <xs:documentation>27/07/2018 11:23:57 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="layout">
     <xs:annotation>
@@ -100,6 +100,7 @@
             <xs:enumeration value="@layout/support_simple_spinner_dropdown_item" />
             <xs:enumeration value="@layout/tabbar" />
             <xs:enumeration value="@layout/toolbar" />
+            <xs:enumeration value="@layout/viewpager" />
             <xs:enumeration value="@android:layout/activity_list_item" />
             <xs:enumeration value="@android:layout/browser_link_context_header" />
             <xs:enumeration value="@android:layout/expandable_list_content" />
@@ -225,6 +226,7 @@
             <xs:enumeration value="@layout/support_simple_spinner_dropdown_item" />
             <xs:enumeration value="@layout/tabbar" />
             <xs:enumeration value="@layout/toolbar" />
+            <xs:enumeration value="@layout/viewpager" />
             <xs:enumeration value="@android:layout/activity_list_item" />
             <xs:enumeration value="@android:layout/browser_link_context_header" />
             <xs:enumeration value="@android:layout/expandable_list_content" />
@@ -350,6 +352,7 @@
             <xs:enumeration value="@layout/support_simple_spinner_dropdown_item" />
             <xs:enumeration value="@layout/tabbar" />
             <xs:enumeration value="@layout/toolbar" />
+            <xs:enumeration value="@layout/viewpager" />
             <xs:enumeration value="@android:layout/activity_list_item" />
             <xs:enumeration value="@android:layout/browser_link_context_header" />
             <xs:enumeration value="@android:layout/expandable_list_content" />
@@ -475,6 +478,7 @@
             <xs:enumeration value="@layout/support_simple_spinner_dropdown_item" />
             <xs:enumeration value="@layout/tabbar" />
             <xs:enumeration value="@layout/toolbar" />
+            <xs:enumeration value="@layout/viewpager" />
             <xs:enumeration value="@android:layout/activity_list_item" />
             <xs:enumeration value="@android:layout/browser_link_context_header" />
             <xs:enumeration value="@android:layout/expandable_list_content" />

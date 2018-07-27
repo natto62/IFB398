@@ -13,7 +13,7 @@ using Android.Widget;
 namespace MiCareApp.Droid
 {
     [Activity(Label = "BrokerageHoursPage", Theme = "@style/MainTheme")]
-    public class BrokerageHoursPage : Activity
+    public class BrokerageHoursPage : Android.Support.V4.App.Fragment
     {
 
         private ListView dataList;
@@ -25,11 +25,11 @@ namespace MiCareApp.Droid
 
         private BrokerageHoursViewAdapter adapter;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreateView(inflater, container, savedInstanceState);
 
-            SetContentView(Resource.Layout.BrokerageHoursPage);
+            View view = inflater.Inflate(Resource.Layout.BrokerageHoursPage, container, false);
 
 
             dataItems = new List<BrokerageHoursData>();
@@ -66,26 +66,26 @@ namespace MiCareApp.Droid
             }
 
             //setup Spinner
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
             //Display the number of items at the bottom of the page
-            TextView NumItems = FindViewById<TextView>(Resource.Id.txtNumFinanceData);
+            TextView NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
             NumItems.Text = dataItems.Count.ToString();
 
             //setup adapter
-            dataList = FindViewById<ListView>(Resource.Id.DataList);
+            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
 
-            adapter = new BrokerageHoursViewAdapter(this, dataItems);
+            adapter = new BrokerageHoursViewAdapter(view.Context, dataItems);
 
             dataList.Adapter = adapter;
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
-            Button DateBtn = FindViewById<Button>(Resource.Id.DateTextBrokerage);
-            Button HoursBtn = FindViewById<Button>(Resource.Id.HoursTextBrokerage);
+            Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextBrokerage);
+            Button HoursBtn = view.FindViewById<Button>(Resource.Id.HoursTextBrokerage);
 
             DateBtn.Click += delegate {
                 if (clickNumDate == 0)
@@ -125,12 +125,14 @@ namespace MiCareApp.Droid
 
 
 
-            Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
+            Button backBtn = view.FindViewById<Button>(Resource.Id.BackButton);
 
             backBtn.Click += delegate {
                 backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
-                StartActivity(typeof(FinanceMenu));
+                StartActivity(new Intent(Activity, typeof(FinanceMenu)));
             };
+
+            return view;
         }
 
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)

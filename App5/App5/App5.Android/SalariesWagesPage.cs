@@ -13,7 +13,7 @@ using Android.Widget;
 namespace MiCareApp.Droid
 {
     [Activity(Label = "SalariesWagesPage", Theme = "@style/MainTheme")]
-    public class SalariesWagesPage : Activity
+    public class SalariesWagesPage : Android.Support.V4.App.Fragment
     {
 
         private ListView dataList;
@@ -26,11 +26,11 @@ namespace MiCareApp.Droid
 
         private SalariesWagesViewAdapter adapter;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreateView(inflater, container, savedInstanceState);
 
-            SetContentView(Resource.Layout.SalariesWagesPage);
+            View view = inflater.Inflate(Resource.Layout.SalariesWagesPage, container, false);
 
 
             dataItems = new List<SalariesWagesData>();
@@ -62,27 +62,27 @@ namespace MiCareApp.Droid
 
 
             //setup Spinner
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
             //Display the number of items at the bottom of the page
-            TextView NumItems = FindViewById<TextView>(Resource.Id.txtNumFinanceData);
+            TextView NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
             NumItems.Text = dataItems.Count.ToString();
 
             //setup adapter
-            dataList = FindViewById<ListView>(Resource.Id.DataList);
+            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
 
-            adapter = new SalariesWagesViewAdapter(this, dataItems);
+            adapter = new SalariesWagesViewAdapter(view.Context, dataItems);
 
             dataList.Adapter = adapter;
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
-            Button DateBtn = FindViewById<Button>(Resource.Id.DateTextSalariesWages);
-            Button RosteredCostBtn = FindViewById<Button>(Resource.Id.RosteredCostTextSalariesWages);
-            Button BudgetBtn = FindViewById<Button>(Resource.Id.BudgetTextSalariesWages);
+            Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextSalariesWages);
+            Button RosteredCostBtn = view.FindViewById<Button>(Resource.Id.RosteredCostTextSalariesWages);
+            Button BudgetBtn = view.FindViewById<Button>(Resource.Id.BudgetTextSalariesWages);
 
             DateBtn.Click += delegate {
                 if (clickNumDate == 0)
@@ -142,12 +142,14 @@ namespace MiCareApp.Droid
             };
 
 
-            Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
+            Button backBtn = view.FindViewById<Button>(Resource.Id.BackButton);
 
             backBtn.Click += delegate {
                 backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
-                StartActivity(typeof(FinanceMenu));
+                StartActivity(new Intent(Activity, typeof(FinanceMenu)));
             };
+
+            return view;
         }
 
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
