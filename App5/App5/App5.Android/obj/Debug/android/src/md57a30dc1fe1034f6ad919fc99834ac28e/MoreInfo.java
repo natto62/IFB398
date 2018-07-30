@@ -2,7 +2,7 @@ package md57a30dc1fe1034f6ad919fc99834ac28e;
 
 
 public class MoreInfo
-	extends android.app.DialogFragment
+	extends android.support.v4.app.DialogFragment
 	implements
 		mono.android.IGCUserPeer
 {

@@ -141,14 +141,6 @@ namespace MiCareApp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
-
-            Button backBtn = view.FindViewById<Button>(Resource.Id.BackButton);
-
-            backBtn.Click += delegate {
-                backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
-                StartActivity(new Intent(Activity, typeof(FinanceMenu)));
-            };
-
             return view;
         }
 

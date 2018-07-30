@@ -175,21 +175,18 @@ namespace MiCareApp.Droid
             //if an item in the list is clicked, then create a pop up window with more information on the item clicked
             dataList.ItemClick += DataList_ItemClick;
 
-            Button backBtn = view.FindViewById<Button>(Resource.Id.BackButton);
-
-            backBtn.Click += delegate {
-                backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
-                StartActivity(new Intent(Activity, typeof(FinanceMenu)));
-            };
-
             return view;
         }
 
         //create a pop up window with more information
         void DataList_ItemClick(object sender, AdapterView.ItemClickEventArgs e) {
-          //  FragmentTransaction transaction = FragmentManager.BeginTransaction();
-          //  MoreInfo info = new MoreInfo(dataItems[e.Position]);
-          //  info.Show(transaction, "dialog fragment");
+            //FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            //MoreInfo info = new MoreInfo(dataItems[e.Position]);
+            //info.Show(transaction, "dialog fragment");
+
+            var transaction = ChildFragmentManager.BeginTransaction();
+            MoreInfo info = new MoreInfo(dataItems[e.Position]);
+            info.Show(transaction, "dialog fragment");
         }
 
     }

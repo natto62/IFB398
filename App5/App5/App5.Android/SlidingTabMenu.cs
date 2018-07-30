@@ -19,7 +19,7 @@ namespace MiCareApp.Droid
         private string[] Names;
         private List<Android.Support.V4.App.Fragment> fragments;
 
-
+        //constructor 
         public SlidingTabMenu(Android.Support.V4.App.FragmentManager fm, string[] names) : base(fm) {
             Names = names;
             fragments = new List<Android.Support.V4.App.Fragment>();
@@ -29,13 +29,16 @@ namespace MiCareApp.Droid
             fragments.Add(new SalariesWagesPage());
         }
 
+        //number of tabs
         public override int Count { get { return 4; } }
 
+        //get fragment via tab position
         public override Android.Support.V4.App.Fragment GetItem(int position)
         {
             return fragments[position];
         }
 
+        //display tab titles
         public override Java.Lang.ICharSequence GetPageTitleFormatted(int position) {
             return new Java.Lang.String(Names[position]);
         }
@@ -45,6 +48,7 @@ namespace MiCareApp.Droid
             return PositionNone;
         }
 
+        //get fragment via tab position
         public Android.Support.V4.App.Fragment GetFragment(int position)
         {
             return fragments[position];

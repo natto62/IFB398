@@ -14,7 +14,7 @@ using MiCareApp.Droid;
 
 namespace App5.Droid
 { 
-    class MoreInfo : DialogFragment
+    class MoreInfo : Android.Support.V4.App.DialogFragment
     {
         private HomeCarePackageData dataObject;
 

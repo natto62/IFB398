@@ -6,7 +6,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <application android:label="MiCareApp.Android" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:label="Activity1" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1" />
+    <activity android:label="Activity1" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1" />
     <activity android:label="FinanceMenu" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.FinanceMenu" />
     <activity android:label="IntroPage" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage" />
     <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="App5" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.MainActivity">

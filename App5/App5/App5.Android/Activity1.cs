@@ -14,7 +14,7 @@ using Android.Support.V4.App;
 
 namespace MiCareApp.Droid
 {
-    [Activity(Label = "Activity1")]
+    [Activity(Label = "Activity1", Theme = "@style/MainTheme")]
     public class Activity1 : FragmentActivity
     {
         private string[] names;
@@ -26,11 +26,18 @@ namespace MiCareApp.Droid
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ViewPager);
 
+            //set up the sliding layout bar adapter
             SlidingTabMenu adapter = new SlidingTabMenu(SupportFragmentManager, names);
 
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
             viewPager.Adapter = adapter;
-            
+
+            //back button to return to finance menu page
+            Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
+            backBtn.Click += delegate {
+                backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
+                StartActivity(typeof(FinanceMenu));
+            };
         }
     }
 }
