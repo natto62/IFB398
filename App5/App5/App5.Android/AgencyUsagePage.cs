@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V4.App;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace MiCareApp.Droid
 {
@@ -20,11 +22,15 @@ namespace MiCareApp.Droid
         private ListView dataList;
         private List<AgencyUsageData> dataItems;
         private List<AgencyUsageData> displayItems;
+        private List<AgencyUsageData> testing;
 
         private int clickNumDate = 0;
         private int clickNumAmount = 0;
 
         private AgencyUsageViewAdapter adapter;
+
+        private WebClient client;
+        private Uri url;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -34,39 +40,49 @@ namespace MiCareApp.Droid
             dataItems = new List<AgencyUsageData>();
             displayItems = new List<AgencyUsageData>();
 
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 2876, 1));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 2107, 2));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 4579, 3));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 4948, 1));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 3470, 2));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 2482, 3));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 3710, 1));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 2843, 2));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 2406, 3));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 3507, 1));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 2970, 2));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 2167, 3));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 3383, 1));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 2238, 2));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 3626, 3));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3906, 1));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3084, 2));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3758, 3));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 3645, 1));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 3985, 2));
-            dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 4765, 3));
-            dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 3237, 1));
-            dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 3891, 2));
-            dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 2484, 3));
+            client = new WebClient();
+            url = new Uri("http://http:///GetAgencyUsageData.php");
+            //http:/http:/<insert ipv4 address of computer running php>/GetAgencyUsageData.php
+            //call php
+            client.DownloadDataAsync(url);
+            client.DownloadDataCompleted += Client_DownloadDataCompleted;
 
-            foreach (AgencyUsageData item in dataItems) {
+
+
+
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 2876, 1));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 2107, 2));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 4579, 3));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 4948, 1));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 3470, 2));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 2482, 3));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 3710, 1));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 2843, 2));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 2406, 3));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 3507, 1));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 2970, 2));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 2167, 3));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 3383, 1));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 2238, 2));
+          //  dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 3626, 3));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3906, 1));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3084, 2));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3758, 3));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 3645, 1));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 3985, 2));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 4765, 3));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 3237, 1));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 3891, 2));
+           // dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 2484, 3));
+
+            foreach (AgencyUsageData item in testing) {
                 displayItems.Add(item);
             }
 
             //setup adapter
             dataList = view.FindViewById<ListView>(Resource.Id.DataList);
 
-            adapter = new AgencyUsageViewAdapter(view.Context, dataItems);
+            adapter = new AgencyUsageViewAdapter(view.Context, testing);
 
             dataList.Adapter = adapter;
 
@@ -149,6 +165,14 @@ namespace MiCareApp.Droid
                 }
             }
             adapter.NotifyDataSetChanged();
+        }
+
+        void Client_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e) {
+            Activity.RunOnUiThread(() =>
+            {
+                string json = Encoding.UTF8.GetString(e.Result);
+                testing = JsonConvert.DeserializeObject<List<AgencyUsageData>>(json);
+            });
         }
     }
 }

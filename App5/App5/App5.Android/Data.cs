@@ -124,18 +124,18 @@ namespace MiCareApp.Droid
 
     public class AgencyUsageData {
 
-        protected DateTime Date;
+        public DateTime Date { get; set; }
        // protected int InvoiceID;
-        protected double Amount;
-        protected int FacilityID;
+        public double Amount { get; set; }
+        public int FacilityID { get; set; }
         protected bool show = true;
 
-        public AgencyUsageData(DateTime Date, double Amount, int FacilityID) {
-            this.Date = Date;
-            //this.InvoiceID = InvoiceID;
-            this.Amount = Amount;
-            this.FacilityID = FacilityID;
-        }
+        //public AgencyUsageData(DateTime Date, double Amount, int FacilityID) {
+        //    this.Date = Date;
+        //    //this.InvoiceID = InvoiceID;
+        //    this.Amount = Amount;
+        //    this.FacilityID = FacilityID;
+        //}
 
         public DateTime GetDate() {
             return Date;

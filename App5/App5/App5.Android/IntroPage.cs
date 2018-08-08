@@ -22,15 +22,17 @@ namespace MiCareApp.Droid
 
             SetContentView(Resource.Layout.IntroPage);
 
-            //Finance Menu
+            //Finance Menu button
             Button FinanceBtn = FindViewById<Button>(Resource.Id.FinanceBtn);
+            //-> FinanceMenu.cs
             FinanceBtn.Click += delegate { StartActivity(typeof(FinanceMenu)); };
 
-            //Occupancy Menu
+            //Occupancy Menu button
             Button OccupancyBtn = FindViewById<Button>(Resource.Id.OccupancyBtn);
+            //->OccupancyMenu.cs
             OccupancyBtn.Click += delegate { StartActivity(typeof(OccupancyMenu)); };
 
-            //Sign Out
+            //Sign Out button
             Button SignOutBtn = FindViewById<Button>(Resource.Id.SignOutBtn);
             SignOutBtn.Click += delegate { StartActivity(typeof(MainActivity)); };
 

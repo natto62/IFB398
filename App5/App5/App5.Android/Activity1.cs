@@ -21,6 +21,8 @@ namespace MiCareApp.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
+            //havn't commented this stuff yet, it will take a while
             names = new string[] { "Agency Usage Data", "Brokerage Hours Data", "Home Care Package Data", "Salaries Wages Data" };
 
             base.OnCreate(savedInstanceState);

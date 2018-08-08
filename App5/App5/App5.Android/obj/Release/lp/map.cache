@@ -26,3 +26,4 @@ System.Configuration.ConfigurationManager
 System.Security.AccessControl
 System.Security.Permissions
 System.Security.Principal.Windows
+Newtonsoft.Json

@@ -25,10 +25,14 @@ namespace MiCareApp.Droid
             Button BackBtn = FindViewById<Button>(Resource.Id.FinanceBackButton);
             BackBtn.Click += delegate { StartActivity(typeof(IntroPage)); };
 
+
             //AgencyBtn
             Button AgencyBtn = FindViewById<Button>(Resource.Id.AgencyBtn);
+            //->Activity1.cs sliding layout
             AgencyBtn.Click += delegate { StartActivity(typeof(Activity1)); };
             // AgencyBtn.Click += delegate { StartActivity(typeof(AgencyUsagePage)); };
+
+            //I COMMENTED OUT THE OLD BUTTONS BECAUSE THEY ARE NO LONGER USED DUE TO ACTIVITY1.CS SLIDING LAYOUT REPLACING THEM
 
             //BrokerageBtn
             Button BrokerageBtn = FindViewById<Button>(Resource.Id.BrokerageBtn);
