@@ -191,6 +191,9 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\and
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Xml.pdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\drawable\refreshbuttonicon.png
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\drawable\refreshbuttoniconclicked.png
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\drawable\optionsiconclicked.png
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\MiCareApp.Android.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\MiCareApp.Android.dll.mdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb

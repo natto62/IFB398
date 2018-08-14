@@ -12,6 +12,8 @@ using Android.Widget;
 using Android.Support.V4.App;
 using System.Net;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace MiCareApp.Droid
 {
@@ -22,7 +24,6 @@ namespace MiCareApp.Droid
         private ListView dataList;
         private List<AgencyUsageData> dataItems;
         private List<AgencyUsageData> displayItems;
-        private List<AgencyUsageData> testing;
 
         private int clickNumDate = 0;
         private int clickNumAmount = 0;
@@ -31,6 +32,7 @@ namespace MiCareApp.Droid
 
         private WebClient client;
         private Uri url;
+        private TextView NumItems;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -40,79 +42,72 @@ namespace MiCareApp.Droid
             dataItems = new List<AgencyUsageData>();
             displayItems = new List<AgencyUsageData>();
 
-            client = new WebClient();
-            url = new Uri("http://http:///GetAgencyUsageData.php");
-            //http:/http:/<insert ipv4 address of computer running php>/GetAgencyUsageData.php
-            //call php
-            client.DownloadDataAsync(url);
-            client.DownloadDataCompleted += Client_DownloadDataCompleted;
-
-
-
-
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 2876, 1));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 2107, 2));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 6, 1), 4579, 3));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 4948, 1));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 3470, 2));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 7, 1), 2482, 3));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 3710, 1));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 2843, 2));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 8, 1), 2406, 3));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 3507, 1));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 2970, 2));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 9, 1), 2167, 3));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 3383, 1));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 2238, 2));
-          //  dataItems.Add(new AgencyUsageData(new DateTime(2018, 10, 1), 3626, 3));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3906, 1));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3084, 2));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 11, 1), 3758, 3));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 3645, 1));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 3985, 2));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2018, 12, 1), 4765, 3));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 3237, 1));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 3891, 2));
-           // dataItems.Add(new AgencyUsageData(new DateTime(2019, 1, 1), 2484, 3));
-
-            foreach (AgencyUsageData item in testing) {
-                displayItems.Add(item);
-            }
-
             //setup adapter
             dataList = view.FindViewById<ListView>(Resource.Id.DataList);
-
-            adapter = new AgencyUsageViewAdapter(view.Context, testing);
-
-            dataList.Adapter = adapter;
-
-            //setup Spinner
-            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs> (Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
-            SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = SpinnerAdapter;
+            adapter = new AgencyUsageViewAdapter(this.Context, dataItems);
 
             //Display the number of items at the bottom of the page
-            TextView NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
-            NumItems.Text = dataItems.Count.ToString();
+            NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
             Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextAgency);
             Button AmountBtn = view.FindViewById<Button>(Resource.Id.AmountTextAgency);
 
+            //setup Spinner
+            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            spinner.Clickable = false;
+            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinner.Adapter = SpinnerAdapter;
+
+            client = new WebClient();
+            url = new Uri("http://new2.php");
+            //http:/http:/<insert ipv4 address of computer running php>/new2.php
+
+            Toast toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
+
+            Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
+            RefreshBtn.Click += delegate {
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                spinner.SetSelection(0);
+                dataItems.Clear();
+                displayItems.Clear();
+                spinner.Clickable = false;
+                //call php  
+                client.DownloadDataAsync(url);
+                while (client.IsBusy) {
+                    toastMessage.Show();
+                }
+                toastMessage.Cancel();
+            };
+
+            client.DownloadDataCompleted += delegate (object sender, DownloadDataCompletedEventArgs e) {
+                Activity.RunOnUiThread(() => {
+                    string json = Encoding.UTF8.GetString(e.Result);
+                    Console.WriteLine(json);
+                    dataItems = JsonConvert.DeserializeObject<List<AgencyUsageData>>(json);
+                    adapter = new AgencyUsageViewAdapter(this.Context, dataItems);//this
+                    foreach (AgencyUsageData item in dataItems){
+                        displayItems.Add(item);
+                    }
+                    NumItems.Text = dataItems.Count.ToString();
+                    dataList.Adapter = adapter;
+                    RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
+                    spinner.Clickable = true;
+                    adapter.NotifyDataSetChanged();
+                });
+            };
+
             DateBtn.Click += delegate {
-                if (clickNumDate == 0)
-                {
+                if (clickNumDate == 0) {
                     dataItems.Sort(delegate (AgencyUsageData one, AgencyUsageData two) {
                         return DateTime.Compare(one.GetDate(), two.GetDate());
                     });
                     clickNumDate++;
                     clickNumAmount = 0;
                     //reverse list if clicked a second time in a row
-                }
-                else
-                {
+                } else {
                     dataItems.Reverse();
                     clickNumDate = 0;
                 }
@@ -120,17 +115,14 @@ namespace MiCareApp.Droid
             };
 
             AmountBtn.Click += delegate {
-                if (clickNumAmount == 0)
-                {
+                if (clickNumAmount == 0) {
                     dataItems.Sort(delegate (AgencyUsageData one, AgencyUsageData two) {
                         return one.GetAgencyUsageAmount().CompareTo(two.GetAgencyUsageAmount());
                     });
                     clickNumAmount++;
                     clickNumDate = 0;
                     //reverse list if clicked a second time in a row
-                }
-                else
-                {
+                } else {
                     dataItems.Reverse();
                     clickNumAmount = 0;
                 }
@@ -140,7 +132,7 @@ namespace MiCareApp.Droid
             return view;
         }
 
-        void Spinner_ItemSelected (object sender, AdapterView.ItemSelectedEventArgs e) {
+        void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e) {
             Spinner spinner = (Spinner)sender;
             int ID;
             int position = e.Position;
@@ -161,18 +153,10 @@ namespace MiCareApp.Droid
                             dataItems.Add(item);
                         }
                     }
-                    
+
                 }
             }
             adapter.NotifyDataSetChanged();
-        }
-
-        void Client_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e) {
-            Activity.RunOnUiThread(() =>
-            {
-                string json = Encoding.UTF8.GetString(e.Result);
-                testing = JsonConvert.DeserializeObject<List<AgencyUsageData>>(json);
-            });
         }
     }
 }

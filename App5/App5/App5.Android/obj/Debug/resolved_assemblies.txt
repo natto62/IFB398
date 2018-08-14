@@ -4,6 +4,7 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\and
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Mono.Android.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Mono.Data.Sqlite.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\mscorlib.dll
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Newtonsoft.Json.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Core.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Data.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.dll
@@ -44,15 +45,13 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\and
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Runtime.Serialization.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.ServiceModel.Internals.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Transactions.dll
-C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Numerics.dll
-C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Mono.Data.Tds.dll
-C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Mono.Security.dll
-C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.ComponentModel.Composition.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\netstandard.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Diagnostics.StackTrace.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Globalization.Extensions.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.IO.Compression.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.IO.Compression.FileSystem.dll
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.ComponentModel.Composition.dll
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Numerics.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Runtime.Serialization.Xml.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Runtime.Serialization.Primitives.dll
@@ -60,3 +59,5 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\and
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Security.SecureString.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Web.Services.dll
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\System.Xml.XPath.XDocument.dll
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Mono.Data.Tds.dll
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\Mono.Security.dll

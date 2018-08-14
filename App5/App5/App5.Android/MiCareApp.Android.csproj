@@ -214,6 +214,15 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\CornersBasic.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\RefreshButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\RefreshButtonIconClicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\OptionsIconClicked.png" />
+  </ItemGroup>
   <Import Project="..\App5\App5.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
