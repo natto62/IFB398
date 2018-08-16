@@ -1,4 +1,5 @@
 FormsViewGroup
+Newtonsoft.Json
 System.Runtime
 Xamarin.Android.Support.Animated.Vector.Drawable
 Xamarin.Android.Support.Annotations
@@ -21,4 +22,3 @@ Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 netstandard
-Newtonsoft.Json

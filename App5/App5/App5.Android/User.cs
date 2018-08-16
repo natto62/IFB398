@@ -13,33 +13,27 @@ using Android.Widget;
 namespace MiCareApp.Droid
 {
     public class User {
-        protected string FirstName;
-        protected string LastName;
-        protected string Email;
-        protected string Password;
-        protected DateTime Date;
 
-        //each time an object is created, this value increments by 1
-        public static int NumberOfUserData;
+        public int UserID { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        //protected DateTime Date;
 
-        //constructor accepts a name string input and a income float input
-        public User(string FirstNameInput, string LastNameInput, string EmailInput, string PasswordInput, DateTime DateInput) {
-            this.FirstName = FirstNameInput;
-            this.LastName = LastNameInput;
-            this.Email = EmailInput;
-            this.Password = PasswordInput;
-            this.Date = DateInput;
-            NumberOfUserData++;
+        //retrieveid value
+        public int GetUserID() {
+            return UserID;
         }
 
         //retrieve first name value
         public string GetFirstName() {
-            return FirstName;
+            return FName;
         }
 
         //retrieve last name value
         public string GetLastName() {
-            return LastName;
+            return LName;
         }
 
         //retrieve last name value

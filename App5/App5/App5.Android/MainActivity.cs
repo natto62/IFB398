@@ -47,7 +47,11 @@ namespace MiCareApp.Droid
 
             //this user object only used for testing
             DateTime TempTime = new DateTime(2018, 1, 1, 9, 20, 00);
-            User tempUser = new User("Brian", "Who", "super1@blabla.com", "qwerty1", TempTime);
+            User tempUser = new User();//("Brian", "Who", "super1@blabla.com", "qwerty1", TempTime);
+            tempUser.FName = "Brian";
+            tempUser.LName = "Who";
+            tempUser.Email = "super1@blabla.com";
+            tempUser.Password = "qwerty1";
 
             //Go to SignIn.cs for more
             SignIn SignInPopUp = new SignIn(tempUser);
