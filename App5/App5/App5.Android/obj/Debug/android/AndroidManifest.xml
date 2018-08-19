@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.App5" android:installLocation="internalOnly">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="MiCareApp.MiCareApp" android:installLocation="internalOnly">
   <!--suppress UsesMinSdkAttributes-->
-  <uses-sdk android:minSdkVersion="15" />
+  <uses-sdk android:minSdkVersion="21" />
   <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <application android:label="MiCareApp.Android" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
+  <application android:label="MiCareApp" android:icon="@drawable/icon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:label="Activity1" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1" />
     <activity android:label="FinanceMenu" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.FinanceMenu" />
     <activity android:label="IntroPage" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage" />
@@ -18,12 +17,12 @@
     <activity android:label="OccupancyMenu" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyMenu" />
     <activity android:label="OccupancyPage" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyPage" />
     <activity android:label="StaffPage" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffPage" />
-    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.App5.mono.MonoRuntimeProvider.__mono_init__" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="MiCareApp.MiCareApp.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">
       <intent-filter>
         <action android:name="mono.android.intent.action.SEPPUKU" />
-        <category android:name="mono.android.intent.category.SEPPUKU.com.companyname.App5" />
+        <category android:name="mono.android.intent.category.SEPPUKU.MiCareApp.MiCareApp" />
       </intent-filter>
     </receiver>
     <meta-data android:name="android.support.VERSION" android:value="25.4.0" />

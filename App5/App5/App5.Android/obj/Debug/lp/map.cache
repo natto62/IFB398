@@ -1,5 +1,7 @@
 FormsViewGroup
 Newtonsoft.Json
+Plugin.Settings.Abstractions
+Plugin.Settings
 System.Runtime
 Xamarin.Android.Support.Animated.Vector.Drawable
 Xamarin.Android.Support.Annotations
@@ -22,5 +24,3 @@ Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 netstandard
-Plugin.Settings.Abstractions
-Plugin.Settings
