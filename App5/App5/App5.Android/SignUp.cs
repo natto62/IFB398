@@ -37,7 +37,7 @@ namespace MiCareApp.Droid
             var view = inflater.Inflate(Resource.Layout.SignUp, container, false);
 
             client = new WebClient();
-            url = new Uri("http://SignUp.php");
+            url = new Uri("https://capstonephpcode198.herokuapp.com/SignUp.php");
 
             List<EditText> EditTextList = new List<EditText>(); 
 

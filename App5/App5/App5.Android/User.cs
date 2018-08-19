@@ -12,7 +12,8 @@ using Android.Widget;
 
 namespace MiCareApp.Droid
 {
-    public class User {
+    public class User
+    {
 
         public int UserID { get; set; }
         public string FName { get; set; }
@@ -22,27 +23,32 @@ namespace MiCareApp.Droid
         //protected DateTime Date;
 
         //retrieveid value
-        public int GetUserID() {
+        public int GetUserID()
+        {
             return UserID;
         }
 
         //retrieve first name value
-        public string GetFirstName() {
+        public string GetFirstName()
+        {
             return FName;
         }
 
         //retrieve last name value
-        public string GetLastName() {
+        public string GetLastName()
+        {
             return LName;
         }
 
         //retrieve last name value
-        public string GetEmail() {
+        public string GetEmail()
+        {
             return Email;
         }
 
         //retrieve password value
-        public string GetPassword() {
+        public string GetPassword()
+        {
             return Password;
         }
 

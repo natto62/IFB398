@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 using Android.App;
@@ -12,17 +14,25 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using App5.Droid;
+using Newtonsoft.Json;
 
 namespace MiCareApp.Droid
 {
     class SignIn : DialogFragment
     {
-        private User UserObject;
+        private WebClient client;
+        private Uri url;
+        private ISharedPreferences preferences;
 
-        //only used for testing
-        public SignIn(User data) {
-            UserObject = data;
-        }
+        private EditText EmailTxt;
+        private EditText PasswordTxt;
+        private TextView SignInTxt;
+        private Button SignInButton;
+        private CheckBox RememberMe;
+
+        private bool checkboxStatus;
+        private string UserEmail;
+        private string UserPassword;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -36,33 +46,93 @@ namespace MiCareApp.Droid
             //the view being inflated is SignIn.axml from Resources/layout/
             var view = inflater.Inflate(Resource.Layout.SignIn, container, false);
 
+            //Create shared preferences
+            preferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
+            UserEmail = preferences.GetString("UserEmail", String.Empty);
+            //UserPassword = preferences.GetString("UserPassword", String.Empty);
+            checkboxStatus = preferences.GetBoolean("status", false);
+
+
+            client = new WebClient();
+            url = new Uri("https://capstonephpcode198.herokuapp.com/SignIn.php");
+
             //setup the edit text views identifed by the widget id values in SignIn.axml
-            EditText EmailTxt = view.FindViewById<EditText>(Resource.Id.SignInEmail);
+            RememberMe = view.FindViewById<CheckBox>(Resource.Id.SignInBox);
+            if (checkboxStatus) {
+                RememberMe.Checked = true;
+            }
 
-            EditText PasswordTxt = view.FindViewById<EditText>(Resource.Id.SignInPassW);
+            EmailTxt = view.FindViewById<EditText>(Resource.Id.SignInEmail);
 
-            TextView SignInTxt = view.FindViewById<TextView>(Resource.Id.SignInTxt);
+            EmailTxt.Text = UserEmail;
 
-            Button SignInButton = view.FindViewById<Button>(Resource.Id.SignInExecute);
+            PasswordTxt = view.FindViewById<EditText>(Resource.Id.SignInPassW);
+
+            PasswordTxt.Text = UserPassword;
+
+            SignInTxt = view.FindViewById<TextView>(Resource.Id.SignInTxt);
+
+            SignInButton = view.FindViewById<Button>(Resource.Id.SignInExecute);
 
             //when the button is clicked
             SignInButton.Click += delegate {
-                //if the emails match
-                if (String.Equals(EmailTxt.Text, UserObject.GetEmail())) {
-                    //if the passwords match
-                    if (String.Equals(PasswordTxt.Text, UserObject.GetPassword())) {
-                        //move from fragment to activity -> IntroPage.cs
-                        StartActivity(new Intent(Activity, typeof(IntroPage)));
-                    } else {
-                        SignInTxt.Text = "Sorry, that password is incorrect";
-                    }
-                } else {
-                    SignInTxt.Text = "Sorry, that email does not exist in our systems";
-                }
-                
+
+                SignInButton.Enabled = false;
+
+                NameValueCollection values = new NameValueCollection();
+                values.Add("Email", EmailTxt.Text);
+                values.Add("Password", PasswordTxt.Text);
+
+                client.UploadValuesCompleted += UploadValuesFinish;
+                client.UploadValuesAsync(url, values);
             };
 
             return view;
+        }
+
+        private void UploadValuesFinish(object sender, UploadValuesCompletedEventArgs e)
+        {
+            string json = Encoding.UTF8.GetString(e.Result);
+            List<User> tempUser = new List<User>();
+            User currentUser = new User();
+            tempUser = JsonConvert.DeserializeObject<List<User>>(json);
+
+            foreach (User item in tempUser) {
+                currentUser = item;
+            }
+
+            //if the emails match
+            if (String.Equals(EmailTxt.Text, currentUser.GetEmail())) {
+                //if the passwords match
+                if (String.Equals(PasswordTxt.Text, currentUser.GetPassword())) {
+                    if (RememberMe.Checked) {
+                        ISharedPreferencesEditor edit = preferences.Edit();
+                        edit.PutString("UserEmail", currentUser.GetEmail());
+                        //edit.PutString("UserPassword", currentUser.GetPassword());//change later when hashing
+                        edit.PutBoolean("status", true);
+                        edit.Apply();//async version of commit 
+                    } else {
+                        ISharedPreferencesEditor edit = preferences.Edit();
+                        edit.PutString("UserEmail", String.Empty);
+                        //edit.PutString("UserPassword", String.Empty);
+                        edit.PutBoolean("status", false);
+                        edit.Apply();
+                    };
+
+                    //move from fragment to activity -> IntroPage.cs
+                    Intent nextPage = new Intent(Activity, typeof(IntroPage));
+                    nextPage.PutExtra("UserData", JsonConvert.SerializeObject(currentUser));
+                    StartActivity(nextPage);
+                }
+                else {
+                    SignInTxt.Text = "Sorry, that password is incorrect";
+                    SignInButton.Enabled = true;
+                }
+            } else {
+                SignInTxt.Text = "Sorry, that email does not exist in our systems";
+                SignInButton.Enabled = true;
+            }
+
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState) {

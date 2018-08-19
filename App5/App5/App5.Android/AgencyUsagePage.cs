@@ -62,7 +62,7 @@ namespace MiCareApp.Droid
             spinner.Adapter = SpinnerAdapter;
 
             client = new WebClient();
-            url = new Uri("http://new2.php");
+            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
             //http:/http:/<insert ipv4 address of computer running php>/new2.php
 
             Toast toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
@@ -85,7 +85,6 @@ namespace MiCareApp.Droid
             client.DownloadDataCompleted += delegate (object sender, DownloadDataCompletedEventArgs e) {
                 Activity.RunOnUiThread(() => {
                     string json = Encoding.UTF8.GetString(e.Result);
-                    Console.WriteLine(json);
                     dataItems = JsonConvert.DeserializeObject<List<AgencyUsageData>>(json);
                     adapter = new AgencyUsageViewAdapter(this.Context, dataItems);//this
                     foreach (AgencyUsageData item in dataItems){

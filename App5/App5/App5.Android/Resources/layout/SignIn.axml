@@ -37,6 +37,12 @@
         android:id="@+id/SignInTxt"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
+    <CheckBox
+        android:text="Remember me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/SignInBox" />
     <View
         android:layout_width="match_parent"
         android:layout_height="40px"

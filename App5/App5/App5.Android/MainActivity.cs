@@ -45,16 +45,8 @@ namespace MiCareApp.Droid
             //it represents a portion of the user interface such as a pop up window
             FragmentTransaction transaction = FragmentManager.BeginTransaction();
 
-            //this user object only used for testing
-            DateTime TempTime = new DateTime(2018, 1, 1, 9, 20, 00);
-            User tempUser = new User();//("Brian", "Who", "super1@blabla.com", "qwerty1", TempTime);
-            tempUser.FName = "Brian";
-            tempUser.LName = "Who";
-            tempUser.Email = "super1@blabla.com";
-            tempUser.Password = "qwerty1";
-
             //Go to SignIn.cs for more
-            SignIn SignInPopUp = new SignIn(tempUser);
+            SignIn SignInPopUp = new SignIn();
             //show the dialog fragment which will be a pop up window
             SignInPopUp.Show(transaction, "dialog fragment");
         }

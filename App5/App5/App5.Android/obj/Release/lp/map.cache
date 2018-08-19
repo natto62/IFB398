@@ -27,3 +27,5 @@ System.Security.AccessControl
 System.Security.Permissions
 System.Security.Principal.Windows
 Newtonsoft.Json
+Plugin.Settings.Abstractions
+Plugin.Settings
