@@ -93,46 +93,41 @@ namespace MiCareApp.Droid
         private void UploadValuesFinish(object sender, UploadValuesCompletedEventArgs e)
         {
             string json = Encoding.UTF8.GetString(e.Result);
-            List<User> tempUser = new List<User>();
-            User currentUser = new User();
-            tempUser = JsonConvert.DeserializeObject<List<User>>(json);
-
-            foreach (User item in tempUser) {
-                currentUser = item;
-            }
-
-            //if the emails match
-            if (String.Equals(EmailTxt.Text, currentUser.GetEmail())) {
-                //if the passwords match
-                if (String.Equals(PasswordTxt.Text, currentUser.GetPassword())) {
-                    if (RememberMe.Checked) {
-                        ISharedPreferencesEditor edit = preferences.Edit();
-                        edit.PutString("UserEmail", currentUser.GetEmail());
-                        //edit.PutString("UserPassword", currentUser.GetPassword());//change later when hashing
-                        edit.PutBoolean("status", true);
-                        edit.Apply();//async version of commit 
-                    } else {
-                        ISharedPreferencesEditor edit = preferences.Edit();
-                        edit.PutString("UserEmail", String.Empty);
-                        //edit.PutString("UserPassword", String.Empty);
-                        edit.PutBoolean("status", false);
-                        edit.Apply();
-                    };
-
-                    //move from fragment to activity -> IntroPage.cs
-                    Intent nextPage = new Intent(Activity, typeof(IntroPage));
-                    nextPage.PutExtra("UserData", JsonConvert.SerializeObject(currentUser));
-                    StartActivity(nextPage);
-                }
-                else {
-                    SignInTxt.Text = "Sorry, that password is incorrect";
-                    SignInButton.Enabled = true;
-                }
-            } else {
-                SignInTxt.Text = "Sorry, that email does not exist in our systems";
+            if (String.Equals(json,"Sorry, that email does not exist in our systems.")) {
+                SignInTxt.Text = json;
                 SignInButton.Enabled = true;
-            }
+            } else if (String.Equals(json, "Sorry, the given password is incorrect.")) {
+                SignInTxt.Text = json;
+                SignInButton.Enabled = true;
+            } else {
+                List<User> tempUser = new List<User>();
+                User currentUser = new User();
+                tempUser = JsonConvert.DeserializeObject<List<User>>(json);
 
+                foreach (User item in tempUser) {
+                    currentUser = item;
+                }
+
+                if (RememberMe.Checked) {
+                    ISharedPreferencesEditor edit = preferences.Edit();
+                    edit.PutString("UserEmail", currentUser.GetEmail());
+                    //edit.PutString("UserPassword", currentUser.GetPassword());//change later when hashing
+                    edit.PutBoolean("status", true);
+                    edit.Apply();//async version of commit 
+                } else {
+                    ISharedPreferencesEditor edit = preferences.Edit();
+                    edit.PutString("UserEmail", String.Empty);
+                    //edit.PutString("UserPassword", String.Empty);
+                    edit.PutBoolean("status", false);
+                    edit.Apply();
+                };
+
+                //move from fragment to activity -> IntroPage.cs
+                Intent nextPage = new Intent(Activity, typeof(IntroPage));
+                nextPage.PutExtra("UserData", JsonConvert.SerializeObject(currentUser));
+                StartActivity(nextPage);
+
+            }
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState) {
