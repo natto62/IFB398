@@ -112,6 +112,9 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0e0000
 			public const int FacilityArray = 2131623936;
 			
+			// aapt resource value: 0x7f0e0001
+			public const int TextArray = 2131623937;
+			
 			static Array()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -2842,8 +2845,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080076
 			public const int AmountTextAgency = 2131230838;
 			
-			// aapt resource value: 0x7f080110
-			public const int AnnualLeaveTextStaff = 2131230992;
+			// aapt resource value: 0x7f08011f
+			public const int AnnualLeaveTextStaff = 2131231007;
 			
 			// aapt resource value: 0x7f0800f1
 			public const int BackButton = 2131230961;
@@ -2866,8 +2869,14 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0800f3
 			public const int ConcessionalTextOccupancy = 2131230963;
 			
+			// aapt resource value: 0x7f08010c
+			public const int ConfirmPasswordReset = 2131230988;
+			
 			// aapt resource value: 0x7f080078
 			public const int DataList = 2131230840;
+			
+			// aapt resource value: 0x7f080104
+			public const int DateSwitch = 2131230980;
 			
 			// aapt resource value: 0x7f080077
 			public const int DateTextAgency = 2131230839;
@@ -2893,11 +2902,14 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f08009c
 			public const int FinancialTitle = 2131230876;
 			
+			// aapt resource value: 0x7f080106
+			public const int FirstNameReset = 2131230982;
+			
 			// aapt resource value: 0x7f0800ac
 			public const int FirstNameTextHomeCare = 2131230892;
 			
-			// aapt resource value: 0x7f08010e
-			public const int FirstNameTextStaff = 2131230990;
+			// aapt resource value: 0x7f08011d
+			public const int FirstNameTextStaff = 2131231005;
 			
 			// aapt resource value: 0x7f0800b8
 			public const int HelpBtn = 2131230904;
@@ -2911,14 +2923,26 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0800a4
 			public const int IncomeBtn = 2131230884;
 			
+			// aapt resource value: 0x7f080107
+			public const int LastNameReset = 2131230983;
+			
 			// aapt resource value: 0x7f0800ad
 			public const int LastNameTextHomeCare = 2131230893;
 			
-			// aapt resource value: 0x7f08010f
-			public const int LastNameTextStaff = 2131230991;
+			// aapt resource value: 0x7f08011e
+			public const int LastNameTextStaff = 2131231006;
 			
-			// aapt resource value: 0x7f080111
-			public const int LongServiceLeaveTextStaff = 2131230993;
+			// aapt resource value: 0x7f080120
+			public const int LongServiceLeaveTextStaff = 2131231008;
+			
+			// aapt resource value: 0x7f080109
+			public const int NameChangeBtn = 2131230985;
+			
+			// aapt resource value: 0x7f080108
+			public const int NameChangeResult = 2131230984;
+			
+			// aapt resource value: 0x7f080102
+			public const int NightSwitch = 2131230978;
 			
 			// aapt resource value: 0x7f0800eb
 			public const int OccupancyBackButton = 2131230955;
@@ -2935,6 +2959,9 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0800ec
 			public const int OccupancyTitle = 2131230956;
 			
+			// aapt resource value: 0x7f08010a
+			public const int OldPasswordReset = 2131230986;
+			
 			// aapt resource value: 0x7f08009d
 			public const int OptionsButton = 2131230877;
 			
@@ -2943,6 +2970,15 @@ namespace MiCareApp.Droid
 			
 			// aapt resource value: 0x7f0800ae
 			public const int PackageLevelText = 2131230894;
+			
+			// aapt resource value: 0x7f08010e
+			public const int PasswordChangeBtn = 2131230990;
+			
+			// aapt resource value: 0x7f08010d
+			public const int PasswordChangeResult = 2131230989;
+			
+			// aapt resource value: 0x7f08010b
+			public const int PasswordReset = 2131230987;
 			
 			// aapt resource value: 0x7f080075
 			public const int RefreshButton = 2131230837;
@@ -2953,29 +2989,29 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0800a6
 			public const int SalariesBtn = 2131230886;
 			
-			// aapt resource value: 0x7f080112
-			public const int ServiceLeaveTextStaff = 2131230994;
+			// aapt resource value: 0x7f080121
+			public const int ServiceLeaveTextStaff = 2131231009;
 			
-			// aapt resource value: 0x7f080104
-			public const int SignInBox = 2131230980;
+			// aapt resource value: 0x7f080113
+			public const int SignInBox = 2131230995;
 			
 			// aapt resource value: 0x7f0800a9
 			public const int SignInBtn = 2131230889;
 			
-			// aapt resource value: 0x7f080101
-			public const int SignInEmail = 2131230977;
+			// aapt resource value: 0x7f080110
+			public const int SignInEmail = 2131230992;
 			
-			// aapt resource value: 0x7f080105
-			public const int SignInExecute = 2131230981;
+			// aapt resource value: 0x7f080114
+			public const int SignInExecute = 2131230996;
 			
-			// aapt resource value: 0x7f080102
-			public const int SignInPassW = 2131230978;
+			// aapt resource value: 0x7f080111
+			public const int SignInPassW = 2131230993;
 			
-			// aapt resource value: 0x7f080100
-			public const int SignInTitle = 2131230976;
+			// aapt resource value: 0x7f08010f
+			public const int SignInTitle = 2131230991;
 			
-			// aapt resource value: 0x7f080103
-			public const int SignInTxt = 2131230979;
+			// aapt resource value: 0x7f080112
+			public const int SignInTxt = 2131230994;
 			
 			// aapt resource value: 0x7f0800b9
 			public const int SignOutBtn = 2131230905;
@@ -2983,32 +3019,35 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0800aa
 			public const int SignUpBtn = 2131230890;
 			
-			// aapt resource value: 0x7f08010b
-			public const int SignUpCPassW = 2131230987;
+			// aapt resource value: 0x7f08011a
+			public const int SignUpCPassW = 2131231002;
 			
-			// aapt resource value: 0x7f080109
-			public const int SignUpEmail = 2131230985;
+			// aapt resource value: 0x7f080118
+			public const int SignUpEmail = 2131231000;
 			
-			// aapt resource value: 0x7f08010d
-			public const int SignUpExecute = 2131230989;
+			// aapt resource value: 0x7f08011c
+			public const int SignUpExecute = 2131231004;
 			
-			// aapt resource value: 0x7f080107
-			public const int SignUpFirstName = 2131230983;
+			// aapt resource value: 0x7f080116
+			public const int SignUpFirstName = 2131230998;
 			
-			// aapt resource value: 0x7f080108
-			public const int SignUpLastName = 2131230984;
+			// aapt resource value: 0x7f080117
+			public const int SignUpLastName = 2131230999;
 			
-			// aapt resource value: 0x7f08010a
-			public const int SignUpPassW = 2131230986;
+			// aapt resource value: 0x7f080119
+			public const int SignUpPassW = 2131231001;
 			
-			// aapt resource value: 0x7f080106
-			public const int SignUpTitle = 2131230982;
+			// aapt resource value: 0x7f080115
+			public const int SignUpTitle = 2131230997;
 			
-			// aapt resource value: 0x7f08010c
-			public const int SignUpTxt = 2131230988;
+			// aapt resource value: 0x7f08011b
+			public const int SignUpTxt = 2131231003;
 			
 			// aapt resource value: 0x7f0800ee
 			public const int StaffBtn = 2131230958;
+			
+			// aapt resource value: 0x7f080100
+			public const int TextSizeSpinner = 2131230976;
 			
 			// aapt resource value: 0x7f0800f4
 			public const int VacancyTextOccupancy = 2131230964;
@@ -3265,8 +3304,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080048
 			public const int list_item = 2131230792;
 			
-			// aapt resource value: 0x7f08011c
-			public const int masked = 2131231004;
+			// aapt resource value: 0x7f08012b
+			public const int masked = 2131231019;
 			
 			// aapt resource value: 0x7f0800da
 			public const int media_actions = 2131230938;
@@ -3466,8 +3505,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080017
 			public const int showTitle = 2131230743;
 			
-			// aapt resource value: 0x7f080118
-			public const int sliding_tabs = 2131231000;
+			// aapt resource value: 0x7f080127
+			public const int sliding_tabs = 2131231015;
 			
 			// aapt resource value: 0x7f08008d
 			public const int smallLabel = 2131230861;
@@ -3529,6 +3568,15 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f08008a
 			public const int textView2 = 2131230858;
 			
+			// aapt resource value: 0x7f080101
+			public const int textView3 = 2131230977;
+			
+			// aapt resource value: 0x7f080105
+			public const int textView4 = 2131230981;
+			
+			// aapt resource value: 0x7f080103
+			public const int textView5 = 2131230979;
+			
 			// aapt resource value: 0x7f08009a
 			public const int text_input_password_toggle = 2131230874;
 			
@@ -3550,8 +3598,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080057
 			public const int title_template = 2131230807;
 			
-			// aapt resource value: 0x7f080119
-			public const int toolbar = 2131231001;
+			// aapt resource value: 0x7f080128
+			public const int toolbar = 2131231016;
 			
 			// aapt resource value: 0x7f080029
 			public const int top = 2131230761;
@@ -3571,8 +3619,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f08007b
 			public const int txtAmountAgency = 2131230843;
 			
-			// aapt resource value: 0x7f080115
-			public const int txtAnnualLeaveStaff = 2131230997;
+			// aapt resource value: 0x7f080124
+			public const int txtAnnualLeaveStaff = 2131231012;
 			
 			// aapt resource value: 0x7f0800fe
 			public const int txtBudgetSalariesWages = 2131230974;
@@ -3604,8 +3652,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0800b0
 			public const int txtFNameHomeCare = 2131230896;
 			
-			// aapt resource value: 0x7f080113
-			public const int txtFNameStaff = 2131230995;
+			// aapt resource value: 0x7f080122
+			public const int txtFNameStaff = 2131231010;
 			
 			// aapt resource value: 0x7f080079
 			public const int txtFinanceData = 2131230841;
@@ -3622,14 +3670,14 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0800b1
 			public const int txtLNameHomeCare = 2131230897;
 			
-			// aapt resource value: 0x7f080114
-			public const int txtLNameStaff = 2131230996;
+			// aapt resource value: 0x7f080123
+			public const int txtLNameStaff = 2131231011;
 			
 			// aapt resource value: 0x7f080088
 			public const int txtLevel = 2131230856;
 			
-			// aapt resource value: 0x7f080116
-			public const int txtLongServiceLeaveStaff = 2131230998;
+			// aapt resource value: 0x7f080125
+			public const int txtLongServiceLeaveStaff = 2131231013;
 			
 			// aapt resource value: 0x7f08007a
 			public const int txtNumFinanceData = 2131230842;
@@ -3649,8 +3697,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f0800fd
 			public const int txtRosteredCostSalariesWages = 2131230973;
 			
-			// aapt resource value: 0x7f080117
-			public const int txtServiceLeaveStaff = 2131230999;
+			// aapt resource value: 0x7f080126
+			public const int txtServiceLeaveStaff = 2131231014;
 			
 			// aapt resource value: 0x7f080084
 			public const int txtStatus = 2131230852;
@@ -3673,11 +3721,11 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f08000e
 			public const int view_offset_helper = 2131230734;
 			
-			// aapt resource value: 0x7f08011a
-			public const int viewpager = 2131231002;
+			// aapt resource value: 0x7f080129
+			public const int viewpager = 2131231017;
 			
-			// aapt resource value: 0x7f08011b
-			public const int visible = 2131231003;
+			// aapt resource value: 0x7f08012a
+			public const int visible = 2131231018;
 			
 			// aapt resource value: 0x7f0800cc
 			public const int volume_item_container = 2131230924;
@@ -4013,28 +4061,31 @@ namespace MiCareApp.Droid
 			public const int select_dialog_singlechoice_material = 2130903120;
 			
 			// aapt resource value: 0x7f030051
-			public const int SignIn = 2130903121;
+			public const int Settings = 2130903121;
 			
 			// aapt resource value: 0x7f030052
-			public const int SignUp = 2130903122;
+			public const int SignIn = 2130903122;
 			
 			// aapt resource value: 0x7f030053
-			public const int StaffPage = 2130903123;
+			public const int SignUp = 2130903123;
 			
 			// aapt resource value: 0x7f030054
-			public const int StaffTable = 2130903124;
+			public const int StaffPage = 2130903124;
 			
 			// aapt resource value: 0x7f030055
-			public const int support_simple_spinner_dropdown_item = 2130903125;
+			public const int StaffTable = 2130903125;
 			
 			// aapt resource value: 0x7f030056
-			public const int Tabbar = 2130903126;
+			public const int support_simple_spinner_dropdown_item = 2130903126;
 			
 			// aapt resource value: 0x7f030057
-			public const int Toolbar = 2130903127;
+			public const int Tabbar = 2130903127;
 			
 			// aapt resource value: 0x7f030058
-			public const int ViewPager = 2130903128;
+			public const int Toolbar = 2130903128;
+			
+			// aapt resource value: 0x7f030059
+			public const int ViewPager = 2130903129;
 			
 			static Layout()
 			{

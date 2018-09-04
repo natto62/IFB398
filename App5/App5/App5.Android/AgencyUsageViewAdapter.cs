@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Android.Graphics;
 using System.Linq;
 using System.Text;
 
@@ -50,12 +51,50 @@ namespace MiCareApp.Droid
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.AgencyUsageTable, null, false);
             }
 
-            TextView txtDateAgency = row.FindViewById<TextView>(Resource.Id.txtDateAgency);
-            txtDateAgency.Text = Items[position].GetDate().ToShortDateString();
+            ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
+            string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
+            ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
+            int textSize = preferences.GetInt("TextSize", 1);
+            bool NightSwitchMode = preferences.GetBoolean("NightSwitchMode", false);
+            bool DateSwitchMode = preferences.GetBoolean("DateSwitchMode", false);
 
+            TextView txtDateAgency = row.FindViewById<TextView>(Resource.Id.txtDateAgency);
             TextView txtAmountAgency = row.FindViewById<TextView>(Resource.Id.txtAmountAgency);
+
+            switch (textSize) {
+                case 0:
+                    txtDateAgency.TextSize = 10;
+                    txtAmountAgency.TextSize = 10;
+                    break;
+                case 1:
+                    txtDateAgency.TextSize = 15;
+                    txtAmountAgency.TextSize = 15;
+                    break;
+                case 2:
+                    txtDateAgency.TextSize = 20;
+                    txtAmountAgency.TextSize = 20;
+                    break;
+            }
+
+            if (NightSwitchMode) {
+                row.SetBackgroundColor(Color.Black);
+                txtDateAgency.SetTextColor(Color.White);
+                txtAmountAgency.SetTextColor(Color.White);
+            } else {
+                row.SetBackgroundColor(Color.White);
+                txtDateAgency.SetTextColor(Color.Black);
+                txtAmountAgency.SetTextColor(Color.Black);
+            }
+
+            if (DateSwitchMode) {
+                Items.Sort(delegate (AgencyUsageData one, AgencyUsageData two) {
+                    return DateTime.Compare(one.GetDate(), two.GetDate());
+                });
+            }
+
+            txtDateAgency.Text = Items[position].GetDate().ToShortDateString();
             txtAmountAgency.Text = "$ " + Items[position].GetAgencyUsageAmount().ToString();
-            
+
             return row;
         }
 

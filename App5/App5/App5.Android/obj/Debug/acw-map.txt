@@ -62,6 +62,10 @@ MiCareApp.Droid.SalariesWagesViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc
 MiCareApp.Droid.SalariesWagesViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SalariesWagesViewAdapter
 MiCareApp.Droid.SalariesWagesViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.SalariesWagesViewAdapter
 micareapp.droid.SalariesWagesViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.SalariesWagesViewAdapter
+MiCareApp.Droid.Settings, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.Settings
+MiCareApp.Droid.Settings, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.Settings
+MiCareApp.Droid.Settings;md5e9d4952e62f598bcc024ad4f9f0ef04b.Settings
+micareapp.droid.Settings;md5e9d4952e62f598bcc024ad4f9f0ef04b.Settings
 MiCareApp.Droid.SignIn, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
 MiCareApp.Droid.SignIn, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn
 MiCareApp.Droid.SignIn;md5e9d4952e62f598bcc024ad4f9f0ef04b.SignIn

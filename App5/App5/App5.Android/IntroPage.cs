@@ -27,6 +27,12 @@ namespace MiCareApp.Droid
 
             currentUser = JsonConvert.DeserializeObject<User>(Intent.GetStringExtra("UserData"));
 
+            //store user id value in a shared preference for later use
+            ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
+            ISharedPreferencesEditor edit = preferences.Edit();
+            edit.PutString("LatestUserID", currentUser.GetUserID().ToString());
+            edit.Apply();
+
             //ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + currentUser.GetUserID().ToString(), FileCreationMode.Private);
             //ISharedPreferencesEditor edit = preferences.Edit();
             //edit.PutInt("UserID", currentUser.GetUserID());
@@ -42,7 +48,7 @@ namespace MiCareApp.Droid
             Button FinanceBtn = FindViewById<Button>(Resource.Id.FinanceBtn);
             //-> FinanceMenu.cs
             FinanceBtn.Click += delegate {
-                Intent nextPage = new Intent(BaseContext, typeof(FinanceMenu));
+                Intent nextPage = new Intent(BaseContext, typeof(Activity1));
                 nextPage.PutExtra("UserData", JsonConvert.SerializeObject(currentUser));
                 StartActivity(nextPage);
             };

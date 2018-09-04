@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
+using Newtonsoft.Json;
 
 namespace MiCareApp.Droid
 {
@@ -19,8 +20,12 @@ namespace MiCareApp.Droid
     {
         private string[] names;
 
+        private User currentUser;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
+            currentUser = JsonConvert.DeserializeObject<User>(Intent.GetStringExtra("UserData"));
 
             //havn't commented this stuff yet, it will take a while
             names = new string[] { "Agency Usage Data", "Brokerage Hours Data", "Home Care Package Data", "Salaries Wages Data" };
@@ -38,7 +43,19 @@ namespace MiCareApp.Droid
             Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
             backBtn.Click += delegate {
                 backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
-                StartActivity(typeof(FinanceMenu));
+                Intent nextPage = new Intent(BaseContext, typeof(IntroPage));
+                nextPage.PutExtra("UserData", JsonConvert.SerializeObject(currentUser));
+                StartActivity(nextPage);
+            };
+
+            Button OptionsBtn = FindViewById<Button>(Resource.Id.OptionsButton);
+
+            Settings SettingsScreen = new Settings(currentUser, OptionsBtn);
+
+            OptionsBtn.Click += delegate {
+                OptionsBtn.SetBackgroundResource(Resource.Drawable.OptionsIconClicked);
+                Android.App.FragmentTransaction transaction = FragmentManager.BeginTransaction();
+                SettingsScreen.Show(transaction, "dialog fragment");
             };
         }
     }

@@ -19,7 +19,7 @@ namespace MiCareApp.Droid
         public string FName { get; set; }
         public string LName { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+        //public string Password { get; set; }
         //protected DateTime Date;
 
         //retrieveid value
@@ -46,11 +46,6 @@ namespace MiCareApp.Droid
             return Email;
         }
 
-        //retrieve password value
-        public string GetPassword()
-        {
-            return Password;
-        }
 
 
 

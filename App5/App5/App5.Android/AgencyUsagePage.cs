@@ -80,6 +80,7 @@ namespace MiCareApp.Droid
                     toastMessage.Show();
                 }
                 toastMessage.Cancel();
+                
             };
 
             client.DownloadDataCompleted += delegate (object sender, DownloadDataCompletedEventArgs e) {

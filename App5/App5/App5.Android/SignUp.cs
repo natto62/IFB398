@@ -106,8 +106,9 @@ namespace MiCareApp.Droid
         }
 
         private void UploadValuesFinish(object sender, UploadValuesCompletedEventArgs e) {
+            string json = Encoding.UTF8.GetString(e.Result);
             SignUpBtn.Enabled = true;
-            SignUpTxt.Text = "Sign Up Complete!";
+            SignUpTxt.Text = json;
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState) {
