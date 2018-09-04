@@ -86,8 +86,8 @@ namespace MiCareApp.Droid
                     SignUpBtn.Enabled = true;
                 }
                 if (signUpYes) {
-                   // User newUser = new User();
-
+                    // User newUser = new User();
+                    SignUpTxt.Text = "Creating User please wait...";
                     //add post values to send to the php file
                     NameValueCollection values = new NameValueCollection();
                     values.Add("FName", FNameTxt.Text);
@@ -97,9 +97,6 @@ namespace MiCareApp.Droid
 
                     client.UploadValuesCompleted += UploadValuesFinish;
                     client.UploadValuesAsync(url, values);
-                }
-                while (client.IsBusy) {
-                    SignUpTxt.Text = "Creating User...";
                 }
             };
             return view;

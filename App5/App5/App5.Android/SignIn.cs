@@ -76,7 +76,7 @@ namespace MiCareApp.Droid
 
             //when the button is clicked
             SignInButton.Click += delegate {
-
+                SignInTxt.Text = "Signing in, please wait...";
                 SignInButton.Enabled = false;
 
                 NameValueCollection values = new NameValueCollection();
@@ -100,7 +100,7 @@ namespace MiCareApp.Droid
                 SignInTxt.Text = json;
                 SignInButton.Enabled = true;
             } else {
-                List<User> tempUser = new List<User>();
+                List <User> tempUser = new List<User>();
                 User currentUser = new User();
                 tempUser = JsonConvert.DeserializeObject<List<User>>(json);
 
