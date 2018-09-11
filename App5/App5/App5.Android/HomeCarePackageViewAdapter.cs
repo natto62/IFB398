@@ -48,24 +48,77 @@ namespace MiCareApp.Droid
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.HomeCarePackageTable, null, false);
             }
 
+            ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
+            string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
+            ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
+            int textSize = preferences.GetInt("TextSize", 1);
+            bool NightSwitchMode = preferences.GetBoolean("NightSwitchMode", false);
+
             TextView txtFNameHomeCare = row.FindViewById<TextView>(Resource.Id.txtFNameHomeCare);
-            txtFNameHomeCare.Text = Items[position].GetResidentFirstName();
-
             TextView txtLNameHomeCare = row.FindViewById<TextView>(Resource.Id.txtLNameHomeCare);
-            txtLNameHomeCare.Text = Items[position].GetResidentLastName();
-
             TextView txtPackageLevelHomeCare = row.FindViewById<TextView>(Resource.Id.txtPackageLevelHomeCare);
-            txtPackageLevelHomeCare.Text = Items[position].GetPackageLevel().ToString();
-
             TextView txtPackageIncomeHomeCare = row.FindViewById<TextView>(Resource.Id.txtPackageIncomeHomeCare);
+
+            switch (textSize)
+            {
+                case 0:
+                    txtFNameHomeCare.TextSize = 10;
+                    txtLNameHomeCare.TextSize = 10;
+                    txtPackageLevelHomeCare.TextSize = 10;
+                    txtPackageIncomeHomeCare.TextSize = 10;
+                    break;
+                case 1:
+                    txtFNameHomeCare.TextSize = 15;
+                    txtLNameHomeCare.TextSize = 15;
+                    txtPackageLevelHomeCare.TextSize = 15;
+                    txtPackageIncomeHomeCare.TextSize = 15;
+                    break;
+                case 2:
+                    txtFNameHomeCare.TextSize = 20;
+                    txtLNameHomeCare.TextSize = 20;
+                    txtPackageLevelHomeCare.TextSize = 20;
+                    txtPackageIncomeHomeCare.TextSize = 20;
+                    break;
+            }
+
+            if (NightSwitchMode) {
+              //  row.SetBackgroundColor(Color.Black);
+                txtFNameHomeCare.SetTextColor(Color.White);
+                txtLNameHomeCare.SetTextColor(Color.White);
+                txtPackageLevelHomeCare.SetTextColor(Color.White);
+                txtPackageIncomeHomeCare.SetTextColor(Color.White);
+            } else {
+               // row.SetBackgroundColor(Color.White);
+                txtFNameHomeCare.SetTextColor(Color.Black);
+                txtLNameHomeCare.SetTextColor(Color.Black);
+                txtPackageLevelHomeCare.SetTextColor(Color.Black);
+                txtPackageIncomeHomeCare.SetTextColor(Color.Black);
+            }
+
+
+            txtFNameHomeCare.Text = Items[position].GetResidentFirstName();
+            txtLNameHomeCare.Text = Items[position].GetResidentLastName();
+            txtPackageLevelHomeCare.Text = Items[position].GetPackageLevel().ToString();
             txtPackageIncomeHomeCare.Text = "$ " + Items[position].GetPackageIncome().ToString();
 
             if (Items[position].IsGreen()){
-                row.SetBackgroundColor(Color.LightGreen);
+                if (NightSwitchMode) {
+                    row.SetBackgroundColor(Color.DarkGreen);
+                } else {
+                    row.SetBackgroundColor(Color.LightGreen);
+                }
             } else if (Items[position].IsRed()) {
-                row.SetBackgroundColor(Color.Argb(80,255,128,128));
+                if (NightSwitchMode) {
+                    row.SetBackgroundColor(Color.DarkRed);
+                } else {
+                    row.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+                }
             } else {
-                row.SetBackgroundColor(Color.LightYellow);
+                if (NightSwitchMode) {
+                    row.SetBackgroundColor(Color.DarkOrange);
+                } else {
+                    row.SetBackgroundColor(Color.LightYellow);
+                }
             }
             
             return row;

@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -51,10 +52,48 @@ namespace MiCareApp.Droid
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.BrokerageHoursTable, null, false);
             }
 
-            TextView txtDateBrokerage = row.FindViewById<TextView>(Resource.Id.txtDateBrokerage);
-            txtDateBrokerage.Text = Items[position].GetDate().ToShortDateString();
+            ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
+            string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
+            ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
+            int textSize = preferences.GetInt("TextSize", 1);
+            bool NightSwitchMode = preferences.GetBoolean("NightSwitchMode", false);
+            bool DateSwitchMode = preferences.GetBoolean("DateSwitchMode", false);
 
+            TextView txtDateBrokerage = row.FindViewById<TextView>(Resource.Id.txtDateBrokerage);
             TextView txtHoursBrokerage = row.FindViewById<TextView>(Resource.Id.txtHoursBrokerage);
+
+            switch (textSize) {
+                case 0:
+                    txtDateBrokerage.TextSize = 10;
+                    txtHoursBrokerage.TextSize = 10;
+                    break;
+                case 1:
+                    txtDateBrokerage.TextSize = 15;
+                    txtHoursBrokerage.TextSize = 15;
+                    break;
+                case 2:
+                    txtDateBrokerage.TextSize = 20;
+                    txtHoursBrokerage.TextSize = 20;
+                    break;
+            }
+
+            if (NightSwitchMode) {
+                row.SetBackgroundColor(Color.Black);
+                txtDateBrokerage.SetTextColor(Color.White);
+                txtHoursBrokerage.SetTextColor(Color.White);
+            } else {
+                row.SetBackgroundColor(Color.White);
+                txtDateBrokerage.SetTextColor(Color.Black);
+                txtHoursBrokerage.SetTextColor(Color.Black);
+            }
+
+            if (DateSwitchMode) {
+                Items.Sort(delegate (BrokerageHoursData one, BrokerageHoursData two) {
+                    return DateTime.Compare(one.GetDate(), two.GetDate());
+                });
+            }
+
+            txtDateBrokerage.Text = Items[position].GetDate().ToShortDateString();
             txtHoursBrokerage.Text = Items[position].GetBrokerageHours().ToString();
 
 

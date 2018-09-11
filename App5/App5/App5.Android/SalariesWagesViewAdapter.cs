@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -51,13 +52,57 @@ namespace MiCareApp.Droid
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.SalariesWagesTable, null, false);
             }
 
+            ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
+            string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
+            ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
+            int textSize = preferences.GetInt("TextSize", 1);
+            bool NightSwitchMode = preferences.GetBoolean("NightSwitchMode", false);
+            bool DateSwitchMode = preferences.GetBoolean("DateSwitchMode", false);
+
             TextView txtDateSalariesWages = row.FindViewById<TextView>(Resource.Id.txtDateSalariesWages);
-            txtDateSalariesWages.Text = Items[position].GetDate().ToShortDateString();
-
             TextView txtRosteredCostSalariesWages = row.FindViewById<TextView>(Resource.Id.txtRosteredCostSalariesWages);
-            txtRosteredCostSalariesWages.Text = "$ " + Items[position].GetRosteredCost().ToString();
-
             TextView txtBudgetSalariesWages = row.FindViewById<TextView>(Resource.Id.txtBudgetSalariesWages);
+
+            switch (textSize)
+            {
+                case 0:
+                    txtDateSalariesWages.TextSize = 10;
+                    txtRosteredCostSalariesWages.TextSize = 10;
+                    txtBudgetSalariesWages.TextSize = 10;
+                    break;
+                case 1:
+                    txtDateSalariesWages.TextSize = 15;
+                    txtRosteredCostSalariesWages.TextSize = 15;
+                    txtBudgetSalariesWages.TextSize = 15;
+                    break;
+                case 2:
+                    txtDateSalariesWages.TextSize = 20;
+                    txtRosteredCostSalariesWages.TextSize = 20;
+                    txtBudgetSalariesWages.TextSize = 20;
+                    break;
+            }
+
+            if (NightSwitchMode) {
+                row.SetBackgroundColor(Color.Black);
+                txtDateSalariesWages.SetTextColor(Color.White);
+                txtRosteredCostSalariesWages.SetTextColor(Color.White);
+                txtBudgetSalariesWages.SetTextColor(Color.White);
+            } else {
+                row.SetBackgroundColor(Color.White);
+                txtDateSalariesWages.SetTextColor(Color.Black);
+                txtRosteredCostSalariesWages.SetTextColor(Color.Black);
+                txtBudgetSalariesWages.SetTextColor(Color.Black);
+            }
+
+            if (DateSwitchMode) {
+                Items.Sort(delegate (SalariesWagesData one, SalariesWagesData two) {
+                    return DateTime.Compare(one.GetDate(), two.GetDate());
+                });
+            }
+
+
+            txtDateSalariesWages.Text = Items[position].GetDate().ToShortDateString();
+            txtRosteredCostSalariesWages.Text = "$ " + Items[position].GetRosteredCost().ToString();
             txtBudgetSalariesWages.Text = "$ " + Items[position].GetBudget().ToString();
 
             return row;

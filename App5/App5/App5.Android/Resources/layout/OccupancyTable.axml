@@ -25,11 +25,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp" />
     <TextView
-        android:text="Vacancy"
+        android:text="Care Type"
         android:layout_width="match_parent"
         android:layout_weight="25"
         android:layout_height="wrap_content"
-        android:id="@+id/txtVacancyOccupancy"
+        android:id="@+id/txtCareTypeOccupancy"
         android:textSize="15sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp" />

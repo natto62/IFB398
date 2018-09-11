@@ -16,8 +16,7 @@
       </intent-filter>
     </activity>
     <activity android:label="OccupancyMenu" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyMenu" />
-    <activity android:label="OccupancyPage" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.OccupancyPage" />
-    <activity android:label="StaffPage" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffPage" />
+    <activity android:label="SlidingTabOccupancy" android:theme="@style/MainTheme" android:name="md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabOccupancy" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="MiCareApp.MiCareApp.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">

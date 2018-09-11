@@ -5,7 +5,7 @@
   <xs:import schemaLocation="schemas.android.com.tools.xsd" namespace="http://schemas.android.com/tools" />
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>4/09/2018 7:53:33 PM</xs:documentation>
+    <xs:documentation>11/09/2018 4:49:51 PM</xs:documentation>
   </xs:annotation>
   <xs:group name="any-view">
     <xs:choice>
@@ -1471,7 +1471,19 @@
   </xs:element>
   <xs:complexType name="com.xamarin.forms.platform.android.FormsViewGroup">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.CardView" type="android.support.v7.widget.CardView">
@@ -1519,7 +1531,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ViewStubCompat">
     <xs:complexContent mixed="false">
-      <xs:extension base="View" />
+      <xs:extension base="View">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.SwitchCompat" type="android.support.v7.widget.SwitchCompat">
@@ -1575,7 +1599,24 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.SearchView.SearchAutoComplete">
     <xs:complexContent mixed="false">
-      <xs:extension base="AutoCompleteTextView" />
+      <xs:extension base="AutoCompleteTextView">
+        <xs:attribute ref="android:autoSizeTextType" />
+        <xs:attribute ref="android:autoSizeStepGranularity" />
+        <xs:attribute ref="android:autoSizePresetSizes" />
+        <xs:attribute ref="android:autoSizeMinTextSize" />
+        <xs:attribute ref="android:autoSizeMaxTextSize" />
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ScrollingTabContainerView" type="android.support.v7.widget.ScrollingTabContainerView">
@@ -1585,7 +1626,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ScrollingTabContainerView">
     <xs:complexContent mixed="false">
-      <xs:extension base="HorizontalScrollView" />
+      <xs:extension base="HorizontalScrollView">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.MenuPopupWindow.MenuDropDownListView" type="android.support.v7.widget.MenuPopupWindow.MenuDropDownListView">
@@ -1595,7 +1648,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.MenuPopupWindow.MenuDropDownListView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ListView" />
+      <xs:extension base="ListView">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.LinearLayoutCompat" type="android.support.v7.widget.LinearLayoutCompat">
@@ -1620,7 +1685,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.FitWindowsLinearLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="LinearLayout" />
+      <xs:extension base="LinearLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.FitWindowsFrameLayout" type="android.support.v7.widget.FitWindowsFrameLayout">
@@ -1630,7 +1707,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.FitWindowsFrameLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="FrameLayout" />
+      <xs:extension base="FrameLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.DropDownListView" type="android.support.v7.widget.DropDownListView">
@@ -1640,7 +1729,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.DropDownListView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ListView" />
+      <xs:extension base="ListView">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.DialogTitle" type="android.support.v7.widget.DialogTitle">
@@ -1650,7 +1751,24 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.DialogTitle">
     <xs:complexContent mixed="false">
-      <xs:extension base="TextView" />
+      <xs:extension base="TextView">
+        <xs:attribute ref="android:autoSizeTextType" />
+        <xs:attribute ref="android:autoSizeStepGranularity" />
+        <xs:attribute ref="android:autoSizePresetSizes" />
+        <xs:attribute ref="android:autoSizeMinTextSize" />
+        <xs:attribute ref="android:autoSizeMaxTextSize" />
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ContentFrameLayout" type="android.support.v7.widget.ContentFrameLayout">
@@ -1660,7 +1778,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ContentFrameLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="FrameLayout" />
+      <xs:extension base="FrameLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ButtonBarLayout" type="android.support.v7.widget.ButtonBarLayout">
@@ -1682,7 +1812,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.AlertDialogLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ActivityChooserView" type="android.support.v7.widget.ActivityChooserView">
@@ -1705,7 +1847,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ActivityChooserView.InnerLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ActionBarOverlayLayout" type="android.support.v7.widget.ActionBarOverlayLayout">
@@ -1715,7 +1869,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ActionBarOverlayLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ActionBarContextView" type="android.support.v7.widget.ActionBarContextView">
@@ -1725,7 +1891,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ActionBarContextView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ActionMenuView" type="android.support.v7.widget.ActionMenuView">
@@ -1735,7 +1913,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ActionMenuView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ListViewCompat" type="android.support.v7.widget.ListViewCompat">
@@ -1745,7 +1935,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ListViewCompat">
     <xs:complexContent mixed="false">
-      <xs:extension base="ListView" />
+      <xs:extension base="ListView">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ActionBarContainer" type="android.support.v7.widget.ActionBarContainer">
@@ -1755,7 +1957,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.ActionBarContainer">
     <xs:complexContent mixed="false">
-      <xs:extension base="FrameLayout" />
+      <xs:extension base="FrameLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.AbsActionBarView" type="android.support.v7.widget.AbsActionBarView">
@@ -1765,7 +1979,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.widget.AbsActionBarView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.Toolbar" type="android.support.v7.widget.Toolbar">
@@ -1813,7 +2039,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.view.menu.ExpandedMenuView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ListView" />
+      <xs:extension base="ListView">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.view.menu.ListMenuItemView" type="android.support.v7.view.menu.ListMenuItemView">
@@ -1823,7 +2061,19 @@
   </xs:element>
   <xs:complexType name="android.support.v7.view.menu.ListMenuItemView">
     <xs:complexContent mixed="false">
-      <xs:extension base="LinearLayout" />
+      <xs:extension base="LinearLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.view.menu.ActionMenuItemView" type="android.support.v7.view.menu.ActionMenuItemView">
@@ -1833,7 +2083,24 @@
   </xs:element>
   <xs:complexType name="android.support.v7.view.menu.ActionMenuItemView">
     <xs:complexContent mixed="false">
-      <xs:extension base="TextView" />
+      <xs:extension base="TextView">
+        <xs:attribute ref="android:autoSizeTextType" />
+        <xs:attribute ref="android:autoSizeStepGranularity" />
+        <xs:attribute ref="android:autoSizePresetSizes" />
+        <xs:attribute ref="android:autoSizeMinTextSize" />
+        <xs:attribute ref="android:autoSizeMaxTextSize" />
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.app.MediaRouteButton" type="android.support.v7.app.MediaRouteButton">
@@ -1856,7 +2123,19 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.Space">
     <xs:complexContent mixed="false">
-      <xs:extension base="View" />
+      <xs:extension base="View">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.widget.SlidingPaneLayout" type="android.support.v4.widget.SlidingPaneLayout">
@@ -1866,7 +2145,19 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.SlidingPaneLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.widget.NestedScrollView" type="android.support.v4.widget.NestedScrollView">
@@ -1876,7 +2167,19 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.NestedScrollView">
     <xs:complexContent mixed="false">
-      <xs:extension base="FrameLayout" />
+      <xs:extension base="FrameLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.widget.DrawerLayout" type="android.support.v4.widget.DrawerLayout">
@@ -1888,6 +2191,17 @@
     <xs:complexContent mixed="false">
       <xs:extension base="ViewGroup">
         <xs:attribute ref="tools:openDrawer" />
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1898,7 +2212,20 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.ContentLoadingProgressBar">
     <xs:complexContent mixed="false">
-      <xs:extension base="ProgressBar" />
+      <xs:extension base="ProgressBar">
+        <xs:attribute ref="android:min" />
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.widget.SwipeRefreshLayout" type="android.support.v4.widget.SwipeRefreshLayout">
@@ -1908,7 +2235,19 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.SwipeRefreshLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.ViewPager" type="android.support.v4.view.ViewPager">
@@ -1918,7 +2257,19 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.ViewPager">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.PagerTitleStrip" type="android.support.v4.view.PagerTitleStrip">
@@ -1928,7 +2279,19 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.PagerTitleStrip">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.PagerTabStrip" type="android.support.v4.view.PagerTabStrip">
@@ -1938,7 +2301,19 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.PagerTabStrip">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.app.FragmentTabHost" type="android.support.v4.app.FragmentTabHost">
@@ -1948,7 +2323,19 @@
   </xs:element>
   <xs:complexType name="android.support.v4.app.FragmentTabHost">
     <xs:complexContent mixed="false">
-      <xs:extension base="TabHost" />
+      <xs:extension base="TabHost">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.widget.TextInputEditText" type="android.support.design.widget.TextInputEditText">
@@ -1958,7 +2345,24 @@
   </xs:element>
   <xs:complexType name="android.support.design.widget.TextInputEditText">
     <xs:complexContent mixed="false">
-      <xs:extension base="EditText" />
+      <xs:extension base="EditText">
+        <xs:attribute ref="android:autoSizeTextType" />
+        <xs:attribute ref="android:autoSizeStepGranularity" />
+        <xs:attribute ref="android:autoSizePresetSizes" />
+        <xs:attribute ref="android:autoSizeMinTextSize" />
+        <xs:attribute ref="android:autoSizeMaxTextSize" />
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.widget.TabItem" type="android.support.design.widget.TabItem">
@@ -1968,7 +2372,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.widget.TabItem">
     <xs:complexContent mixed="false">
-      <xs:extension base="View" />
+      <xs:extension base="View">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.widget.NavigationView" type="android.support.design.widget.NavigationView">
@@ -1996,7 +2412,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.widget.CheckableImageButton">
     <xs:complexContent mixed="false">
-      <xs:extension base="ImageButton" />
+      <xs:extension base="ImageButton">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.widget.BottomNavigationView" type="android.support.design.widget.BottomNavigationView">
@@ -2022,7 +2450,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.widget.BaseTransientBottomBar.SnackbarBaseLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="FrameLayout" />
+      <xs:extension base="FrameLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.widget.TextInputLayout" type="android.support.design.widget.TextInputLayout">
@@ -2084,7 +2524,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.widget.TabLayout.TabView">
     <xs:complexContent mixed="false">
-      <xs:extension base="LinearLayout" />
+      <xs:extension base="LinearLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.widget.FloatingActionButton" type="android.support.design.widget.FloatingActionButton">
@@ -2113,7 +2565,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.widget.VisibilityAwareImageButton">
     <xs:complexContent mixed="false">
-      <xs:extension base="ImageButton" />
+      <xs:extension base="ImageButton">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.widget.CoordinatorLayout" type="android.support.design.widget.CoordinatorLayout">
@@ -2189,7 +2653,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.internal.SnackbarContentLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="LinearLayout" />
+      <xs:extension base="LinearLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.internal.ScrimInsetsFrameLayout" type="android.support.design.internal.ScrimInsetsFrameLayout">
@@ -2211,7 +2687,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.internal.NavigationMenuView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.internal.ForegroundLinearLayout" type="android.support.design.internal.ForegroundLinearLayout">
@@ -2233,7 +2721,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.internal.BottomNavigationMenuView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.internal.BaselineLayout" type="android.support.design.internal.BaselineLayout">
@@ -2243,7 +2743,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.internal.BaselineLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.internal.BottomNavigationItemView" type="android.support.design.internal.BottomNavigationItemView">
@@ -2253,7 +2765,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.internal.BottomNavigationItemView">
     <xs:complexContent mixed="false">
-      <xs:extension base="FrameLayout" />
+      <xs:extension base="FrameLayout">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.design.internal.NavigationMenuItemView" type="android.support.design.internal.NavigationMenuItemView">
@@ -2263,7 +2787,19 @@
   </xs:element>
   <xs:complexType name="android.support.design.internal.NavigationMenuItemView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:paddingHorizontal" />
+        <xs:attribute ref="android:paddingVertical" />
+        <xs:attribute ref="android:autofillMode" />
+        <xs:attribute ref="android:autofillHints" />
+        <xs:attribute ref="android:importantForAutofill" />
+        <xs:attribute ref="android:tooltipText" />
+        <xs:attribute ref="android:keyboardNavigationCluster" />
+        <xs:attribute ref="android:__removed0" />
+        <xs:attribute ref="android:nextClusterForward" />
+        <xs:attribute ref="android:__removed1" />
+        <xs:attribute ref="android:focusedByDefault" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="include" type="include">

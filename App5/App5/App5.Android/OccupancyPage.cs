@@ -9,11 +9,17 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Support.V4.App;
+using System.Net;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Collections.Specialized;
 
 namespace MiCareApp.Droid
 {
     [Activity(Label = "OccupancyPage", Theme = "@style/MainTheme")]
-    public class OccupancyPage : Activity
+    public class OccupancyPage : Android.Support.V4.App.Fragment
     {
 
         private ListView dataList;
@@ -23,68 +29,82 @@ namespace MiCareApp.Droid
         private int clickNumDate = 0;
         private int clickNumOccupancy = 0;
         private int clickNumConcessional = 0;
-        private int clickNumVacancy = 0;
+        private int clickNumCareType = 0;
 
         private OccupancyViewAdapter adapter;
 
+        private WebClient client;
+        private Uri url;
+        private TextView NumItems;
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
+        private Toast toastMessage;
 
-            SetContentView(Resource.Layout.OccupancyPage);
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            base.OnCreateView(inflater, container, savedInstanceState);
 
+            View view = inflater.Inflate(Resource.Layout.OccupancyPage, container, false);
 
             dataItems = new List<OccupancyData>();
             displayItems = new List<OccupancyData>();
 
-            dataItems.Add(new OccupancyData(new DateTime(2018, 6, 1), 1, 1, 79, 29));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 6, 1), 1, 2, 101, 51));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 6, 1), 1, 3, 135, 85));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 7, 1), 2, 1, 260, 210));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 7, 1), 2, 2, 193, 143));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 7, 1), 2, 3, 209, 159));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 8, 1), 3, 1, 230, 180));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 8, 1), 3, 2, 118, 68));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 8, 1), 3, 3, 79, 29));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 9, 1), 1, 1, 195, 145));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 9, 1), 1, 2, 248, 198));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 9, 1), 1, 3, 124, 74));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 10, 1), 2, 1, 271, 221));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 10, 1), 2, 2, 179, 129));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 10, 1), 2, 3, 174, 124));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 11, 1), 3, 1, 52, 2));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 11, 1), 3, 2, 87, 37));
-            dataItems.Add(new OccupancyData(new DateTime(2018, 11, 1), 3, 3, 195, 145));
+            //setup adapter
+            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
+            adapter = new OccupancyViewAdapter(this.Context, dataItems);
 
-            foreach (OccupancyData item in dataItems)
-            {
-                displayItems.Add(item);
-            }
+            //Display the number of items at the bottom of the page
+            NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
 
+            //setup buttons at the top of the page which are used to sort the list based on the button pushed
+            Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextOccupancy);
+            Button OccupancyBtn = view.FindViewById<Button>(Resource.Id.OccupancyTextOccupancy);
+            Button CareTypeBtn = view.FindViewById<Button>(Resource.Id.CareTypeTextOccupancy);
+            Button ConcessionalBtn = view.FindViewById<Button>(Resource.Id.ConcessionalTextOccupancy);
 
             //setup Spinner
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            spinner.Clickable = false;
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
-            //Display the number of items at the bottom of the page
-            TextView NumItems = FindViewById<TextView>(Resource.Id.txtNumFinanceData);
-            NumItems.Text = dataItems.Count.ToString();
+            client = new WebClient();
+            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
 
-            //setup adapter
-            dataList = FindViewById<ListView>(Resource.Id.DataList);
+            toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
 
-            adapter = new OccupancyViewAdapter(this, dataItems);
+            Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
+            RefreshBtn.Click += delegate {
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                toastMessage.Show();
+                spinner.SetSelection(0);
+                dataItems.Clear();
+                displayItems.Clear();
+                spinner.Clickable = false;
 
-            dataList.Adapter = adapter;
+                NameValueCollection values = new NameValueCollection();
+                values.Add("Type", "Occupancy");
+                //call php 
+                client.UploadValuesAsync(url, values);
+            };
 
-            //setup buttons at the top of the page which are used to sort the list based on the button pushed
-            Button DateBtn = FindViewById<Button>(Resource.Id.DateTextOccupancy);
-            Button OccupancyBtn = FindViewById<Button>(Resource.Id.OccupancyTextOccupancy);
-            Button ConcessionalBtn = FindViewById<Button>(Resource.Id.ConcessionalTextOccupancy);
+            client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
+                Activity.RunOnUiThread(() => {
+                    string json = Encoding.UTF8.GetString(e.Result);
+                    dataItems = JsonConvert.DeserializeObject<List<OccupancyData>>(json);
+                    adapter = new OccupancyViewAdapter(this.Context, dataItems);
+                    foreach (OccupancyData item in dataItems)
+                    {
+                        displayItems.Add(item);
+                    }
+                    NumItems.Text = dataItems.Count.ToString();
+                    dataList.Adapter = adapter;
+                    RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
+                    spinner.Clickable = true;
+                    toastMessage.Cancel();
+                    adapter.NotifyDataSetChanged();
+                });
+            };
 
             DateBtn.Click += delegate {
                 if (clickNumDate == 0) {
@@ -94,7 +114,7 @@ namespace MiCareApp.Droid
                     clickNumDate++;
                     clickNumOccupancy = 0;
                     clickNumConcessional = 0;
-                    clickNumVacancy = 0;
+                    clickNumCareType = 0;
                 //reverse list if clicked a second time in a row
                 } else {
                     dataItems.Reverse();
@@ -111,13 +131,33 @@ namespace MiCareApp.Droid
                     clickNumOccupancy++;
                     clickNumDate = 0;
                     clickNumConcessional = 0;
-                    clickNumVacancy = 0;
+                    clickNumCareType = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
                 {
                     dataItems.Reverse();
                     clickNumOccupancy = 0;
+                }
+                adapter.NotifyDataSetChanged();
+            };
+
+            CareTypeBtn.Click += delegate {
+                if (clickNumCareType == 0)
+                {
+                    dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
+                        return string.Compare(one.GetCareType(), two.GetCareType());
+                    });
+                    clickNumCareType++;
+                    clickNumOccupancy = 0;
+                    clickNumDate = 0;
+                    clickNumConcessional = 0;
+                    //reverse list if clicked a second time in a row
+                }
+                else
+                {
+                    dataItems.Reverse();
+                    clickNumCareType = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };
@@ -130,7 +170,7 @@ namespace MiCareApp.Droid
                     clickNumConcessional++;
                     clickNumOccupancy = 0;
                     clickNumDate = 0;
-                    clickNumVacancy = 0;
+                    clickNumCareType = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -141,13 +181,7 @@ namespace MiCareApp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
-
-            Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
-
-            backBtn.Click += delegate {
-                backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
-                StartActivity(typeof(OccupancyMenu));
-            };
+            return view;
         }
 
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -155,7 +189,6 @@ namespace MiCareApp.Droid
             Spinner spinner = (Spinner)sender;
             int ID;
             int position = e.Position;
-            Console.WriteLine(position.ToString());
             foreach (OccupancyData item in displayItems)
             {
                 ID = item.GetFacilityID();

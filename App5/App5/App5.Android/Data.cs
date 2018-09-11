@@ -87,28 +87,55 @@ namespace MiCareApp.Droid
         }
     }
 
-    public class BankBalance {
+    public class ACFIFunding {
 
-        protected DateTime Date;
-        protected double Balance;
-        protected bool show = true;
+        public int facilityID { get; set; }
+        public int residentID { get; set; }
+        public string acfiScore { get; set; }
+        public int income { get; set; }
 
-        public BankBalance(DateTime Date, double Balance) {
-            this.Date = Date;
-            this.Balance = Balance;
+        public int GetResidentID() {
+            return residentID;
         }
 
+        public string GetACFIScore() {
+            return acfiScore;
+        }
+
+        public int GetIncome() {
+            return income;
+        }
+
+        public int GetFacilityID() {
+            return facilityID;
+        }
+
+    }
+
+    public class BankBalance {
+
+        public DateTime date { get; set; }
+        public int balance { get; set; }
+        public int facilityID { get; set; }
+        protected bool show = true;
+
+
         public double GetBankBalance() {
-            return Balance;
+            return balance;
         }
 
         public DateTime GetDate() {
-            return Date;
+            return date;
         }
 
-        public void UpdateBankBalance(DateTime Date, double Balance) {
-            this.Date = Date;
-            this.Balance = Balance;
+        public int GetFacilityID()
+        {
+            return facilityID;
+        }
+
+        public void UpdateBankBalance(DateTime Date, int Balance) {
+            this.date = Date;
+            this.balance = Balance;
         }
 
         public void Show(bool value) {
@@ -166,21 +193,14 @@ namespace MiCareApp.Droid
 
     public class BrokerageHoursData {
 
-        protected DateTime Date;
-        //protected int BrokerageID;
-        protected int Hours;
-        protected int FacilityID;
+        public DateTime date { get; set; }
+        // protected int InvoiceID;
+        public int hours { get; set; }
+        public int facilityID { get; set; }
         protected bool show = true;
 
-        public BrokerageHoursData(DateTime Date, int Hours, int FacilityID) {
-            this.Date = Date;
-            //this.BrokerageID = BrokerageID;
-            this.Hours = Hours;
-            this.FacilityID = FacilityID;
-        }
-
         public DateTime GetDate() {
-            return Date;
+            return date;
         }
 
         //public int GetBrokerageID() {
@@ -188,11 +208,11 @@ namespace MiCareApp.Droid
         //}
 
         public int GetBrokerageHours() {
-            return Hours;
+            return hours;
         }
 
         public int GetFacilityID() {
-            return FacilityID;
+            return facilityID;
         }
 
         public void Show(bool value)
@@ -208,42 +228,39 @@ namespace MiCareApp.Droid
 
     public class HomeCarePackageData {
 
-        protected int ResidentID;
-        protected string ResidentFirstName;
-        protected string ResidentLastName;
-        protected int PackageLevel;
-        protected double PackageIncome;
+        public int facilityID { get; set; }
+        public int residentID { get; set; }
+        public string residentFirstName { get; set; }
+        public string residentLastName { get; set; }
+        public int packageLevel { get; set; }
+        public int packageIncome { get; set; }
         protected bool show = true;
 
-        protected static double SumOfPackageIncome;
 
-        public HomeCarePackageData(int ResidentID, string ResidentFirstName, string ResidentLastName, int PackageLevel, double PackageIncome) {
-            this.ResidentID = ResidentID;
-            this.ResidentFirstName = ResidentFirstName;
-            this.ResidentLastName = ResidentLastName;
-            this.PackageLevel = PackageLevel;
-            this.PackageIncome = PackageIncome;
-            SumOfPackageIncome += PackageIncome;
-        }
 
         public int GetResidentID() {
-            return ResidentID;
+            return residentID;
+        }
+
+        public int GetFacilityID()
+        {
+            return facilityID;
         }
 
         public string GetResidentFirstName() {
-            return ResidentFirstName;
+            return residentFirstName;
         }
 
         public string GetResidentLastName() {
-            return ResidentLastName;
+            return residentLastName;
         }
 
         public int GetPackageLevel() {
-            return PackageLevel;
+            return packageLevel;
         }
 
-        public double GetPackageIncome() {
-            return PackageIncome;
+        public int GetPackageIncome() {
+            return packageIncome;
         }
 
         //HCP Income against budget will be calculated through sum of Package_Income
@@ -261,7 +278,7 @@ namespace MiCareApp.Droid
         //if the income is above or equal to 250.00 return true
         public bool IsGreen()
         {
-            if (PackageIncome >= 250.0)
+            if (packageIncome >= 250.0)
             {
                 return true;
             }
@@ -274,7 +291,7 @@ namespace MiCareApp.Droid
         //if the income is less than 150.00 return true
         public bool IsRed()
         {
-            if (PackageIncome < 150.0)
+            if (packageIncome < 150.0)
             {
                 return true;
             }
@@ -287,39 +304,32 @@ namespace MiCareApp.Droid
 
     public class OccupancyData {
 
-        protected DateTime Date;
-        protected int FacilityID;
-        protected int CareTypeID;
-        protected int Occupancy;
-        protected int Concessional;
+        public DateTime date { get; set; }
+        public int facilityID { get; set; }
+        public string careType { get; set; }
+        public int occupancy { get; set; }
+        public int concessional { get; set; }
         protected bool show = true;
 
-        public OccupancyData(DateTime Date, int FacilityID, int CareTypeID, int Occupancy, int Concessional) {
-            this.Date = Date;
-            this.FacilityID = FacilityID;
-            this.CareTypeID = CareTypeID;
-            this.Occupancy = Occupancy;
-            this.Concessional = Concessional;
-        }
 
         public DateTime GetDate() {
-            return Date;
+            return date;
         }
 
         public int GetFacilityID() {
-            return FacilityID;
+            return facilityID;
         }
 
-        public int GetCareTypeID() {
-            return CareTypeID;
+        public string GetCareType() {
+            return careType;
         }
 
         public int GetOccupancy() {
-            return Occupancy;
+            return occupancy;
         }
 
         public int GetConcessional() {
-            return Concessional;
+            return concessional;
         }
 
         public void Show(bool value)
@@ -336,51 +346,41 @@ namespace MiCareApp.Droid
 
     public class StaffData {
 
-        protected int StaffID;
-        protected int FacilityID;
-        protected string StaffFirstName;
-        protected string StaffLastName;
-        protected int AnnualLeaveAcrewed;
-        protected int LongServiceLeaveAcrewed;
-        protected int ServiceLeaveAcrewed;
+        public int staffID { get; set; }
+        public int facilityID { get; set; }
+        public string staffFirstName { get; set; }
+        public string staffLastName { get; set; }
+        public int alAccrued { get; set; }
+        public int lslAccrued { get; set; }
+        public int slAccrued { get; set; }
         protected bool show = true;
 
-        public StaffData(int FacilityID, int StaffID, string StaffFirstName, string StaffLastName, int AnnualLeaveAcrewed, int LongServiceLeaveAcrewed, int ServiceLeaveAcrewed) {
-            this.StaffID = StaffID;
-            this.FacilityID = FacilityID;
-            this.StaffFirstName = StaffFirstName;
-            this.StaffLastName = StaffLastName;
-            this.AnnualLeaveAcrewed = AnnualLeaveAcrewed;
-            this.LongServiceLeaveAcrewed = LongServiceLeaveAcrewed;
-            this.ServiceLeaveAcrewed = ServiceLeaveAcrewed;
-        }
-
         public int GetStaffID() {
-            return StaffID;
+            return staffID;
         }
 
         public int GetFacilityID() {
-            return FacilityID;
+            return facilityID;
         }
 
         public string GetStaffFirstName() {
-            return StaffFirstName;
+            return staffFirstName;
         }
 
         public string GetStaffLastName() {
-            return StaffLastName;
+            return staffLastName;
         }
 
         public int GetAnnualLeaveAcrewed() {
-            return AnnualLeaveAcrewed;
+            return alAccrued;
         }
 
         public int GetLongServiceLeaveAcrewed() {
-            return LongServiceLeaveAcrewed;
+            return lslAccrued;
         }
 
-        public int GetServiceLeaveAcrewed() {
-            return ServiceLeaveAcrewed;
+        public int GetSickLeaveAcrewed() {
+            return slAccrued;
         }
 
         public void Show(bool value)
@@ -388,8 +388,7 @@ namespace MiCareApp.Droid
             show = value;
         }
 
-        public bool GetShow()
-        {
+        public bool GetShow() {
             return show;
         }
 
@@ -397,27 +396,23 @@ namespace MiCareApp.Droid
 
     public class IncomeData {
 
-        protected DateTime Date;
-        protected int FacilityID;
-        protected double Income;
+        public DateTime date { get; set; }
+        // protected int InvoiceID;
+        public int income { get; set; }
+        public int facilityID { get; set; }
         protected bool show = true;
 
-        public IncomeData(DateTime Date, int FacilityID, double Income) {
-            this.Date = Date;
-            this.FacilityID = FacilityID;
-            this.Income = Income;
-        }
 
         public DateTime GetDate() {
-            return Date;
+            return date;
         }
 
         public int GetFacilityID() {
-            return FacilityID;
+            return facilityID;
         }
 
         public double GetIncome() {
-            return Income;
+            return income;
         }
 
         public void Show(bool value)
@@ -433,33 +428,27 @@ namespace MiCareApp.Droid
 
     public class SalariesWagesData {
 
-        protected DateTime Date;
-        protected int FacilityID;
-        protected double RosteredCost;
-        protected double Budget;
+        public DateTime date { get; set; }
+        public int facilityID { get; set; }
+        public int rosteredCost { get; set; }
+        public int budget { get; set; }
         protected bool show = true;
 
-        public SalariesWagesData(DateTime Date, int FacilityID, double RosteredCost, double Budget) {
-            this.Date = Date;
-            this.FacilityID = FacilityID;
-            this.RosteredCost = RosteredCost;
-            this.Budget = Budget;
-        }
 
         public DateTime GetDate() {
-            return Date;
+            return date;
         }
 
         public int GetFacilityID() {
-            return FacilityID;
+            return facilityID;
         }
 
         public double GetRosteredCost() {
-            return RosteredCost;
+            return rosteredCost;
         }
 
         public double GetBudget() {
-            return Budget;
+            return budget;
         }
 
         public void Show(bool value)

@@ -34,10 +34,15 @@ namespace MiCareApp.Droid
             SetContentView(Resource.Layout.ViewPager);
 
             //set up the sliding layout bar adapter
-            SlidingTabMenu adapter = new SlidingTabMenu(SupportFragmentManager, names);
+            SlidingTabMenu adapter = new SlidingTabMenu(SupportFragmentManager, names, true);
 
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
             viewPager.Adapter = adapter;
+
+            //viewPager. += delegate
+            //{
+
+           // }
 
             //back button to return to finance menu page
             Button backBtn = FindViewById<Button>(Resource.Id.BackButton);

@@ -9,11 +9,17 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Support.V4.App;
+using System.Net;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Collections.Specialized;
 
 namespace MiCareApp.Droid
 {
     [Activity(Label = "StaffPage", Theme = "@style/MainTheme")]
-    public class StaffPage : Activity
+    public class StaffPage : Android.Support.V4.App.Fragment
     {
 
         private ListView dataList;
@@ -24,60 +30,82 @@ namespace MiCareApp.Droid
         private int clickNumLName = 0;
         private int clickNumAnnual = 0;
         private int clickNumLongService = 0;
-        private int clickNumService = 0;
+        private int clickNumSick = 0;
 
         private StaffViewAdapter adapter;
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
+        private WebClient client;
+        private Uri url;
+        private TextView NumItems;
 
-            SetContentView(Resource.Layout.StaffPage);
+        private Toast toastMessage;
 
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            base.OnCreateView(inflater, container, savedInstanceState);
+
+            View view = inflater.Inflate(Resource.Layout.StaffPage, container, false);
 
             dataItems = new List<StaffData>();
             displayItems = new List<StaffData>();
 
-            dataItems.Add(new StaffData(2, 4, "Sallv", "Stupid", 29, 26, 5));
-            dataItems.Add(new StaffData(3, 34, "Ron", "Crows", 2, 18, 4));
-            dataItems.Add(new StaffData(3, 35, "Mia", "Poultrv", 20, 18, 16));
-            dataItems.Add(new StaffData(1, 55, "Jim", "Smith", 2, 48, 13));
-            dataItems.Add(new StaffData(2, 56, "Sandra", "Dingus", 23, 40, 12));
-            dataItems.Add(new StaffData(1, 78, "Sarah", "Simmons", 22, 22, 15));
-            dataItems.Add(new StaffData(1, 125, "John", "Johnson", 7, 10, 12));
-            dataItems.Add(new StaffData(3, 131, "Bob", "Pigs", 7, 42, 10));
-            dataItems.Add(new StaffData(2, 341, "James", "Apple", 10, 32, 14));
+            //setup adapter
+            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
+            adapter = new StaffViewAdapter(this.Context, dataItems);
 
-            foreach (StaffData item in dataItems)
-            {
-                displayItems.Add(item);
-            }
+            //Display the number of items at the bottom of the page
+            NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
 
+            //setup buttons at the top of the page which are used to sort the list based on the button pushed
+            Button FName = view.FindViewById<Button>(Resource.Id.FirstNameTextStaff);
+            Button LName = view.FindViewById<Button>(Resource.Id.LastNameTextStaff);
+            Button AnnualBtn = view.FindViewById<Button>(Resource.Id.AnnualLeaveTextStaff);
+            Button LongServiceBtn = view.FindViewById<Button>(Resource.Id.LongServiceLeaveTextStaff);
+            Button SickBtn = view.FindViewById<Button>(Resource.Id.SickLeaveTextStaff);
 
             //setup Spinner
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            spinner.Clickable = false;
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(this, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
-            //Display the number of items at the bottom of the page
-            TextView NumItems = FindViewById<TextView>(Resource.Id.txtNumFinanceData);
-            NumItems.Text = dataItems.Count.ToString();
+            client = new WebClient();
+            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
 
-            //setup adapter
-            dataList = FindViewById<ListView>(Resource.Id.DataList);
+            toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
 
-            adapter = new StaffViewAdapter(this, dataItems);
+            Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
+            RefreshBtn.Click += delegate {
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                toastMessage.Show();
+                spinner.SetSelection(0);
+                dataItems.Clear();
+                displayItems.Clear();
+                spinner.Clickable = false;
 
-            dataList.Adapter = adapter;
+                NameValueCollection values = new NameValueCollection();
+                values.Add("Type", "Staff");
+                //call php 
+                client.UploadValuesAsync(url, values);
+            };
 
-            //setup buttons at the top of the page which are used to sort the list based on the button pushed
-            Button FName = FindViewById<Button>(Resource.Id.FirstNameTextStaff);
-            Button LName = FindViewById<Button>(Resource.Id.LastNameTextStaff);
-            Button AnnualBtn = FindViewById<Button>(Resource.Id.AnnualLeaveTextStaff);
-            Button LongServiceBtn = FindViewById<Button>(Resource.Id.LongServiceLeaveTextStaff);
-            Button ServiceBtn = FindViewById<Button>(Resource.Id.ServiceLeaveTextStaff);
+            client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
+                Activity.RunOnUiThread(() => {
+                    string json = Encoding.UTF8.GetString(e.Result);
+                    dataItems = JsonConvert.DeserializeObject<List<StaffData>>(json);
+                    adapter = new StaffViewAdapter(this.Context, dataItems);
+                    foreach (StaffData item in dataItems) {
+                        displayItems.Add(item);
+                    }
+                    NumItems.Text = dataItems.Count.ToString();
+                    dataList.Adapter = adapter;
+                    RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
+                    spinner.Clickable = true;
+                    toastMessage.Cancel();
+                    adapter.NotifyDataSetChanged();
+                });
+            };
 
             //setup button for sorting the list based on first names
             FName.Click += delegate {
@@ -90,7 +118,7 @@ namespace MiCareApp.Droid
                     clickNumLName = 0;
                     clickNumAnnual = 0;
                     clickNumLongService = 0;
-                    clickNumService = 0;
+                    clickNumSick = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -112,7 +140,7 @@ namespace MiCareApp.Droid
                     clickNumFName = 0;
                     clickNumAnnual = 0;
                     clickNumLongService = 0;
-                    clickNumService = 0;
+                    clickNumSick = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -134,7 +162,7 @@ namespace MiCareApp.Droid
                     clickNumLName = 0;
                     clickNumFName = 0;
                     clickNumLongService = 0;
-                    clickNumService = 0;
+                    clickNumSick = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -156,7 +184,7 @@ namespace MiCareApp.Droid
                     clickNumLName = 0;
                     clickNumFName = 0;
                     clickNumAnnual = 0;
-                    clickNumService = 0;
+                    clickNumSick = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -168,13 +196,13 @@ namespace MiCareApp.Droid
             };
 
             //setup button for sorting the list based on service leave
-            ServiceBtn.Click += delegate {
-                if (clickNumService == 0)
+            SickBtn.Click += delegate {
+                if (clickNumSick == 0)
                 {
                     dataItems.Sort(delegate (StaffData one, StaffData two) {
-                        return one.GetServiceLeaveAcrewed().CompareTo(two.GetServiceLeaveAcrewed());
+                        return one.GetSickLeaveAcrewed().CompareTo(two.GetSickLeaveAcrewed());
                     });
-                    clickNumService++;
+                    clickNumSick++;
                     clickNumLName = 0;
                     clickNumFName = 0;
                     clickNumAnnual = 0;
@@ -184,17 +212,12 @@ namespace MiCareApp.Droid
                 else
                 {
                     dataItems.Reverse();
-                    clickNumService = 0;
+                    clickNumSick = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };
 
-            Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
-
-            backBtn.Click += delegate {
-                backBtn.SetBackgroundResource(Resource.Drawable.BackButtonIconClicked);
-                StartActivity(typeof(OccupancyMenu));
-            };
+            return view;
         }
 
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -202,7 +225,6 @@ namespace MiCareApp.Droid
             Spinner spinner = (Spinner)sender;
             int ID;
             int position = e.Position;
-            Console.WriteLine(position.ToString());
             foreach (StaffData item in displayItems)
             {
                 ID = item.GetFacilityID();

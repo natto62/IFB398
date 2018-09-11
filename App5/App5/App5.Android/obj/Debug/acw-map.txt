@@ -78,6 +78,10 @@ MiCareApp.Droid.SlidingTabMenu, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0
 MiCareApp.Droid.SlidingTabMenu, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabMenu
 MiCareApp.Droid.SlidingTabMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabMenu
 micareapp.droid.SlidingTabMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabMenu
+MiCareApp.Droid.SlidingTabOccupancy, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabOccupancy
+MiCareApp.Droid.SlidingTabOccupancy, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabOccupancy
+MiCareApp.Droid.SlidingTabOccupancy;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabOccupancy
+micareapp.droid.SlidingTabOccupancy;md5e9d4952e62f598bcc024ad4f9f0ef04b.SlidingTabOccupancy
 MiCareApp.Droid.StaffPage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffPage
 MiCareApp.Droid.StaffPage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffPage
 MiCareApp.Droid.StaffPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.StaffPage

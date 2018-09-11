@@ -18,19 +18,27 @@ namespace MiCareApp.Droid
     {
         private string[] Names;
         private List<Android.Support.V4.App.Fragment> fragments;
+        private bool type;
 
         //constructor 
-        public SlidingTabMenu(Android.Support.V4.App.FragmentManager fm, string[] names) : base(fm) {
+        public SlidingTabMenu(Android.Support.V4.App.FragmentManager fm, string[] names, bool type) : base(fm) {
             Names = names;
+            this.type = type;
             fragments = new List<Android.Support.V4.App.Fragment>();
-            fragments.Add(new AgencyUsagePage());
-            fragments.Add(new BrokerageHoursPage());
-            fragments.Add(new HomeCarePackagePage());
-            fragments.Add(new SalariesWagesPage());
+            if (type) {
+                fragments.Add(new AgencyUsagePage());
+                fragments.Add(new BrokerageHoursPage());
+                fragments.Add(new HomeCarePackagePage());
+                fragments.Add(new SalariesWagesPage());
+            } else {
+                fragments.Add(new OccupancyPage());
+                fragments.Add(new StaffPage());
+            }
+
         }
 
         //number of tabs
-        public override int Count { get { return 4; } }
+        public override int Count { get { if (type) { return 4; } else { return 2; } } }
 
         //get fragment via tab position
         public override Android.Support.V4.App.Fragment GetItem(int position)
@@ -53,6 +61,13 @@ namespace MiCareApp.Droid
         {
             return fragments[position];
         }
+
+        //public override void StartUpdate(ViewGroup container)
+        //{
+
+        //    base.StartUpdate(container);
+
+        //}
 
     }
 }

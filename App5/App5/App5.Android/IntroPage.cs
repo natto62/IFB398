@@ -46,7 +46,6 @@ namespace MiCareApp.Droid
 
             //Finance Menu button
             Button FinanceBtn = FindViewById<Button>(Resource.Id.FinanceBtn);
-            //-> FinanceMenu.cs
             FinanceBtn.Click += delegate {
                 Intent nextPage = new Intent(BaseContext, typeof(Activity1));
                 nextPage.PutExtra("UserData", JsonConvert.SerializeObject(currentUser));
@@ -55,9 +54,8 @@ namespace MiCareApp.Droid
 
             //Occupancy Menu button
             Button OccupancyBtn = FindViewById<Button>(Resource.Id.OccupancyBtn);
-            //->OccupancyMenu.cs
             OccupancyBtn.Click += delegate {
-                Intent nextPage = new Intent(BaseContext, typeof(OccupancyMenu));
+                Intent nextPage = new Intent(BaseContext, typeof(SlidingTabOccupancy));
                 nextPage.PutExtra("UserData", JsonConvert.SerializeObject(currentUser));
                 StartActivity(nextPage);
             };

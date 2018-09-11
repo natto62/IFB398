@@ -36,6 +36,17 @@
             android:prompt="@string/SpinnerPrompt"
             android:minWidth="25px"
             android:minHeight="25px" />
+        <Button
+            android:text=""
+            android:layout_width="35dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:id="@+id/RefreshButton"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/RefreshButtonIcon"
+            android:textSize="15sp" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

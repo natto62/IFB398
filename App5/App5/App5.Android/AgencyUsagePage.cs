@@ -14,6 +14,7 @@ using System.Net;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Collections.Specialized;
 
 namespace MiCareApp.Droid
 {
@@ -33,6 +34,8 @@ namespace MiCareApp.Droid
         private WebClient client;
         private Uri url;
         private TextView NumItems;
+
+        private Toast toastMessage;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -63,27 +66,25 @@ namespace MiCareApp.Droid
 
             client = new WebClient();
             url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
-            //http:/http:/<insert ipv4 address of computer running php>/new2.php
 
-            Toast toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
+            toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
 
             Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
             RefreshBtn.Click += delegate {
                 RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                toastMessage.Show();
                 spinner.SetSelection(0);
                 dataItems.Clear();
                 displayItems.Clear();
                 spinner.Clickable = false;
-                //call php  
-                client.DownloadDataAsync(url);
-                while (client.IsBusy) {
-                    toastMessage.Show();
-                }
-                toastMessage.Cancel();
-                
+                 
+                NameValueCollection values = new NameValueCollection();
+                values.Add("Type", "Agency");
+                //call php 
+                client.UploadValuesAsync(url, values);
             };
 
-            client.DownloadDataCompleted += delegate (object sender, DownloadDataCompletedEventArgs e) {
+            client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
                 Activity.RunOnUiThread(() => {
                     string json = Encoding.UTF8.GetString(e.Result);
                     dataItems = JsonConvert.DeserializeObject<List<AgencyUsageData>>(json);
@@ -95,6 +96,7 @@ namespace MiCareApp.Droid
                     dataList.Adapter = adapter;
                     RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
                     spinner.Clickable = true;
+                    toastMessage.Cancel();
                     adapter.NotifyDataSetChanged();
                 });
             };
@@ -136,7 +138,6 @@ namespace MiCareApp.Droid
             Spinner spinner = (Spinner)sender;
             int ID;
             int position = e.Position;
-            Console.WriteLine(position.ToString());
             foreach (AgencyUsageData item in displayItems) {
                 ID = item.GetFacilityID();
                 if (ID == position) {

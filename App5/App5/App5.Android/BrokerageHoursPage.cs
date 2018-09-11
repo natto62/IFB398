@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 using Android.App;
@@ -9,6 +11,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 
 namespace MiCareApp.Droid
 {
@@ -25,45 +28,31 @@ namespace MiCareApp.Droid
 
         private BrokerageHoursViewAdapter adapter;
 
+        private WebClient client;
+        private Uri url;
+        private TextView NumItems;
+
+        private Toast toastMessage;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
 
             View view = inflater.Inflate(Resource.Layout.BrokerageHoursPage, container, false);
 
-
             dataItems = new List<BrokerageHoursData>();
             displayItems = new List<BrokerageHoursData>();
 
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 6, 1), 10, 1));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 6, 1), 17, 2));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 6, 1), 25, 3));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 7, 1), 10, 1));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 7, 1), 11, 2));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 7, 1), 14, 3));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 8, 1), 25, 1));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 8, 1), 21, 2));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 8, 1), 13, 3));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 9, 1), 20, 1));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 9, 1), 12, 2));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 9, 1), 16, 3));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 10, 1), 12, 1));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 10, 1), 15, 2));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 10, 1), 17, 3));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 11, 1), 27, 1));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 11, 1), 22, 2));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 11, 1), 10, 3));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 12, 1), 30, 1));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 12, 1), 13, 2));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2018, 12, 1), 11, 3));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2019, 1, 1), 20, 1));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2019, 1, 1), 20, 2));
-            dataItems.Add(new BrokerageHoursData(new DateTime(2019, 1, 1), 10, 3));
+            //setup adapter
+            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
+            adapter = new BrokerageHoursViewAdapter(view.Context, dataItems);
 
-            foreach (BrokerageHoursData item in dataItems)
-            {
-                displayItems.Add(item);
-            }
+            //Display the number of items at the bottom of the page
+            NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
+
+            //setup buttons at the top of the page which are used to sort the list based on the button pushed
+            Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextBrokerage);
+            Button HoursBtn = view.FindViewById<Button>(Resource.Id.HoursTextBrokerage);
 
             //setup Spinner
             Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
@@ -72,20 +61,42 @@ namespace MiCareApp.Droid
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
-            //Display the number of items at the bottom of the page
-            TextView NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
-            NumItems.Text = dataItems.Count.ToString();
+            client = new WebClient();
+            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
 
-            //setup adapter
-            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
+            toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
 
-            adapter = new BrokerageHoursViewAdapter(view.Context, dataItems);
+            Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
+            RefreshBtn.Click += delegate {
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                toastMessage.Show();
+                spinner.SetSelection(0);
+                dataItems.Clear();
+                displayItems.Clear();
+                spinner.Clickable = false;
 
-            dataList.Adapter = adapter;
+                NameValueCollection values = new NameValueCollection();
+                values.Add("Type", "Brokerage");
+                //call php 
+                client.UploadValuesAsync(url, values);
+            };
 
-            //setup buttons at the top of the page which are used to sort the list based on the button pushed
-            Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextBrokerage);
-            Button HoursBtn = view.FindViewById<Button>(Resource.Id.HoursTextBrokerage);
+            client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
+                Activity.RunOnUiThread(() => {
+                    string json = Encoding.UTF8.GetString(e.Result);
+                    dataItems = JsonConvert.DeserializeObject<List<BrokerageHoursData>>(json);
+                    adapter = new BrokerageHoursViewAdapter(this.Context, dataItems);//this
+                    foreach (BrokerageHoursData item in dataItems) {
+                        displayItems.Add(item);
+                    }
+                    NumItems.Text = dataItems.Count.ToString();
+                    dataList.Adapter = adapter;
+                    RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
+                    spinner.Clickable = true;
+                    toastMessage.Cancel();
+                    adapter.NotifyDataSetChanged();
+                });
+            };
 
             DateBtn.Click += delegate {
                 if (clickNumDate == 0)
@@ -131,7 +142,6 @@ namespace MiCareApp.Droid
             Spinner spinner = (Spinner)sender;
             int ID;
             int position = e.Position;
-            Console.WriteLine(position.ToString());
             foreach (BrokerageHoursData item in displayItems)
             {
                 ID = item.GetFacilityID();

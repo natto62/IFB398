@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 using Android.App;
@@ -9,6 +11,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 
 namespace MiCareApp.Droid
 {
@@ -26,63 +29,78 @@ namespace MiCareApp.Droid
 
         private SalariesWagesViewAdapter adapter;
 
+        private WebClient client;
+        private Uri url;
+        private TextView NumItems;
+
+        private Toast toastMessage;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
 
             View view = inflater.Inflate(Resource.Layout.SalariesWagesPage, container, false);
 
-
             dataItems = new List<SalariesWagesData>();
             displayItems = new List<SalariesWagesData>();
 
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 1), 1, 2731, 4769));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 1), 2, 4277, 3395));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 1), 3, 4643, 4604));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 2), 1, 2733, 3712));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 2), 2, 3497, 3686));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 2), 3, 2634, 2662));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 3), 1, 3269, 4858));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 3), 2, 3316, 4766));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 3), 3, 3890, 4685));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 4), 1, 3768, 4171));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 4), 2, 3664, 3038));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 4), 3, 3316, 2581));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 5), 1, 3956, 4925));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 5), 2, 2052, 3677));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 5), 3, 2816, 3614));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 6), 1, 4224, 4316));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 6), 2, 3423, 3358));
-            dataItems.Add(new SalariesWagesData(new DateTime(2018, 6, 6), 3, 2880, 4570));
-
-            foreach (SalariesWagesData item in dataItems)
-            {
-                displayItems.Add(item);
-            }
-
-
-            //setup Spinner
-            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
-            SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = SpinnerAdapter;
+            //setup adapter
+            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
+            adapter = new SalariesWagesViewAdapter(view.Context, dataItems);
 
             //Display the number of items at the bottom of the page
             TextView NumItems = view.FindViewById<TextView>(Resource.Id.txtNumFinanceData);
-            NumItems.Text = dataItems.Count.ToString();
-
-            //setup adapter
-            dataList = view.FindViewById<ListView>(Resource.Id.DataList);
-
-            adapter = new SalariesWagesViewAdapter(view.Context, dataItems);
-
-            dataList.Adapter = adapter;
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
             Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextSalariesWages);
             Button RosteredCostBtn = view.FindViewById<Button>(Resource.Id.RosteredCostTextSalariesWages);
             Button BudgetBtn = view.FindViewById<Button>(Resource.Id.BudgetTextSalariesWages);
+
+            //setup Spinner
+            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            spinner.Clickable = false;
+            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinner.Adapter = SpinnerAdapter;
+
+            client = new WebClient();
+            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
+
+            toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
+
+            Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
+            RefreshBtn.Click += delegate {
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                toastMessage.Show();
+                spinner.SetSelection(0);
+                dataItems.Clear();
+                displayItems.Clear();
+                spinner.Clickable = false;
+
+                NameValueCollection values = new NameValueCollection();
+                values.Add("Type", "Salaries");
+                //call php 
+                client.UploadValuesAsync(url, values);
+            };
+
+            client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
+                Activity.RunOnUiThread(() => {
+                    string json = Encoding.UTF8.GetString(e.Result);
+                    dataItems = JsonConvert.DeserializeObject<List<SalariesWagesData>>(json);
+                    adapter = new SalariesWagesViewAdapter(this.Context, dataItems);//this
+                    foreach (SalariesWagesData item in dataItems)
+                    {
+                        displayItems.Add(item);
+                    }
+                    NumItems.Text = dataItems.Count.ToString();
+                    dataList.Adapter = adapter;
+                    RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
+                    spinner.Clickable = true;
+                    toastMessage.Cancel();
+                    adapter.NotifyDataSetChanged();
+                });
+            };
 
             DateBtn.Click += delegate {
                 if (clickNumDate == 0)

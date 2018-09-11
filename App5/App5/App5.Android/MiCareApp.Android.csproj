@@ -93,6 +93,7 @@
     <Compile Include="SignIn.cs" />
     <Compile Include="SignUp.cs" />
     <Compile Include="SlidingTabMenu.cs" />
+    <Compile Include="SlidingTabOccupancy.cs" />
     <Compile Include="StaffPage.cs" />
     <Compile Include="StaffViewAdapter.cs" />
     <Compile Include="User.cs" />
@@ -164,6 +165,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Settings.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ViewPagerOccupancy.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
