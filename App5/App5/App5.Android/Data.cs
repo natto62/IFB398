@@ -92,7 +92,8 @@ namespace MiCareApp.Droid
         public int facilityID { get; set; }
         public int residentID { get; set; }
         public string acfiScore { get; set; }
-        public int income { get; set; }
+        public decimal income { get; set; }
+        protected bool show = true;
 
         public int GetResidentID() {
             return residentID;
@@ -102,7 +103,7 @@ namespace MiCareApp.Droid
             return acfiScore;
         }
 
-        public int GetIncome() {
+        public decimal GetIncome() {
             return income;
         }
 
@@ -110,17 +111,27 @@ namespace MiCareApp.Droid
             return facilityID;
         }
 
+        public void Show(bool value)
+        {
+            show = value;
+        }
+
+        public bool GetShow()
+        {
+            return show;
+        }
+
     }
 
     public class BankBalance {
 
         public DateTime date { get; set; }
-        public int balance { get; set; }
+        public decimal balance { get; set; }
         public int facilityID { get; set; }
         protected bool show = true;
 
 
-        public double GetBankBalance() {
+        public decimal GetBankBalance() {
             return balance;
         }
 
@@ -153,7 +164,7 @@ namespace MiCareApp.Droid
 
         public DateTime Date { get; set; }
        // protected int InvoiceID;
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
         public int FacilityID { get; set; }
         protected bool show = true;
 
@@ -172,7 +183,7 @@ namespace MiCareApp.Droid
         //    return InvoiceID;
        // }
 
-        public double GetAgencyUsageAmount() {
+        public decimal GetAgencyUsageAmount() {
             return Amount;
         }
 
@@ -195,7 +206,7 @@ namespace MiCareApp.Droid
 
         public DateTime date { get; set; }
         // protected int InvoiceID;
-        public int hours { get; set; }
+        public decimal hours { get; set; }
         public int facilityID { get; set; }
         protected bool show = true;
 
@@ -207,7 +218,7 @@ namespace MiCareApp.Droid
         //    return BrokerageID;
         //}
 
-        public int GetBrokerageHours() {
+        public decimal GetBrokerageHours() {
             return hours;
         }
 
@@ -233,7 +244,7 @@ namespace MiCareApp.Droid
         public string residentFirstName { get; set; }
         public string residentLastName { get; set; }
         public int packageLevel { get; set; }
-        public int packageIncome { get; set; }
+        public decimal packageIncome { get; set; }
         protected bool show = true;
 
 
@@ -259,7 +270,7 @@ namespace MiCareApp.Droid
             return packageLevel;
         }
 
-        public int GetPackageIncome() {
+        public decimal GetPackageIncome() {
             return packageIncome;
         }
 
@@ -278,7 +289,8 @@ namespace MiCareApp.Droid
         //if the income is above or equal to 250.00 return true
         public bool IsGreen()
         {
-            if (packageIncome >= 250.0)
+            decimal greenVal = 250;
+            if (Decimal.Compare(packageIncome, greenVal) >= 0)
             {
                 return true;
             }
@@ -291,7 +303,8 @@ namespace MiCareApp.Droid
         //if the income is less than 150.00 return true
         public bool IsRed()
         {
-            if (packageIncome < 150.0)
+            decimal redVal = 150;
+            if (Decimal.Compare(packageIncome, redVal) < 0)
             {
                 return true;
             }
@@ -350,9 +363,9 @@ namespace MiCareApp.Droid
         public int facilityID { get; set; }
         public string staffFirstName { get; set; }
         public string staffLastName { get; set; }
-        public int alAccrued { get; set; }
-        public int lslAccrued { get; set; }
-        public int slAccrued { get; set; }
+        public decimal alAccrued { get; set; }
+        public decimal lslAccrued { get; set; }
+        public decimal slAccrued { get; set; }
         protected bool show = true;
 
         public int GetStaffID() {
@@ -371,15 +384,15 @@ namespace MiCareApp.Droid
             return staffLastName;
         }
 
-        public int GetAnnualLeaveAcrewed() {
+        public decimal GetAnnualLeaveAcrewed() {
             return alAccrued;
         }
 
-        public int GetLongServiceLeaveAcrewed() {
+        public decimal GetLongServiceLeaveAcrewed() {
             return lslAccrued;
         }
 
-        public int GetSickLeaveAcrewed() {
+        public decimal GetSickLeaveAcrewed() {
             return slAccrued;
         }
 
@@ -398,7 +411,7 @@ namespace MiCareApp.Droid
 
         public DateTime date { get; set; }
         // protected int InvoiceID;
-        public int income { get; set; }
+        public decimal income { get; set; }
         public int facilityID { get; set; }
         protected bool show = true;
 
@@ -411,7 +424,7 @@ namespace MiCareApp.Droid
             return facilityID;
         }
 
-        public double GetIncome() {
+        public decimal GetIncome() {
             return income;
         }
 
@@ -430,8 +443,8 @@ namespace MiCareApp.Droid
 
         public DateTime date { get; set; }
         public int facilityID { get; set; }
-        public int rosteredCost { get; set; }
-        public int budget { get; set; }
+        public decimal rosteredCost { get; set; }
+        public decimal budget { get; set; }
         protected bool show = true;
 
 
@@ -443,11 +456,11 @@ namespace MiCareApp.Droid
             return facilityID;
         }
 
-        public double GetRosteredCost() {
+        public decimal GetRosteredCost() {
             return rosteredCost;
         }
 
-        public double GetBudget() {
+        public decimal GetBudget() {
             return budget;
         }
 

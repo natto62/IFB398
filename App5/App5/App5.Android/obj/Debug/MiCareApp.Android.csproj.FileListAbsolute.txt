@@ -123,6 +123,13 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\MiC
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\bin\MiCareApp.MiCareApp.apk
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\settings.xml
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\viewpageroccupancy.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\MiCareApp.Android.csprojResolveAssemblyReference.cache
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\incomepage.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\incometable.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\acfipage.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\acfitable.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\bankpage.xml
+C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\res\layout\banktable.xml
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\Mono.Android.pdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\Mono.Data.Sqlite.pdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\mscorlib.pdb
@@ -174,7 +181,6 @@ C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\lin
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\Plugin.Settings.Abstractions.dll.mdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\Plugin.Settings.dll.mdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
-C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\MiCareApp.Android.csprojResolveAssemblyReference.cache
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\bin\Debug\MiCareApp.Android.dll.mdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
 C:\Users\Captain\Source\Repos\IFB398-MiCare\App5\App5\App5.Android\obj\Debug\android\assets\MiCareApp.Android.dll.mdb

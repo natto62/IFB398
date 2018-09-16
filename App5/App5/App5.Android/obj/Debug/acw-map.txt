@@ -2,6 +2,14 @@ App5.Droid.MoreInfo, MiCareApp.Android;md57a30dc1fe1034f6ad919fc99834ac28e.MoreI
 App5.Droid.MoreInfo, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
 App5.Droid.MoreInfo;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
 app5.droid.MoreInfo;md57a30dc1fe1034f6ad919fc99834ac28e.MoreInfo
+MiCareApp.Droid.ACFIPage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.ACFIPage
+MiCareApp.Droid.ACFIPage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.ACFIPage
+MiCareApp.Droid.ACFIPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.ACFIPage
+micareapp.droid.ACFIPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.ACFIPage
+MiCareApp.Droid.ACFIViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.ACFIViewAdapter
+MiCareApp.Droid.ACFIViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.ACFIViewAdapter
+MiCareApp.Droid.ACFIViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.ACFIViewAdapter
+micareapp.droid.ACFIViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.ACFIViewAdapter
 MiCareApp.Droid.Activity1, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1
 MiCareApp.Droid.Activity1, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1
 MiCareApp.Droid.Activity1;md5e9d4952e62f598bcc024ad4f9f0ef04b.Activity1
@@ -14,6 +22,14 @@ MiCareApp.Droid.AgencyUsageViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc02
 MiCareApp.Droid.AgencyUsageViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsageViewAdapter
 MiCareApp.Droid.AgencyUsageViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsageViewAdapter
 micareapp.droid.AgencyUsageViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.AgencyUsageViewAdapter
+MiCareApp.Droid.BankPage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.BankPage
+MiCareApp.Droid.BankPage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.BankPage
+MiCareApp.Droid.BankPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.BankPage
+micareapp.droid.BankPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.BankPage
+MiCareApp.Droid.BankViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.BankViewAdapter
+MiCareApp.Droid.BankViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.BankViewAdapter
+MiCareApp.Droid.BankViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.BankViewAdapter
+micareapp.droid.BankViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.BankViewAdapter
 MiCareApp.Droid.BrokerageHoursPage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.BrokerageHoursPage
 MiCareApp.Droid.BrokerageHoursPage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.BrokerageHoursPage
 MiCareApp.Droid.BrokerageHoursPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.BrokerageHoursPage
@@ -26,6 +42,14 @@ MiCareApp.Droid.FinanceMenu, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef0
 MiCareApp.Droid.FinanceMenu, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.FinanceMenu
 MiCareApp.Droid.FinanceMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.FinanceMenu
 micareapp.droid.FinanceMenu;md5e9d4952e62f598bcc024ad4f9f0ef04b.FinanceMenu
+MiCareApp.Droid.IncomePage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.IncomePage
+MiCareApp.Droid.IncomePage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.IncomePage
+MiCareApp.Droid.IncomePage;md5e9d4952e62f598bcc024ad4f9f0ef04b.IncomePage
+micareapp.droid.IncomePage;md5e9d4952e62f598bcc024ad4f9f0ef04b.IncomePage
+MiCareApp.Droid.IncomeViewAdapter, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.IncomeViewAdapter
+MiCareApp.Droid.IncomeViewAdapter, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.IncomeViewAdapter
+MiCareApp.Droid.IncomeViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.IncomeViewAdapter
+micareapp.droid.IncomeViewAdapter;md5e9d4952e62f598bcc024ad4f9f0ef04b.IncomeViewAdapter
 MiCareApp.Droid.IntroPage, MiCareApp.Android;md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage
 MiCareApp.Droid.IntroPage, MiCareApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage
 MiCareApp.Droid.IntroPage;md5e9d4952e62f598bcc024ad4f9f0ef04b.IntroPage

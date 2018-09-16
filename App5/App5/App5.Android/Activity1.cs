@@ -28,7 +28,7 @@ namespace MiCareApp.Droid
             currentUser = JsonConvert.DeserializeObject<User>(Intent.GetStringExtra("UserData"));
 
             //havn't commented this stuff yet, it will take a while
-            names = new string[] { "Agency Usage Data", "Brokerage Hours Data", "Home Care Package Data", "Salaries Wages Data" };
+            names = new string[] { "ACFI Funding Data", "Agency Usage Data", "Bank Balance", "Brokerage Hours Data", "Home Care Package Data", "Income Data", "Salaries Wages Data" };
 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ViewPager);

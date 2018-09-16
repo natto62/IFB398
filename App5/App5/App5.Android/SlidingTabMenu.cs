@@ -26,9 +26,12 @@ namespace MiCareApp.Droid
             this.type = type;
             fragments = new List<Android.Support.V4.App.Fragment>();
             if (type) {
+                fragments.Add(new ACFIPage());
                 fragments.Add(new AgencyUsagePage());
+                fragments.Add(new BankPage());
                 fragments.Add(new BrokerageHoursPage());
                 fragments.Add(new HomeCarePackagePage());
+                fragments.Add(new IncomePage());
                 fragments.Add(new SalariesWagesPage());
             } else {
                 fragments.Add(new OccupancyPage());
@@ -38,7 +41,7 @@ namespace MiCareApp.Droid
         }
 
         //number of tabs
-        public override int Count { get { if (type) { return 4; } else { return 2; } } }
+        public override int Count { get { if (type) { return 7; } else { return 2; } } }
 
         //get fragment via tab position
         public override Android.Support.V4.App.Fragment GetItem(int position)

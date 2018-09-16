@@ -2,7 +2,7 @@
 <xs:schema xmlns:tools="http://schemas.android.com/tools" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/tools" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>11/09/2018 4:49:51 PM</xs:documentation>
+    <xs:documentation>16/09/2018 5:50:40 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="layout">
     <xs:annotation>
@@ -39,8 +39,12 @@
             <xs:enumeration value="@layout/abc_search_dropdown_item_icons_2line" />
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
+            <xs:enumeration value="@layout/acfipage" />
+            <xs:enumeration value="@layout/acfitable" />
             <xs:enumeration value="@layout/agencyusagepage" />
             <xs:enumeration value="@layout/agencyusagetable" />
+            <xs:enumeration value="@layout/bankpage" />
+            <xs:enumeration value="@layout/banktable" />
             <xs:enumeration value="@layout/brokeragehourspage" />
             <xs:enumeration value="@layout/brokeragehourstable" />
             <xs:enumeration value="@layout/datapage" />
@@ -63,6 +67,8 @@
             <xs:enumeration value="@layout/home" />
             <xs:enumeration value="@layout/homecarepackagepage" />
             <xs:enumeration value="@layout/homecarepackagetable" />
+            <xs:enumeration value="@layout/incomepage" />
+            <xs:enumeration value="@layout/incometable" />
             <xs:enumeration value="@layout/intropage" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -167,8 +173,12 @@
             <xs:enumeration value="@layout/abc_search_dropdown_item_icons_2line" />
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
+            <xs:enumeration value="@layout/acfipage" />
+            <xs:enumeration value="@layout/acfitable" />
             <xs:enumeration value="@layout/agencyusagepage" />
             <xs:enumeration value="@layout/agencyusagetable" />
+            <xs:enumeration value="@layout/bankpage" />
+            <xs:enumeration value="@layout/banktable" />
             <xs:enumeration value="@layout/brokeragehourspage" />
             <xs:enumeration value="@layout/brokeragehourstable" />
             <xs:enumeration value="@layout/datapage" />
@@ -191,6 +201,8 @@
             <xs:enumeration value="@layout/home" />
             <xs:enumeration value="@layout/homecarepackagepage" />
             <xs:enumeration value="@layout/homecarepackagetable" />
+            <xs:enumeration value="@layout/incomepage" />
+            <xs:enumeration value="@layout/incometable" />
             <xs:enumeration value="@layout/intropage" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -295,8 +307,12 @@
             <xs:enumeration value="@layout/abc_search_dropdown_item_icons_2line" />
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
+            <xs:enumeration value="@layout/acfipage" />
+            <xs:enumeration value="@layout/acfitable" />
             <xs:enumeration value="@layout/agencyusagepage" />
             <xs:enumeration value="@layout/agencyusagetable" />
+            <xs:enumeration value="@layout/bankpage" />
+            <xs:enumeration value="@layout/banktable" />
             <xs:enumeration value="@layout/brokeragehourspage" />
             <xs:enumeration value="@layout/brokeragehourstable" />
             <xs:enumeration value="@layout/datapage" />
@@ -319,6 +335,8 @@
             <xs:enumeration value="@layout/home" />
             <xs:enumeration value="@layout/homecarepackagepage" />
             <xs:enumeration value="@layout/homecarepackagetable" />
+            <xs:enumeration value="@layout/incomepage" />
+            <xs:enumeration value="@layout/incometable" />
             <xs:enumeration value="@layout/intropage" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -423,8 +441,12 @@
             <xs:enumeration value="@layout/abc_search_dropdown_item_icons_2line" />
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
+            <xs:enumeration value="@layout/acfipage" />
+            <xs:enumeration value="@layout/acfitable" />
             <xs:enumeration value="@layout/agencyusagepage" />
             <xs:enumeration value="@layout/agencyusagetable" />
+            <xs:enumeration value="@layout/bankpage" />
+            <xs:enumeration value="@layout/banktable" />
             <xs:enumeration value="@layout/brokeragehourspage" />
             <xs:enumeration value="@layout/brokeragehourstable" />
             <xs:enumeration value="@layout/datapage" />
@@ -447,6 +469,8 @@
             <xs:enumeration value="@layout/home" />
             <xs:enumeration value="@layout/homecarepackagepage" />
             <xs:enumeration value="@layout/homecarepackagetable" />
+            <xs:enumeration value="@layout/incomepage" />
+            <xs:enumeration value="@layout/incometable" />
             <xs:enumeration value="@layout/intropage" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />

@@ -70,13 +70,19 @@
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="25.4.0.2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ACFIPage.cs" />
+    <Compile Include="ACFIViewAdapter.cs" />
     <Compile Include="Activity1.cs" />
     <Compile Include="AgencyUsagePage.cs" />
     <Compile Include="AgencyUsageViewAdapter.cs" />
+    <Compile Include="BankPage.cs" />
+    <Compile Include="BankViewAdapter.cs" />
     <Compile Include="BrokerageHoursPage.cs" />
     <Compile Include="BrokerageHoursViewAdapter.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="FinanceMenu.cs" />
+    <Compile Include="IncomePage.cs" />
+    <Compile Include="IncomeViewAdapter.cs" />
     <Compile Include="IntroPage.cs" />
     <Compile Include="HomeCarePackagePage.cs" />
     <Compile Include="MainActivity.cs" />
@@ -168,6 +174,24 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\ViewPagerOccupancy.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\IncomePage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\IncomeTable.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ACFIPage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ACFITable.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\BankPage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\BankTable.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
