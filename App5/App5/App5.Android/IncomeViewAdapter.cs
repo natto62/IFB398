@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Globalization;
 
 namespace MiCareApp.Droid
 {
@@ -98,7 +99,7 @@ namespace MiCareApp.Droid
             }
 
             txtDateIncome.Text = Items[position].GetDate().ToShortDateString();
-            txtIncomeIncome.Text = "$ " + Items[position].GetIncome().ToString();
+            txtIncomeIncome.Text = "$ " + Items[position].GetIncome().ToString("#,#", CultureInfo.InvariantCulture);
 
             return row;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -60,8 +61,9 @@ namespace MiCareApp.Droid
             bool DateSwitchMode = preferences.GetBoolean("DateSwitchMode", false);
 
             TextView txtDateSalariesWages = row.FindViewById<TextView>(Resource.Id.txtDateSalariesWages);
-            TextView txtRosteredCostSalariesWages = row.FindViewById<TextView>(Resource.Id.txtRosteredCostSalariesWages);
-            TextView txtBudgetSalariesWages = row.FindViewById<TextView>(Resource.Id.txtBudgetSalariesWages);
+            TextView txtRosteredCostSalariesWages = row.FindViewById<TextView>(Resource.Id.txtActualCostSalariesWages);
+            TextView txtBudgetSalariesWages = row.FindViewById<TextView>(Resource.Id.txtBudgetCostSalariesWages);
+            TextView txtVarianceSalariesWages = row.FindViewById<TextView>(Resource.Id.txtVarianceSalariesWages);
 
             switch (textSize)
             {
@@ -69,16 +71,19 @@ namespace MiCareApp.Droid
                     txtDateSalariesWages.TextSize = 10;
                     txtRosteredCostSalariesWages.TextSize = 10;
                     txtBudgetSalariesWages.TextSize = 10;
+                    txtVarianceSalariesWages.TextSize = 10;
                     break;
                 case 1:
                     txtDateSalariesWages.TextSize = 15;
                     txtRosteredCostSalariesWages.TextSize = 15;
                     txtBudgetSalariesWages.TextSize = 15;
+                    txtVarianceSalariesWages.TextSize = 15;
                     break;
                 case 2:
                     txtDateSalariesWages.TextSize = 20;
                     txtRosteredCostSalariesWages.TextSize = 20;
                     txtBudgetSalariesWages.TextSize = 20;
+                    txtVarianceSalariesWages.TextSize = 20;
                     break;
             }
 
@@ -87,11 +92,13 @@ namespace MiCareApp.Droid
                 txtDateSalariesWages.SetTextColor(Color.White);
                 txtRosteredCostSalariesWages.SetTextColor(Color.White);
                 txtBudgetSalariesWages.SetTextColor(Color.White);
+                txtVarianceSalariesWages.SetTextColor(Color.White);
             } else {
                 row.SetBackgroundColor(Color.White);
                 txtDateSalariesWages.SetTextColor(Color.Black);
                 txtRosteredCostSalariesWages.SetTextColor(Color.Black);
                 txtBudgetSalariesWages.SetTextColor(Color.Black);
+                txtVarianceSalariesWages.SetTextColor(Color.Black);
             }
 
             if (DateSwitchMode) {
@@ -102,8 +109,9 @@ namespace MiCareApp.Droid
 
 
             txtDateSalariesWages.Text = Items[position].GetDate().ToShortDateString();
-            txtRosteredCostSalariesWages.Text = "$ " + Items[position].GetRosteredCost().ToString();
-            txtBudgetSalariesWages.Text = "$ " + Items[position].GetBudget().ToString();
+            txtRosteredCostSalariesWages.Text = "$ " + Items[position].GetActualCost().ToString("#,#", CultureInfo.InvariantCulture);
+            txtVarianceSalariesWages.Text = "$ " + Items[position].GetVariance().ToString("#,#", CultureInfo.InvariantCulture);
+            txtBudgetSalariesWages.Text = "$ " + Items[position].GetBudget().ToString("#,#", CultureInfo.InvariantCulture);
 
             return row;
         }

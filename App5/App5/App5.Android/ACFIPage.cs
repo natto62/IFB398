@@ -29,12 +29,14 @@ namespace MiCareApp.Droid
         private int clickNumResident = 0;
         private int clickNumScore = 0;
         private int clickNumIncome = 0;
+        private int clickExpirationDate = 0;
 
         private ACFIViewAdapter adapter;
 
         private WebClient client;
         private Uri url;
         private TextView NumItems;
+        private TextView AvgIncome;
 
         private Toast toastMessage;
 
@@ -54,10 +56,14 @@ namespace MiCareApp.Droid
             //Display the number of items at the bottom of the page
             NumItems = view.FindViewById<TextView>(Resource.Id.txtNumACFIData);
 
+            //AVG income per resident monthly
+            AvgIncome = view.FindViewById<TextView>(Resource.Id.ACFIAvgValue);
+
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
             Button ResidentBtn = view.FindViewById<Button>(Resource.Id.ResidentIDTextACFI);
             Button ScoreBtn = view.FindViewById<Button>(Resource.Id.ScoreTextACFI);
             Button IncomeBtn = view.FindViewById<Button>(Resource.Id.IncomeTextACFI);
+            Button ExpirationDateBtn = view.FindViewById<Button>(Resource.Id.ExpirationDateTextACFI);
 
             //setup Spinner
             Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
@@ -66,6 +72,14 @@ namespace MiCareApp.Droid
             var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
+
+            //setup Month Spinner
+            Spinner MonthSpinner = view.FindViewById<Spinner>(Resource.Id.MonthSpinner);
+            MonthSpinner.Clickable = false;
+            MonthSpinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_MonthItemSelected);
+            var MonthSpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.MonthArray, Android.Resource.Layout.SimpleSpinnerItem);
+            MonthSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            MonthSpinner.Adapter = MonthSpinnerAdapter;
 
             client = new WebClient();
             url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
@@ -114,6 +128,7 @@ namespace MiCareApp.Droid
                     clickNumResident++;
                     clickNumScore = 0;
                     clickNumIncome = 0;
+                    clickExpirationDate = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -133,6 +148,7 @@ namespace MiCareApp.Droid
                     clickNumScore++;
                     clickNumResident = 0;
                     clickNumIncome = 0;
+                    clickExpirationDate = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -152,6 +168,7 @@ namespace MiCareApp.Droid
                     clickNumIncome++;
                     clickNumResident = 0;
                     clickNumScore = 0;
+                    clickExpirationDate = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -162,7 +179,46 @@ namespace MiCareApp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
+            ExpirationDateBtn.Click += delegate {
+                if (clickExpirationDate == 0) {
+                    dataItems.Sort(delegate (ACFIFunding one, ACFIFunding two) {
+                        return DateTime.Compare(one.GetExpirationDate(), two.GetExpirationDate());
+                    });
+                    clickExpirationDate++;
+                    clickNumResident = 0;
+                    clickNumScore = 0;
+                    clickNumIncome = 0;
+                    //reverse list if clicked a second time in a row
+                }
+                else
+                {
+                    dataItems.Reverse();
+                    clickExpirationDate = 0;
+                }
+                adapter.NotifyDataSetChanged();
+
+            };
+
             return view;
+        }
+
+        private void Spinner_MonthItemSelected(object sender, AdapterView.ItemSelectedEventArgs e) {
+            Spinner spinner = (Spinner)sender;
+            int position = e.Position;
+            if (position == 0) {
+                AvgIncome.Text = "";
+            } else { 
+                decimal totalAmount = 0;
+                decimal numItems = 0;
+                foreach (ACFIFunding item in displayItems) {
+                    if (position == item.GetDate().Month) {
+                        numItems = numItems + 1;
+                        totalAmount = totalAmount + item.GetIncome();
+                    }
+                }
+                decimal avgValue = totalAmount/numItems;
+                AvgIncome.Text = "$ " + avgValue.ToString();
+            }
         }
 
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)

@@ -7,27 +7,36 @@
     android:minHeight="25px"
     android:weightSum="99">
     <TextView
-        android:text="Rostered Cost"
+        android:text="Actual Cost"
         android:layout_width="match_parent"
-        android:layout_weight="36"
+        android:layout_weight="25"
         android:layout_height="wrap_content"
-        android:id="@+id/txtRosteredCostSalariesWages"
+        android:id="@+id/txtActualCostSalariesWages"
         android:textSize="15sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp" />
     <TextView
-        android:text="Budget"
+        android:text="Budget Cost"
         android:layout_width="match_parent"
-        android:layout_weight="33"
+        android:layout_weight="25"
         android:layout_height="wrap_content"
-        android:id="@+id/txtBudgetSalariesWages"
+        android:id="@+id/txtBudgetCostSalariesWages"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+	<TextView
+        android:text="Variance"
+        android:layout_width="match_parent"
+        android:layout_weight="25"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtVarianceSalariesWages"
         android:textSize="15sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp" />
     <TextView
         android:text="Date"
         android:layout_width="match_parent"
-        android:layout_weight="30"
+        android:layout_weight="25"
         android:layout_height="wrap_content"
         android:id="@+id/txtDateSalariesWages"
         android:textSize="15sp"

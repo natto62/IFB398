@@ -60,43 +60,49 @@ namespace MiCareApp.Droid
             bool DateSwitchMode = preferences.GetBoolean("DateSwitchMode", false);
 
             TextView txtDateOccupancy = row.FindViewById<TextView>(Resource.Id.txtDateOccupancy);
-            TextView txtOccupancyOccupancy = row.FindViewById<TextView>(Resource.Id.txtOccupancyOccupancy);
-            TextView txtConcessionalOccupancy = row.FindViewById<TextView>(Resource.Id.txtConcessionalOccupancy);
-            TextView txtCareTypeOccupancy = row.FindViewById<TextView>(Resource.Id.txtCareTypeOccupancy);
+            TextView txtActualBedsOccupancy = row.FindViewById<TextView>(Resource.Id.txtActualBedsOccupancy);
+            TextView txtSupportedOccupancy = row.FindViewById<TextView>(Resource.Id.txtSupportedOccupancy);
+            TextView txtOccupancyRateOccupancy = row.FindViewById<TextView>(Resource.Id.txtOccupancyRateOccupancy);
+            TextView txtBedDaysOccupancy = row.FindViewById<TextView>(Resource.Id.txtBedDaysOccupancy);
 
             switch (textSize) {
                 case 0:
                     txtDateOccupancy.TextSize = 10;
-                    txtOccupancyOccupancy.TextSize = 10;
-                    txtConcessionalOccupancy.TextSize = 10;
-                    txtCareTypeOccupancy.TextSize = 10;
+                    txtActualBedsOccupancy.TextSize = 10;
+                    txtSupportedOccupancy.TextSize = 10;
+                    txtOccupancyRateOccupancy.TextSize = 10;
+                    txtBedDaysOccupancy.TextSize = 10;
                     break;
                 case 1:
                     txtDateOccupancy.TextSize = 15;
-                    txtOccupancyOccupancy.TextSize = 15;
-                    txtConcessionalOccupancy.TextSize = 15;
-                    txtCareTypeOccupancy.TextSize = 15;
+                    txtActualBedsOccupancy.TextSize = 15;
+                    txtSupportedOccupancy.TextSize = 15;
+                    txtOccupancyRateOccupancy.TextSize = 15;
+                    txtBedDaysOccupancy.TextSize = 15;
                     break;
                 case 2:
                     txtDateOccupancy.TextSize = 20;
-                    txtOccupancyOccupancy.TextSize = 20;
-                    txtConcessionalOccupancy.TextSize = 20;
-                    txtCareTypeOccupancy.TextSize = 20;
+                    txtActualBedsOccupancy.TextSize = 20;
+                    txtSupportedOccupancy.TextSize = 20;
+                    txtOccupancyRateOccupancy.TextSize = 20;
+                    txtBedDaysOccupancy.TextSize = 20;
                     break;
             }
 
             if (NightSwitchMode) {
                 row.SetBackgroundColor(Color.Black);
                 txtDateOccupancy.SetTextColor(Color.White);
-                txtOccupancyOccupancy.SetTextColor(Color.White);
-                txtConcessionalOccupancy.SetTextColor(Color.White);
-                txtCareTypeOccupancy.SetTextColor(Color.White);
+                txtActualBedsOccupancy.SetTextColor(Color.White);
+                txtSupportedOccupancy.SetTextColor(Color.White);
+                txtOccupancyRateOccupancy.SetTextColor(Color.White);
+                txtBedDaysOccupancy.SetTextColor(Color.White);
             } else {
                 row.SetBackgroundColor(Color.White);
                 txtDateOccupancy.SetTextColor(Color.Black);
-                txtOccupancyOccupancy.SetTextColor(Color.Black);
-                txtConcessionalOccupancy.SetTextColor(Color.Black);
-                txtCareTypeOccupancy.SetTextColor(Color.Black);
+                txtActualBedsOccupancy.SetTextColor(Color.Black);
+                txtSupportedOccupancy.SetTextColor(Color.Black);
+                txtOccupancyRateOccupancy.SetTextColor(Color.Black);
+                txtBedDaysOccupancy.SetTextColor(Color.Black);
             }
 
             if (DateSwitchMode) {
@@ -104,11 +110,12 @@ namespace MiCareApp.Droid
                     return DateTime.Compare(one.GetDate(), two.GetDate());
                 });
             }
-
+            //fix formatting later
             txtDateOccupancy.Text = Items[position].GetDate().ToShortDateString();
-            txtOccupancyOccupancy.Text = Items[position].GetOccupancy().ToString();
-            txtCareTypeOccupancy.Text = Items[position].GetCareType();
-            txtConcessionalOccupancy.Text = Items[position].GetConcessional().ToString();
+            txtActualBedsOccupancy.Text = Items[position].GetActualBeds().ToString();
+            txtOccupancyRateOccupancy.Text = Items[position].GetOccupancyRate().ToString();
+            txtSupportedOccupancy.Text = Items[position].GetSupported().ToString();
+            txtBedDaysOccupancy.Text = Items[position].GetTotalBedDays().ToString();
 
             return row;
         }

@@ -27,15 +27,17 @@ namespace MiCareApp.Droid
         private List<OccupancyData> displayItems;
 
         private int clickNumDate = 0;
-        private int clickNumOccupancy = 0;
-        private int clickNumConcessional = 0;
-        private int clickNumCareType = 0;
+        private int clickNumActualBeds = 0;
+        private int clickNumSupported = 0;
+        private int clickNumOccupancyRate = 0;
+        private int clickNumTotalBedDays = 0;
 
         private OccupancyViewAdapter adapter;
 
         private WebClient client;
         private Uri url;
         private TextView NumItems;
+        private TextView TotalBedsValue;
 
         private Toast toastMessage;
 
@@ -56,9 +58,13 @@ namespace MiCareApp.Droid
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
             Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextOccupancy);
-            Button OccupancyBtn = view.FindViewById<Button>(Resource.Id.OccupancyTextOccupancy);
-            Button CareTypeBtn = view.FindViewById<Button>(Resource.Id.CareTypeTextOccupancy);
-            Button ConcessionalBtn = view.FindViewById<Button>(Resource.Id.ConcessionalTextOccupancy);
+            Button ActualBedsBtn = view.FindViewById<Button>(Resource.Id.ActualBedsTextOccupancy);
+            Button OccupancyRateBtn = view.FindViewById<Button>(Resource.Id.OccupancyRateTextOccupancy);
+            Button SupportedBtn = view.FindViewById<Button>(Resource.Id.SupportedTextOccupancy);
+            Button TotalBedDaysBtn = view.FindViewById<Button>(Resource.Id.BedDaysTextOccupancy);
+
+            //setup textview
+            TotalBedsValue = view.FindViewById<TextView>(Resource.Id.TotalBedsValue);
 
             //setup Spinner
             Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
@@ -112,10 +118,11 @@ namespace MiCareApp.Droid
                         return DateTime.Compare(one.GetDate(), two.GetDate());
                     });
                     clickNumDate++;
-                    clickNumOccupancy = 0;
-                    clickNumConcessional = 0;
-                    clickNumCareType = 0;
-                //reverse list if clicked a second time in a row
+                    clickNumActualBeds = 0;
+                    clickNumSupported = 0;
+                    clickNumOccupancyRate = 0;
+                    clickNumTotalBedDays = 0;
+                    //reverse list if clicked a second time in a row
                 } else {
                     dataItems.Reverse();
                     clickNumDate = 0;
@@ -123,60 +130,83 @@ namespace MiCareApp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
-            OccupancyBtn.Click += delegate {
-                if (clickNumOccupancy == 0) {
+            ActualBedsBtn.Click += delegate {
+                if (clickNumActualBeds == 0) {
                     dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
-                        return one.GetOccupancy().CompareTo(two.GetOccupancy());
+                        return one.GetActualBeds().CompareTo(two.GetActualBeds());
                     });
-                    clickNumOccupancy++;
+                    clickNumActualBeds++;
                     clickNumDate = 0;
-                    clickNumConcessional = 0;
-                    clickNumCareType = 0;
+                    clickNumSupported = 0;
+                    clickNumOccupancyRate = 0;
+                    clickNumTotalBedDays = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
                 {
                     dataItems.Reverse();
-                    clickNumOccupancy = 0;
+                    clickNumActualBeds = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };
 
-            CareTypeBtn.Click += delegate {
-                if (clickNumCareType == 0)
+            OccupancyRateBtn.Click += delegate {
+                if (clickNumOccupancyRate == 0)
                 {
                     dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
-                        return string.Compare(one.GetCareType(), two.GetCareType());
+                        return one.GetOccupancyRate().CompareTo(two.GetOccupancyRate());
                     });
-                    clickNumCareType++;
-                    clickNumOccupancy = 0;
+                    clickNumOccupancyRate++;
+                    clickNumActualBeds = 0;
                     clickNumDate = 0;
-                    clickNumConcessional = 0;
+                    clickNumSupported = 0;
+                    clickNumTotalBedDays = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
                 {
                     dataItems.Reverse();
-                    clickNumCareType = 0;
+                    clickNumOccupancyRate = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };
 
-            ConcessionalBtn.Click += delegate {
-                if (clickNumConcessional == 0) {
+            SupportedBtn.Click += delegate {
+                if (clickNumSupported == 0) {
                     dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
-                        return one.GetConcessional().CompareTo(two.GetConcessional());
+                        return one.GetSupported().CompareTo(two.GetSupported());
                     });
-                    clickNumConcessional++;
-                    clickNumOccupancy = 0;
+                    clickNumSupported++;
+                    clickNumActualBeds = 0;
                     clickNumDate = 0;
-                    clickNumCareType = 0;
+                    clickNumOccupancyRate = 0;
+                    clickNumTotalBedDays = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
                 {
                     dataItems.Reverse();
-                    clickNumConcessional = 0;
+                    clickNumSupported = 0;
+                }
+                adapter.NotifyDataSetChanged();
+            };
+
+            TotalBedDaysBtn.Click += delegate {
+                if (clickNumTotalBedDays == 0) {
+                    dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
+                        return one.GetTotalBedDays().CompareTo(two.GetTotalBedDays());
+                    });
+                    clickNumTotalBedDays++;
+                    clickNumActualBeds = 0;
+                    clickNumDate = 0;
+                    clickNumOccupancyRate = 0;
+                    clickNumSupported = 0;
+                    //reverse list if clicked a second time in a row
+                }
+                else
+                {
+                    dataItems.Reverse();
+                    clickNumTotalBedDays = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };
@@ -189,19 +219,20 @@ namespace MiCareApp.Droid
             Spinner spinner = (Spinner)sender;
             int ID;
             int position = e.Position;
-            foreach (OccupancyData item in displayItems)
-            {
+            int getOnce = 0;
+            foreach (OccupancyData item in displayItems) {
                 ID = item.GetFacilityID();
-                if (ID == position)
-                {
+                if (ID == position) {
                     item.Show(false);
+                    if (getOnce == 0) {
+                        TotalBedsValue.Text = item.GetTotalBeds().ToString();
+                        getOnce++;
+                    }
                     if (!dataItems.Contains(item))
                     {
                         dataItems.Add(item);
                     }
-                }
-                else
-                {
+                } else {
                     item.Show(true);
                     if (position > 0)
                     {

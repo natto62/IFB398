@@ -6,6 +6,39 @@
     android:layout_height="match_parent"
     android:theme="@android:style/Theme.Material.Light"
     android:weightSum="100">
+	<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_weight="0"
+        android:background="#ffffff"
+        android:weightSum="100">
+        <TextView
+            android:text="Total Beds in Facility: "
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/textView1"
+            android:textSize="15sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center" />
+        <TextView
+            android:text="  "
+            android:layout_width="wrap_content"
+            android:layout_weight="30"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/TotalBedsValue"
+            android:textSize="15sp"
+            android:textColor="@color/abc_secondary_text_material_light"
+            android:background="@drawable/tablebuttonstyles" />
+    </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -48,49 +81,58 @@
             android:background="@drawable/RefreshButtonIcon"
             android:textSize="15sp" />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:weightSum="100">
-        <Button
-            android:text="Occupancy"
-            android:layout_width="match_parent"
-            android:layout_weight="25"
-            android:layout_height="fill_parent"
-            android:id="@+id/OccupancyTextOccupancy"
-            android:textSize="12sp"
-            android:textColor="@color/abc_secondary_text_material_light"
-            android:background="@drawable/tablebuttonstyles" />
-        <Button
-            android:text="Concessional"
-            android:layout_width="match_parent"
-            android:layout_weight="25"
-            android:layout_height="fill_parent"
-            android:id="@+id/ConcessionalTextOccupancy"
-            android:textSize="12sp"
-            android:textColor="@color/abc_secondary_text_material_light"
-            android:background="@drawable/tablebuttonstyles" />
-        <Button
-            android:text="Care Type"
-            android:layout_width="match_parent"
-            android:layout_weight="25"
-            android:layout_height="fill_parent"
-            android:id="@+id/CareTypeTextOccupancy"
-            android:textSize="12sp"
-            android:textColor="@color/abc_secondary_text_material_light"
-            android:background="@drawable/tablebuttonstyles" />
-        <Button
-            android:text="Date"
-            android:layout_width="match_parent"
-            android:layout_weight="25"
-            android:layout_height="fill_parent"
-            android:id="@+id/DateTextOccupancy"
-            android:textSize="12sp"
-            android:textColor="@color/abc_secondary_text_material_light"
-            android:background="@drawable/tablebuttonstyles" />
-    </LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="0"
+		android:weightSum="100">
+		<Button
+			android:text="Actual Beds"
+			android:layout_width="match_parent"
+			android:layout_weight="21"
+			android:layout_height="fill_parent"
+			android:id="@+id/ActualBedsTextOccupancy"
+			android:textSize="12sp"
+			android:textColor="@color/abc_secondary_text_material_light"
+			android:background="@drawable/tablebuttonstyles" />
+		<Button
+			android:text="Total Bed Days"
+			android:layout_width="match_parent"
+			android:layout_weight="21"
+			android:layout_height="fill_parent"
+			android:id="@+id/BedDaysTextOccupancy"
+			android:textSize="12sp"
+			android:textColor="@color/abc_secondary_text_material_light"
+			android:background="@drawable/tablebuttonstyles" />
+		<Button
+			android:text="Occupancy Rate (%)"
+			android:layout_width="match_parent"
+			android:layout_weight="20"
+			android:layout_height="fill_parent"
+			android:id="@+id/OccupancyRateTextOccupancy"
+			android:textSize="12sp"
+			android:textColor="@color/abc_secondary_text_material_light"
+			android:background="@drawable/tablebuttonstyles" />
+		<Button
+			android:text="Supported (%)"
+			android:layout_width="match_parent"
+			android:layout_weight="20"
+			android:layout_height="fill_parent"
+			android:id="@+id/SupportedTextOccupancy"
+			android:textSize="12sp"
+			android:textColor="@color/abc_secondary_text_material_light"
+			android:background="@drawable/tablebuttonstyles" />
+		<Button
+			android:text="Date"
+			android:layout_width="match_parent"
+			android:layout_weight="18"
+			android:layout_height="fill_parent"
+			android:id="@+id/DateTextOccupancy"
+			android:textSize="12sp"
+			android:textColor="@color/abc_secondary_text_material_light"
+			android:background="@drawable/tablebuttonstyles" />
+	</LinearLayout>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"

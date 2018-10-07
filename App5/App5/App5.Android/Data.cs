@@ -93,7 +93,17 @@ namespace MiCareApp.Droid
         public int residentID { get; set; }
         public string acfiScore { get; set; }
         public decimal income { get; set; }
+        public DateTime date { get; set; }
+        public DateTime expiration { get; set; }
         protected bool show = true;
+
+        public DateTime GetDate() {
+            return date;
+        }
+
+        public DateTime GetExpirationDate() {
+            return expiration;
+        }
 
         public int GetResidentID() {
             return residentID;
@@ -127,7 +137,7 @@ namespace MiCareApp.Droid
 
         public DateTime date { get; set; }
         public decimal balance { get; set; }
-        public int facilityID { get; set; }
+        //public int facilityID { get; set; }
         protected bool show = true;
 
 
@@ -139,10 +149,10 @@ namespace MiCareApp.Droid
             return date;
         }
 
-        public int GetFacilityID()
-        {
-            return facilityID;
-        }
+        //public int GetFacilityID()
+        //{
+        //    return facilityID;
+        //}
 
         public void UpdateBankBalance(DateTime Date, int Balance) {
             this.date = Date;
@@ -208,6 +218,7 @@ namespace MiCareApp.Droid
         // protected int InvoiceID;
         public decimal hours { get; set; }
         public int facilityID { get; set; }
+        public string location { get; set; }
         protected bool show = true;
 
         public DateTime GetDate() {
@@ -217,6 +228,10 @@ namespace MiCareApp.Droid
         //public int GetBrokerageID() {
         //    return BrokerageID;
         //}
+
+        public string GetLocation() {
+            return location;
+        }
 
         public decimal GetBrokerageHours() {
             return hours;
@@ -322,6 +337,7 @@ namespace MiCareApp.Droid
         public string careType { get; set; }
         public int occupancy { get; set; }
         public int concessional { get; set; }
+        public int totalbeds { get; set; }
         protected bool show = true;
 
 
@@ -337,12 +353,34 @@ namespace MiCareApp.Droid
             return careType;
         }
 
-        public int GetOccupancy() {
+        public int GetActualBeds() {
             return occupancy;
         }
 
-        public int GetConcessional() {
+        public int GetSupported() {
             return concessional;
+        }
+
+        public int GetTotalBeds() {
+            return totalbeds;
+        }
+
+        public int GetTotalBedDays() {
+            int totalBedDays = 0;
+            int year = DateTime.Now.Year;
+            if (DateTime.IsLeapYear(year)) {//leap year
+                totalBedDays = totalbeds * 366;
+            } else {
+                totalBedDays = totalbeds * 365;
+            }
+            return totalBedDays;
+        }
+
+        public double GetOccupancyRate() {
+            int bedDays = GetTotalBedDays();
+            double OccupancyRate = 0.0;
+            OccupancyRate = bedDays / (30 * (totalbeds - occupancy - concessional));
+            return OccupancyRate;
         }
 
         public void Show(bool value)
@@ -411,8 +449,13 @@ namespace MiCareApp.Droid
 
         public DateTime date { get; set; }
         // protected int InvoiceID;
-        public decimal income { get; set; }
+        public decimal totalPackageIncome { get; set; }
+        public decimal businessService { get; set; }
+        public decimal settlementService { get; set; }
+        public string facilityName { get; set; }
+        public string location { get; set; }
         public int facilityID { get; set; }
+        protected static string type = "";
         protected bool show = true;
 
 
@@ -424,8 +467,28 @@ namespace MiCareApp.Droid
             return facilityID;
         }
 
+        public void SetType(string typeVal) {
+            type = typeVal;
+        }
+
         public decimal GetIncome() {
-            return income;
+            decimal returnVal = 0;
+            if (String.Equals(type,"Total Package Income")) {
+                returnVal = totalPackageIncome;
+            } else if (String.Equals(type, "Business Service")) {
+                returnVal = businessService;
+            } else if (String.Equals(type, "Settlement Service")) {
+                returnVal = settlementService;
+            }
+            return returnVal;
+        }
+
+        public string GetFacilityName() {
+            return facilityName;
+        }
+
+        public string GetLocation() {
+            return location;
         }
 
         public void Show(bool value)
@@ -456,12 +519,16 @@ namespace MiCareApp.Droid
             return facilityID;
         }
 
-        public decimal GetRosteredCost() {
+        public decimal GetActualCost() {
             return rosteredCost;
         }
 
         public decimal GetBudget() {
             return budget;
+        }
+
+        public decimal GetVariance() {
+            return (budget - rosteredCost);
         }
 
         public void Show(bool value)

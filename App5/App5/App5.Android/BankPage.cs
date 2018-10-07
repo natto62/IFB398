@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Specialized;
+using App5.Droid;
 
 namespace MiCareApp.Droid
 {
@@ -34,6 +35,9 @@ namespace MiCareApp.Droid
         private WebClient client;
         private Uri url;
         private TextView NumItems;
+        private TextView BankBalanceView;
+
+        private Button GraphButton;
 
         private Toast toastMessage;
 
@@ -57,13 +61,20 @@ namespace MiCareApp.Droid
             Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextBank);
             Button BalanceBtn = view.FindViewById<Button>(Resource.Id.BalanceTextBank);
 
-            //setup Spinner
-            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
-            spinner.Clickable = false;
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
-            SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = SpinnerAdapter;
+            //setup bank balance textview
+            BankBalanceView = view.FindViewById<TextView>(Resource.Id.BankBalanceValue);
+
+            //setup progress bar
+            ProgressBar ClientProgress = view.FindViewById<ProgressBar>(Resource.Id.ClientProgress);
+
+            //setup graph button
+            GraphButton = view.FindViewById<Button>(Resource.Id.GraphButton);
+            GraphButton.Enabled = false;
+            GraphButton.Click += delegate {
+                var transaction = ChildFragmentManager.BeginTransaction();
+                BankBalanceGraph info = new BankBalanceGraph(dataItems);
+                info.Show(transaction, "dialog fragment");
+            };
 
             client = new WebClient();
             url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
@@ -74,10 +85,9 @@ namespace MiCareApp.Droid
             RefreshBtn.Click += delegate {
                 RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
                 toastMessage.Show();
-                spinner.SetSelection(0);
                 dataItems.Clear();
                 displayItems.Clear();
-                spinner.Clickable = false;
+                GraphButton.Enabled = false;
 
                 NameValueCollection values = new NameValueCollection();
                 values.Add("Type", "Bank");
@@ -85,19 +95,38 @@ namespace MiCareApp.Droid
                 client.UploadValuesAsync(url, values);
             };
 
+            client.UploadProgressChanged += delegate (object sender, UploadProgressChangedEventArgs e) {
+                ClientProgress.Progress += e.ProgressPercentage;
+            };
+
             client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
                 Activity.RunOnUiThread(() => {
                     string json = Encoding.UTF8.GetString(e.Result);
                     dataItems = JsonConvert.DeserializeObject<List<BankBalance>>(json);
                     adapter = new BankViewAdapter(this.Context, dataItems);//this
-                    foreach (BankBalance item in dataItems)
-                    {
+
+                    foreach (BankBalance item in dataItems) {
                         displayItems.Add(item);
                     }
                     NumItems.Text = dataItems.Count.ToString();
+                    GraphButton.Enabled = true;
+
+                    //create variables used to find the latest bank balance value
+                    DateTime latestDate = new DateTime(1000, 1, 1);
+                    string BankBalanceValue = "";
+
+                    foreach (BankBalance item in displayItems) {
+                        DateTime dateOfItem = item.GetDate();
+                        int result = DateTime.Compare(dateOfItem, latestDate);
+                        //if dateOfItem is later than latestDate
+                        if (result > 0) {
+                            latestDate = dateOfItem;
+                            BankBalanceValue = item.GetBankBalance().ToString();
+                        }
+                    }
+                    BankBalanceView.Text = " $ " + BankBalanceValue;
                     dataList.Adapter = adapter;
                     RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
-                    spinner.Clickable = true;
                     toastMessage.Cancel();
                     adapter.NotifyDataSetChanged();
                 });
@@ -140,42 +169,6 @@ namespace MiCareApp.Droid
             };
 
             return view;
-        }
-
-        void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            Spinner spinner = (Spinner)sender;
-            int ID;
-            int position = e.Position;
-            foreach (BankBalance item in displayItems)
-            {
-                ID = item.GetFacilityID();
-                if (ID == position)
-                {
-                    item.Show(false);
-                    if (!dataItems.Contains(item))
-                    {
-                        dataItems.Add(item);
-                    }
-                }
-                else
-                {
-                    item.Show(true);
-                    if (position > 0)
-                    {
-                        dataItems.Remove(item);
-                    }
-                    else
-                    {
-                        if (!dataItems.Contains(item))
-                        {
-                            dataItems.Add(item);
-                        }
-                    }
-
-                }
-            }
-            adapter.NotifyDataSetChanged();
         }
     }
 }

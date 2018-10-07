@@ -55,9 +55,9 @@ namespace MiCareApp.Droid
             Button HoursBtn = view.FindViewById<Button>(Resource.Id.HoursTextBrokerage);
 
             //setup Spinner
-            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
+            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.RegionSpinner);
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.LocationArray, Android.Resource.Layout.SimpleSpinnerItem);
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
@@ -137,37 +137,26 @@ namespace MiCareApp.Droid
             return view;
         }
 
-        void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
+        void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e) {
             Spinner spinner = (Spinner)sender;
-            int ID;
             int position = e.Position;
-            foreach (BrokerageHoursData item in displayItems)
-            {
-                ID = item.GetFacilityID();
-                if (ID == position)
-                {
-                    item.Show(false);
+            string itemLocationName;
+            string locationName = "";
+            if (position == 1) {
+                locationName = "QLD";
+            }
+            else if (position == 2) {
+                locationName = "VIC";
+            }
+            foreach (BrokerageHoursData item in displayItems) {
+                itemLocationName = item.GetLocation();
+                if (String.Equals(locationName, itemLocationName)) {
                     if (!dataItems.Contains(item))
                     {
                         dataItems.Add(item);
                     }
-                }
-                else
-                {
-                    item.Show(true);
-                    if (position > 0)
-                    {
-                        dataItems.Remove(item);
-                    }
-                    else
-                    {
-                        if (!dataItems.Contains(item))
-                        {
-                            dataItems.Add(item);
-                        }
-                    }
-
+                } else {
+                    dataItems.Remove(item);
                 }
             }
             adapter.NotifyDataSetChanged();

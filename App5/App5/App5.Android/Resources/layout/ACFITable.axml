@@ -10,7 +10,7 @@
     <TextView
         android:text="Resident ID"
         android:layout_width="match_parent"
-        android:layout_weight="34"
+        android:layout_weight="26"
         android:layout_height="wrap_content"
         android:id="@+id/txtResidentIDACFI"
         android:textSize="15sp"
@@ -19,7 +19,7 @@
     <TextView
         android:text="ACFI score"
         android:layout_width="match_parent"
-        android:layout_weight="33"
+        android:layout_weight="26"
         android:layout_height="wrap_content"
         android:id="@+id/txtScoreACFI"
         android:textSize="15sp"
@@ -28,9 +28,18 @@
     <TextView
         android:text="Income"
         android:layout_width="match_parent"
-        android:layout_weight="33"
+        android:layout_weight="25"
         android:layout_height="wrap_content"
         android:id="@+id/txtIncomeACFI"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+	<TextView
+        android:text="Expiration Date"
+        android:layout_width="match_parent"
+        android:layout_weight="23"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtExpirationDateACFI"
         android:textSize="15sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp" />

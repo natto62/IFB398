@@ -24,8 +24,9 @@ namespace MiCareApp.Droid
         private List<SalariesWagesData> displayItems;
 
         private int clickNumDate = 0;
-        private int clickNumRostered = 0;
+        private int clickNumActual = 0;
         private int clickNumBudget = 0;
+        private int clickNumVariance = 0;
 
         private SalariesWagesViewAdapter adapter;
 
@@ -53,8 +54,9 @@ namespace MiCareApp.Droid
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
             Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextSalariesWages);
-            Button RosteredCostBtn = view.FindViewById<Button>(Resource.Id.RosteredCostTextSalariesWages);
+            Button ActualCostBtn = view.FindViewById<Button>(Resource.Id.ActualCostTextSalariesWages);
             Button BudgetBtn = view.FindViewById<Button>(Resource.Id.BudgetTextSalariesWages);
+            Button VarianceBtn = view.FindViewById<Button>(Resource.Id.VarianceTextSalariesWages);
 
             //setup Spinner
             Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
@@ -109,8 +111,9 @@ namespace MiCareApp.Droid
                         return DateTime.Compare(one.GetDate(), two.GetDate());
                     });
                     clickNumDate++;
-                    clickNumRostered = 0;
+                    clickNumActual = 0;
                     clickNumBudget = 0;
+                    clickNumVariance = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
@@ -121,40 +124,58 @@ namespace MiCareApp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
-            RosteredCostBtn.Click += delegate {
-                if (clickNumRostered == 0)
+            ActualCostBtn.Click += delegate {
+                if (clickNumActual == 0)
                 {
                     dataItems.Sort(delegate (SalariesWagesData one, SalariesWagesData two) {
-                        return one.GetRosteredCost().CompareTo(two.GetRosteredCost());
+                        return one.GetActualCost().CompareTo(two.GetActualCost());
                     });
-                    clickNumRostered++;
+                    clickNumActual++;
                     clickNumDate = 0;
                     clickNumBudget = 0;
+                    clickNumVariance = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
                 {
                     dataItems.Reverse();
-                    clickNumRostered = 0;
+                    clickNumActual = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };
 
             BudgetBtn.Click += delegate {
-                if (clickNumBudget == 0)
-                {
+                if (clickNumBudget == 0) {
                     dataItems.Sort(delegate (SalariesWagesData one, SalariesWagesData two) {
                         return one.GetBudget().CompareTo(two.GetBudget());
                     });
                     clickNumBudget++;
-                    clickNumRostered = 0;
+                    clickNumActual = 0;
                     clickNumDate = 0;
+                    clickNumVariance = 0;
                     //reverse list if clicked a second time in a row
                 }
                 else
                 {
                     dataItems.Reverse();
                     clickNumBudget = 0;
+                }
+                adapter.NotifyDataSetChanged();
+            };
+
+            VarianceBtn.Click += delegate {
+                if (clickNumVariance == 0) {
+                    dataItems.Sort(delegate (SalariesWagesData one, SalariesWagesData two) {
+                        return one.GetVariance().CompareTo(two.GetVariance());
+                    });
+                    clickNumVariance++;
+                    clickNumActual = 0;
+                    clickNumDate = 0;
+                    clickNumBudget = 0;
+                    //reverse list if clicked a second time in a row
+                } else {
+                    dataItems.Reverse();
+                    clickNumVariance = 0;
                 }
                 adapter.NotifyDataSetChanged();
             };

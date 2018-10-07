@@ -14,7 +14,7 @@
         android:background="#ffffff"
         android:weightSum="100">
         <TextView
-            android:text="Facility: "
+            android:text="Region: "
             android:textColor="#000000"
             android:layout_width="90dp"
             android:layout_weight="20"
@@ -32,7 +32,7 @@
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:id="@+id/FacilitySpinner"
+            android:id="@+id/RegionSpinner"
             android:prompt="@string/SpinnerPrompt"
             android:minWidth="25px"
             android:minHeight="25px" />
@@ -64,7 +64,7 @@
             android:textColor="@color/abc_secondary_text_material_light"
             android:background="@drawable/tablebuttonstyles" />
         <Button
-            android:text="Date"
+            android:text="Date (Month/Year)"
             android:layout_width="match_parent"
             android:layout_weight="50"
             android:layout_height="fill_parent"

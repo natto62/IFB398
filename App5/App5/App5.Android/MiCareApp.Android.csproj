@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -57,6 +56,15 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
     </PackageReference>
+    <PackageReference Include="OxyPlot.Core">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="OxyPlot.Xamarin.Android">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="OxyPlot.Xamarin.Forms">
+      <Version>1.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
     </PackageReference>
@@ -81,6 +89,7 @@
     <Compile Include="BrokerageHoursViewAdapter.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="FinanceMenu.cs" />
+    <Compile Include="Graph.cs" />
     <Compile Include="IncomePage.cs" />
     <Compile Include="IncomeViewAdapter.cs" />
     <Compile Include="IntroPage.cs" />
@@ -257,6 +266,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\OptionsIconClicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Graph.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="..\App5\App5.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

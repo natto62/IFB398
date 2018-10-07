@@ -64,7 +64,7 @@
             android:textColor="@color/abc_secondary_text_material_light"
             android:background="@drawable/tablebuttonstyles" />
         <Button
-            android:text="Date"
+            android:text="Date (Month/Year)"
             android:layout_width="match_parent"
             android:layout_weight="50"
             android:layout_height="fill_parent"

@@ -11,6 +11,42 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "OxyPlot.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Android/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "1.0.0"
+        },
+        "compile": {
+          "lib/MonoAndroid10/OxyPlot.Xamarin.Android.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/OxyPlot.Xamarin.Android.dll": {}
+        }
+      },
+      "OxyPlot.Xamarin.Forms/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Xamarin.Android": "1.0.0",
+          "Xamarin.Forms": "2.3.3.180"
+        },
+        "compile": {
+          "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.Platform.Android.dll": {},
+          "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.Platform.Android.dll": {},
+          "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.dll": {}
+        }
+      },
       "Xam.Plugins.Settings/3.1.1": {
         "type": "package",
         "compile": {
@@ -340,6 +376,92 @@
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "newtonsoft.json.11.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
+      ]
+    },
+    "OxyPlot.Core/1.0.0": {
+      "sha512": "4CdN5a7xg7rdXAn0MqofQQV7Y2mt0e8nch3Zko5XSien2eTZo+lkkX9IjMhipMiwu2/SQnggS3ZMzvhEThRnIw==",
+      "type": "package",
+      "path": "oxyplot.core/1.0.0",
+      "files": [
+        "AUTHORS",
+        "CHANGELOG.md",
+        "CONTRIBUTORS",
+        "LICENSE",
+        "README.md",
+        "lib/net40-client/OxyPlot.XML",
+        "lib/net40-client/OxyPlot.dll",
+        "lib/net40-client/OxyPlot.pdb",
+        "lib/net40/OxyPlot.XML",
+        "lib/net40/OxyPlot.dll",
+        "lib/net40/OxyPlot.pdb",
+        "lib/net45/OxyPlot.dll",
+        "lib/net45/OxyPlot.pdb",
+        "lib/net45/OxyPlot.xml",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.pdb",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/OxyPlot.xml",
+        "lib/sl5/OxyPlot.XML",
+        "lib/sl5/OxyPlot.dll",
+        "lib/sl5/OxyPlot.pdb",
+        "oxyplot.core.1.0.0.nupkg.sha512",
+        "oxyplot.core.nuspec"
+      ]
+    },
+    "OxyPlot.Xamarin.Android/1.0.0": {
+      "sha512": "bPImaCi3hcnm9hVr73ZEuCObvlWj32cH6aaltBHliRFDlXSYhdwertRoG9lU3sgarddOmQC3WLshPW0hANWjyQ==",
+      "type": "package",
+      "path": "oxyplot.xamarin.android/1.0.0",
+      "files": [
+        "AUTHORS",
+        "CHANGELOG.md",
+        "CONTRIBUTORS",
+        "LICENSE",
+        "README.md",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Android.dll",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Android.xml",
+        "oxyplot.xamarin.android.1.0.0.nupkg.sha512",
+        "oxyplot.xamarin.android.nuspec"
+      ]
+    },
+    "OxyPlot.Xamarin.Forms/1.0.0": {
+      "sha512": "GKqCS5K2CvwVizIFPjw4WYPQAo+PND8QLsAArf6UtOO8UFe17AD5SbwNDl48RRSN/4lpUMV1UNsd8vJDlUdXYA==",
+      "type": "package",
+      "path": "oxyplot.xamarin.forms/1.0.0",
+      "files": [
+        "AUTHORS",
+        "CHANGELOG.md",
+        "CONTRIBUTORS",
+        "LICENSE",
+        "README.md",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.Platform.Android.XML",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.Platform.Android.dll",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.Platform.Android.pdb",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.dll",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.pdb",
+        "lib/MonoAndroid10/OxyPlot.Xamarin.Forms.xml",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.Platform.iOS.XML",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.Platform.iOS.dll",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.dll",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.pdb",
+        "lib/Xamarin.iOS10/OxyPlot.Xamarin.Forms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10/OxyPlot.Xamarin.Forms.XML",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10/OxyPlot.Xamarin.Forms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10/OxyPlot.Xamarin.Forms.pdb",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.XML",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.dll",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.pdb",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.Platform.UWP.pri",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.dll",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.pdb",
+        "lib/uap10.0/OxyPlot.Xamarin.Forms.xml",
+        "lib/wp80/OxyPlot.Xamarin.Forms.Platform.WP8.XML",
+        "lib/wp80/OxyPlot.Xamarin.Forms.Platform.WP8.dll",
+        "lib/wp80/OxyPlot.Xamarin.Forms.Platform.WP8.pdb",
+        "lib/wp80/OxyPlot.Xamarin.Forms.XML",
+        "lib/wp80/OxyPlot.Xamarin.Forms.dll",
+        "lib/wp80/OxyPlot.Xamarin.Forms.pdb",
+        "oxyplot.xamarin.forms.1.0.0.nupkg.sha512",
+        "oxyplot.xamarin.forms.nuspec"
       ]
     },
     "Xam.Plugins.Settings/3.1.1": {
@@ -755,6 +877,9 @@
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v7.1": [
       "Newtonsoft.Json >= 11.0.2",
+      "OxyPlot.Core >= 1.0.0",
+      "OxyPlot.Xamarin.Android >= 1.0.0",
+      "OxyPlot.Xamarin.Forms >= 1.0.0",
       "Xam.Plugins.Settings >= 3.1.1",
       "Xamarin.Android.Support.Design >= 25.4.0.2",
       "Xamarin.Android.Support.v4 >= 25.4.0.2",
@@ -765,8 +890,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Captain\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
+    "C:\\Users\\Captain\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -778,13 +902,9 @@
       "outputPath": "C:\\Users\\Captain\\Source\\Repos\\IFB398-MiCare\\App5\\App5\\App5.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\Captain\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "monoandroid71"
@@ -805,6 +925,18 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[11.0.2, )"
+          },
+          "OxyPlot.Core": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
+          "OxyPlot.Xamarin.Android": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
+          "OxyPlot.Xamarin.Forms": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           },
           "Xam.Plugins.Settings": {
             "target": "Package",

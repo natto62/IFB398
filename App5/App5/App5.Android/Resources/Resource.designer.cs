@@ -109,8 +109,20 @@ namespace MiCareApp.Droid
 		public partial class Array
 		{
 			
+			// aapt resource value: 0x7f0e0004
+			public const int BusinessClassArray = 2131623940;
+			
 			// aapt resource value: 0x7f0e0000
 			public const int FacilityArray = 2131623936;
+			
+			// aapt resource value: 0x7f0e0005
+			public const int IncomeTypeArray = 2131623941;
+			
+			// aapt resource value: 0x7f0e0003
+			public const int LocationArray = 2131623939;
+			
+			// aapt resource value: 0x7f0e0002
+			public const int MonthArray = 2131623938;
 			
 			// aapt resource value: 0x7f0e0001
 			public const int TextArray = 2131623937;
@@ -2836,248 +2848,293 @@ namespace MiCareApp.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0800af
-			public const int ACFIBtn = 2131230895;
-			
-			// aapt resource value: 0x7f0800b0
-			public const int AgencyBtn = 2131230896;
-			
-			// aapt resource value: 0x7f08007f
-			public const int AmountTextAgency = 2131230847;
-			
-			// aapt resource value: 0x7f080132
-			public const int AnnualLeaveTextStaff = 2131231026;
-			
-			// aapt resource value: 0x7f08013c
-			public const int BackButton = 2131231036;
-			
-			// aapt resource value: 0x7f080085
-			public const int BalanceTextBank = 2131230853;
-			
-			// aapt resource value: 0x7f0800ae
-			public const int BankBalanceValue = 2131230894;
-			
-			// aapt resource value: 0x7f0800ad
-			public const int BankBalanceView = 2131230893;
-			
-			// aapt resource value: 0x7f0800b1
-			public const int BrokerageBtn = 2131230897;
-			
-			// aapt resource value: 0x7f08010e
-			public const int BudgetTextSalariesWages = 2131230990;
-			
-			// aapt resource value: 0x7f080107
-			public const int CareTypeTextOccupancy = 2131230983;
-			
-			// aapt resource value: 0x7f0800cb
-			public const int ClinicalBtn = 2131230923;
-			
-			// aapt resource value: 0x7f080106
-			public const int ConcessionalTextOccupancy = 2131230982;
-			
-			// aapt resource value: 0x7f08011f
-			public const int ConfirmPasswordReset = 2131231007;
-			
-			// aapt resource value: 0x7f080079
-			public const int DataList = 2131230841;
-			
-			// aapt resource value: 0x7f080117
-			public const int DateSwitch = 2131230999;
-			
-			// aapt resource value: 0x7f080080
-			public const int DateTextAgency = 2131230848;
-			
-			// aapt resource value: 0x7f080086
-			public const int DateTextBank = 2131230854;
-			
-			// aapt resource value: 0x7f08008c
-			public const int DateTextBrokerage = 2131230860;
-			
-			// aapt resource value: 0x7f0800c3
-			public const int DateTextIncome = 2131230915;
-			
-			// aapt resource value: 0x7f080108
-			public const int DateTextOccupancy = 2131230984;
-			
-			// aapt resource value: 0x7f08010f
-			public const int DateTextSalariesWages = 2131230991;
-			
-			// aapt resource value: 0x7f080074
-			public const int FacilitySpinner = 2131230836;
-			
-			// aapt resource value: 0x7f0800a9
-			public const int FinanceBackButton = 2131230889;
-			
-			// aapt resource value: 0x7f0800c9
-			public const int FinanceBtn = 2131230921;
-			
-			// aapt resource value: 0x7f0800aa
-			public const int FinancialTitle = 2131230890;
-			
-			// aapt resource value: 0x7f080119
-			public const int FirstNameReset = 2131231001;
-			
-			// aapt resource value: 0x7f0800ba
-			public const int FirstNameTextHomeCare = 2131230906;
-			
-			// aapt resource value: 0x7f080130
-			public const int FirstNameTextStaff = 2131231024;
-			
-			// aapt resource value: 0x7f0800cc
-			public const int HelpBtn = 2131230924;
-			
-			// aapt resource value: 0x7f0800b3
-			public const int HomeCareBtn = 2131230899;
-			
-			// aapt resource value: 0x7f08008b
-			public const int HoursTextBrokerage = 2131230859;
-			
-			// aapt resource value: 0x7f0800b2
-			public const int IncomeBtn = 2131230898;
-			
-			// aapt resource value: 0x7f080078
-			public const int IncomeTextACFI = 2131230840;
-			
-			// aapt resource value: 0x7f0800c2
-			public const int IncomeTextIncome = 2131230914;
-			
-			// aapt resource value: 0x7f08011a
-			public const int LastNameReset = 2131231002;
-			
-			// aapt resource value: 0x7f0800bb
-			public const int LastNameTextHomeCare = 2131230907;
-			
-			// aapt resource value: 0x7f080131
-			public const int LastNameTextStaff = 2131231025;
-			
-			// aapt resource value: 0x7f080133
-			public const int LongServiceLeaveTextStaff = 2131231027;
-			
-			// aapt resource value: 0x7f08011c
-			public const int NameChangeBtn = 2131231004;
-			
-			// aapt resource value: 0x7f08011b
-			public const int NameChangeResult = 2131231003;
-			
-			// aapt resource value: 0x7f080115
-			public const int NightSwitch = 2131230997;
-			
-			// aapt resource value: 0x7f0800ff
-			public const int OccupancyBackButton = 2131230975;
-			
-			// aapt resource value: 0x7f0800ca
-			public const int OccupancyBtn = 2131230922;
-			
-			// aapt resource value: 0x7f080101
-			public const int OccupancyBtn2 = 2131230977;
-			
-			// aapt resource value: 0x7f080105
-			public const int OccupancyTextOccupancy = 2131230981;
-			
-			// aapt resource value: 0x7f080100
-			public const int OccupancyTitle = 2131230976;
-			
-			// aapt resource value: 0x7f08011d
-			public const int OldPasswordReset = 2131231005;
-			
-			// aapt resource value: 0x7f0800ab
-			public const int OptionsButton = 2131230891;
-			
-			// aapt resource value: 0x7f0800bd
-			public const int PackageIncomeText = 2131230909;
-			
-			// aapt resource value: 0x7f0800bc
-			public const int PackageLevelText = 2131230908;
-			
-			// aapt resource value: 0x7f080121
-			public const int PasswordChangeBtn = 2131231009;
-			
-			// aapt resource value: 0x7f080120
-			public const int PasswordChangeResult = 2131231008;
-			
-			// aapt resource value: 0x7f08011e
-			public const int PasswordReset = 2131231006;
-			
-			// aapt resource value: 0x7f080075
-			public const int RefreshButton = 2131230837;
-			
 			// aapt resource value: 0x7f080076
-			public const int ResidentIDTextACFI = 2131230838;
-			
-			// aapt resource value: 0x7f08010d
-			public const int RosteredCostTextSalariesWages = 2131230989;
-			
-			// aapt resource value: 0x7f0800b4
-			public const int SalariesBtn = 2131230900;
-			
-			// aapt resource value: 0x7f080077
-			public const int ScoreTextACFI = 2131230839;
-			
-			// aapt resource value: 0x7f080134
-			public const int SickLeaveTextStaff = 2131231028;
-			
-			// aapt resource value: 0x7f080126
-			public const int SignInBox = 2131231014;
+			public const int ACFIAvgValue = 2131230838;
 			
 			// aapt resource value: 0x7f0800b7
-			public const int SignInBtn = 2131230903;
+			public const int ACFIBtn = 2131230903;
 			
-			// aapt resource value: 0x7f080123
-			public const int SignInEmail = 2131231011;
+			// aapt resource value: 0x7f080114
+			public const int ActualBedsTextOccupancy = 2131230996;
 			
-			// aapt resource value: 0x7f080127
-			public const int SignInExecute = 2131231015;
-			
-			// aapt resource value: 0x7f080124
-			public const int SignInPassW = 2131231012;
-			
-			// aapt resource value: 0x7f080122
-			public const int SignInTitle = 2131231010;
-			
-			// aapt resource value: 0x7f080125
-			public const int SignInTxt = 2131231013;
-			
-			// aapt resource value: 0x7f0800cd
-			public const int SignOutBtn = 2131230925;
+			// aapt resource value: 0x7f08011e
+			public const int ActualCostTextSalariesWages = 2131231006;
 			
 			// aapt resource value: 0x7f0800b8
-			public const int SignUpBtn = 2131230904;
+			public const int AgencyBtn = 2131230904;
 			
-			// aapt resource value: 0x7f08012d
-			public const int SignUpCPassW = 2131231021;
+			// aapt resource value: 0x7f080085
+			public const int AmountTextAgency = 2131230853;
 			
-			// aapt resource value: 0x7f08012b
-			public const int SignUpEmail = 2131231019;
+			// aapt resource value: 0x7f080144
+			public const int AnnualLeaveTextStaff = 2131231044;
 			
-			// aapt resource value: 0x7f08012f
-			public const int SignUpExecute = 2131231023;
+			// aapt resource value: 0x7f08014e
+			public const int BackButton = 2131231054;
+			
+			// aapt resource value: 0x7f08008c
+			public const int BalanceTextBank = 2131230860;
+			
+			// aapt resource value: 0x7f08008b
+			public const int BankBalanceValue = 2131230859;
+			
+			// aapt resource value: 0x7f0800b6
+			public const int BankBalanceView = 2131230902;
+			
+			// aapt resource value: 0x7f080115
+			public const int BedDaysTextOccupancy = 2131230997;
+			
+			// aapt resource value: 0x7f0800b9
+			public const int BrokerageBtn = 2131230905;
+			
+			// aapt resource value: 0x7f08011f
+			public const int BudgetTextSalariesWages = 2131231007;
+			
+			// aapt resource value: 0x7f0800cd
+			public const int BusinessClassSpinner = 2131230925;
+			
+			// aapt resource value: 0x7f080091
+			public const int ClientProgress = 2131230865;
+			
+			// aapt resource value: 0x7f0800d9
+			public const int ClinicalBtn = 2131230937;
+			
+			// aapt resource value: 0x7f080131
+			public const int ConfirmPasswordReset = 2131231025;
+			
+			// aapt resource value: 0x7f08007e
+			public const int DataList = 2131230846;
 			
 			// aapt resource value: 0x7f080129
-			public const int SignUpFirstName = 2131231017;
+			public const int DateSwitch = 2131231017;
 			
-			// aapt resource value: 0x7f08012a
-			public const int SignUpLastName = 2131231018;
+			// aapt resource value: 0x7f080086
+			public const int DateTextAgency = 2131230854;
+			
+			// aapt resource value: 0x7f08008d
+			public const int DateTextBank = 2131230861;
+			
+			// aapt resource value: 0x7f080096
+			public const int DateTextBrokerage = 2131230870;
+			
+			// aapt resource value: 0x7f0800d1
+			public const int DateTextIncome = 2131230929;
+			
+			// aapt resource value: 0x7f080118
+			public const int DateTextOccupancy = 2131231000;
+			
+			// aapt resource value: 0x7f080121
+			public const int DateTextSalariesWages = 2131231009;
+			
+			// aapt resource value: 0x7f08007d
+			public const int ExpirationDateTextACFI = 2131230845;
+			
+			// aapt resource value: 0x7f080078
+			public const int FacilitySpinner = 2131230840;
+			
+			// aapt resource value: 0x7f0800cf
+			public const int FilterButton = 2131230927;
+			
+			// aapt resource value: 0x7f0800b2
+			public const int FinanceBackButton = 2131230898;
+			
+			// aapt resource value: 0x7f0800d7
+			public const int FinanceBtn = 2131230935;
+			
+			// aapt resource value: 0x7f0800b3
+			public const int FinancialTitle = 2131230899;
+			
+			// aapt resource value: 0x7f08012b
+			public const int FirstNameReset = 2131231019;
+			
+			// aapt resource value: 0x7f0800c4
+			public const int FirstNameTextHomeCare = 2131230916;
+			
+			// aapt resource value: 0x7f080142
+			public const int FirstNameTextStaff = 2131231042;
+			
+			// aapt resource value: 0x7f08008e
+			public const int GraphButton = 2131230862;
+			
+			// aapt resource value: 0x7f0800bf
+			public const int GraphPlotView = 2131230911;
+			
+			// aapt resource value: 0x7f0800be
+			public const int GraphTitle = 2131230910;
+			
+			// aapt resource value: 0x7f0800da
+			public const int HelpBtn = 2131230938;
+			
+			// aapt resource value: 0x7f0800bb
+			public const int HomeCareBtn = 2131230907;
+			
+			// aapt resource value: 0x7f080095
+			public const int HoursTextBrokerage = 2131230869;
+			
+			// aapt resource value: 0x7f0800ba
+			public const int IncomeBtn = 2131230906;
+			
+			// aapt resource value: 0x7f08007c
+			public const int IncomeTextACFI = 2131230844;
+			
+			// aapt resource value: 0x7f0800d0
+			public const int IncomeTextIncome = 2131230928;
+			
+			// aapt resource value: 0x7f0800cc
+			public const int IncomeTypeSpinner = 2131230924;
 			
 			// aapt resource value: 0x7f08012c
-			public const int SignUpPassW = 2131231020;
+			public const int LastNameReset = 2131231020;
 			
-			// aapt resource value: 0x7f080128
-			public const int SignUpTitle = 2131231016;
+			// aapt resource value: 0x7f0800c5
+			public const int LastNameTextHomeCare = 2131230917;
+			
+			// aapt resource value: 0x7f080143
+			public const int LastNameTextStaff = 2131231043;
+			
+			// aapt resource value: 0x7f0800ce
+			public const int LocationSpinner = 2131230926;
+			
+			// aapt resource value: 0x7f080145
+			public const int LongServiceLeaveTextStaff = 2131231045;
+			
+			// aapt resource value: 0x7f080075
+			public const int MonthSpinner = 2131230837;
 			
 			// aapt resource value: 0x7f08012e
-			public const int SignUpTxt = 2131231022;
+			public const int NameChangeBtn = 2131231022;
 			
-			// aapt resource value: 0x7f080102
-			public const int StaffBtn = 2131230978;
+			// aapt resource value: 0x7f08012d
+			public const int NameChangeResult = 2131231021;
+			
+			// aapt resource value: 0x7f080127
+			public const int NightSwitch = 2131231015;
+			
+			// aapt resource value: 0x7f08010d
+			public const int OccupancyBackButton = 2131230989;
+			
+			// aapt resource value: 0x7f0800d8
+			public const int OccupancyBtn = 2131230936;
+			
+			// aapt resource value: 0x7f08010f
+			public const int OccupancyBtn2 = 2131230991;
+			
+			// aapt resource value: 0x7f080116
+			public const int OccupancyRateTextOccupancy = 2131230998;
+			
+			// aapt resource value: 0x7f08010e
+			public const int OccupancyTitle = 2131230990;
+			
+			// aapt resource value: 0x7f08012f
+			public const int OldPasswordReset = 2131231023;
+			
+			// aapt resource value: 0x7f0800b4
+			public const int OptionsButton = 2131230900;
+			
+			// aapt resource value: 0x7f0800c7
+			public const int PackageIncomeText = 2131230919;
+			
+			// aapt resource value: 0x7f0800c6
+			public const int PackageLevelText = 2131230918;
+			
+			// aapt resource value: 0x7f080133
+			public const int PasswordChangeBtn = 2131231027;
+			
+			// aapt resource value: 0x7f080132
+			public const int PasswordChangeResult = 2131231026;
+			
+			// aapt resource value: 0x7f080130
+			public const int PasswordReset = 2131231024;
+			
+			// aapt resource value: 0x7f080079
+			public const int RefreshButton = 2131230841;
+			
+			// aapt resource value: 0x7f080094
+			public const int RegionSpinner = 2131230868;
+			
+			// aapt resource value: 0x7f08007a
+			public const int ResidentIDTextACFI = 2131230842;
+			
+			// aapt resource value: 0x7f0800bc
+			public const int SalariesBtn = 2131230908;
+			
+			// aapt resource value: 0x7f08007b
+			public const int ScoreTextACFI = 2131230843;
+			
+			// aapt resource value: 0x7f080146
+			public const int SickLeaveTextStaff = 2131231046;
+			
+			// aapt resource value: 0x7f080138
+			public const int SignInBox = 2131231032;
+			
+			// aapt resource value: 0x7f0800c1
+			public const int SignInBtn = 2131230913;
+			
+			// aapt resource value: 0x7f080135
+			public const int SignInEmail = 2131231029;
+			
+			// aapt resource value: 0x7f080139
+			public const int SignInExecute = 2131231033;
+			
+			// aapt resource value: 0x7f080136
+			public const int SignInPassW = 2131231030;
+			
+			// aapt resource value: 0x7f080134
+			public const int SignInTitle = 2131231028;
+			
+			// aapt resource value: 0x7f080137
+			public const int SignInTxt = 2131231031;
+			
+			// aapt resource value: 0x7f0800db
+			public const int SignOutBtn = 2131230939;
+			
+			// aapt resource value: 0x7f0800c2
+			public const int SignUpBtn = 2131230914;
+			
+			// aapt resource value: 0x7f08013f
+			public const int SignUpCPassW = 2131231039;
+			
+			// aapt resource value: 0x7f08013d
+			public const int SignUpEmail = 2131231037;
+			
+			// aapt resource value: 0x7f080141
+			public const int SignUpExecute = 2131231041;
+			
+			// aapt resource value: 0x7f08013b
+			public const int SignUpFirstName = 2131231035;
+			
+			// aapt resource value: 0x7f08013c
+			public const int SignUpLastName = 2131231036;
+			
+			// aapt resource value: 0x7f08013e
+			public const int SignUpPassW = 2131231038;
+			
+			// aapt resource value: 0x7f08013a
+			public const int SignUpTitle = 2131231034;
+			
+			// aapt resource value: 0x7f080140
+			public const int SignUpTxt = 2131231040;
+			
+			// aapt resource value: 0x7f080110
+			public const int StaffBtn = 2131230992;
+			
+			// aapt resource value: 0x7f080117
+			public const int SupportedTextOccupancy = 2131230999;
+			
+			// aapt resource value: 0x7f080126
+			public const int TextSizeSpinner = 2131231014;
 			
 			// aapt resource value: 0x7f080113
-			public const int TextSizeSpinner = 2131230995;
+			public const int TotalBedsValue = 2131230995;
 			
-			// aapt resource value: 0x7f0800c8
-			public const int WelcomeMessage = 2131230920;
+			// aapt resource value: 0x7f080120
+			public const int VarianceTextSalariesWages = 2131231008;
 			
-			// aapt resource value: 0x7f0800eb
-			public const int action0 = 2131230955;
+			// aapt resource value: 0x7f0800d6
+			public const int WelcomeMessage = 2131230934;
+			
+			// aapt resource value: 0x7f0800f9
+			public const int action0 = 2131230969;
 			
 			// aapt resource value: 0x7f080064
 			public const int action_bar = 2131230820;
@@ -3100,17 +3157,17 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080041
 			public const int action_bar_title = 2131230785;
 			
-			// aapt resource value: 0x7f0800e8
-			public const int action_container = 2131230952;
+			// aapt resource value: 0x7f0800f6
+			public const int action_container = 2131230966;
 			
 			// aapt resource value: 0x7f080065
 			public const int action_context_bar = 2131230821;
 			
-			// aapt resource value: 0x7f0800ef
-			public const int action_divider = 2131230959;
+			// aapt resource value: 0x7f0800fd
+			public const int action_divider = 2131230973;
 			
-			// aapt resource value: 0x7f0800e9
-			public const int action_image = 2131230953;
+			// aapt resource value: 0x7f0800f7
+			public const int action_image = 2131230967;
 			
 			// aapt resource value: 0x7f080003
 			public const int action_menu_divider = 2131230723;
@@ -3127,11 +3184,11 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080043
 			public const int action_mode_close_button = 2131230787;
 			
-			// aapt resource value: 0x7f0800ea
-			public const int action_text = 2131230954;
-			
 			// aapt resource value: 0x7f0800f8
-			public const int actions = 2131230968;
+			public const int action_text = 2131230968;
+			
+			// aapt resource value: 0x7f080106
+			public const int actions = 2131230982;
 			
 			// aapt resource value: 0x7f080044
 			public const int activity_chooser_view_content = 2131230788;
@@ -3157,14 +3214,14 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080028
 			public const int bottom = 2131230760;
 			
-			// aapt resource value: 0x7f08009a
-			public const int button1 = 2131230874;
+			// aapt resource value: 0x7f0800a3
+			public const int button1 = 2131230883;
 			
 			// aapt resource value: 0x7f08004b
 			public const int buttonPanel = 2131230795;
 			
-			// aapt resource value: 0x7f0800ec
-			public const int cancel_action = 2131230956;
+			// aapt resource value: 0x7f0800fa
+			public const int cancel_action = 2131230970;
 			
 			// aapt resource value: 0x7f080030
 			public const int center = 2131230768;
@@ -3178,8 +3235,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f08005b
 			public const int checkbox = 2131230811;
 			
-			// aapt resource value: 0x7f0800f4
-			public const int chronometer = 2131230964;
+			// aapt resource value: 0x7f080102
+			public const int chronometer = 2131230978;
 			
 			// aapt resource value: 0x7f080039
 			public const int clip_horizontal = 2131230777;
@@ -3190,14 +3247,14 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080024
 			public const int collapseActionView = 2131230756;
 			
-			// aapt resource value: 0x7f08009d
-			public const int container = 2131230877;
+			// aapt resource value: 0x7f0800a6
+			public const int container = 2131230886;
 			
 			// aapt resource value: 0x7f08004e
 			public const int contentPanel = 2131230798;
 			
-			// aapt resource value: 0x7f08009e
-			public const int coordinator = 2131230878;
+			// aapt resource value: 0x7f0800a7
+			public const int coordinator = 2131230887;
 			
 			// aapt resource value: 0x7f080055
 			public const int custom = 2131230805;
@@ -3211,20 +3268,20 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080047
 			public const int default_activity_button = 2131230791;
 			
-			// aapt resource value: 0x7f0800a0
-			public const int design_bottom_sheet = 2131230880;
+			// aapt resource value: 0x7f0800a9
+			public const int design_bottom_sheet = 2131230889;
 			
-			// aapt resource value: 0x7f0800a7
-			public const int design_menu_item_action_area = 2131230887;
+			// aapt resource value: 0x7f0800b0
+			public const int design_menu_item_action_area = 2131230896;
 			
-			// aapt resource value: 0x7f0800a6
-			public const int design_menu_item_action_area_stub = 2131230886;
+			// aapt resource value: 0x7f0800af
+			public const int design_menu_item_action_area_stub = 2131230895;
 			
-			// aapt resource value: 0x7f0800a5
-			public const int design_menu_item_text = 2131230885;
+			// aapt resource value: 0x7f0800ae
+			public const int design_menu_item_text = 2131230894;
 			
-			// aapt resource value: 0x7f0800a4
-			public const int design_navigation_view = 2131230884;
+			// aapt resource value: 0x7f0800ad
+			public const int design_navigation_view = 2131230893;
 			
 			// aapt resource value: 0x7f080012
 			public const int disableHome = 2131230738;
@@ -3235,8 +3292,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080021
 			public const int end = 2131230753;
 			
-			// aapt resource value: 0x7f0800fe
-			public const int end_padder = 2131230974;
+			// aapt resource value: 0x7f08010c
+			public const int end_padder = 2131230988;
 			
 			// aapt resource value: 0x7f08002a
 			public const int enterAlways = 2131230762;
@@ -3274,8 +3331,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080049
 			public const int icon = 2131230793;
 			
-			// aapt resource value: 0x7f0800f9
-			public const int icon_group = 2131230969;
+			// aapt resource value: 0x7f080107
+			public const int icon_group = 2131230983;
 			
 			// aapt resource value: 0x7f080025
 			public const int ifRoom = 2131230757;
@@ -3283,41 +3340,41 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080046
 			public const int image = 2131230790;
 			
-			// aapt resource value: 0x7f0800b6
-			public const int imageView1 = 2131230902;
+			// aapt resource value: 0x7f0800c0
+			public const int imageView1 = 2131230912;
 			
-			// aapt resource value: 0x7f0800f5
-			public const int info = 2131230965;
+			// aapt resource value: 0x7f080103
+			public const int info = 2131230979;
 			
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
 			
-			// aapt resource value: 0x7f08009c
-			public const int largeLabel = 2131230876;
+			// aapt resource value: 0x7f0800a5
+			public const int largeLabel = 2131230885;
 			
 			// aapt resource value: 0x7f080034
 			public const int left = 2131230772;
 			
-			// aapt resource value: 0x7f0800fa
-			public const int line1 = 2131230970;
+			// aapt resource value: 0x7f080108
+			public const int line1 = 2131230984;
 			
-			// aapt resource value: 0x7f0800fc
-			public const int line3 = 2131230972;
+			// aapt resource value: 0x7f08010a
+			public const int line3 = 2131230986;
 			
-			// aapt resource value: 0x7f080093
-			public const int linearLayout1 = 2131230867;
+			// aapt resource value: 0x7f08009d
+			public const int linearLayout1 = 2131230877;
 			
-			// aapt resource value: 0x7f080094
-			public const int linearLayout2 = 2131230868;
+			// aapt resource value: 0x7f08009e
+			public const int linearLayout2 = 2131230878;
 			
-			// aapt resource value: 0x7f080095
-			public const int linearLayout3 = 2131230869;
+			// aapt resource value: 0x7f08009f
+			public const int linearLayout3 = 2131230879;
 			
-			// aapt resource value: 0x7f080097
-			public const int linearLayout4 = 2131230871;
+			// aapt resource value: 0x7f0800a1
+			public const int linearLayout4 = 2131230881;
 			
-			// aapt resource value: 0x7f080099
-			public const int linearLayout5 = 2131230873;
+			// aapt resource value: 0x7f0800a2
+			public const int linearLayout5 = 2131230882;
 			
 			// aapt resource value: 0x7f08000f
 			public const int listMode = 2131230735;
@@ -3325,11 +3382,11 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080048
 			public const int list_item = 2131230792;
 			
-			// aapt resource value: 0x7f08013f
-			public const int masked = 2131231039;
+			// aapt resource value: 0x7f080151
+			public const int masked = 2131231057;
 			
-			// aapt resource value: 0x7f0800ee
-			public const int media_actions = 2131230958;
+			// aapt resource value: 0x7f0800fc
+			public const int media_actions = 2131230972;
 			
 			// aapt resource value: 0x7f080022
 			public const int middle = 2131230754;
@@ -3337,86 +3394,86 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f08003e
 			public const int mini = 2131230782;
 			
-			// aapt resource value: 0x7f0800da
-			public const int mr_art = 2131230938;
-			
-			// aapt resource value: 0x7f0800cf
-			public const int mr_chooser_list = 2131230927;
-			
-			// aapt resource value: 0x7f0800d2
-			public const int mr_chooser_route_desc = 2131230930;
-			
-			// aapt resource value: 0x7f0800d0
-			public const int mr_chooser_route_icon = 2131230928;
-			
-			// aapt resource value: 0x7f0800d1
-			public const int mr_chooser_route_name = 2131230929;
-			
-			// aapt resource value: 0x7f0800ce
-			public const int mr_chooser_title = 2131230926;
-			
-			// aapt resource value: 0x7f0800d7
-			public const int mr_close = 2131230935;
+			// aapt resource value: 0x7f0800e8
+			public const int mr_art = 2131230952;
 			
 			// aapt resource value: 0x7f0800dd
-			public const int mr_control_divider = 2131230941;
+			public const int mr_chooser_list = 2131230941;
 			
-			// aapt resource value: 0x7f0800e3
-			public const int mr_control_playback_ctrl = 2131230947;
-			
-			// aapt resource value: 0x7f0800e6
-			public const int mr_control_subtitle = 2131230950;
-			
-			// aapt resource value: 0x7f0800e5
-			public const int mr_control_title = 2131230949;
-			
-			// aapt resource value: 0x7f0800e4
-			public const int mr_control_title_container = 2131230948;
-			
-			// aapt resource value: 0x7f0800d8
-			public const int mr_custom_control = 2131230936;
-			
-			// aapt resource value: 0x7f0800d9
-			public const int mr_default_control = 2131230937;
-			
-			// aapt resource value: 0x7f0800d4
-			public const int mr_dialog_area = 2131230932;
-			
-			// aapt resource value: 0x7f0800d3
-			public const int mr_expandable_area = 2131230931;
-			
-			// aapt resource value: 0x7f0800e7
-			public const int mr_group_expand_collapse = 2131230951;
-			
-			// aapt resource value: 0x7f0800db
-			public const int mr_media_main_control = 2131230939;
-			
-			// aapt resource value: 0x7f0800d6
-			public const int mr_name = 2131230934;
-			
-			// aapt resource value: 0x7f0800dc
-			public const int mr_playback_control = 2131230940;
-			
-			// aapt resource value: 0x7f0800d5
-			public const int mr_title_bar = 2131230933;
+			// aapt resource value: 0x7f0800e0
+			public const int mr_chooser_route_desc = 2131230944;
 			
 			// aapt resource value: 0x7f0800de
-			public const int mr_volume_control = 2131230942;
+			public const int mr_chooser_route_icon = 2131230942;
 			
 			// aapt resource value: 0x7f0800df
-			public const int mr_volume_group_list = 2131230943;
+			public const int mr_chooser_route_name = 2131230943;
 			
-			// aapt resource value: 0x7f0800e1
-			public const int mr_volume_item_icon = 2131230945;
+			// aapt resource value: 0x7f0800dc
+			public const int mr_chooser_title = 2131230940;
+			
+			// aapt resource value: 0x7f0800e5
+			public const int mr_close = 2131230949;
+			
+			// aapt resource value: 0x7f0800eb
+			public const int mr_control_divider = 2131230955;
+			
+			// aapt resource value: 0x7f0800f1
+			public const int mr_control_playback_ctrl = 2131230961;
+			
+			// aapt resource value: 0x7f0800f4
+			public const int mr_control_subtitle = 2131230964;
+			
+			// aapt resource value: 0x7f0800f3
+			public const int mr_control_title = 2131230963;
+			
+			// aapt resource value: 0x7f0800f2
+			public const int mr_control_title_container = 2131230962;
+			
+			// aapt resource value: 0x7f0800e6
+			public const int mr_custom_control = 2131230950;
+			
+			// aapt resource value: 0x7f0800e7
+			public const int mr_default_control = 2131230951;
 			
 			// aapt resource value: 0x7f0800e2
-			public const int mr_volume_slider = 2131230946;
+			public const int mr_dialog_area = 2131230946;
+			
+			// aapt resource value: 0x7f0800e1
+			public const int mr_expandable_area = 2131230945;
+			
+			// aapt resource value: 0x7f0800f5
+			public const int mr_group_expand_collapse = 2131230965;
+			
+			// aapt resource value: 0x7f0800e9
+			public const int mr_media_main_control = 2131230953;
+			
+			// aapt resource value: 0x7f0800e4
+			public const int mr_name = 2131230948;
+			
+			// aapt resource value: 0x7f0800ea
+			public const int mr_playback_control = 2131230954;
+			
+			// aapt resource value: 0x7f0800e3
+			public const int mr_title_bar = 2131230947;
+			
+			// aapt resource value: 0x7f0800ec
+			public const int mr_volume_control = 2131230956;
+			
+			// aapt resource value: 0x7f0800ed
+			public const int mr_volume_group_list = 2131230957;
+			
+			// aapt resource value: 0x7f0800ef
+			public const int mr_volume_item_icon = 2131230959;
+			
+			// aapt resource value: 0x7f0800f0
+			public const int mr_volume_slider = 2131230960;
 			
 			// aapt resource value: 0x7f080019
 			public const int multiply = 2131230745;
 			
-			// aapt resource value: 0x7f0800a3
-			public const int navigation_header_container = 2131230883;
+			// aapt resource value: 0x7f0800ac
+			public const int navigation_header_container = 2131230892;
 			
 			// aapt resource value: 0x7f080026
 			public const int never = 2131230758;
@@ -3427,14 +3484,14 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080010
 			public const int normal = 2131230736;
 			
-			// aapt resource value: 0x7f0800f7
-			public const int notification_background = 2131230967;
+			// aapt resource value: 0x7f080105
+			public const int notification_background = 2131230981;
 			
-			// aapt resource value: 0x7f0800f1
-			public const int notification_main_column = 2131230961;
+			// aapt resource value: 0x7f0800ff
+			public const int notification_main_column = 2131230975;
 			
-			// aapt resource value: 0x7f0800f0
-			public const int notification_main_column_container = 2131230960;
+			// aapt resource value: 0x7f0800fe
+			public const int notification_main_column_container = 2131230974;
 			
 			// aapt resource value: 0x7f080037
 			public const int parallax = 2131230775;
@@ -3457,11 +3514,11 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080035
 			public const int right = 2131230773;
 			
-			// aapt resource value: 0x7f0800f6
-			public const int right_icon = 2131230966;
+			// aapt resource value: 0x7f080104
+			public const int right_icon = 2131230980;
 			
-			// aapt resource value: 0x7f0800f2
-			public const int right_side = 2131230962;
+			// aapt resource value: 0x7f080100
+			public const int right_side = 2131230976;
 			
 			// aapt resource value: 0x7f08001a
 			public const int screen = 2131230746;
@@ -3526,17 +3583,17 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080017
 			public const int showTitle = 2131230743;
 			
-			// aapt resource value: 0x7f08013a
-			public const int sliding_tabs = 2131231034;
+			// aapt resource value: 0x7f08014c
+			public const int sliding_tabs = 2131231052;
 			
-			// aapt resource value: 0x7f08009b
-			public const int smallLabel = 2131230875;
+			// aapt resource value: 0x7f0800a4
+			public const int smallLabel = 2131230884;
 			
-			// aapt resource value: 0x7f0800a2
-			public const int snackbar_action = 2131230882;
+			// aapt resource value: 0x7f0800ab
+			public const int snackbar_action = 2131230891;
 			
-			// aapt resource value: 0x7f0800a1
-			public const int snackbar_text = 2131230881;
+			// aapt resource value: 0x7f0800aa
+			public const int snackbar_text = 2131230890;
 			
 			// aapt resource value: 0x7f08002e
 			public const int snap = 2131230766;
@@ -3559,8 +3616,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080036
 			public const int start = 2131230774;
 			
-			// aapt resource value: 0x7f0800ed
-			public const int status_bar_latest_event_content = 2131230957;
+			// aapt resource value: 0x7f0800fb
+			public const int status_bar_latest_event_content = 2131230971;
 			
 			// aapt resource value: 0x7f08005e
 			public const int submenuarrow = 2131230814;
@@ -3571,11 +3628,11 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080011
 			public const int tabMode = 2131230737;
 			
-			// aapt resource value: 0x7f0800fd
-			public const int text = 2131230973;
+			// aapt resource value: 0x7f08010b
+			public const int text = 2131230987;
 			
-			// aapt resource value: 0x7f0800fb
-			public const int text2 = 2131230971;
+			// aapt resource value: 0x7f080109
+			public const int text2 = 2131230985;
 			
 			// aapt resource value: 0x7f080052
 			public const int textSpacerNoButtons = 2131230802;
@@ -3583,23 +3640,23 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080051
 			public const int textSpacerNoTitle = 2131230801;
 			
+			// aapt resource value: 0x7f080077
+			public const int textView1 = 2131230839;
+			
 			// aapt resource value: 0x7f080073
-			public const int textView1 = 2131230835;
+			public const int textView2 = 2131230835;
 			
-			// aapt resource value: 0x7f080098
-			public const int textView2 = 2131230872;
+			// aapt resource value: 0x7f080074
+			public const int textView3 = 2131230836;
 			
-			// aapt resource value: 0x7f080114
-			public const int textView3 = 2131230996;
+			// aapt resource value: 0x7f08012a
+			public const int textView4 = 2131231018;
 			
-			// aapt resource value: 0x7f080118
-			public const int textView4 = 2131231000;
+			// aapt resource value: 0x7f080128
+			public const int textView5 = 2131231016;
 			
-			// aapt resource value: 0x7f080116
-			public const int textView5 = 2131230998;
-			
-			// aapt resource value: 0x7f0800a8
-			public const int text_input_password_toggle = 2131230888;
+			// aapt resource value: 0x7f0800b1
+			public const int text_input_password_toggle = 2131230897;
 			
 			// aapt resource value: 0x7f08000c
 			public const int textinput_counter = 2131230732;
@@ -3607,8 +3664,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f08000d
 			public const int textinput_error = 2131230733;
 			
-			// aapt resource value: 0x7f0800f3
-			public const int time = 2131230963;
+			// aapt resource value: 0x7f080101
+			public const int time = 2131230977;
 			
 			// aapt resource value: 0x7f08004a
 			public const int title = 2131230794;
@@ -3619,8 +3676,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080057
 			public const int title_template = 2131230807;
 			
-			// aapt resource value: 0x7f08013b
-			public const int toolbar = 2131231035;
+			// aapt resource value: 0x7f08014d
+			public const int toolbar = 2131231053;
 			
 			// aapt resource value: 0x7f080029
 			public const int top = 2131230761;
@@ -3628,8 +3685,8 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080056
 			public const int topPanel = 2131230806;
 			
-			// aapt resource value: 0x7f08009f
-			public const int touch_outside = 2131230879;
+			// aapt resource value: 0x7f0800a8
+			public const int touch_outside = 2131230888;
 			
 			// aapt resource value: 0x7f08000a
 			public const int transition_current_scene = 2131230730;
@@ -3637,134 +3694,143 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f08000b
 			public const int transition_scene_layoutid_cache = 2131230731;
 			
-			// aapt resource value: 0x7f08007a
-			public const int txtACFIData = 2131230842;
+			// aapt resource value: 0x7f08007f
+			public const int txtACFIData = 2131230847;
 			
-			// aapt resource value: 0x7f080083
-			public const int txtAmountAgency = 2131230851;
+			// aapt resource value: 0x7f080119
+			public const int txtActualBedsOccupancy = 2131231001;
 			
-			// aapt resource value: 0x7f080137
-			public const int txtAnnualLeaveStaff = 2131231031;
+			// aapt resource value: 0x7f080122
+			public const int txtActualCostSalariesWages = 2131231010;
 			
 			// aapt resource value: 0x7f080089
-			public const int txtBalanceBank = 2131230857;
+			public const int txtAmountAgency = 2131230857;
 			
-			// aapt resource value: 0x7f080087
-			public const int txtBankData = 2131230855;
-			
-			// aapt resource value: 0x7f080111
-			public const int txtBudgetSalariesWages = 2131230993;
-			
-			// aapt resource value: 0x7f08010b
-			public const int txtCareTypeOccupancy = 2131230987;
-			
-			// aapt resource value: 0x7f08010a
-			public const int txtConcessionalOccupancy = 2131230986;
-			
-			// aapt resource value: 0x7f080084
-			public const int txtDateAgency = 2131230852;
-			
-			// aapt resource value: 0x7f08008a
-			public const int txtDateBank = 2131230858;
-			
-			// aapt resource value: 0x7f08008e
-			public const int txtDateBrokerage = 2131230862;
-			
-			// aapt resource value: 0x7f0800b5
-			public const int txtDateFinanceData = 2131230901;
-			
-			// aapt resource value: 0x7f0800c7
-			public const int txtDateIncome = 2131230919;
-			
-			// aapt resource value: 0x7f08010c
-			public const int txtDateOccupancy = 2131230988;
-			
-			// aapt resource value: 0x7f080104
-			public const int txtDateOccupancyData = 2131230980;
-			
-			// aapt resource value: 0x7f080112
-			public const int txtDateSalariesWages = 2131230994;
-			
-			// aapt resource value: 0x7f08008f
-			public const int txtFName = 2131230863;
-			
-			// aapt resource value: 0x7f0800be
-			public const int txtFNameHomeCare = 2131230910;
-			
-			// aapt resource value: 0x7f080135
-			public const int txtFNameStaff = 2131231029;
-			
-			// aapt resource value: 0x7f080081
-			public const int txtFinanceData = 2131230849;
-			
-			// aapt resource value: 0x7f08008d
-			public const int txtHoursBrokerage = 2131230861;
-			
-			// aapt resource value: 0x7f080091
-			public const int txtIncome = 2131230865;
-			
-			// aapt resource value: 0x7f08007e
-			public const int txtIncomeACFI = 2131230846;
-			
-			// aapt resource value: 0x7f0800c4
-			public const int txtIncomeData = 2131230916;
-			
-			// aapt resource value: 0x7f0800c6
-			public const int txtIncomeIncome = 2131230918;
-			
-			// aapt resource value: 0x7f080090
-			public const int txtLName = 2131230864;
-			
-			// aapt resource value: 0x7f0800bf
-			public const int txtLNameHomeCare = 2131230911;
-			
-			// aapt resource value: 0x7f080136
-			public const int txtLNameStaff = 2131231030;
-			
-			// aapt resource value: 0x7f080096
-			public const int txtLevel = 2131230870;
-			
-			// aapt resource value: 0x7f080138
-			public const int txtLongServiceLeaveStaff = 2131231032;
-			
-			// aapt resource value: 0x7f08007b
-			public const int txtNumACFIData = 2131230843;
-			
-			// aapt resource value: 0x7f080088
-			public const int txtNumBankData = 2131230856;
-			
-			// aapt resource value: 0x7f080082
-			public const int txtNumFinanceData = 2131230850;
-			
-			// aapt resource value: 0x7f0800c5
-			public const int txtNumIncomeData = 2131230917;
-			
-			// aapt resource value: 0x7f080103
-			public const int txtOccupancyData = 2131230979;
-			
-			// aapt resource value: 0x7f080109
-			public const int txtOccupancyOccupancy = 2131230985;
-			
-			// aapt resource value: 0x7f0800c1
-			public const int txtPackageIncomeHomeCare = 2131230913;
-			
-			// aapt resource value: 0x7f0800c0
-			public const int txtPackageLevelHomeCare = 2131230912;
-			
-			// aapt resource value: 0x7f08007c
-			public const int txtResidentIDACFI = 2131230844;
-			
-			// aapt resource value: 0x7f080110
-			public const int txtRosteredCostSalariesWages = 2131230992;
-			
-			// aapt resource value: 0x7f08007d
-			public const int txtScoreACFI = 2131230845;
-			
-			// aapt resource value: 0x7f080139
-			public const int txtSickLeaveStaff = 2131231033;
+			// aapt resource value: 0x7f080149
+			public const int txtAnnualLeaveStaff = 2131231049;
 			
 			// aapt resource value: 0x7f080092
-			public const int txtStatus = 2131230866;
+			public const int txtBalanceBank = 2131230866;
+			
+			// aapt resource value: 0x7f08008f
+			public const int txtBankData = 2131230863;
+			
+			// aapt resource value: 0x7f08011a
+			public const int txtBedDaysOccupancy = 2131231002;
+			
+			// aapt resource value: 0x7f080123
+			public const int txtBudgetCostSalariesWages = 2131231011;
+			
+			// aapt resource value: 0x7f08008a
+			public const int txtDateAgency = 2131230858;
+			
+			// aapt resource value: 0x7f080093
+			public const int txtDateBank = 2131230867;
+			
+			// aapt resource value: 0x7f080098
+			public const int txtDateBrokerage = 2131230872;
+			
+			// aapt resource value: 0x7f0800bd
+			public const int txtDateFinanceData = 2131230909;
+			
+			// aapt resource value: 0x7f0800d5
+			public const int txtDateIncome = 2131230933;
+			
+			// aapt resource value: 0x7f08011d
+			public const int txtDateOccupancy = 2131231005;
+			
+			// aapt resource value: 0x7f080112
+			public const int txtDateOccupancyData = 2131230994;
+			
+			// aapt resource value: 0x7f080125
+			public const int txtDateSalariesWages = 2131231013;
+			
+			// aapt resource value: 0x7f080084
+			public const int txtExpirationDateACFI = 2131230852;
+			
+			// aapt resource value: 0x7f080099
+			public const int txtFName = 2131230873;
+			
+			// aapt resource value: 0x7f0800c8
+			public const int txtFNameHomeCare = 2131230920;
+			
+			// aapt resource value: 0x7f080147
+			public const int txtFNameStaff = 2131231047;
+			
+			// aapt resource value: 0x7f080087
+			public const int txtFinanceData = 2131230855;
+			
+			// aapt resource value: 0x7f080097
+			public const int txtHoursBrokerage = 2131230871;
+			
+			// aapt resource value: 0x7f08009b
+			public const int txtIncome = 2131230875;
+			
+			// aapt resource value: 0x7f080083
+			public const int txtIncomeACFI = 2131230851;
+			
+			// aapt resource value: 0x7f0800d2
+			public const int txtIncomeData = 2131230930;
+			
+			// aapt resource value: 0x7f0800d4
+			public const int txtIncomeIncome = 2131230932;
+			
+			// aapt resource value: 0x7f08009a
+			public const int txtLName = 2131230874;
+			
+			// aapt resource value: 0x7f0800c9
+			public const int txtLNameHomeCare = 2131230921;
+			
+			// aapt resource value: 0x7f080148
+			public const int txtLNameStaff = 2131231048;
+			
+			// aapt resource value: 0x7f0800a0
+			public const int txtLevel = 2131230880;
+			
+			// aapt resource value: 0x7f08014a
+			public const int txtLongServiceLeaveStaff = 2131231050;
+			
+			// aapt resource value: 0x7f080080
+			public const int txtNumACFIData = 2131230848;
+			
+			// aapt resource value: 0x7f080090
+			public const int txtNumBankData = 2131230864;
+			
+			// aapt resource value: 0x7f080088
+			public const int txtNumFinanceData = 2131230856;
+			
+			// aapt resource value: 0x7f0800d3
+			public const int txtNumIncomeData = 2131230931;
+			
+			// aapt resource value: 0x7f080111
+			public const int txtOccupancyData = 2131230993;
+			
+			// aapt resource value: 0x7f08011b
+			public const int txtOccupancyRateOccupancy = 2131231003;
+			
+			// aapt resource value: 0x7f0800cb
+			public const int txtPackageIncomeHomeCare = 2131230923;
+			
+			// aapt resource value: 0x7f0800ca
+			public const int txtPackageLevelHomeCare = 2131230922;
+			
+			// aapt resource value: 0x7f080081
+			public const int txtResidentIDACFI = 2131230849;
+			
+			// aapt resource value: 0x7f080082
+			public const int txtScoreACFI = 2131230850;
+			
+			// aapt resource value: 0x7f08014b
+			public const int txtSickLeaveStaff = 2131231051;
+			
+			// aapt resource value: 0x7f08009c
+			public const int txtStatus = 2131230876;
+			
+			// aapt resource value: 0x7f08011c
+			public const int txtSupportedOccupancy = 2131231004;
+			
+			// aapt resource value: 0x7f080124
+			public const int txtVarianceSalariesWages = 2131231012;
 			
 			// aapt resource value: 0x7f080009
 			public const int up = 2131230729;
@@ -3772,23 +3838,23 @@ namespace MiCareApp.Droid
 			// aapt resource value: 0x7f080018
 			public const int useLogo = 2131230744;
 			
-			// aapt resource value: 0x7f0800ac
-			public const int view1 = 2131230892;
+			// aapt resource value: 0x7f0800b5
+			public const int view1 = 2131230901;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int view2 = 2131230905;
+			// aapt resource value: 0x7f0800c3
+			public const int view2 = 2131230915;
 			
 			// aapt resource value: 0x7f08000e
 			public const int view_offset_helper = 2131230734;
 			
-			// aapt resource value: 0x7f08013d
-			public const int viewpager = 2131231037;
+			// aapt resource value: 0x7f08014f
+			public const int viewpager = 2131231055;
 			
-			// aapt resource value: 0x7f08013e
-			public const int visible = 2131231038;
+			// aapt resource value: 0x7f080150
+			public const int visible = 2131231056;
 			
-			// aapt resource value: 0x7f0800e0
-			public const int volume_item_container = 2131230944;
+			// aapt resource value: 0x7f0800ee
+			public const int volume_item_container = 2131230958;
 			
 			// aapt resource value: 0x7f080027
 			public const int withText = 2131230759;
@@ -4034,139 +4100,142 @@ namespace MiCareApp.Droid
 			public const int FinancialDataList = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int Home = 2130903092;
+			public const int Graph = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int HomeCarePackagePage = 2130903093;
+			public const int Home = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int HomeCarePackageTable = 2130903094;
+			public const int HomeCarePackagePage = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int IncomePage = 2130903095;
+			public const int HomeCarePackageTable = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int IncomeTable = 2130903096;
+			public const int IncomePage = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int IntroPage = 2130903097;
+			public const int IncomeTable = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int mr_chooser_dialog = 2130903098;
+			public const int IntroPage = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int mr_chooser_list_item = 2130903099;
+			public const int mr_chooser_dialog = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int mr_controller_material_dialog_b = 2130903100;
+			public const int mr_chooser_list_item = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int mr_controller_volume_item = 2130903101;
+			public const int mr_controller_material_dialog_b = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int mr_playback_control = 2130903102;
+			public const int mr_controller_volume_item = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int mr_volume_control = 2130903103;
+			public const int mr_playback_control = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int notification_action = 2130903104;
+			public const int mr_volume_control = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int notification_action_tombstone = 2130903105;
+			public const int notification_action = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int notification_media_action = 2130903106;
+			public const int notification_action_tombstone = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int notification_media_cancel_action = 2130903107;
+			public const int notification_media_action = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int notification_template_big_media = 2130903108;
+			public const int notification_media_cancel_action = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int notification_template_big_media_custom = 2130903109;
+			public const int notification_template_big_media = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int notification_template_big_media_narrow = 2130903110;
+			public const int notification_template_big_media_custom = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int notification_template_big_media_narrow_custom = 2130903111;
+			public const int notification_template_big_media_narrow = 2130903111;
 			
 			// aapt resource value: 0x7f030048
-			public const int notification_template_custom_big = 2130903112;
+			public const int notification_template_big_media_narrow_custom = 2130903112;
 			
 			// aapt resource value: 0x7f030049
-			public const int notification_template_icon_group = 2130903113;
+			public const int notification_template_custom_big = 2130903113;
 			
 			// aapt resource value: 0x7f03004a
-			public const int notification_template_lines_media = 2130903114;
+			public const int notification_template_icon_group = 2130903114;
 			
 			// aapt resource value: 0x7f03004b
-			public const int notification_template_media = 2130903115;
+			public const int notification_template_lines_media = 2130903115;
 			
 			// aapt resource value: 0x7f03004c
-			public const int notification_template_media_custom = 2130903116;
+			public const int notification_template_media = 2130903116;
 			
 			// aapt resource value: 0x7f03004d
-			public const int notification_template_part_chronometer = 2130903117;
+			public const int notification_template_media_custom = 2130903117;
 			
 			// aapt resource value: 0x7f03004e
-			public const int notification_template_part_time = 2130903118;
+			public const int notification_template_part_chronometer = 2130903118;
 			
 			// aapt resource value: 0x7f03004f
-			public const int OccupancyDataList = 2130903119;
+			public const int notification_template_part_time = 2130903119;
 			
 			// aapt resource value: 0x7f030050
-			public const int OccupancyPage = 2130903120;
+			public const int OccupancyDataList = 2130903120;
 			
 			// aapt resource value: 0x7f030051
-			public const int OccupancyTable = 2130903121;
+			public const int OccupancyPage = 2130903121;
 			
 			// aapt resource value: 0x7f030052
-			public const int SalariesWagesPage = 2130903122;
+			public const int OccupancyTable = 2130903122;
 			
 			// aapt resource value: 0x7f030053
-			public const int SalariesWagesTable = 2130903123;
+			public const int SalariesWagesPage = 2130903123;
 			
 			// aapt resource value: 0x7f030054
-			public const int select_dialog_item_material = 2130903124;
+			public const int SalariesWagesTable = 2130903124;
 			
 			// aapt resource value: 0x7f030055
-			public const int select_dialog_multichoice_material = 2130903125;
+			public const int select_dialog_item_material = 2130903125;
 			
 			// aapt resource value: 0x7f030056
-			public const int select_dialog_singlechoice_material = 2130903126;
+			public const int select_dialog_multichoice_material = 2130903126;
 			
 			// aapt resource value: 0x7f030057
-			public const int Settings = 2130903127;
+			public const int select_dialog_singlechoice_material = 2130903127;
 			
 			// aapt resource value: 0x7f030058
-			public const int SignIn = 2130903128;
+			public const int Settings = 2130903128;
 			
 			// aapt resource value: 0x7f030059
-			public const int SignUp = 2130903129;
+			public const int SignIn = 2130903129;
 			
 			// aapt resource value: 0x7f03005a
-			public const int StaffPage = 2130903130;
+			public const int SignUp = 2130903130;
 			
 			// aapt resource value: 0x7f03005b
-			public const int StaffTable = 2130903131;
+			public const int StaffPage = 2130903131;
 			
 			// aapt resource value: 0x7f03005c
-			public const int support_simple_spinner_dropdown_item = 2130903132;
+			public const int StaffTable = 2130903132;
 			
 			// aapt resource value: 0x7f03005d
-			public const int Tabbar = 2130903133;
+			public const int support_simple_spinner_dropdown_item = 2130903133;
 			
 			// aapt resource value: 0x7f03005e
-			public const int Toolbar = 2130903134;
+			public const int Tabbar = 2130903134;
 			
 			// aapt resource value: 0x7f03005f
-			public const int ViewPager = 2130903135;
+			public const int Toolbar = 2130903135;
 			
 			// aapt resource value: 0x7f030060
-			public const int ViewPagerOccupancy = 2130903136;
+			public const int ViewPager = 2130903136;
+			
+			// aapt resource value: 0x7f030061
+			public const int ViewPagerOccupancy = 2130903137;
 			
 			static Layout()
 			{

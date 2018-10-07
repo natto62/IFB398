@@ -61,23 +61,26 @@ namespace MiCareApp.Droid
             TextView txtResidentACFI = row.FindViewById<TextView>(Resource.Id.txtResidentIDACFI);
             TextView txtScoreACFI = row.FindViewById<TextView>(Resource.Id.txtScoreACFI);
             TextView txtIncomeACFI = row.FindViewById<TextView>(Resource.Id.txtIncomeACFI);
+            TextView txtExpirationDateACFI = row.FindViewById<TextView>(Resource.Id.txtExpirationDateACFI);
 
-            switch (textSize)
-            {
+            switch (textSize) {
                 case 0:
                     txtResidentACFI.TextSize = 10;
                     txtScoreACFI.TextSize = 10;
                     txtIncomeACFI.TextSize = 10;
+                    txtExpirationDateACFI.TextSize = 10;
                     break;
                 case 1:
                     txtResidentACFI.TextSize = 15;
                     txtScoreACFI.TextSize = 15;
                     txtIncomeACFI.TextSize = 15;
+                    txtExpirationDateACFI.TextSize = 15;
                     break;
                 case 2:
                     txtResidentACFI.TextSize = 20;
                     txtScoreACFI.TextSize = 20;
                     txtIncomeACFI.TextSize = 20;
+                    txtExpirationDateACFI.TextSize = 20;
                     break;
             }
 
@@ -87,6 +90,7 @@ namespace MiCareApp.Droid
                 txtResidentACFI.SetTextColor(Color.White);
                 txtScoreACFI.SetTextColor(Color.White);
                 txtIncomeACFI.SetTextColor(Color.White);
+                txtExpirationDateACFI.SetTextColor(Color.White);
             }
             else
             {
@@ -94,12 +98,14 @@ namespace MiCareApp.Droid
                 txtResidentACFI.SetTextColor(Color.Black);
                 txtScoreACFI.SetTextColor(Color.Black);
                 txtIncomeACFI.SetTextColor(Color.Black);
+                txtExpirationDateACFI.SetTextColor(Color.Black);
             }
 
-
+            //change formatting
             txtResidentACFI.Text = Items[position].GetResidentID().ToString();
             txtScoreACFI.Text = Items[position].GetACFIScore().ToString();
             txtIncomeACFI.Text = "$ " + Items[position].GetIncome().ToString();
+            txtExpirationDateACFI.Text = Items[position].GetExpirationDate().ToShortDateString();
 
             return row;
         }

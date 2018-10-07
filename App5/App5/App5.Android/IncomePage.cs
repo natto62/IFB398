@@ -28,6 +28,7 @@ namespace MiCareApp.Droid
 
         private int clickNumDate = 0;
         private int clickNumIncome = 0;
+        private string type;
 
         private IncomeViewAdapter adapter;
 
@@ -35,7 +36,11 @@ namespace MiCareApp.Droid
         private Uri url;
         private TextView NumItems;
 
-        private Toast toastMessage;
+        private Toast toastMessageRefresh;
+        private Toast toastMessagePulled;
+        private Toast toastMessageFilter;
+
+        private int [] spinnerPositions = new int[3] { 0, 0, 0 };
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -56,28 +61,54 @@ namespace MiCareApp.Droid
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
             Button DateBtn = view.FindViewById<Button>(Resource.Id.DateTextIncome);
             Button IncomeBtn = view.FindViewById<Button>(Resource.Id.IncomeTextIncome);
+            IncomeBtn.Enabled = false;
+            DateBtn.Enabled = false;
 
-            //setup Spinner
-            Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
-            spinner.Clickable = false;
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
-            SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = SpinnerAdapter;
+            Button FilterBtn = view.FindViewById<Button>(Resource.Id.FilterButton);
+
+            //setup Location Spinner
+            Spinner LocationSpinner = view.FindViewById<Spinner>(Resource.Id.LocationSpinner);
+            LocationSpinner.Clickable = false;
+            LocationSpinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_LocationItemSelected);
+            var LocationSpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.LocationArray, Android.Resource.Layout.SimpleSpinnerItem);
+            LocationSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            LocationSpinner.Adapter = LocationSpinnerAdapter;
+
+            //setup Business Class Spinner
+            Spinner BusinessClassSpinner = view.FindViewById<Spinner>(Resource.Id.BusinessClassSpinner);
+            BusinessClassSpinner.Clickable = false;
+            BusinessClassSpinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_BusinessClassItemSelected);
+            var BusinessClassSpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.BusinessClassArray, Android.Resource.Layout.SimpleSpinnerItem);
+            BusinessClassSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            BusinessClassSpinner.Adapter = BusinessClassSpinnerAdapter;
+
+            //setup Income Type Spinner
+            Spinner IncomeTypeSpinner = view.FindViewById<Spinner>(Resource.Id.IncomeTypeSpinner);
+            IncomeTypeSpinner.Clickable = false;
+            IncomeTypeSpinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_IncomeTypeItemSelected);
+            var IncomeTypeSpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.IncomeTypeArray, Android.Resource.Layout.SimpleSpinnerItem);
+            IncomeTypeSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            IncomeTypeSpinner.Adapter = IncomeTypeSpinnerAdapter;
 
             client = new WebClient();
             url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
 
-            toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
+            toastMessageRefresh = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
+            toastMessagePulled = Toast.MakeText(this.Context, "Data has been pulled", ToastLength.Long);
+            toastMessageFilter = Toast.MakeText(this.Context, "An option must be selected from all dropdown boxes", ToastLength.Long);
 
             Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
             RefreshBtn.Click += delegate {
                 RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
-                toastMessage.Show();
-                spinner.SetSelection(0);
+                toastMessageRefresh.Show();
+                LocationSpinner.SetSelection(0);
+                BusinessClassSpinner.SetSelection(0);
+                IncomeTypeSpinner.SetSelection(0);
                 dataItems.Clear();
                 displayItems.Clear();
-                spinner.Clickable = false;
+                LocationSpinner.Clickable = false;
+                BusinessClassSpinner.Clickable = false;
+                IncomeTypeSpinner.Clickable = false;
 
                 NameValueCollection values = new NameValueCollection();
                 values.Add("Type", "Income");
@@ -90,16 +121,18 @@ namespace MiCareApp.Droid
                     string json = Encoding.UTF8.GetString(e.Result);
                     dataItems = JsonConvert.DeserializeObject<List<IncomeData>>(json);
                     adapter = new IncomeViewAdapter(this.Context, dataItems);//this
-                    foreach (IncomeData item in dataItems)
-                    {
+                    foreach (IncomeData item in dataItems) {
                         displayItems.Add(item);
+                        dataItems.Remove(item);
                     }
                     NumItems.Text = dataItems.Count.ToString();
                     dataList.Adapter = adapter;
                     RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
-                    spinner.Clickable = true;
-                    toastMessage.Cancel();
-                    adapter.NotifyDataSetChanged();
+                    LocationSpinner.Clickable = true;
+                    BusinessClassSpinner.Clickable = true;
+                    IncomeTypeSpinner.Clickable = true;
+                    toastMessageRefresh.Cancel();
+                    toastMessagePulled.Show();
                 });
             };
 
@@ -139,43 +172,92 @@ namespace MiCareApp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
+            FilterBtn.Click += delegate{
+                bool canBeFiltered = true;
+                for (int i = 0; i < 3; i++) {
+                    if (spinnerPositions[i] == 0) {
+                        canBeFiltered = false;
+                    }
+                }
+                if (canBeFiltered) {
+                    adapter.NotifyDataSetChanged();
+                } else {
+                    toastMessageFilter.Show();
+                }
+            };
+
             return view;
         }
 
-        void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        void Spinner_IncomeTypeItemSelected(object sender, AdapterView.ItemSelectedEventArgs e) {
+            Spinner spinner = (Spinner)sender;
+            int position = e.Position;
+            spinnerPositions[0] = position;
+            string type = "";
+            if (position == 1) {
+                type = "Total Package Income";
+            } else if (position == 2) {
+                type = "Business Service";
+            } else if (position == 3) {
+                type = "Settlement Service";
+            }
+            foreach (IncomeData item in displayItems) {
+                item.SetType(type);
+            }
+
+        }
+
+        void Spinner_BusinessClassItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
-            int ID;
             int position = e.Position;
-            foreach (IncomeData item in displayItems)
-            {
-                ID = item.GetFacilityID();
-                if (ID == position)
-                {
-                    item.Show(false);
+            spinnerPositions[1] = position;
+            string itemType = "";
+            string type = "";
+            if (position == 1) {
+                type = "Residential";
+            } else if (position == 2) {
+                type = "Rural";
+            }
+            foreach (IncomeData item in displayItems) {
+                if (item.GetFacilityID() == 1) {
+                    itemType = "Rural";
+                } else if (item.GetFacilityID() > 1) {
+                    itemType = "Residential";
+                }
+                if (String.Equals(itemType, type)) {
                     if (!dataItems.Contains(item))
                     {
                         dataItems.Add(item);
                     }
-                }
-                else
-                {
-                    item.Show(true);
-                    if (position > 0)
-                    {
-                        dataItems.Remove(item);
-                    }
-                    else
-                    {
-                        if (!dataItems.Contains(item))
-                        {
-                            dataItems.Add(item);
-                        }
-                    }
-
+                } else {
+                    dataItems.Remove(item);
                 }
             }
-            adapter.NotifyDataSetChanged();
+        }
+
+        void Spinner_LocationItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Spinner spinner = (Spinner)sender;
+            int position = e.Position;
+            spinnerPositions[2] = position;
+            string itemLocationName;
+            string locationName = "";
+            if (position == 1) {
+                locationName = "QLD";
+            } else if (position == 2) {
+                locationName = "VIC";
+            }
+            foreach (IncomeData item in displayItems) {
+                itemLocationName = item.GetLocation();
+                if (String.Equals(locationName, itemLocationName)) {
+                    if (!dataItems.Contains(item)) {
+                        dataItems.Add(item);
+                    }
+                } else {
+                    dataItems.Remove(item);
+                }
+            }
         }
     }
 }
