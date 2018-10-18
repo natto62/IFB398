@@ -761,10 +761,6 @@ namespace MiCareDBapp.Droid
         private decimal PrinsWillemAlexanderLodgeLSLAverage = 0;
         private decimal PrinsWillemAlexanderLodgeSLAverage = 0;
 
-        private decimal ALAverage = 0;
-        private decimal LSLAverage = 0;
-        private decimal SLAverage = 0;
-
         //import the finance data item based on the item clicked 
         public StaffGraph(List<StaffData> data)
         {
@@ -829,7 +825,7 @@ namespace MiCareDBapp.Droid
 
             PlotView plotView = view.FindViewById<PlotView>(Resource.Id.GraphPlotView);
 
-            var plotModel = new PlotModel() { LegendPlacement = LegendPlacement.Outside, LegendPosition = LegendPosition.BottomCenter};
+            var plotModel = new PlotModel() { LegendPlacement = LegendPlacement.Outside, LegendPosition = LegendPosition.TopCenter};
 
             var ALBarSeries = new ColumnSeries {
                 Title = "Average Annual Leave Accrued",

@@ -91,7 +91,6 @@ namespace MiCareDBapp.Droid
 
             if (NightSwitchMode)
             {
-                row.SetBackgroundColor(Color.Black);
                 txtFNameStaff.SetTextColor(Color.White);
                 txtLNameStaff.SetTextColor(Color.White);
                 txtAnnualLeaveStaff.SetTextColor(Color.White);
@@ -100,7 +99,6 @@ namespace MiCareDBapp.Droid
             }
             else
             {
-                row.SetBackgroundColor(Color.White);
                 txtFNameStaff.SetTextColor(Color.Black);
                 txtLNameStaff.SetTextColor(Color.Black);
                 txtAnnualLeaveStaff.SetTextColor(Color.Black);
@@ -113,6 +111,41 @@ namespace MiCareDBapp.Droid
             txtAnnualLeaveStaff.Text = Items[position].GetAnnualLeaveAcrewed().ToString();
             txtLongServiceLeaveStaff.Text = Items[position].GetLongServiceLeaveAcrewed().ToString();
             txtSickLeaveStaff.Text = Items[position].GetSickLeaveAcrewed().ToString();
+
+
+            if (Items[position].IsGreen())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkGreen);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightGreen);
+                }
+            }
+            else if (Items[position].IsRed())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkRed);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+                }
+            }
+            else
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkOrange);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightYellow);
+                }
+            }
 
             return row;
         }

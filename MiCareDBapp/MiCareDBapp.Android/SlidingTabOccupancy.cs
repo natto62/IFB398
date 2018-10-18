@@ -50,7 +50,7 @@ namespace MiCareDBapp.Droid
 
             Button OptionsBtn = FindViewById<Button>(Resource.Id.OptionsButton);
 
-            Settings SettingsScreen = new Settings(currentUser, OptionsBtn);
+            Settings SettingsScreen = new Settings(currentUser, OptionsBtn, adapter.GetFragments());
 
             OptionsBtn.Click += delegate {
                 OptionsBtn.SetBackgroundResource(Resource.Drawable.OptionsIconClicked);

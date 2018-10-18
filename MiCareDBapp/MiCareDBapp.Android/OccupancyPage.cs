@@ -212,7 +212,7 @@ namespace MiCareDBapp.Droid
             TotalBedDaysBtn.Click += delegate {
                 if (clickNumTotalBedDays == 0) {
                     dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
-                        return one.GetTotalBedDays().CompareTo(two.GetTotalBedDays());
+                        return one.GetTotalBedDaysYear().CompareTo(two.GetTotalBedDaysYear());
                     });
                     clickNumTotalBedDays++;
                     clickNumActualBeds = 0;
@@ -258,6 +258,10 @@ namespace MiCareDBapp.Droid
                     }
                     else
                     {
+                        if (getOnce == 0) {
+                            TotalBedsValue.Text = "";
+                            getOnce++;
+                        }
                         if (!dataItems.Contains(item))
                         {
                             dataItems.Add(item);
@@ -266,6 +270,11 @@ namespace MiCareDBapp.Droid
 
                 }
             }
+            adapter.NotifyDataSetChanged();
+        }
+
+        public void NotifyAdapter()
+        {
             adapter.NotifyDataSetChanged();
         }
     }

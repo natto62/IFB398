@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Android;
@@ -90,14 +91,12 @@ namespace MiCareDBapp.Droid
             }
 
             if (NightSwitchMode) {
-                row.SetBackgroundColor(Color.Black);
                 txtDateOccupancy.SetTextColor(Color.White);
                 txtActualBedsOccupancy.SetTextColor(Color.White);
                 txtSupportedOccupancy.SetTextColor(Color.White);
                 txtOccupancyRateOccupancy.SetTextColor(Color.White);
                 txtBedDaysOccupancy.SetTextColor(Color.White);
             } else {
-                row.SetBackgroundColor(Color.White);
                 txtDateOccupancy.SetTextColor(Color.Black);
                 txtActualBedsOccupancy.SetTextColor(Color.Black);
                 txtSupportedOccupancy.SetTextColor(Color.Black);
@@ -113,9 +112,43 @@ namespace MiCareDBapp.Droid
             //fix formatting later
             txtDateOccupancy.Text = Items[position].GetDate().ToShortDateString();
             txtActualBedsOccupancy.Text = Items[position].GetActualBeds().ToString();
-            txtOccupancyRateOccupancy.Text = Items[position].GetOccupancyRate().ToString();
-            txtSupportedOccupancy.Text = Items[position].GetSupported().ToString();
-            txtBedDaysOccupancy.Text = Items[position].GetTotalBedDays().ToString();
+            txtOccupancyRateOccupancy.Text = Items[position].GetOccupancyRate().ToString("0.##") + "%";
+            txtSupportedOccupancy.Text = Items[position].GetSupported().ToString("0.##") + "%";
+            txtBedDaysOccupancy.Text = Items[position].GetTotalBedDaysThirtyDays().ToString("#,#", CultureInfo.InvariantCulture);
+
+            if (Items[position].IsGreen())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkGreen);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightGreen);
+                }
+            }
+            else if (Items[position].IsRed())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkRed);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+                }
+            }
+            else
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkOrange);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightYellow);
+                }
+            }
 
             return row;
         }

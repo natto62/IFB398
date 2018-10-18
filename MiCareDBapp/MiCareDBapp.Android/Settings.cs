@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using Android;
 using Android.App;
@@ -26,6 +27,7 @@ namespace MiCareDBapp.Droid
 
         private User currentUser;
         private Button OptionsBtn;
+        private List<Android.Support.V4.App.Fragment> fragmentItems;
         private ISharedPreferences preferences;
         private ISharedPreferencesEditor edit;
 
@@ -41,16 +43,15 @@ namespace MiCareDBapp.Droid
         private EditText LNameReset;
 
 
-        public Settings(User data, Button button) {
+        public Settings(User data, Button button, List<Android.Support.V4.App.Fragment> fragments) {
             currentUser = data;
             OptionsBtn = button;
+            fragmentItems = fragments;
 
             preferences = Application.Context.GetSharedPreferences("UserInformation" + currentUser.GetUserID().ToString(), FileCreationMode.Private);
             textSize = preferences.GetInt("TextSize", 1);
             NightSwitchMode = preferences.GetBoolean("NightSwitchMode", false);
             DateSwitchMode = preferences.GetBoolean("DateSwitchMode", false);
-
-            //UserEmail = preferences.GetString("UserEmail", String.Empty);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -79,6 +80,7 @@ namespace MiCareDBapp.Droid
                     edit.PutBoolean("NightSwitchMode", false);
                 }
                 edit.Apply();
+                updateInterfaceNow();
             };
 
             Switch DateSwitch = view.FindViewById<Switch>(Resource.Id.DateSwitch);
@@ -94,6 +96,7 @@ namespace MiCareDBapp.Droid
                     edit.PutBoolean("DateSwitchMode", false);
                 }
                 edit.Apply();
+                updateInterfaceNow();
             };
 
             client = new WebClient();
@@ -109,15 +112,20 @@ namespace MiCareDBapp.Droid
             NameResetBtn = view.FindViewById<Button>(Resource.Id.NameChangeBtn);
 
             NameResetBtn.Click += delegate {
-                NameResetBtn.Enabled = false;
-                NameResult.Text = "Changing name please wait...";
-                NameValueCollection values = new NameValueCollection();
-                values.Add("Email", currentUser.GetEmail());
-                values.Add("FName", FNameReset.Text);
-                values.Add("LName", LNameReset.Text);
+                if (FNameReset.Text.Length == 0 || LNameReset.Text.Length == 0) {
+                    NameResult.Text = "Cannot have a blank first and/or last name.";
+                } else {
+                    NameResetBtn.Enabled = false;
+                    NameResult.Text = "Changing name please wait...";
+                    NameValueCollection values = new NameValueCollection();
+                    values.Add("Email", currentUser.GetEmail());
+                    values.Add("FName", FNameReset.Text);
+                    values.Add("LName", LNameReset.Text);
 
-                client.UploadValuesCompleted += UploadValuesFinishUser;
-                client.UploadValuesAsync(urlUser, values);
+                    client.UploadValuesCompleted += UploadValuesFinishUser;
+                    client.UploadValuesAsync(urlUser, values);
+                }
+
             };
 
             EditText OldPassWReset = view.FindViewById<EditText>(Resource.Id.OldPasswordReset);
@@ -131,16 +139,20 @@ namespace MiCareDBapp.Droid
             PasswordResetBtn = view.FindViewById<Button>(Resource.Id.PasswordChangeBtn);
 
             PasswordResetBtn.Click += delegate {
-                PasswordResetBtn.Enabled = false;
-                PassResult.Text = "Changing password please wait...";
-                NameValueCollection values = new NameValueCollection();
-                values.Add("Email", currentUser.GetEmail());
-                values.Add("OPassword", OldPassWReset.Text);
-                values.Add("NPassword", NewPassWReset.Text);
-                values.Add("NPasswordC", CNewPassWReset.Text);
+                if (NewPassWReset.Text.Length == 0 || CNewPassWReset.Text.Length == 0) {
+                    PassResult.Text = "Cannot have a blank password.";
+                } else {
+                    PasswordResetBtn.Enabled = false;
+                    PassResult.Text = "Changing password please wait...";
+                    NameValueCollection values = new NameValueCollection();
+                    values.Add("Email", currentUser.GetEmail());
+                    values.Add("OPassword", OldPassWReset.Text);
+                    values.Add("NPassword", NewPassWReset.Text);
+                    values.Add("NPasswordC", CNewPassWReset.Text);
 
-                client.UploadValuesCompleted += UploadValuesFinishPass;
-                client.UploadValuesAsync(urlPass, values);
+                    client.UploadValuesCompleted += UploadValuesFinishPass;
+                    client.UploadValuesAsync(urlPass, values);
+                }
             };
 
             return view;
@@ -176,6 +188,7 @@ namespace MiCareDBapp.Droid
 
             }
             edit.Apply();
+            updateInterfaceNow();
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState) {
@@ -187,6 +200,14 @@ namespace MiCareDBapp.Droid
         public override void OnCancel(IDialogInterface dialog) {
             base.OnCancel(dialog);
             OptionsBtn.SetBackgroundResource(Resource.Drawable.OptionsIcon);
+        }
+
+        public void updateInterfaceNow() { 
+            foreach (Android.Support.V4.App.Fragment fragment in fragmentItems) {
+                object item = fragment;
+                MethodInfo method = item.GetType().GetMethod("NotifyAdapter");
+                method.Invoke(item, null);
+            }    
         }
     }
 }

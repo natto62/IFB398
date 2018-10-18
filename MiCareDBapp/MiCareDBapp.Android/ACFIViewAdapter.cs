@@ -87,7 +87,6 @@ namespace MiCareDBapp.Droid
 
             if (NightSwitchMode)
             {
-                row.SetBackgroundColor(Color.Black);
                 txtResidentACFI.SetTextColor(Color.White);
                 txtScoreACFI.SetTextColor(Color.White);
                 txtIncomeACFI.SetTextColor(Color.White);
@@ -95,7 +94,6 @@ namespace MiCareDBapp.Droid
             }
             else
             {
-                row.SetBackgroundColor(Color.White);
                 txtResidentACFI.SetTextColor(Color.Black);
                 txtScoreACFI.SetTextColor(Color.Black);
                 txtIncomeACFI.SetTextColor(Color.Black);
@@ -107,6 +105,40 @@ namespace MiCareDBapp.Droid
             txtScoreACFI.Text = Items[position].GetACFIScore().ToString();
             txtIncomeACFI.Text = "$ " + Items[position].GetIncome().ToString();
             txtExpirationDateACFI.Text = Items[position].GetExpirationDate().ToShortDateString();
+
+            if (Items[position].IsGreen())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkGreen);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightGreen);
+                }
+            }
+            else if (Items[position].IsRed())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkRed);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+                }
+            }
+            else
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkOrange);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightYellow);
+                }
+            }
 
             return row;
         }

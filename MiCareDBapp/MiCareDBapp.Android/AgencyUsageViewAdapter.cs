@@ -79,11 +79,9 @@ namespace MiCareDBapp.Droid
             }
 
             if (NightSwitchMode) {
-                row.SetBackgroundColor(Color.Black);
                 txtDateAgency.SetTextColor(Color.White);
                 txtAmountAgency.SetTextColor(Color.White);
             } else {
-                row.SetBackgroundColor(Color.White);
                 txtDateAgency.SetTextColor(Color.Black);
                 txtAmountAgency.SetTextColor(Color.Black);
             }
@@ -96,6 +94,40 @@ namespace MiCareDBapp.Droid
 
             txtAmountAgency.Text = "$ " + Items[position].GetAgencyUsageAmount().ToString();
             txtDateAgency.Text = Items[position].GetDate().ToShortDateString();
+
+            if (Items[position].IsGreen())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkGreen);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightGreen);
+                }
+            }
+            else if (Items[position].IsRed())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkRed);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+                }
+            }
+            else
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkOrange);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightYellow);
+                }
+            }
 
             return row;
         }

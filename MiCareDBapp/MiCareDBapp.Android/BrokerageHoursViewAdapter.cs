@@ -79,11 +79,9 @@ namespace MiCareDBapp.Droid
             }
 
             if (NightSwitchMode) {
-                row.SetBackgroundColor(Color.Black);
                 txtDateBrokerage.SetTextColor(Color.White);
                 txtHoursBrokerage.SetTextColor(Color.White);
             } else {
-                row.SetBackgroundColor(Color.White);
                 txtDateBrokerage.SetTextColor(Color.Black);
                 txtHoursBrokerage.SetTextColor(Color.Black);
             }
@@ -97,6 +95,39 @@ namespace MiCareDBapp.Droid
             txtDateBrokerage.Text = Items[position].GetDate().ToShortDateString();
             txtHoursBrokerage.Text = Items[position].GetBrokerageHours().ToString();
 
+            if (Items[position].IsGreen())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkGreen);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightGreen);
+                }
+            }
+            else if (Items[position].IsRed())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkRed);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+                }
+            }
+            else
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkOrange);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightYellow);
+                }
+            }
 
             return row;
         }

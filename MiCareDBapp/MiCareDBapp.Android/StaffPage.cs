@@ -93,7 +93,7 @@ namespace MiCareDBapp.Droid
             int closeBtnID = SearchItems.Context.Resources.GetIdentifier("android:id/search_close_btn", null, null);
             var SearchCloseBtn = view.FindViewById<ImageView>(closeBtnID);
             SearchItems.SetIconifiedByDefault(false);//shows hint
-            SearchItems.ClearFocus();
+            SearchItems.Enabled = false;
             SearchItems.QueryTextSubmit += delegate {
                 string searchName = SearchItems.Query;
                 foreach (StaffData item in dataItems) {
@@ -121,6 +121,7 @@ namespace MiCareDBapp.Droid
                     }
                 }
                 SearchItems.ClearFocus();
+                SearchItems.SetQuery(String.Empty, false);
                 adapter.NotifyDataSetChanged();
             };
 
@@ -159,6 +160,7 @@ namespace MiCareDBapp.Droid
                     RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
                     spinner.Clickable = true;
                     GraphButton.Enabled = true;
+                    SearchItems.Enabled = true;
                     toastMessage.Cancel();
                     searchItems.Clear();
                     adapter.NotifyDataSetChanged();
@@ -312,6 +314,11 @@ namespace MiCareDBapp.Droid
 
                 }
             }
+            adapter.NotifyDataSetChanged();
+        }
+
+        public void NotifyAdapter()
+        {
             adapter.NotifyDataSetChanged();
         }
     }

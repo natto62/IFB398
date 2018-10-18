@@ -39,11 +39,7 @@ namespace MiCareDBapp.Droid
 
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
             viewPager.Adapter = adapter;
-
-            //viewPager. += delegate
-            //{
-
-           // }
+            viewPager.OffscreenPageLimit = 6;
 
             //back button to return to finance menu page
             Button backBtn = FindViewById<Button>(Resource.Id.BackButton);
@@ -56,7 +52,7 @@ namespace MiCareDBapp.Droid
 
             Button OptionsBtn = FindViewById<Button>(Resource.Id.OptionsButton);
 
-            Settings SettingsScreen = new Settings(currentUser, OptionsBtn);
+            Settings SettingsScreen = new Settings(currentUser, OptionsBtn, adapter.GetFragments());
 
             OptionsBtn.Click += delegate {
                 OptionsBtn.SetBackgroundResource(Resource.Drawable.OptionsIconClicked);

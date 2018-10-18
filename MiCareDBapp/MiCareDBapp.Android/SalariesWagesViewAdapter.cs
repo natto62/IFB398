@@ -88,13 +88,11 @@ namespace MiCareDBapp.Droid
             }
 
             if (NightSwitchMode) {
-                row.SetBackgroundColor(Color.Black);
                 txtDateSalariesWages.SetTextColor(Color.White);
                 txtRosteredCostSalariesWages.SetTextColor(Color.White);
                 txtBudgetSalariesWages.SetTextColor(Color.White);
                 txtVarianceSalariesWages.SetTextColor(Color.White);
             } else {
-                row.SetBackgroundColor(Color.White);
                 txtDateSalariesWages.SetTextColor(Color.Black);
                 txtRosteredCostSalariesWages.SetTextColor(Color.Black);
                 txtBudgetSalariesWages.SetTextColor(Color.Black);
@@ -112,6 +110,40 @@ namespace MiCareDBapp.Droid
             txtRosteredCostSalariesWages.Text = "$ " + Items[position].GetActualCost().ToString("#,#", CultureInfo.InvariantCulture);
             txtVarianceSalariesWages.Text = "$ " + Items[position].GetVariance().ToString("#,#", CultureInfo.InvariantCulture);
             txtBudgetSalariesWages.Text = "$ " + Items[position].GetBudget().ToString("#,#", CultureInfo.InvariantCulture);
+
+            if (Items[position].IsGreen())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkGreen);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightGreen);
+                }
+            }
+            else if (Items[position].IsRed())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkRed);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+                }
+            }
+            else
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkOrange);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightYellow);
+                }
+            }
 
             return row;
         }

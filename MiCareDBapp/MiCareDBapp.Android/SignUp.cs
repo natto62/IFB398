@@ -25,11 +25,6 @@ namespace MiCareDBapp.Droid
         private Button SignUpBtn;
         private TextView SignUpTxt;
 
-        //newUser.FName = FNameTxt.Text;
-        //newUser.LName = LNameTxt.Text;
-        // newUser.Email = EmailTxt.Text;
-        // newUser.Password = PassWTxt.Text;
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);

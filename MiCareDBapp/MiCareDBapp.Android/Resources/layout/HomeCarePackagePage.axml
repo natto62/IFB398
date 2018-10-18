@@ -146,7 +146,7 @@
 			android:layout_weight="11"
 			android:textSize="10sp"
 			android:id="@+id/searchData"
-			android:queryHint="First or Last Name" />
+			android:queryHint="First/Last Name" />
 		<ProgressBar
 			style="?android:attr/progressBarStyleHorizontal"
 			android:layout_width="match_parent"

@@ -165,5 +165,10 @@ namespace MiCareDBapp.Droid
 
             return view;
         }
+
+        public void NotifyAdapter()
+        {
+            adapter.NotifyDataSetChanged();
+        }
     }
 }

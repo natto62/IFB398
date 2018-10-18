@@ -101,21 +101,23 @@ namespace MiCareDBapp.Droid
             //setup search bar
             SearchView SearchItems = view.FindViewById<SearchView>(Resource.Id.searchData);
             //an X apears next the search upon a submitted query, this X closes the current search
+            int searchBtnID = SearchItems.Context.Resources.GetIdentifier("android:id/search_button", null, null);
             int closeBtnID = SearchItems.Context.Resources.GetIdentifier("android:id/search_close_btn", null, null);
+            var SearchOpenBtn = view.FindViewById<ImageView>(searchBtnID);
             var SearchCloseBtn = view.FindViewById<ImageView>(closeBtnID);
             SearchItems.SetIconifiedByDefault(false);//shows hint
-            SearchItems.ClearFocus();
+            SearchOpenBtn.Enabled = false;
             SearchItems.QueryTextSubmit += delegate {
-                int searchID = Convert.ToInt32(SearchItems.Query);
+                string searchID = SearchItems.Query;
                 foreach (ACFIFunding item in dataItems) {
                     if (!searchItems.Contains(item)) {
                         searchItems.Add(item);
                     }
                 }
                 foreach (ACFIFunding item in searchItems) {
-                    if (dataItems.Contains(item) && (item.GetResidentID() != searchID)) {
+                    if (dataItems.Contains(item) && (!String.Equals(item.GetResidentID().ToString(), searchID))) {
                         dataItems.Remove(item);
-                    } else if (!dataItems.Contains(item) && (item.GetResidentID() == searchID)) {
+                    } else if (!dataItems.Contains(item) && (String.Equals(item.GetResidentID().ToString(), searchID))) {
                         dataItems.Add(item);
                     }
                 }
@@ -129,6 +131,7 @@ namespace MiCareDBapp.Droid
                     }
                 }
                 SearchItems.ClearFocus();
+                SearchItems.SetQuery(String.Empty, false);
                 adapter.NotifyDataSetChanged();
             };
 
@@ -158,16 +161,45 @@ namespace MiCareDBapp.Droid
                 Activity.RunOnUiThread(() => {
                     string json = Encoding.UTF8.GetString(e.Result);
                     dataItems = JsonConvert.DeserializeObject<List<ACFIFunding>>(json);
-                    adapter = new ACFIViewAdapter(this.Context, dataItems);//this
+                    int[] residentIDArray = new int[dataItems.Count];
+                    int count = 0;
                     foreach (ACFIFunding item in dataItems)
                     {
+                        residentIDArray[count] = item.GetResidentID();
+                        count++;
                         displayItems.Add(item);
                     }
+                    var distinctResidentIDvals = residentIDArray.Distinct();
+                    bool isGreen = false;
+                    bool isRed = false;
+                    decimal sum = 0;
+                    foreach (int ID in distinctResidentIDvals) {
+                        sum = 0;
+                        foreach (ACFIFunding item in dataItems.Where(x => x.GetResidentID() == ID)) {
+                            sum = sum + item.GetIncome();
+                        }
+                        if (sum > 200) {
+                            isGreen = true;
+                            isRed = false;
+                        } else if (sum < 150) {
+                            isGreen = false;
+                            isRed = true;
+                        } else {
+                            isGreen = false;
+                            isRed = false;
+                        }
+                        foreach (ACFIFunding item in dataItems.Where(x => x.GetResidentID() == ID)) {
+                            item.SetGreen(isGreen);
+                            item.SetRed(isRed);
+                        }
+                    }
+                    adapter = new ACFIViewAdapter(this.Context, dataItems);//this
                     NumItems.Text = dataItems.Count.ToString();
                     dataList.Adapter = adapter;
                     RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
                     spinner.Clickable = true;
                     GraphButton.Enabled = true;
+                    SearchOpenBtn.Enabled = true;
                     toastMessage.Cancel();
                     searchItems.Clear();
                     adapter.NotifyDataSetChanged();
@@ -313,6 +345,10 @@ namespace MiCareDBapp.Droid
 
                 }
             }
+            adapter.NotifyDataSetChanged();
+        }
+
+        public void NotifyAdapter() {
             adapter.NotifyDataSetChanged();
         }
     }

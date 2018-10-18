@@ -81,13 +81,11 @@ namespace MiCareDBapp.Droid
 
             if (NightSwitchMode)
             {
-                row.SetBackgroundColor(Color.Black);
                 txtDateBank.SetTextColor(Color.White);
                 txtBalanceBank.SetTextColor(Color.White);
             }
             else
             {
-                row.SetBackgroundColor(Color.White);
                 txtDateBank.SetTextColor(Color.Black);
                 txtBalanceBank.SetTextColor(Color.Black);
             }
@@ -101,6 +99,40 @@ namespace MiCareDBapp.Droid
 
             txtDateBank.Text = Items[position].GetDate().ToShortDateString();
             txtBalanceBank.Text = "$ " + Items[position].GetBankBalance().ToString("#,#", CultureInfo.InvariantCulture);
+
+            if (Items[position].IsGreen())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkGreen);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightGreen);
+                }
+            }
+            else if (Items[position].IsRed())
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkRed);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.Argb(80, 255, 128, 128));
+                }
+            }
+            else
+            {
+                if (NightSwitchMode)
+                {
+                    row.SetBackgroundColor(Color.DarkOrange);
+                }
+                else
+                {
+                    row.SetBackgroundColor(Color.LightYellow);
+                }
+            }
 
             return row;
         }

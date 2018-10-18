@@ -65,12 +65,8 @@ namespace MiCareDBapp.Droid
             return fragments[position];
         }
 
-        //public override void StartUpdate(ViewGroup container)
-        //{
-
-        //    base.StartUpdate(container);
-
-        //}
-
+        public List<Android.Support.V4.App.Fragment> GetFragments() {
+            return fragments;
+        }
     }
 }

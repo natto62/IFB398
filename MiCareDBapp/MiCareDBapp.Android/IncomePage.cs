@@ -232,9 +232,9 @@ namespace MiCareDBapp.Droid
                 type = "Rural";
             }
             foreach (IncomeData item in displayItems) {
-                if (item.GetFacilityID() == 1) {
+                if (item.GetFacilityID() > 0 && item.GetFacilityID() < 3) {
                     itemType = "Rural";
-                } else if (item.GetFacilityID() > 1) {
+                } else if (item.GetFacilityID() > 2) {
                     itemType = "Residential";
                 }
                 if (String.Equals(itemType, type)) {
@@ -286,6 +286,11 @@ namespace MiCareDBapp.Droid
             } else {
                 FilterBtn.Enabled = false;
             }
+        }
+
+        public void NotifyAdapter()
+        {
+            adapter.NotifyDataSetChanged();
         }
     }
 }

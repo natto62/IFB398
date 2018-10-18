@@ -98,6 +98,8 @@ namespace MiCareDBapp.Droid
         public DateTime date { get; set; }
         public DateTime expiration { get; set; }
         protected bool show = true;
+        private bool green = false;
+        private bool red = false;
 
         public DateTime GetDate() {
             return date;
@@ -121,6 +123,22 @@ namespace MiCareDBapp.Droid
 
         public int GetFacilityID() {
             return facilityID;
+        }
+
+        //the red gren indicaters are done in ACFIPage.cs
+        public void SetGreen(bool value) {
+            green = value;
+        }
+        public void SetRed(bool value) {
+            red = value;
+        }
+
+        public bool IsGreen() {
+            return green;
+        }
+
+        public bool IsRed() {
+            return red;
         }
 
         public void Show(bool value)
@@ -151,14 +169,32 @@ namespace MiCareDBapp.Droid
             return date;
         }
 
-        //public int GetFacilityID()
-        //{
-        //    return facilityID;
-        //}
+        //if the bank balance is above or equal to 1,200,000 return true
+        public bool IsGreen()
+        {
+            decimal greenVal = 1200000;
+            if (GetBankBalance() >= greenVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-        public void UpdateBankBalance(DateTime Date, int Balance) {
-            this.date = Date;
-            this.balance = Balance;
+        //if the bank balance is less than 1,200,000 return true
+        public bool IsRed()
+        {
+            decimal redVal = 1200000;
+            if (GetBankBalance() < redVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Show(bool value) {
@@ -176,25 +212,13 @@ namespace MiCareDBapp.Droid
 
         public decimal Amount { get; set; }
         public DateTime date { get; set; }
-       // protected int InvoiceID;
         
         public int FacilityID { get; set; }
         protected bool show = true;
 
-        //public AgencyUsageData(DateTime Date, double Amount, int FacilityID) {
-        //    this.Date = Date;
-        //    //this.InvoiceID = InvoiceID;
-        //    this.Amount = Amount;
-        //    this.FacilityID = FacilityID;
-        //}
-
         public DateTime GetDate() {
             return date;
         }
-
-        //public int GetInvoiceID() {
-        //    return InvoiceID;
-       // }
 
         public decimal GetAgencyUsageAmount() {
             return Amount;
@@ -202,6 +226,34 @@ namespace MiCareDBapp.Droid
 
         public int GetFacilityID() {
             return FacilityID;
+        }
+
+        //if the agency usage is above or equal to 30 return true
+        public bool IsGreen()
+        {
+            decimal greenVal = 30;
+            if (GetAgencyUsageAmount() >= greenVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //if the agency usage is less than 25 return true
+        public bool IsRed()
+        {
+            decimal redVal = 25;
+            if (GetAgencyUsageAmount() < redVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Show(bool value)
@@ -228,10 +280,6 @@ namespace MiCareDBapp.Droid
             return date;
         }
 
-        //public int GetBrokerageID() {
-        //    return BrokerageID;
-        //}
-
         public string GetLocation() {
             return location;
         }
@@ -242,6 +290,34 @@ namespace MiCareDBapp.Droid
 
         public int GetFacilityID() {
             return facilityID;
+        }
+
+        //if the brokerage hours is above or equal to 20 return true
+        public bool IsGreen()
+        {
+            decimal greenVal = 20;
+            if (GetBrokerageHours() >= greenVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //if the brokerage hours is less than 15 return true
+        public bool IsRed()
+        {
+            decimal redVal = 15;
+            if (GetBrokerageHours() < redVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Show(bool value)
@@ -264,8 +340,6 @@ namespace MiCareDBapp.Droid
         public int packageLevel { get; set; }
         public decimal packageIncome { get; set; }
         protected bool show = true;
-
-
 
         public int GetResidentID() {
             return residentID;
@@ -360,30 +434,65 @@ namespace MiCareDBapp.Droid
             return occupancy;
         }
 
-        public int GetSupported() {
-            return concessional;
+        public double GetSupported() {
+            double bedDays = concessional * 30;
+            double SupportedRate = 0.0;
+            SupportedRate = bedDays / (30 * totalbeds);
+            return SupportedRate;
         }
 
         public int GetTotalBeds() {
             return totalbeds;
         }
 
-        public int GetTotalBedDays() {
+        public int GetTotalBedDaysYear() {
             int totalBedDays = 0;
             int year = DateTime.Now.Year;
             if (DateTime.IsLeapYear(year)) {//leap year
-                totalBedDays = totalbeds * 366;
+                totalBedDays = occupancy * 366;
             } else {
-                totalBedDays = totalbeds * 365;
+                totalBedDays = occupancy * 365;
             }
             return totalBedDays;
         }
 
+        public int GetTotalBedDaysThirtyDays() {
+            return occupancy * 30;
+        }
+
         public double GetOccupancyRate() {
-            int bedDays = GetTotalBedDays();
+            double bedDays = GetTotalBedDaysThirtyDays();
             double OccupancyRate = 0.0;
-            OccupancyRate = totalbeds - occupancy - concessional;//bedDays / (30 * (totalbeds - occupancy - concessional));
+            OccupancyRate = bedDays / (30 * totalbeds);
             return OccupancyRate;
+        }
+
+        //if the occupancy rate is above or equal to 0.45% return true
+        public bool IsGreen()
+        {
+            double greenVal = 0.45;
+            if (GetOccupancyRate() >= greenVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //if the occupancy rate is less than 0.4% return true
+        public bool IsRed()
+        {
+            double redVal = 0.4;
+            if (GetOccupancyRate() < redVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Show(bool value)
@@ -435,6 +544,34 @@ namespace MiCareDBapp.Droid
 
         public decimal GetSickLeaveAcrewed() {
             return slAccrued;
+        }
+
+        //if the combined leave is less than or equal to 50 return true
+        public bool IsGreen()
+        {
+            decimal greenVal = GetAnnualLeaveAcrewed() + GetLongServiceLeaveAcrewed() + GetSickLeaveAcrewed();
+            if (greenVal <= 50)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //if the combined leave is greater than 60 return true
+        public bool IsRed()
+        {
+            decimal redVal = GetAnnualLeaveAcrewed() + GetLongServiceLeaveAcrewed() + GetSickLeaveAcrewed();
+            if (redVal > 60)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Show(bool value)
@@ -494,6 +631,58 @@ namespace MiCareDBapp.Droid
             return location;
         }
 
+        //if the income is above otr equal to greenVal return true
+        public bool IsGreen()
+        {
+            decimal greenVal = 0;
+            if (String.Equals(type, "Total Package Income"))
+            {
+                greenVal = 1750000;
+            }
+            else if (String.Equals(type, "Business Service"))
+            {
+                greenVal = 2250000;
+            }
+            else if (String.Equals(type, "Settlement Service"))
+            {
+                greenVal = 2250000;
+            }
+            if (GetIncome() >= greenVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //if the income is less than redVal return true
+        public bool IsRed()
+        {
+            decimal redVal = 0;
+            if (String.Equals(type, "Total Package Income"))
+            {
+                redVal = 1500000;
+            }
+            else if (String.Equals(type, "Business Service"))
+            {
+                redVal = 2000000;
+            }
+            else if (String.Equals(type, "Settlement Service"))
+            {
+                redVal = 2000000;
+            }
+            if (GetIncome() < redVal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void Show(bool value)
         {
             show = value;
@@ -533,6 +722,32 @@ namespace MiCareDBapp.Droid
 
         public decimal GetVariance() {
             return (budget - rosteredCost);
+        }
+
+        //if the variance is above 0 return true
+        public bool IsGreen()
+        {
+            if (GetVariance() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //if the variance is less than 0 return true
+        public bool IsRed()
+        {
+            if (GetVariance() < 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Show(bool value)
