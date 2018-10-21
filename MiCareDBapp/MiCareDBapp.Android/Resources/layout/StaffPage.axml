@@ -120,6 +120,8 @@
 		android:layout_weight="1"
 		android:layout_marginLeft="2dp"
 		android:layout_marginRight="2dp"
+		android:focusable="true"
+		android:focusableInTouchMode="true"
 		android:weightSum="100">
 		<Button
 			android:text="Visualise Data"

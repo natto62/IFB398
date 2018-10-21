@@ -13,10 +13,11 @@ using Android.Support.V4.View;
 using Android.Support.V4.App;
 using Newtonsoft.Json;
 using Android;
+using Android.Content.PM;
 
 namespace MiCareDBapp.Droid
 {
-    [Activity(Label = "Activity1", Theme = "@style/MainTheme")]
+    [Activity(Label = "Activity1", Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Activity1 : FragmentActivity
     {
         private string[] names;

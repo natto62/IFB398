@@ -13,10 +13,11 @@ using Android.Support.V4.App;
 using Android.Widget;
 using Newtonsoft.Json;
 using Android;
+using Android.Content.PM;
 
 namespace MiCareDBapp.Droid
 {
-    [Activity(Label = "SlidingTabOccupancy", Theme = "@style/MainTheme")]
+    [Activity(Label = "SlidingTabOccupancy", Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class SlidingTabOccupancy : FragmentActivity
     {
         private string[] names;

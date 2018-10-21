@@ -90,12 +90,22 @@ namespace MiCareDBapp.Droid
             //setup search bar
             SearchView SearchItems = view.FindViewById<SearchView>(Resource.Id.searchData);
             //an X apears next the search upon a submitted query, this X closes the current search
+            int searchBtnID = SearchItems.Context.Resources.GetIdentifier("android:id/search_button", null, null);
             int closeBtnID = SearchItems.Context.Resources.GetIdentifier("android:id/search_close_btn", null, null);
+            var SearchOpenBtn = view.FindViewById<ImageView>(searchBtnID);
             var SearchCloseBtn = view.FindViewById<ImageView>(closeBtnID);
             SearchItems.SetIconifiedByDefault(false);//shows hint
             SearchItems.Enabled = false;
+            SearchOpenBtn.Enabled = false;
             SearchItems.QueryTextSubmit += delegate {
                 string searchName = SearchItems.Query;
+                //Get same string with first letter uppercase
+                char firstUpper = searchName[0];
+                firstUpper = Char.ToUpper(firstUpper);
+                char[] searchNameLetters = searchName.ToCharArray();
+                searchNameLetters[0] = firstUpper;
+                string searchNameUpper = new string(searchNameLetters);
+
                 foreach (StaffData item in dataItems) {
                     if (!searchItems.Contains(item)) {
                         searchItems.Add(item);
@@ -105,9 +115,10 @@ namespace MiCareDBapp.Droid
                     bool foundFName = String.Equals(searchName, item.GetStaffFirstName(), StringComparison.OrdinalIgnoreCase);//ignores upper or lower case
                     bool foundLName = String.Equals(searchName, item.GetStaffLastName(), StringComparison.OrdinalIgnoreCase);
                     bool insideName = item.GetStaffFirstName().Contains(searchName) || item.GetStaffLastName().Contains(searchName);
-                    if (dataItems.Contains(item) && !foundFName && !foundLName && !insideName) {
+                    bool insideNameUpper = item.GetStaffFirstName().Contains(searchNameUpper) || item.GetStaffLastName().Contains(searchNameUpper);
+                    if (dataItems.Contains(item) && !foundFName && !foundLName && !insideName && !insideNameUpper) {
                         dataItems.Remove(item);
-                    } else if (!dataItems.Contains(item) && (foundFName || foundLName || insideName)) {
+                    } else if (!dataItems.Contains(item) && (foundFName || foundLName || insideName || insideNameUpper)) {
                         dataItems.Add(item);
                     }
                 }
@@ -161,6 +172,7 @@ namespace MiCareDBapp.Droid
                     spinner.Clickable = true;
                     GraphButton.Enabled = true;
                     SearchItems.Enabled = true;
+                    SearchOpenBtn.Enabled = true;
                     toastMessage.Cancel();
                     searchItems.Clear();
                     adapter.NotifyDataSetChanged();

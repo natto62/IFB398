@@ -106,6 +106,7 @@ namespace MiCareDBapp.Droid
             var SearchOpenBtn = view.FindViewById<ImageView>(searchBtnID);
             var SearchCloseBtn = view.FindViewById<ImageView>(closeBtnID);
             SearchItems.SetIconifiedByDefault(false);//shows hint
+            SearchItems.Enabled = false;
             SearchOpenBtn.Enabled = false;
             SearchItems.QueryTextSubmit += delegate {
                 string searchID = SearchItems.Query;
@@ -163,28 +164,33 @@ namespace MiCareDBapp.Droid
                     dataItems = JsonConvert.DeserializeObject<List<ACFIFunding>>(json);
                     int[] residentIDArray = new int[dataItems.Count];
                     int count = 0;
+                    //put all resident id values into an array
                     foreach (ACFIFunding item in dataItems)
                     {
                         residentIDArray[count] = item.GetResidentID();
                         count++;
                         displayItems.Add(item);
                     }
+                    //get distinct resident id values in its own array
                     var distinctResidentIDvals = residentIDArray.Distinct();
                     bool isGreen = false;
                     bool isRed = false;
                     decimal sum = 0;
+                    //foreach distinct resident id value check if the rows for a resident id should be green, yellow or red
                     foreach (int ID in distinctResidentIDvals) {
                         sum = 0;
                         foreach (ACFIFunding item in dataItems.Where(x => x.GetResidentID() == ID)) {
                             sum = sum + item.GetIncome();
                         }
+                        //if the sum of all acfi income for a resident is above $200
                         if (sum > 200) {
                             isGreen = true;
                             isRed = false;
-                        } else if (sum < 150) {
+                        } else if (sum < 150)
+                        { //if the sum of all acfi income for a resident is below $150
                             isGreen = false;
                             isRed = true;
-                        } else {
+                        } else {//yellow
                             isGreen = false;
                             isRed = false;
                         }
@@ -199,6 +205,7 @@ namespace MiCareDBapp.Droid
                     RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
                     spinner.Clickable = true;
                     GraphButton.Enabled = true;
+                    SearchItems.Enabled = true;
                     SearchOpenBtn.Enabled = true;
                     toastMessage.Cancel();
                     searchItems.Clear();
@@ -307,7 +314,7 @@ namespace MiCareDBapp.Droid
                 if (numItems != 0) {
                     avgValue = totalAmount / numItems;
                 }
-                AvgIncome.Text = "$ " + avgValue.ToString();
+                AvgIncome.Text = " $ " + avgValue.ToString();
             }
         }
 

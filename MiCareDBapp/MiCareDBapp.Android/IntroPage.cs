@@ -11,10 +11,11 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 using Android;
+using Android.Content.PM;
 
 namespace MiCareDBapp.Droid
 {
-    [Activity(Label = "IntroPage", Theme = "@style/MainTheme")]
+    [Activity(Label = "IntroPage", Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class IntroPage : Activity
     {
         private User currentUser;

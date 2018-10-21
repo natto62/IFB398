@@ -29,6 +29,8 @@ namespace MiCareDBapp.Droid
 
         private int clickNumDate = 0;
         private int clickNumIncome = 0;
+        private string locationName = "";
+        private string type = "";
 
         private IncomeViewAdapter adapter;
 
@@ -193,6 +195,23 @@ namespace MiCareDBapp.Droid
             };
 
             FilterBtn.Click += delegate{
+                string itemLocationName;
+                string itemType = "";
+                foreach (IncomeData item in displayItems) {
+                    if (item.GetFacilityID() > 0 && item.GetFacilityID() < 3) {
+                        itemType = "Rural";
+                    } else if (item.GetFacilityID() > 2) {
+                        itemType = "Residential";
+                    }
+                    itemLocationName = item.GetLocation();
+                    if (String.Equals(locationName, itemLocationName) && String.Equals(itemType, type)) {
+                        if (!dataItems.Contains(item)) {
+                            dataItems.Add(item);
+                        }
+                    } else {
+                        dataItems.Remove(item);
+                    }
+                }
                 adapter.NotifyDataSetChanged();
                 IncomeBtn.Enabled = true;
                 DateBtn.Enabled = true;
@@ -219,57 +238,26 @@ namespace MiCareDBapp.Droid
             checkIfFilter();
         }
 
-        void Spinner_BusinessClassItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
+        void Spinner_BusinessClassItemSelected(object sender, AdapterView.ItemSelectedEventArgs e) {
             Spinner spinner = (Spinner)sender;
             int position = e.Position;
             spinnerPositions[1] = position;
-            string itemType = "";
-            string type = "";
             if (position == 1) {
                 type = "Residential";
             } else if (position == 2) {
                 type = "Rural";
             }
-            foreach (IncomeData item in displayItems) {
-                if (item.GetFacilityID() > 0 && item.GetFacilityID() < 3) {
-                    itemType = "Rural";
-                } else if (item.GetFacilityID() > 2) {
-                    itemType = "Residential";
-                }
-                if (String.Equals(itemType, type)) {
-                    if (!dataItems.Contains(item))
-                    {
-                        dataItems.Add(item);
-                    }
-                } else {
-                    dataItems.Remove(item);
-                }
-            }
             checkIfFilter();
         }
 
-        void Spinner_LocationItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
+        void Spinner_LocationItemSelected(object sender, AdapterView.ItemSelectedEventArgs e) {
             Spinner spinner = (Spinner)sender;
             int position = e.Position;
             spinnerPositions[2] = position;
-            string itemLocationName;
-            string locationName = "";
             if (position == 1) {
                 locationName = "QLD";
             } else if (position == 2) {
                 locationName = "VIC";
-            }
-            foreach (IncomeData item in displayItems) {
-                itemLocationName = item.GetLocation();
-                if (String.Equals(locationName, itemLocationName)) {
-                    if (!dataItems.Contains(item)) {
-                        dataItems.Add(item);
-                    }
-                } else {
-                    dataItems.Remove(item);
-                }
             }
             checkIfFilter();
         }
