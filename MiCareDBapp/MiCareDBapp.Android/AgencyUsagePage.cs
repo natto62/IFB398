@@ -35,6 +35,7 @@ namespace MiCareDBapp.Droid
         private WebClient client;
         private Uri url;
         private TextView NumItems;
+        private int facilityForGraph = 0;
 
         private Toast toastMessage;
 
@@ -74,9 +75,14 @@ namespace MiCareDBapp.Droid
             Button GraphButton = view.FindViewById<Button>(Resource.Id.GraphButton);
             GraphButton.Enabled = false;
             GraphButton.Click += delegate {
-                var transaction = ChildFragmentManager.BeginTransaction();
-                AgencyUsageGraph info = new AgencyUsageGraph(displayItems);
-                info.Show(transaction, "dialog fragment");
+                if (facilityForGraph > 0) {
+                    var transaction = ChildFragmentManager.BeginTransaction();
+                    AgencyUsageGraph info = new AgencyUsageGraph(dataItems, facilityForGraph);
+                    info.Show(transaction, "dialog fragment");
+                } else {
+                    Toast FacilityIDMessage = Toast.MakeText(this.Context, "Please select a facility", ToastLength.Long);
+                    FacilityIDMessage.Show();
+                }
             };
 
             //setup progress bar
@@ -157,6 +163,7 @@ namespace MiCareDBapp.Droid
             Spinner spinner = (Spinner)sender;
             int ID;
             int position = e.Position;
+            facilityForGraph = position;
             foreach (AgencyUsageData item in displayItems) {
                 ID = item.GetFacilityID();
                 if (ID == position) {
@@ -173,7 +180,6 @@ namespace MiCareDBapp.Droid
                             dataItems.Add(item);
                         }
                     }
-
                 }
             }
             adapter.NotifyDataSetChanged();

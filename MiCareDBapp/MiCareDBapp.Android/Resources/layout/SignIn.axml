@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/SignInEmail"
         android:hint="Email"
+		android:textColorHint="#808080"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp" />
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/SignInPassW"
         android:hint="Password"
+		android:textColorHint="#808080"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp" />
@@ -39,6 +41,7 @@
         android:layout_marginRight="10dp" />
     <CheckBox
         android:text="Remember me"
+		android:textColor="#808080"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"

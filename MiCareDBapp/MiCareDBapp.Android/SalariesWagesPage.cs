@@ -76,7 +76,7 @@ namespace MiCareDBapp.Droid
             GraphButton.Enabled = false;
             GraphButton.Click += delegate {
                 var transaction = ChildFragmentManager.BeginTransaction();
-                SalariesWagesGraph info = new SalariesWagesGraph(dataItems);
+                SalariesWagesGraph info = new SalariesWagesGraph(displayItems);
                 info.Show(transaction, "dialog fragment");
             };
 

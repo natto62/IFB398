@@ -72,7 +72,7 @@ namespace MiCareDBapp.Droid
             GraphButton.Enabled = false;
             GraphButton.Click += delegate {
                 var transaction = ChildFragmentManager.BeginTransaction();
-                BrokerageHoursGraph info = new BrokerageHoursGraph(dataItems);
+                BrokerageHoursGraph info = new BrokerageHoursGraph(displayItems);
                 info.Show(transaction, "dialog fragment");
             };
 

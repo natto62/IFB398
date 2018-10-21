@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/SignUpFirstName"
         android:hint="First Name"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#808080"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp" />
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/SignUpLastName"
         android:hint="Last Name"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#808080"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp" />
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/SignUpEmail"
         android:hint="Email"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#808080"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp" />
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/SignUpPassW"
         android:hint="Password"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#808080"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp" />
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/SignUpCPassW"
         android:hint="Confirm Password"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#808080"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp" />

@@ -273,7 +273,8 @@ namespace MiCareDBapp.Droid
             {
                 Position = AxisPosition.Left,
                 MinimumPadding = 0,
-                AbsoluteMinimum = 0
+                AbsoluteMinimum = 0,
+                Title = "Amount ($)"
             });
 
             plotView.Model = plotModel;
@@ -289,12 +290,14 @@ namespace MiCareDBapp.Droid
     public class AgencyUsageGraph : Android.Support.V4.App.DialogFragment
     {
         private List<AgencyUsageData> dataObjects;
+        private int facilityNum;
 
 
         //import the finance data item based on the item clicked 
-        public AgencyUsageGraph(List<AgencyUsageData> data)
+        public AgencyUsageGraph(List<AgencyUsageData> data, int facility)
         {
             dataObjects = data;
+            facilityNum = facility;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -320,18 +323,18 @@ namespace MiCareDBapp.Droid
                 return one.GetAgencyUsageAmount().CompareTo(two.GetAgencyUsageAmount());
             });
             //bug: reset button after changing fragments
-            var MaxBalance = dataObjects.First().GetAgencyUsageAmount();
-            var MinBalance = dataObjects.Last().GetAgencyUsageAmount();
+            var MinUsageAmount = dataObjects.First().GetAgencyUsageAmount();
+            var MaxUsageAmount = dataObjects.Last().GetAgencyUsageAmount();
 
-            var maxVal = LinearAxis.ToDouble(MinBalance);
-            var minVal = LinearAxis.ToDouble(MaxBalance);
+            var maxVal = LinearAxis.ToDouble(MaxUsageAmount);
+            var minVal = LinearAxis.ToDouble(MinUsageAmount);
 
             string formatter(double item)
             {
                 return String.Format("{0}", item);
             }
 
-            plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, AbsoluteMinimum = minVal - 10000, AbsoluteMaximum = maxVal + 10000, Title = "Amount ($)", MinorStep = 10000, MajorStep = 50000, LabelFormatter = formatter });
+            plotModel.Axes.Add(new LinearAxis {Key="currency", Position = AxisPosition.Left, AbsoluteMinimum = minVal - 10000, AbsoluteMaximum = maxVal + 10000, Title = "Amount ($)", MinorStep = 50000, MajorStep = 100000, LabelFormatter = formatter });
 
 
             dataObjects.Sort(delegate (AgencyUsageData one, AgencyUsageData two) {
@@ -346,10 +349,10 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, AbsoluteMinimum = firstVal - 1, AbsoluteMaximum = lastVal + 1, MinorStep = 1, StringFormat = "MM/dd/yyyy", Title = "Date (M/D/Y)" });
 
-            var AvondrustVillageSeries = new LineSeries { MarkerType = MarkerType.Circle, MarkerSize = 4, MarkerStroke = OxyColors.Aqua, Title = "Avondrust Village" };
-            var MargrietManorSeries = new LineSeries { MarkerType = MarkerType.Circle, MarkerSize = 4, MarkerStroke = OxyColors.Crimson, Title = "Margriet Manor" };
-            var OverbeekLodgeSeries = new LineSeries { MarkerType = MarkerType.Circle, MarkerSize = 4, MarkerStroke = OxyColors.Orange, Title = "Overbeek Lodge" };
-            var PrinsWillemAlexanderLodgeSeries = new LineSeries { MarkerType = MarkerType.Circle, MarkerSize = 4, MarkerStroke = OxyColors.DimGray, Title = "Prins Willem Alexander Lodge" };
+            var AvondrustVillageSeries = new LineSeries { MarkerStroke = OxyColors.Aqua, Title = "Avondrust Village" };
+            var MargrietManorSeries = new LineSeries { MarkerStroke = OxyColors.Crimson, Title = "Margriet Manor" };
+            var OverbeekLodgeSeries = new LineSeries { MarkerStroke = OxyColors.Orange, Title = "Overbeek Lodge" };
+            var PrinsWillemAlexanderLodgeSeries = new LineSeries { MarkerStroke = OxyColors.DimGray, Title = "Prins Willem Alexander Lodge" };
 
             foreach (AgencyUsageData item in dataObjects) {
                 int itemFacility = item.GetFacilityID();
@@ -371,12 +374,137 @@ namespace MiCareDBapp.Droid
                 }
             }
 
-            plotModel.Series.Add(AvondrustVillageSeries);
-            plotModel.Series.Add(MargrietManorSeries);
-            plotModel.Series.Add(OverbeekLodgeSeries);
-            plotModel.Series.Add(PrinsWillemAlexanderLodgeSeries);
-
+            switch (facilityNum) {
+                case 1:
+                    plotModel.Series.Add(AvondrustVillageSeries);
+                    break;
+                case 2:
+                    plotModel.Series.Add(MargrietManorSeries);
+                    break;
+                case 3:
+                    plotModel.Series.Add(OverbeekLodgeSeries);
+                    break;
+                case 4:
+                    plotModel.Series.Add(PrinsWillemAlexanderLodgeSeries);
+                    break;
+            }
+            
             plotView.Model = plotModel;
+
+            Button KeltnerBtn = view.FindViewById<Button>(Resource.Id.KeltnerBtn);
+            KeltnerBtn.Visibility = ViewStates.Visible;
+            KeltnerBtn.Enabled = true;
+            KeltnerBtn.Click += delegate {
+                var MiddleLineSeries = new LineSeries { Title = "Moving Average", MarkerStroke = OxyColors.Black };
+                var UpperChannelSeries = new LineSeries { Title = "Upper Channel", MarkerStroke = OxyColors.ForestGreen };
+                var LowerChannelSeries = new LineSeries { Title = "Lower Channel", MarkerStroke = OxyColors.DarkRed };
+                //AVERAGE TRUE RANGE
+                var trueRange = MaxUsageAmount - MinUsageAmount;
+
+                int threeMonthPeriod = 0; // the period used to calculated true ranges
+                int nineMonthPeriod = 0; //the period used to calculate average true range
+                decimal currentHigh = dataObjects.First().GetAgencyUsageAmount();
+                decimal currentLow = dataObjects.First().GetAgencyUsageAmount();
+
+                decimal[] incomeOverThreeMonths = new decimal[3] { 0, 0, 0 };
+                decimal[] SMAOverNineMonths = new decimal[3] { 0, 0, 0 };
+                decimal[] trueRangePeriod = new decimal[3] { 0, 0, 0 };
+                decimal averageTrueRange = 0;
+                decimal MovingAverage = 0;
+                decimal multiplier = (decimal)2 / 4;
+                bool postData = false;
+
+                int firstATR = 0;
+
+                var highestVal = LinearAxis.ToDouble(0);
+                var lowestVal = LinearAxis.ToDouble(Int32.MaxValue);
+
+                foreach (AgencyUsageData item in dataObjects)
+                {
+                    decimal itemAgencyUsage = item.GetAgencyUsageAmount();
+
+                    postData = false;
+                    //before 3 months have passed find highest and lowest hours values
+                    if (threeMonthPeriod < 3)
+                    {
+                        if (itemAgencyUsage > currentHigh)
+                        {
+                            currentHigh = itemAgencyUsage;
+                        }
+                        else if (itemAgencyUsage < currentLow)
+                        {
+                            currentLow = itemAgencyUsage;
+                        }
+                        incomeOverThreeMonths[threeMonthPeriod] = itemAgencyUsage;
+                        //after 3 months have passed find average true range 
+                    }
+                    else
+                    {
+                        threeMonthPeriod = 0;
+                        if (firstATR > 0)
+                        {
+                            averageTrueRange = ((averageTrueRange * 2) + (currentHigh - currentLow)) / 3;
+                            MovingAverage = ((itemAgencyUsage - MovingAverage) * multiplier) + MovingAverage;
+                            postData = true;
+                        }
+                        else
+                        {
+                            trueRangePeriod[nineMonthPeriod] = currentHigh - currentLow;
+                            SMAOverNineMonths[nineMonthPeriod] = (incomeOverThreeMonths.Sum()) / 3;
+                            nineMonthPeriod++;
+                        }
+                        currentHigh = itemAgencyUsage;
+                        currentLow = itemAgencyUsage;
+                    }
+                    threeMonthPeriod++;
+                    if (nineMonthPeriod == 3)
+                    {
+                        nineMonthPeriod++;
+                        firstATR++;
+                        averageTrueRange = (trueRangePeriod.Sum()) / 3;
+                        MovingAverage = (SMAOverNineMonths.Sum()) / 3;
+                        postData = true;
+                    }
+                    if (postData)
+                    {
+                        var dateAsDouble = DateTimeAxis.ToDouble(item.GetDate());
+                        var middleLineAsDouble = LinearAxis.ToDouble(MovingAverage);
+                        MiddleLineSeries.Points.Add(new DataPoint(dateAsDouble, middleLineAsDouble));
+
+                        var upperChannelAsDouble = LinearAxis.ToDouble(MovingAverage + (2 * averageTrueRange));
+                        UpperChannelSeries.Points.Add(new DataPoint(dateAsDouble, upperChannelAsDouble));
+
+                        if (upperChannelAsDouble > highestVal)
+                        {
+                            highestVal = upperChannelAsDouble;
+                        }
+
+                        var lowerChannelsAsDouble = LinearAxis.ToDouble(MovingAverage - (2 * averageTrueRange));
+                        LowerChannelSeries.Points.Add(new DataPoint(dateAsDouble, lowerChannelsAsDouble));
+
+                        if (lowerChannelsAsDouble < lowestVal)
+                        {
+                            lowestVal = lowerChannelsAsDouble;
+                        }
+                    }
+                }
+                plotModel.Series.Add(MiddleLineSeries);
+                plotModel.Series.Add(UpperChannelSeries);
+                plotModel.Series.Add(LowerChannelSeries);
+                if (lowestVal < minVal)
+                {
+                    plotModel.GetAxisOrDefault("currency", null).AbsoluteMinimum = lowestVal - 10000;
+                }
+                if (highestVal > maxVal)
+                {
+                    plotModel.GetAxisOrDefault("currency", null).AbsoluteMaximum = highestVal + 10000;
+                }
+                plotModel.LegendPlacement = LegendPlacement.Inside;
+                plotModel.LegendPosition = LegendPosition.BottomRight;
+                //refresh plot
+                plotView.InvalidatePlot(true);
+                KeltnerBtn.Enabled = false;
+            };
 
             return view;
         }
@@ -416,18 +544,18 @@ namespace MiCareDBapp.Droid
                 return one.GetBrokerageHours().CompareTo(two.GetBrokerageHours());
             });
             //bug: reset button after changing fragments
-            var MaxBalance = dataObjects.First().GetBrokerageHours();
-            var MinBalance = dataObjects.Last().GetBrokerageHours();
+            var MinHours = dataObjects.First().GetBrokerageHours();
+            var MaxHours = dataObjects.Last().GetBrokerageHours();
 
-            var maxVal = LinearAxis.ToDouble(MinBalance);
-            var minVal = LinearAxis.ToDouble(MaxBalance);
+            var maxVal = LinearAxis.ToDouble(MaxHours);
+            var minVal = LinearAxis.ToDouble(MinHours);
 
             string formatter(double item)
             {
                 return String.Format("{0}", item);
             }
 
-            plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, AbsoluteMinimum = minVal - 10000, AbsoluteMaximum = maxVal + 10000, Title = "Hours", MinorStep = 10000, MajorStep = 50000, LabelFormatter = formatter });
+            plotModel.Axes.Add(new LinearAxis { Key = "currency", Position = AxisPosition.Left, AbsoluteMinimum = minVal - 100, AbsoluteMaximum = maxVal + 100, Title = "Hours", MinorStep = 10, MajorStep = 20, LabelFormatter = formatter });
 
 
             dataObjects.Sort(delegate (BrokerageHoursData one, BrokerageHoursData two) {
@@ -442,8 +570,8 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, AbsoluteMinimum = firstVal - 1, AbsoluteMaximum = lastVal + 1, MinorStep = 1, StringFormat = "MM/dd/yyyy", Title = "Date (M/D/Y)" });
 
-            var QLDSeries = new LineSeries { MarkerType = MarkerType.Circle, MarkerSize = 4, MarkerStroke = OxyColors.Aqua, Title = "QLD" };
-            var VICSeries = new LineSeries { MarkerType = MarkerType.Circle, MarkerSize = 4, MarkerStroke = OxyColors.Crimson, Title = "VIC" };
+            var QLDSeries = new LineSeries { MarkerStroke = OxyColors.Aqua, Title = "QLD" };
+            var VICSeries = new LineSeries { MarkerStroke = OxyColors.Crimson, Title = "VIC" };
             
 
             foreach (BrokerageHoursData item in dataObjects)
@@ -467,6 +595,121 @@ namespace MiCareDBapp.Droid
 
 
             plotView.Model = plotModel;
+
+            Button KeltnerBtn = view.FindViewById<Button>(Resource.Id.KeltnerBtn);
+            KeltnerBtn.Visibility = ViewStates.Visible;
+            KeltnerBtn.Enabled = true;
+            KeltnerBtn.Click += delegate {
+                var MiddleLineSeries = new LineSeries { Title = "Moving Average", MarkerStroke = OxyColors.Black };
+                var UpperChannelSeries = new LineSeries { Title = "Upper Channel", MarkerStroke = OxyColors.ForestGreen };
+                var LowerChannelSeries = new LineSeries { Title = "Lower Channel", MarkerStroke = OxyColors.DarkRed };
+                //AVERAGE TRUE RANGE
+                var trueRange = MinHours - MaxHours;
+
+                int threeMonthPeriod = 0; // the period used to calculated true ranges
+                int nineMonthPeriod = 0; //the period used to calculate average true range
+                decimal currentHigh = dataObjects.First().GetBrokerageHours();
+                decimal currentLow = dataObjects.First().GetBrokerageHours();
+
+                decimal[] incomeOverThreeMonths = new decimal[3] { 0, 0, 0 };
+                decimal[] SMAOverNineMonths = new decimal[3] { 0, 0, 0 };
+                decimal[] trueRangePeriod = new decimal[3] { 0, 0, 0 };
+                decimal averageTrueRange = 0;
+                decimal MovingAverage = 0;
+                decimal multiplier = (decimal)2 / 4;
+                bool postData = false;
+
+                int firstATR = 0;
+
+                var highestVal = LinearAxis.ToDouble(0);
+                var lowestVal = LinearAxis.ToDouble(Int32.MaxValue);
+
+                foreach (BrokerageHoursData item in dataObjects)
+                {
+                    decimal itemHours = item.GetBrokerageHours();
+
+                    postData = false;
+                    //before 3 months have passed find highest and lowest hours values
+                    if (threeMonthPeriod < 3)
+                    {
+                        if (itemHours > currentHigh)
+                        {
+                            currentHigh = itemHours;
+                        }
+                        else if (itemHours < currentLow)
+                        {
+                            currentLow = itemHours;
+                        }
+                        incomeOverThreeMonths[threeMonthPeriod] = itemHours;
+                        //after 3 months have passed find average true range 
+                    }
+                    else
+                    {
+                        threeMonthPeriod = 0;
+                        if (firstATR > 0)
+                        {
+                            averageTrueRange = ((averageTrueRange * 2) + (currentHigh - currentLow)) / 3;
+                            MovingAverage = ((itemHours - MovingAverage) * multiplier) + MovingAverage;
+                            postData = true;
+                        }
+                        else
+                        {
+                            trueRangePeriod[nineMonthPeriod] = currentHigh - currentLow;
+                            SMAOverNineMonths[nineMonthPeriod] = (incomeOverThreeMonths.Sum()) / 3;
+                            nineMonthPeriod++;
+                        }
+                        currentHigh = itemHours;
+                        currentLow = itemHours;
+                    }
+                    threeMonthPeriod++;
+                    if (nineMonthPeriod == 3)
+                    {
+                        nineMonthPeriod++;
+                        firstATR++;
+                        averageTrueRange = (trueRangePeriod.Sum()) / 3;
+                        MovingAverage = (SMAOverNineMonths.Sum()) / 3;
+                        postData = true;
+                    }
+                    if (postData)
+                    {
+                        var dateAsDouble = DateTimeAxis.ToDouble(item.GetDate());
+                        var middleLineAsDouble = LinearAxis.ToDouble(MovingAverage);
+                        MiddleLineSeries.Points.Add(new DataPoint(dateAsDouble, middleLineAsDouble));
+
+                        var upperChannelAsDouble = LinearAxis.ToDouble(MovingAverage + (2 * averageTrueRange));
+                        UpperChannelSeries.Points.Add(new DataPoint(dateAsDouble, upperChannelAsDouble));
+
+                        if (upperChannelAsDouble > highestVal)
+                        {
+                            highestVal = upperChannelAsDouble;
+                        }
+
+                        var lowerChannelsAsDouble = LinearAxis.ToDouble(MovingAverage - (2 * averageTrueRange));
+                        LowerChannelSeries.Points.Add(new DataPoint(dateAsDouble, lowerChannelsAsDouble));
+
+                        if (lowerChannelsAsDouble < lowestVal)
+                        {
+                            lowestVal = lowerChannelsAsDouble;
+                        }
+                    }
+                }
+                plotModel.Series.Add(MiddleLineSeries);
+                plotModel.Series.Add(UpperChannelSeries);
+                plotModel.Series.Add(LowerChannelSeries);
+                if (lowestVal < minVal)
+                {
+                    plotModel.GetAxisOrDefault("currency", null).AbsoluteMinimum = lowestVal - 10000;
+                }
+                if (highestVal > maxVal)
+                {
+                    plotModel.GetAxisOrDefault("currency", null).AbsoluteMaximum = highestVal + 10000;
+                }
+                plotModel.LegendPlacement = LegendPlacement.Inside;
+                plotModel.LegendPosition = LegendPosition.BottomRight;
+                //refresh plot
+                plotView.InvalidatePlot(true);
+                KeltnerBtn.Enabled = false;
+            };
 
             return view;
         }
@@ -554,7 +797,8 @@ namespace MiCareDBapp.Droid
             {
                 Position = AxisPosition.Left,
                 MinimumPadding = 0,
-                AbsoluteMinimum = 0
+                AbsoluteMinimum = 0,
+                Title = "Amount ($)"
             });
 
             plotView.Model = plotModel;
@@ -746,11 +990,12 @@ namespace MiCareDBapp.Droid
     public class OccupancyGraph : Android.Support.V4.App.DialogFragment
     {
         private List<OccupancyData> dataObjects;
-
+        private int facilityNum;
 
         //import the finance data item based on the item clicked 
-        public OccupancyGraph(List<OccupancyData> data) {
+        public OccupancyGraph(List<OccupancyData> data, int facility) {
             dataObjects = data;
+            facilityNum = facility;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -772,6 +1017,175 @@ namespace MiCareDBapp.Droid
 
             var plotModel = new PlotModel();
 
+            dataObjects.Sort(delegate (OccupancyData one,OccupancyData two) {
+                return one.GetOccupancyRate().CompareTo(two.GetOccupancyRate());
+            });
+            //bug: reset button after changing fragments
+            var MinIncome = dataObjects.First().GetOccupancyRate();
+            var MaxIncome = dataObjects.Last().GetOccupancyRate();
+
+            var maxVal = LinearAxis.ToDouble(MaxIncome);
+            var minVal = LinearAxis.ToDouble(MinIncome);
+
+            string formatter(double item)
+            {
+                return String.Format("{0}", item);
+            }
+
+            plotModel.Axes.Add(new LinearAxis { Key = "currency", Position = AxisPosition.Left, AbsoluteMinimum = minVal - 0.05, AbsoluteMaximum = maxVal + 0.05, Title = "Occupancy Rate (%)", MinorStep = 0.005, MajorStep = 0.01, LabelFormatter = formatter });
+
+
+
+            dataObjects.Sort(delegate (OccupancyData one, OccupancyData two) {
+                return DateTime.Compare(one.GetDate(), two.GetDate());
+            });
+
+            var startDate = dataObjects.First().GetDate();
+            var endDate = dataObjects.Last().GetDate();
+
+            var firstVal = DateTimeAxis.ToDouble(startDate);
+            var lastVal = DateTimeAxis.ToDouble(endDate);
+
+            plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, AbsoluteMinimum = firstVal - 1, AbsoluteMaximum = lastVal + 1, MinorStep = 1, StringFormat = "MM/dd/yyyy", Title = "Date (M/D/Y)" });
+
+            var AvondrustVillageSeries = new LineSeries { MarkerStroke = OxyColors.Aqua, Title = "Avondrust Village" };
+            var MargrietManorSeries = new LineSeries { MarkerStroke = OxyColors.Crimson, Title = "Margriet Manor" };
+            var OverbeekLodgeSeries = new LineSeries { MarkerStroke = OxyColors.Orange, Title = "Overbeek Lodge" };
+            var PrinsWillemAlexanderLodgeSeries = new LineSeries { MarkerStroke = OxyColors.DimGray, Title = "Prins Willem Alexander Lodge" };
+
+            foreach (OccupancyData item in dataObjects)
+            {
+                int itemFacility = item.GetFacilityID();
+                var dateAsDouble = DateTimeAxis.ToDouble(item.GetDate());
+                var amountAsDouble = LinearAxis.ToDouble(item.GetOccupancyRate());
+                switch (itemFacility)
+                {
+                    case 1:
+                        AvondrustVillageSeries.Points.Add(new DataPoint(dateAsDouble, amountAsDouble));
+                        break;
+                    case 2:
+                        MargrietManorSeries.Points.Add(new DataPoint(dateAsDouble, amountAsDouble));
+                        break;
+                    case 3:
+                        OverbeekLodgeSeries.Points.Add(new DataPoint(dateAsDouble, amountAsDouble));
+                        break;
+                    case 4:
+                        PrinsWillemAlexanderLodgeSeries.Points.Add(new DataPoint(dateAsDouble, amountAsDouble));
+                        break;
+                }
+            }
+
+            switch (facilityNum)
+            {
+                case 1:
+                    plotModel.Series.Add(AvondrustVillageSeries);
+                    break;
+                case 2:
+                    plotModel.Series.Add(MargrietManorSeries);
+                    break;
+                case 3:
+                    plotModel.Series.Add(OverbeekLodgeSeries);
+                    break;
+                case 4:
+                    plotModel.Series.Add(PrinsWillemAlexanderLodgeSeries);
+                    break;
+            }
+
+
+            plotView.Model = plotModel;
+
+            Button KeltnerBtn = view.FindViewById<Button>(Resource.Id.KeltnerBtn);
+            //KeltnerBtn.Visibility = ViewStates.Visible;
+            KeltnerBtn.Enabled = false;
+            KeltnerBtn.Click += delegate {
+                var MiddleLineSeries = new LineSeries { Title = "Moving Average", MarkerStroke = OxyColors.Black };
+                var UpperChannelSeries = new LineSeries { Title = "Upper Channel", MarkerStroke = OxyColors.ForestGreen };
+                var LowerChannelSeries = new LineSeries { Title = "Lower Channel", MarkerStroke = OxyColors.DarkRed };
+
+                int threeMonthPeriod = 0; // the period used to calculated true ranges
+                int nineMonthPeriod = 0; //the period used to calculate average true range
+                decimal currentHigh =  (decimal) dataObjects.First().GetOccupancyRate();
+                decimal currentLow = (decimal) dataObjects.First().GetOccupancyRate();
+
+                decimal[] incomeOverThreeMonths = new decimal[3] { 0, 0, 0 };
+                decimal[] SMAOverNineMonths = new decimal[3] { 0, 0, 0 };
+                decimal[] trueRangePeriod = new decimal[3] { 0, 0, 0 };
+                decimal averageTrueRange = 0;
+                decimal MovingAverage = 0;
+                decimal multiplier = (decimal) 2 / 4;
+                bool postData = false;
+
+                int firstATR = 0;
+
+                foreach (OccupancyData item in dataObjects)
+                {
+                    decimal itemRate = (decimal) item.GetOccupancyRate();
+
+                    postData = false;
+                    //before 3 months have passed find highest and lowest income values
+                    if (threeMonthPeriod < 3)
+                    {
+                        if (itemRate > currentHigh)
+                        {
+                            currentHigh = itemRate;
+                        }
+                        else if (itemRate < currentLow)
+                        {
+                            currentLow = itemRate;
+                        }
+                        incomeOverThreeMonths[threeMonthPeriod] = itemRate;
+                        //after 3 months have passed find average true range 
+                    }
+                    else
+                    {
+                        threeMonthPeriod = 0;
+                        if (firstATR > 0)
+                        {
+                            averageTrueRange = ((averageTrueRange * 2) + (currentHigh - currentLow)) / 3;
+                            MovingAverage = ((itemRate - MovingAverage) * multiplier) + MovingAverage;
+                            postData = true;
+                        }
+                        else
+                        {
+                            trueRangePeriod[nineMonthPeriod] = currentHigh - currentLow;
+                            SMAOverNineMonths[nineMonthPeriod] = (incomeOverThreeMonths.Sum()) / 3;
+                            nineMonthPeriod++;
+                        }
+                        currentHigh = itemRate;
+                        currentLow = itemRate;
+                    }
+                    threeMonthPeriod++;
+                    if (nineMonthPeriod == 3)
+                    {
+                        nineMonthPeriod++;
+                        firstATR++;
+                        averageTrueRange = (trueRangePeriod.Sum()) / 3;
+                        MovingAverage = (SMAOverNineMonths.Sum()) / 3;
+                        postData = true;
+                    }
+                    if (postData)
+                    {
+                        var dateAsDouble = DateTimeAxis.ToDouble(item.GetDate());
+                        var middleLineAsDouble = LinearAxis.ToDouble(MovingAverage);
+                        MiddleLineSeries.Points.Add(new DataPoint(dateAsDouble, middleLineAsDouble));
+
+                        var upperChannelAsDouble = LinearAxis.ToDouble(MovingAverage + (2 * averageTrueRange));
+                        UpperChannelSeries.Points.Add(new DataPoint(dateAsDouble, upperChannelAsDouble));
+
+                        var lowerChannelsAsDouble = LinearAxis.ToDouble(MovingAverage - (2 * averageTrueRange));
+                        LowerChannelSeries.Points.Add(new DataPoint(dateAsDouble, lowerChannelsAsDouble));
+                    }
+                }
+                plotModel.Series.Add(MiddleLineSeries);
+                plotModel.Series.Add(UpperChannelSeries);
+                plotModel.Series.Add(LowerChannelSeries);
+                plotModel.LegendPlacement = LegendPlacement.Inside;
+                plotModel.LegendPosition = LegendPosition.BottomRight;
+                //refresh plot
+                plotView.InvalidatePlot(true);
+                KeltnerBtn.Enabled = false;
+            };
+
             return view;
         }
 
@@ -779,13 +1193,61 @@ namespace MiCareDBapp.Droid
 
     public class SalariesWagesGraph : Android.Support.V4.App.DialogFragment
     {
-        private List<SalariesWagesData> dataObjects;
+        private decimal AvondrustLodgeActualCost = 0;
+        private decimal AvondrustLodgeBudget = 0;
+
+        private decimal MargrietManorActualCost = 0;
+        private decimal MargrietManorBudget = 0;
+
+        private decimal OverbeekLodgeActualCost = 0;
+        private decimal OverbeekLodgeBudget = 0;
+
+        private decimal PrinsWillemAlexanderLodgeActualCost = 0;
+        private decimal PrinsWillemAlexanderLodgeBudget = 0;
 
 
         //import the finance data item based on the item clicked 
-        public SalariesWagesGraph(List<SalariesWagesData> data)
-        {
-            dataObjects = data;
+        public SalariesWagesGraph(List<SalariesWagesData> data) {
+            List<SalariesWagesData> dataObjects = data;
+            dataObjects.Sort(delegate (SalariesWagesData one, SalariesWagesData two) {
+                return DateTime.Compare(one.GetDate(), two.GetDate());
+            });
+
+            List<SalariesWagesData> dataObjectsAvondrust = new List<SalariesWagesData>();
+            List<SalariesWagesData> dataObjectsMargriet = new List<SalariesWagesData>();
+            List<SalariesWagesData> dataObjectsOverbeek = new List<SalariesWagesData>();
+            List<SalariesWagesData> dataObjectsPrins = new List<SalariesWagesData>();
+
+            foreach (SalariesWagesData item in dataObjects) {
+                int itemFacility = item.GetFacilityID();
+                switch (itemFacility)
+                {
+                    case 1:
+                        dataObjectsAvondrust.Add(item);
+                        break;
+                    case 2:
+                        dataObjectsMargriet.Add(item);
+                        break;
+                    case 3:
+                        dataObjectsOverbeek.Add(item);
+                        break;
+                    case 4:
+                        dataObjectsPrins.Add(item);
+                        break;
+                }
+            }
+            
+            AvondrustLodgeActualCost = dataObjectsAvondrust.Last().GetActualCost();
+            AvondrustLodgeBudget = dataObjectsAvondrust.Last().GetBudget();
+
+            MargrietManorActualCost = dataObjectsMargriet.Last().GetActualCost();
+            MargrietManorBudget = dataObjectsMargriet.Last().GetBudget();
+
+            OverbeekLodgeActualCost = dataObjectsOverbeek.Last().GetActualCost();
+            OverbeekLodgeBudget = dataObjectsOverbeek.Last().GetBudget();
+
+            PrinsWillemAlexanderLodgeActualCost = dataObjectsPrins.Last().GetActualCost();
+            PrinsWillemAlexanderLodgeBudget = dataObjectsPrins.Last().GetBudget();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -801,11 +1263,68 @@ namespace MiCareDBapp.Droid
             OxyPlot.Xamarin.Forms.Platform.Android.PlotViewRenderer.Init();
 
             TextView titleText = view.FindViewById<TextView>(Resource.Id.GraphTitle);
-            titleText.Text = "Salaries and Wages";
+            titleText.Text = "Current Salaries and Wages - Budget vs Cost";
 
             PlotView plotView = view.FindViewById<PlotView>(Resource.Id.GraphPlotView);
 
-            var plotModel = new PlotModel();
+            var plotModel = new PlotModel() { LegendPlacement = LegendPlacement.Outside, LegendPosition = LegendPosition.TopCenter };
+
+            var ActualCostBarSeries = new ColumnSeries
+            {
+                Title = "Actual Cost",
+                ItemsSource = new List<ColumnItem>(new[]
+{
+                    new ColumnItem{ Value = (double) AvondrustLodgeActualCost},
+                    new ColumnItem{ Value = (double) MargrietManorActualCost},
+                    new ColumnItem{ Value = (double) OverbeekLodgeActualCost},
+                    new ColumnItem{ Value = (double) PrinsWillemAlexanderLodgeActualCost}
+                }),
+                LabelPlacement = LabelPlacement.Outside,
+                LabelFormatString = "{0}",
+                FillColor = OxyColors.DarkBlue
+            };
+
+            var BudgetBarSeries = new ColumnSeries
+            {
+                Title = "Budget",
+                ItemsSource = new List<ColumnItem>(new[]
+{
+                    new ColumnItem{ Value = (double) AvondrustLodgeBudget},
+                    new ColumnItem{ Value = (double) MargrietManorBudget},
+                    new ColumnItem{ Value = (double) OverbeekLodgeBudget},
+                    new ColumnItem{ Value = (double) PrinsWillemAlexanderLodgeBudget}
+                }),
+                LabelPlacement = LabelPlacement.Outside,
+                LabelFormatString = "{0}",
+                FillColor = OxyColors.OrangeRed
+            };
+
+            plotModel.Axes.Add(new CategoryAxis
+            {
+                Position = AxisPosition.Bottom,
+                ItemsSource = new[] {
+                    "",
+                    "",
+                    "",
+                    ""
+                }
+            });
+
+            plotModel.Axes.Add(new LinearAxis
+            {
+                Position = AxisPosition.Left,
+                MinimumPadding = 0,
+                AbsoluteMinimum = 0,
+                Title = "Amount ($)"
+            });
+
+            plotModel.Series.Add(ActualCostBarSeries);
+            plotModel.Series.Add(BudgetBarSeries);
+
+            plotView.Model = plotModel;
+
+            LinearLayout BarGraphLables = view.FindViewById<LinearLayout>(Resource.Id.BarGraphLabels);
+            BarGraphLables.Visibility = ViewStates.Visible;
 
             return view;
         }
@@ -833,6 +1352,10 @@ namespace MiCareDBapp.Droid
         //import the finance data item based on the item clicked 
         public StaffGraph(List<StaffData> data)
         {
+            int AvondrustCount = 0;
+            int MargrietCount = 0;
+            int OverbeekCount = 0;
+            int PrinsCount = 0;
             foreach (StaffData item in data)
             {
                 int itemFacility = item.GetFacilityID();
@@ -842,39 +1365,43 @@ namespace MiCareDBapp.Droid
                         AvondrustLodgeALAverage = AvondrustLodgeALAverage + item.GetAnnualLeaveAcrewed();
                         AvondrustLodgeLSLAverage = AvondrustLodgeLSLAverage + item.GetLongServiceLeaveAcrewed();
                         AvondrustLodgeSLAverage = AvondrustLodgeSLAverage + item.GetSickLeaveAcrewed();
+                        AvondrustCount++;
                         break;
                     case 2:
                         MargrietManorALAverage = MargrietManorALAverage + item.GetAnnualLeaveAcrewed();
                         MargrietManorLSLAverage = MargrietManorLSLAverage + item.GetLongServiceLeaveAcrewed();
                         MargrietManorSLAverage = MargrietManorSLAverage + item.GetSickLeaveAcrewed();
+                        MargrietCount++;
                         break;
                     case 3:
                         OverbeekLodgeALAverage = OverbeekLodgeALAverage + item.GetAnnualLeaveAcrewed();
                         OverbeekLodgeLSLAverage = OverbeekLodgeLSLAverage + item.GetLongServiceLeaveAcrewed();
                         OverbeekLodgeSLAverage = OverbeekLodgeSLAverage + item.GetSickLeaveAcrewed();
+                        OverbeekCount++;
                         break;
                     case 4:
                         PrinsWillemAlexanderLodgeALAverage = PrinsWillemAlexanderLodgeALAverage + item.GetAnnualLeaveAcrewed();
                         PrinsWillemAlexanderLodgeLSLAverage = PrinsWillemAlexanderLodgeLSLAverage + item.GetLongServiceLeaveAcrewed();
                         PrinsWillemAlexanderLodgeSLAverage = PrinsWillemAlexanderLodgeSLAverage + item.GetSickLeaveAcrewed();
+                        PrinsCount++;
                         break;
                 }
             }
-            AvondrustLodgeALAverage = AvondrustLodgeALAverage / data.Count;
-            AvondrustLodgeLSLAverage = AvondrustLodgeLSLAverage / data.Count;
-            AvondrustLodgeSLAverage = AvondrustLodgeSLAverage / data.Count;
+            AvondrustLodgeALAverage = AvondrustLodgeALAverage / AvondrustCount;
+            AvondrustLodgeLSLAverage = AvondrustLodgeLSLAverage / AvondrustCount;
+            AvondrustLodgeSLAverage = AvondrustLodgeSLAverage / AvondrustCount;
 
-            MargrietManorALAverage = MargrietManorALAverage / data.Count;
-            MargrietManorLSLAverage = MargrietManorLSLAverage / data.Count;
-            MargrietManorSLAverage = MargrietManorSLAverage / data.Count;
+            MargrietManorALAverage = MargrietManorALAverage / MargrietCount;
+            MargrietManorLSLAverage = MargrietManorLSLAverage / MargrietCount;
+            MargrietManorSLAverage = MargrietManorSLAverage / MargrietCount;
 
-            OverbeekLodgeALAverage = OverbeekLodgeALAverage / data.Count;
-            OverbeekLodgeLSLAverage = OverbeekLodgeLSLAverage / data.Count;
-            OverbeekLodgeSLAverage = OverbeekLodgeSLAverage / data.Count;
+            OverbeekLodgeALAverage = OverbeekLodgeALAverage / OverbeekCount;
+            OverbeekLodgeLSLAverage = OverbeekLodgeLSLAverage / OverbeekCount;
+            OverbeekLodgeSLAverage = OverbeekLodgeSLAverage / OverbeekCount;
 
-            PrinsWillemAlexanderLodgeALAverage = PrinsWillemAlexanderLodgeALAverage / data.Count;
-            PrinsWillemAlexanderLodgeLSLAverage = PrinsWillemAlexanderLodgeLSLAverage / data.Count;
-            PrinsWillemAlexanderLodgeSLAverage = PrinsWillemAlexanderLodgeSLAverage / data.Count;
+            PrinsWillemAlexanderLodgeALAverage = PrinsWillemAlexanderLodgeALAverage / PrinsCount;
+            PrinsWillemAlexanderLodgeLSLAverage = PrinsWillemAlexanderLodgeLSLAverage / PrinsCount;
+            PrinsWillemAlexanderLodgeSLAverage = PrinsWillemAlexanderLodgeSLAverage / PrinsCount;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -951,7 +1478,8 @@ namespace MiCareDBapp.Droid
             plotModel.Axes.Add(new LinearAxis {
                 Position = AxisPosition.Left,
                 MinimumPadding = 0,
-                AbsoluteMinimum = 0
+                AbsoluteMinimum = 0,
+                Title = "Leave"
             });
 
             plotModel.Series.Add(ALBarSeries);
