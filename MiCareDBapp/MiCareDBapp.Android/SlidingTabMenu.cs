@@ -25,7 +25,7 @@ namespace MiCareDBapp.Droid
             Names = names;
             this.type = type;
             fragments = new List<Android.Support.V4.App.Fragment>();
-            if (type) {
+            if (type) {//on SlidingTabFinancial.cs type=true
                 fragments.Add(new ACFIPage());
                 fragments.Add(new AgencyUsagePage());
                 fragments.Add(new BankPage());
@@ -33,7 +33,7 @@ namespace MiCareDBapp.Droid
                 fragments.Add(new HomeCarePackagePage());
                 fragments.Add(new IncomePage());
                 fragments.Add(new SalariesWagesPage());
-            } else {
+            } else {//on SlidingTabOccupancy.cs type=false
                 fragments.Add(new OccupancyPage());
                 fragments.Add(new StaffPage());
             }
@@ -49,7 +49,7 @@ namespace MiCareDBapp.Droid
             return fragments[position];
         }
 
-        //display tab titles
+        //display tab titles via the string array "names"
         public override Java.Lang.ICharSequence GetPageTitleFormatted(int position) {
             return new Java.Lang.String(Names[position]);
         }
@@ -64,7 +64,7 @@ namespace MiCareDBapp.Droid
         {
             return fragments[position];
         }
-
+        //get all fragments
         public List<Android.Support.V4.App.Fragment> GetFragments() {
             return fragments;
         }

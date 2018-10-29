@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android;
+using System.Globalization;
 
 namespace MiCareDBapp.Droid
 {
@@ -52,6 +53,7 @@ namespace MiCareDBapp.Droid
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.ACFITable, null, false);
             }
 
+            //retrieve the shared preferences to edit the row attributes such as text size, colour or if the the data has to be sorted by date
             ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
             string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
             ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
@@ -99,13 +101,12 @@ namespace MiCareDBapp.Droid
                 txtIncomeACFI.SetTextColor(Color.Black);
                 txtExpirationDateACFI.SetTextColor(Color.Black);
             }
-
-            //change formatting
+            //for every item
             txtResidentACFI.Text = Items[position].GetResidentID().ToString();
             txtScoreACFI.Text = Items[position].GetACFIScore().ToString();
-            txtIncomeACFI.Text = "$ " + Items[position].GetIncome().ToString();
+            txtIncomeACFI.Text = "$ " + Items[position].GetIncome().ToString("#,#", CultureInfo.InvariantCulture);
             txtExpirationDateACFI.Text = Items[position].GetExpirationDate().ToShortDateString();
-
+            //set indicator colours
             if (Items[position].IsGreen())
             {
                 if (NightSwitchMode)

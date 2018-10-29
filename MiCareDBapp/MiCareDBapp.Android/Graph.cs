@@ -19,12 +19,15 @@ using Android;
 
 namespace MiCareDBapp.Droid
 {
+    //all of these graphs are setup with oxyplot, which is a nuGet package library which can be imported to allow the construction of various types of graphs for more info: "http:/docs.oxyplot.org/en/latest/"
+    //each kpi is given it's own graph dialog fragment class
+
     public class BankBalanceGraph : Android.Support.V4.App.DialogFragment
     {
         private List<BankBalance> dataObjects;
 
 
-        //import the finance data item based on the item clicked 
+        //import the bank balance items
         public BankBalanceGraph(List<BankBalance> data) {
             dataObjects = data;
         }
@@ -44,14 +47,16 @@ namespace MiCareDBapp.Droid
             TextView titleText = view.FindViewById<TextView>(Resource.Id.GraphTitle);
             titleText.Text = "Bank Balance";
 
+
             PlotView plotView = view.FindViewById<PlotView>(Resource.Id.GraphPlotView);
 
             var plotModel = new PlotModel();
 
+            //get the max and min range for the left axis
             dataObjects.Sort(delegate (BankBalance one, BankBalance two) {
                 return one.GetBankBalance().CompareTo(two.GetBankBalance());
             });
-            //bug: reset button after changing fragments
+
             var MinBalance = dataObjects.First().GetBankBalance();
             var MaxBalance = dataObjects.Last().GetBankBalance();
 
@@ -65,7 +70,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new LinearAxis { Key = "currency", Position = AxisPosition.Left, AbsoluteMinimum = minVal-10000, AbsoluteMaximum = maxVal+10000, Title = "Bank Balance ($)" , MinorStep = 50000 , MajorStep = 100000, LabelFormatter = formatter});
 
-
+            //get the max and min range for the date axis
             dataObjects.Sort(delegate (BankBalance one, BankBalance two) {
                 return DateTime.Compare(one.GetDate(), two.GetDate());
             });
@@ -78,6 +83,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, AbsoluteMinimum = firstVal-1, AbsoluteMaximum = lastVal+1, MinorStep = 1, StringFormat = "MM/dd/yyyy", Title = "Date (M/D/Y)" });
 
+            //add line series
             var BankBalanceSeries = new LineSeries { Title = "Bank Balance", MarkerStroke = OxyColors.Aqua };
 
             foreach (BankBalance item in dataObjects) {
@@ -90,6 +96,10 @@ namespace MiCareDBapp.Droid
 
             plotView.Model = plotModel;
 
+            //this button when pressed will perform a calculation which will output the moving average, upper channel and lower channel onto the graph
+            //info on keltner channels (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:keltner_channels"
+            //info on moving averages (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_averages"
+            //info on average true ranges (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:average_true_range_atr"
             Button KeltnerBtn = view.FindViewById<Button>(Resource.Id.KeltnerBtn);
             KeltnerBtn.Visibility = ViewStates.Visible;
             KeltnerBtn.Enabled = true;
@@ -97,9 +107,7 @@ namespace MiCareDBapp.Droid
                 var MiddleLineSeries = new LineSeries { Title = "Moving Average", MarkerStroke = OxyColors.Black };
                 var UpperChannelSeries = new LineSeries { Title = "Upper Channel", MarkerStroke = OxyColors.ForestGreen };
                 var LowerChannelSeries = new LineSeries { Title = "Lower Channel", MarkerStroke = OxyColors.DarkRed };
-                //AVERAGE TRUE RANGE
-                var trueRange = MaxBalance - MinBalance;
-
+                
                 int fiveDayPeriod = 0; // the period used to calculated true ranges
                 int twentyFiveDayPeriod = 0; //the period used to calculate average true range
                 decimal currentHigh = dataObjects.First().GetBankBalance();
@@ -132,11 +140,11 @@ namespace MiCareDBapp.Droid
                         //after 5 days have passed find average true range 
                     } else {
                         fiveDayPeriod = 0;
-                        if (firstATR > 0) {
+                        if (firstATR > 0) {//after 25 days
                             averageTrueRange = ((averageTrueRange * 4) + (currentHigh - currentLow)) / 5;
                             MovingAverage = ((itemBalance - MovingAverage) * multiplier) + MovingAverage;
                             postData = true;
-                        } else {
+                        } else {//for the first 25 days
                             trueRangePeriod[twentyFiveDayPeriod] = currentHigh - currentLow;
                             SMAOverTwentyFiveDays[twentyFiveDayPeriod] = (incomeOverFiveDays.Sum()) / 5;
                             twentyFiveDayPeriod++;
@@ -177,7 +185,7 @@ namespace MiCareDBapp.Droid
                 plotModel.Series.Add(MiddleLineSeries);
                 plotModel.Series.Add(UpperChannelSeries);
                 plotModel.Series.Add(LowerChannelSeries);
-                if (lowestVal < minVal) {
+                if (lowestVal < minVal) {//reset the max and/or min axis values to accomodate for upper and lower channels
                     plotModel.GetAxisOrDefault("currency", null).AbsoluteMinimum = lowestVal - 10000;
                 }
                 if (highestVal > maxVal) {
@@ -203,7 +211,7 @@ namespace MiCareDBapp.Droid
         private decimal PrinsWillemAlexanderLodgeTotal = 0;
 
 
-        //import the finance data item based on the item clicked 
+        //import the acfi data and get total income per facility 
         public ACFIGraph(List<ACFIFunding> data) {
             foreach (ACFIFunding item in data) {
                 int itemFacility = item.GetFacilityID();
@@ -243,6 +251,7 @@ namespace MiCareDBapp.Droid
 
             var plotModel = new PlotModel();
 
+            //setup vertical bar graph
             var barSeries = new ColumnSeries {
                 ItemsSource = new List<ColumnItem>(new[]
                 {
@@ -279,6 +288,7 @@ namespace MiCareDBapp.Droid
 
             plotView.Model = plotModel;
 
+            //put names of facilities visible 
             LinearLayout BarGraphLables = view.FindViewById<LinearLayout>(Resource.Id.BarGraphLabels);
             BarGraphLables.Visibility = ViewStates.Visible;
 
@@ -293,7 +303,7 @@ namespace MiCareDBapp.Droid
         private int facilityNum;
 
 
-        //import the finance data item based on the item clicked 
+        //import agency usage data
         public AgencyUsageGraph(List<AgencyUsageData> data, int facility)
         {
             dataObjects = data;
@@ -322,7 +332,7 @@ namespace MiCareDBapp.Droid
             dataObjects.Sort(delegate (AgencyUsageData one, AgencyUsageData two) {
                 return one.GetAgencyUsageAmount().CompareTo(two.GetAgencyUsageAmount());
             });
-            //bug: reset button after changing fragments
+            //setup maximum and minium values for left axis
             var MinUsageAmount = dataObjects.First().GetAgencyUsageAmount();
             var MaxUsageAmount = dataObjects.Last().GetAgencyUsageAmount();
 
@@ -336,7 +346,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new LinearAxis {Key="currency", Position = AxisPosition.Left, AbsoluteMinimum = minVal - 10000, AbsoluteMaximum = maxVal + 10000, Title = "Amount ($)", MinorStep = 50000, MajorStep = 100000, LabelFormatter = formatter });
 
-
+            //setup maximum and minium values for date axis
             dataObjects.Sort(delegate (AgencyUsageData one, AgencyUsageData two) {
                 return DateTime.Compare(one.GetDate(), two.GetDate());
             });
@@ -349,6 +359,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, AbsoluteMinimum = firstVal - 1, AbsoluteMaximum = lastVal + 1, MinorStep = 1, StringFormat = "MM/dd/yyyy", Title = "Date (M/D/Y)" });
 
+            //setup the line series
             var AvondrustVillageSeries = new LineSeries { MarkerStroke = OxyColors.Aqua, Title = "Avondrust Village" };
             var MargrietManorSeries = new LineSeries { MarkerStroke = OxyColors.Crimson, Title = "Margriet Manor" };
             var OverbeekLodgeSeries = new LineSeries { MarkerStroke = OxyColors.Orange, Title = "Overbeek Lodge" };
@@ -391,6 +402,10 @@ namespace MiCareDBapp.Droid
             
             plotView.Model = plotModel;
 
+            //this button when pressed will perform a calculation which will output the moving average, upper channel and lower channel onto the graph
+            //info on keltner channels (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:keltner_channels"
+            //info on moving averages (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_averages"
+            //info on average true ranges (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:average_true_range_atr"
             Button KeltnerBtn = view.FindViewById<Button>(Resource.Id.KeltnerBtn);
             KeltnerBtn.Visibility = ViewStates.Visible;
             KeltnerBtn.Enabled = true;
@@ -398,8 +413,6 @@ namespace MiCareDBapp.Droid
                 var MiddleLineSeries = new LineSeries { Title = "Moving Average", MarkerStroke = OxyColors.Black };
                 var UpperChannelSeries = new LineSeries { Title = "Upper Channel", MarkerStroke = OxyColors.ForestGreen };
                 var LowerChannelSeries = new LineSeries { Title = "Lower Channel", MarkerStroke = OxyColors.DarkRed };
-                //AVERAGE TRUE RANGE
-                var trueRange = MaxUsageAmount - MinUsageAmount;
 
                 int threeMonthPeriod = 0; // the period used to calculated true ranges
                 int nineMonthPeriod = 0; //the period used to calculate average true range
@@ -441,14 +454,14 @@ namespace MiCareDBapp.Droid
                     else
                     {
                         threeMonthPeriod = 0;
-                        if (firstATR > 0)
+                        if (firstATR > 0)//after nine months
                         {
                             averageTrueRange = ((averageTrueRange * 2) + (currentHigh - currentLow)) / 3;
                             MovingAverage = ((itemAgencyUsage - MovingAverage) * multiplier) + MovingAverage;
                             postData = true;
                         }
                         else
-                        {
+                        {//for the first nine months
                             trueRangePeriod[nineMonthPeriod] = currentHigh - currentLow;
                             SMAOverNineMonths[nineMonthPeriod] = (incomeOverThreeMonths.Sum()) / 3;
                             nineMonthPeriod++;
@@ -491,7 +504,7 @@ namespace MiCareDBapp.Droid
                 plotModel.Series.Add(MiddleLineSeries);
                 plotModel.Series.Add(UpperChannelSeries);
                 plotModel.Series.Add(LowerChannelSeries);
-                if (lowestVal < minVal)
+                if (lowestVal < minVal)//reset the max and/or min axis values to accomodate for upper and lower channels
                 {
                     plotModel.GetAxisOrDefault("currency", null).AbsoluteMinimum = lowestVal - 10000;
                 }
@@ -515,7 +528,7 @@ namespace MiCareDBapp.Droid
         private List<BrokerageHoursData> dataObjects;
 
 
-        //import the finance data item based on the item clicked 
+        //import the brokerage hours data
         public BrokerageHoursGraph(List<BrokerageHoursData> data)
         {
             dataObjects = data;
@@ -540,10 +553,11 @@ namespace MiCareDBapp.Droid
 
             var plotModel = new PlotModel();
 
+            //setup maximum and minium values for left axis
             dataObjects.Sort(delegate (BrokerageHoursData one, BrokerageHoursData two) {
                 return one.GetBrokerageHours().CompareTo(two.GetBrokerageHours());
             });
-            //bug: reset button after changing fragments
+
             var MinHours = dataObjects.First().GetBrokerageHours();
             var MaxHours = dataObjects.Last().GetBrokerageHours();
 
@@ -557,7 +571,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new LinearAxis { Key = "currency", Position = AxisPosition.Left, AbsoluteMinimum = minVal - 100, AbsoluteMaximum = maxVal + 100, Title = "Hours", MinorStep = 10, MajorStep = 20, LabelFormatter = formatter });
 
-
+            //setup maximum and minium values for date axis
             dataObjects.Sort(delegate (BrokerageHoursData one, BrokerageHoursData two) {
                 return DateTime.Compare(one.GetDate(), two.GetDate());
             });
@@ -570,6 +584,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, AbsoluteMinimum = firstVal - 1, AbsoluteMaximum = lastVal + 1, MinorStep = 1, StringFormat = "MM/dd/yyyy", Title = "Date (M/D/Y)" });
 
+            //setup line series
             var QLDSeries = new LineSeries { MarkerStroke = OxyColors.Aqua, Title = "QLD" };
             var VICSeries = new LineSeries { MarkerStroke = OxyColors.Crimson, Title = "VIC" };
             
@@ -596,6 +611,10 @@ namespace MiCareDBapp.Droid
 
             plotView.Model = plotModel;
 
+            //this button when pressed will perform a calculation which will output the moving average, upper channel and lower channel onto the graph
+            //info on keltner channels (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:keltner_channels"
+            //info on moving averages (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_averages"
+            //info on average true ranges (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:average_true_range_atr"
             Button KeltnerBtn = view.FindViewById<Button>(Resource.Id.KeltnerBtn);
             KeltnerBtn.Visibility = ViewStates.Visible;
             KeltnerBtn.Enabled = true;
@@ -603,8 +622,6 @@ namespace MiCareDBapp.Droid
                 var MiddleLineSeries = new LineSeries { Title = "Moving Average", MarkerStroke = OxyColors.Black };
                 var UpperChannelSeries = new LineSeries { Title = "Upper Channel", MarkerStroke = OxyColors.ForestGreen };
                 var LowerChannelSeries = new LineSeries { Title = "Lower Channel", MarkerStroke = OxyColors.DarkRed };
-                //AVERAGE TRUE RANGE
-                var trueRange = MinHours - MaxHours;
 
                 int threeMonthPeriod = 0; // the period used to calculated true ranges
                 int nineMonthPeriod = 0; //the period used to calculate average true range
@@ -646,14 +663,14 @@ namespace MiCareDBapp.Droid
                     else
                     {
                         threeMonthPeriod = 0;
-                        if (firstATR > 0)
+                        if (firstATR > 0)//after nine months
                         {
                             averageTrueRange = ((averageTrueRange * 2) + (currentHigh - currentLow)) / 3;
                             MovingAverage = ((itemHours - MovingAverage) * multiplier) + MovingAverage;
                             postData = true;
                         }
                         else
-                        {
+                        {//for the first nine months
                             trueRangePeriod[nineMonthPeriod] = currentHigh - currentLow;
                             SMAOverNineMonths[nineMonthPeriod] = (incomeOverThreeMonths.Sum()) / 3;
                             nineMonthPeriod++;
@@ -696,7 +713,7 @@ namespace MiCareDBapp.Droid
                 plotModel.Series.Add(MiddleLineSeries);
                 plotModel.Series.Add(UpperChannelSeries);
                 plotModel.Series.Add(LowerChannelSeries);
-                if (lowestVal < minVal)
+                if (lowestVal < minVal)//reset the max and/or min axis values to accomodate for upper and lower channels
                 {
                     plotModel.GetAxisOrDefault("currency", null).AbsoluteMinimum = lowestVal - 10000;
                 }
@@ -725,7 +742,7 @@ namespace MiCareDBapp.Droid
         private decimal PrinsWillemAlexanderLodgeTotal = 0;
 
 
-        //import the finance data item based on the item clicked 
+        //import the home care package data and get the total income per facility
         public HomeCarePackagesGraph(List<HomeCarePackageData> data) {
             foreach (HomeCarePackageData item in data) {
                 int itemFacility = item.GetFacilityID();
@@ -766,6 +783,7 @@ namespace MiCareDBapp.Droid
 
             var plotModel = new PlotModel();
 
+            //setup vertical bar graph
             var barSeries = new ColumnSeries
             {
                 ItemsSource = new List<ColumnItem>(new[]
@@ -803,6 +821,7 @@ namespace MiCareDBapp.Droid
 
             plotView.Model = plotModel;
 
+            //put names of facilities visible 
             LinearLayout BarGraphLables = view.FindViewById<LinearLayout>(Resource.Id.BarGraphLabels);
             BarGraphLables.Visibility = ViewStates.Visible;
 
@@ -816,7 +835,7 @@ namespace MiCareDBapp.Droid
         private List<IncomeData> dataObjects;
 
 
-        //import the finance data item based on the item clicked 
+        //import the income data
         public IncomeGraph(List<IncomeData> data)
         {
             dataObjects = data;
@@ -844,7 +863,7 @@ namespace MiCareDBapp.Droid
             dataObjects.Sort(delegate (IncomeData one, IncomeData two) {
                 return one.GetIncome().CompareTo(two.GetIncome());
             });
-            //bug: reset button after changing fragments
+            //setup maximum and minium values for left axis
             var MinIncome = dataObjects.First().GetIncome();
             var MaxIncome = dataObjects.Last().GetIncome();
 
@@ -858,7 +877,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new LinearAxis { Key = "currency", Position = AxisPosition.Left, AbsoluteMinimum = minVal - 10000, AbsoluteMaximum = maxVal + 10000, Title = "Income ($)", MinorStep = 50000, MajorStep = 100000, LabelFormatter = formatter });
 
-
+            //setup maximum and minium values for date axis
             dataObjects.Sort(delegate (IncomeData one, IncomeData two) {
                 return DateTime.Compare(one.GetDate(), two.GetDate());
             });
@@ -871,6 +890,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, AbsoluteMinimum = firstVal - 1, AbsoluteMaximum = lastVal + 1, MinorStep = 1, StringFormat = "MM/dd/yyyy", Title = "Date (M/D/Y)" });
 
+            //setup line series
             var incomeSeries = new LineSeries { Title = "Income", MarkerStroke = OxyColors.Aqua };
 
             foreach (IncomeData item in dataObjects) {
@@ -883,6 +903,10 @@ namespace MiCareDBapp.Droid
 
             plotView.Model = plotModel;
 
+            //this button when pressed will perform a calculation which will output the moving average, upper channel and lower channel onto the graph
+            //info on keltner channels (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:keltner_channels"
+            //info on moving averages (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_averages"
+            //info on average true ranges (including the formula): "https:/stockcharts.com/school/doku.php?id=chart_school:technical_indicators:average_true_range_atr"
             Button KeltnerBtn = view.FindViewById<Button>(Resource.Id.KeltnerBtn);
             KeltnerBtn.Visibility = ViewStates.Visible;
             KeltnerBtn.Enabled = true;
@@ -890,8 +914,6 @@ namespace MiCareDBapp.Droid
                 var MiddleLineSeries = new LineSeries { Title = "Moving Average", MarkerStroke = OxyColors.Black };
                 var UpperChannelSeries = new LineSeries { Title = "Upper Channel", MarkerStroke = OxyColors.ForestGreen };
                 var LowerChannelSeries = new LineSeries { Title = "Lower Channel", MarkerStroke = OxyColors.DarkRed };
-                //AVERAGE TRUE RANGE
-                var trueRange = MaxIncome - MinIncome;
 
                 int threeMonthPeriod = 0; // the period used to calculated true ranges
                 int nineMonthPeriod = 0; //the period used to calculate average true range
@@ -926,11 +948,11 @@ namespace MiCareDBapp.Droid
                         //after 3 months have passed find average true range 
                     } else {
                         threeMonthPeriod = 0;
-                        if (firstATR > 0) {
+                        if (firstATR > 0) {//after nine months
                             averageTrueRange = ((averageTrueRange*2) + (currentHigh - currentLow)) / 3;
                             MovingAverage = ((itemIncome - MovingAverage) * multiplier) + MovingAverage;
                             postData = true;
-                        } else {
+                        } else {//for the first nine months
                             trueRangePeriod[nineMonthPeriod] = currentHigh - currentLow;
                             SMAOverNineMonths[nineMonthPeriod] = (incomeOverThreeMonths.Sum()) / 3;
                             nineMonthPeriod++;
@@ -969,7 +991,8 @@ namespace MiCareDBapp.Droid
                 plotModel.Series.Add(MiddleLineSeries);
                 plotModel.Series.Add(UpperChannelSeries);
                 plotModel.Series.Add(LowerChannelSeries);
-                if (lowestVal < minVal) {
+                if (lowestVal < minVal)
+                {//reset the max and/or min axis values to accomodate for upper and lower channels
                     plotModel.GetAxisOrDefault("currency", null).AbsoluteMinimum = lowestVal - 10000;
                 }
                 if (highestVal > maxVal) {
@@ -1017,10 +1040,11 @@ namespace MiCareDBapp.Droid
 
             var plotModel = new PlotModel();
 
+            //setup maximum and minium values for left axis
             dataObjects.Sort(delegate (OccupancyData one,OccupancyData two) {
                 return one.GetOccupancyRate().CompareTo(two.GetOccupancyRate());
             });
-            //bug: reset button after changing fragments
+            
             var MinIncome = dataObjects.First().GetOccupancyRate();
             var MaxIncome = dataObjects.Last().GetOccupancyRate();
 
@@ -1035,7 +1059,7 @@ namespace MiCareDBapp.Droid
             plotModel.Axes.Add(new LinearAxis { Key = "currency", Position = AxisPosition.Left, AbsoluteMinimum = minVal - 0.05, AbsoluteMaximum = maxVal + 0.05, Title = "Occupancy Rate (%)", MinorStep = 0.005, MajorStep = 0.01, LabelFormatter = formatter });
 
 
-
+            //setup maximum and minium values for date axis
             dataObjects.Sort(delegate (OccupancyData one, OccupancyData two) {
                 return DateTime.Compare(one.GetDate(), two.GetDate());
             });
@@ -1048,6 +1072,7 @@ namespace MiCareDBapp.Droid
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, AbsoluteMinimum = firstVal - 1, AbsoluteMaximum = lastVal + 1, MinorStep = 1, StringFormat = "MM/dd/yyyy", Title = "Date (M/D/Y)" });
 
+            //set up the different line series
             var AvondrustVillageSeries = new LineSeries { MarkerStroke = OxyColors.Aqua, Title = "Avondrust Village" };
             var MargrietManorSeries = new LineSeries { MarkerStroke = OxyColors.Crimson, Title = "Margriet Manor" };
             var OverbeekLodgeSeries = new LineSeries { MarkerStroke = OxyColors.Orange, Title = "Overbeek Lodge" };
@@ -1094,97 +1119,8 @@ namespace MiCareDBapp.Droid
 
             plotView.Model = plotModel;
 
-            Button KeltnerBtn = view.FindViewById<Button>(Resource.Id.KeltnerBtn);
-            //KeltnerBtn.Visibility = ViewStates.Visible;
-            KeltnerBtn.Enabled = false;
-            KeltnerBtn.Click += delegate {
-                var MiddleLineSeries = new LineSeries { Title = "Moving Average", MarkerStroke = OxyColors.Black };
-                var UpperChannelSeries = new LineSeries { Title = "Upper Channel", MarkerStroke = OxyColors.ForestGreen };
-                var LowerChannelSeries = new LineSeries { Title = "Lower Channel", MarkerStroke = OxyColors.DarkRed };
-
-                int threeMonthPeriod = 0; // the period used to calculated true ranges
-                int nineMonthPeriod = 0; //the period used to calculate average true range
-                decimal currentHigh =  (decimal) dataObjects.First().GetOccupancyRate();
-                decimal currentLow = (decimal) dataObjects.First().GetOccupancyRate();
-
-                decimal[] incomeOverThreeMonths = new decimal[3] { 0, 0, 0 };
-                decimal[] SMAOverNineMonths = new decimal[3] { 0, 0, 0 };
-                decimal[] trueRangePeriod = new decimal[3] { 0, 0, 0 };
-                decimal averageTrueRange = 0;
-                decimal MovingAverage = 0;
-                decimal multiplier = (decimal) 2 / 4;
-                bool postData = false;
-
-                int firstATR = 0;
-
-                foreach (OccupancyData item in dataObjects)
-                {
-                    decimal itemRate = (decimal) item.GetOccupancyRate();
-
-                    postData = false;
-                    //before 3 months have passed find highest and lowest income values
-                    if (threeMonthPeriod < 3)
-                    {
-                        if (itemRate > currentHigh)
-                        {
-                            currentHigh = itemRate;
-                        }
-                        else if (itemRate < currentLow)
-                        {
-                            currentLow = itemRate;
-                        }
-                        incomeOverThreeMonths[threeMonthPeriod] = itemRate;
-                        //after 3 months have passed find average true range 
-                    }
-                    else
-                    {
-                        threeMonthPeriod = 0;
-                        if (firstATR > 0)
-                        {
-                            averageTrueRange = ((averageTrueRange * 2) + (currentHigh - currentLow)) / 3;
-                            MovingAverage = ((itemRate - MovingAverage) * multiplier) + MovingAverage;
-                            postData = true;
-                        }
-                        else
-                        {
-                            trueRangePeriod[nineMonthPeriod] = currentHigh - currentLow;
-                            SMAOverNineMonths[nineMonthPeriod] = (incomeOverThreeMonths.Sum()) / 3;
-                            nineMonthPeriod++;
-                        }
-                        currentHigh = itemRate;
-                        currentLow = itemRate;
-                    }
-                    threeMonthPeriod++;
-                    if (nineMonthPeriod == 3)
-                    {
-                        nineMonthPeriod++;
-                        firstATR++;
-                        averageTrueRange = (trueRangePeriod.Sum()) / 3;
-                        MovingAverage = (SMAOverNineMonths.Sum()) / 3;
-                        postData = true;
-                    }
-                    if (postData)
-                    {
-                        var dateAsDouble = DateTimeAxis.ToDouble(item.GetDate());
-                        var middleLineAsDouble = LinearAxis.ToDouble(MovingAverage);
-                        MiddleLineSeries.Points.Add(new DataPoint(dateAsDouble, middleLineAsDouble));
-
-                        var upperChannelAsDouble = LinearAxis.ToDouble(MovingAverage + (2 * averageTrueRange));
-                        UpperChannelSeries.Points.Add(new DataPoint(dateAsDouble, upperChannelAsDouble));
-
-                        var lowerChannelsAsDouble = LinearAxis.ToDouble(MovingAverage - (2 * averageTrueRange));
-                        LowerChannelSeries.Points.Add(new DataPoint(dateAsDouble, lowerChannelsAsDouble));
-                    }
-                }
-                plotModel.Series.Add(MiddleLineSeries);
-                plotModel.Series.Add(UpperChannelSeries);
-                plotModel.Series.Add(LowerChannelSeries);
-                plotModel.LegendPlacement = LegendPlacement.Inside;
-                plotModel.LegendPosition = LegendPosition.BottomRight;
-                //refresh plot
-                plotView.InvalidatePlot(true);
-                KeltnerBtn.Enabled = false;
-            };
+            //Originally the occupancy graph was going to have a keltner channel button as well, however occupancy rate generally changes at such a slow rate, and with our lack of data
+            //it didn't make much sense to implement
 
             return view;
         }
@@ -1206,7 +1142,7 @@ namespace MiCareDBapp.Droid
         private decimal PrinsWillemAlexanderLodgeBudget = 0;
 
 
-        //import the finance data item based on the item clicked 
+        //import the salaries and wages data and get the actual cost and budget for each facility
         public SalariesWagesGraph(List<SalariesWagesData> data) {
             List<SalariesWagesData> dataObjects = data;
             dataObjects.Sort(delegate (SalariesWagesData one, SalariesWagesData two) {
@@ -1269,6 +1205,7 @@ namespace MiCareDBapp.Droid
 
             var plotModel = new PlotModel() { LegendPlacement = LegendPlacement.Outside, LegendPosition = LegendPosition.TopCenter };
 
+            //setup vertical bar graphs
             var ActualCostBarSeries = new ColumnSeries
             {
                 Title = "Actual Cost",
@@ -1295,7 +1232,7 @@ namespace MiCareDBapp.Droid
                     new ColumnItem{ Value = (double) PrinsWillemAlexanderLodgeBudget}
                 }),
                 LabelPlacement = LabelPlacement.Outside,
-                LabelFormatString = "{0}",
+                LabelFormatString = "{0:N2}",
                 FillColor = OxyColors.OrangeRed
             };
 
@@ -1323,6 +1260,7 @@ namespace MiCareDBapp.Droid
 
             plotView.Model = plotModel;
 
+            //make facility names visible
             LinearLayout BarGraphLables = view.FindViewById<LinearLayout>(Resource.Id.BarGraphLabels);
             BarGraphLables.Visibility = ViewStates.Visible;
 
@@ -1349,7 +1287,7 @@ namespace MiCareDBapp.Droid
         private decimal PrinsWillemAlexanderLodgeLSLAverage = 0;
         private decimal PrinsWillemAlexanderLodgeSLAverage = 0;
 
-        //import the finance data item based on the item clicked 
+        //import the staff data and retrieve the average annual leave, long serve leave, and sick leave accrued for each facility
         public StaffGraph(List<StaffData> data)
         {
             int AvondrustCount = 0;
@@ -1423,6 +1361,7 @@ namespace MiCareDBapp.Droid
 
             var plotModel = new PlotModel() { LegendPlacement = LegendPlacement.Outside, LegendPosition = LegendPosition.TopCenter};
 
+            //setup vertical bar graphs
             var ALBarSeries = new ColumnSeries {
                 Title = "Average Annual Leave Accrued",
                 ItemsSource = new List<ColumnItem>(new[]
@@ -1488,6 +1427,7 @@ namespace MiCareDBapp.Droid
 
             plotView.Model = plotModel;
 
+            //make facility names visible
             LinearLayout BarGraphLables = view.FindViewById<LinearLayout>(Resource.Id.BarGraphLabels);
             BarGraphLables.Visibility = ViewStates.Visible;
 

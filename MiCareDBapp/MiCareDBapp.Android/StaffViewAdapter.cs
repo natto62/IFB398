@@ -51,7 +51,7 @@ namespace MiCareDBapp.Droid
             {
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.StaffTable, null, false);
             }
-
+            //retrieve the shared preferences to edit the row attributes such as text size, colour or if the the data has to be sorted by date
             ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
             string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
             ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
@@ -105,14 +105,14 @@ namespace MiCareDBapp.Droid
                 txtLongServiceLeaveStaff.SetTextColor(Color.Black);
                 txtSickLeaveStaff.SetTextColor(Color.Black);
             }
-
+            //for every item
             txtFNameStaff.Text = Items[position].GetStaffFirstName();
             txtLNameStaff.Text = Items[position].GetStaffLastName();
             txtAnnualLeaveStaff.Text = Items[position].GetAnnualLeaveAcrewed().ToString();
             txtLongServiceLeaveStaff.Text = Items[position].GetLongServiceLeaveAcrewed().ToString();
             txtSickLeaveStaff.Text = Items[position].GetSickLeaveAcrewed().ToString();
 
-
+            //set indicator colours
             if (Items[position].IsGreen())
             {
                 if (NightSwitchMode)

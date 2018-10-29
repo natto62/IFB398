@@ -14,13 +14,11 @@ namespace MiCareDBapp.Droid
 {
     public class User
     {
-
+        //User object
         public int UserID { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string Email { get; set; }
-        //public string Password { get; set; }
-        //protected DateTime Date;
 
         //retrieveid value
         public int GetUserID()
@@ -45,9 +43,6 @@ namespace MiCareDBapp.Droid
         {
             return Email;
         }
-
-
-
 
     }
 }

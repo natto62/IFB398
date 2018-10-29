@@ -44,22 +44,28 @@ namespace MiCareDBapp.Droid
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            //OnCreate takes a Bundle parameter, which is a dictionary for storing and passing state information 
+            //and objects between activities If the bundle is not null, this indicates the activity is restarting 
+            //and it should restore its state from the previous instance. "https:/docs.microsoft.com/en-us/xamarin/android/app-fundamentals/activity-lifecycle/"
             base.OnCreateView(inflater, container, savedInstanceState);
+            //Once on create has finished, android will call OnStart which will start the activity
 
+            //sets the layout of the main menu to the ACFIPage.axml file which is located in Resources/layout/
             View view = inflater.Inflate(Resource.Layout.ACFIPage, container, false);
 
+            //setup lists for acfi funding data 
             dataItems = new List<ACFIFunding>();
             displayItems = new List<ACFIFunding>();
             searchItems = new List<ACFIFunding>();
 
-            //setup adapter
+            //setup custom list adapter, more info found in ACFIViewAdapter.cs
             dataList = view.FindViewById<ListView>(Resource.Id.DataList);
             adapter = new ACFIViewAdapter(this.Context, dataItems);
 
-            //Display the number of items at the bottom of the page
+            //Display the number of data items at the bottom of the page
             NumItems = view.FindViewById<TextView>(Resource.Id.txtNumData);
 
-            //AVG income per resident monthly
+            //AVG income per resident monthly textview
             AvgIncome = view.FindViewById<TextView>(Resource.Id.ACFIAvgValue);
 
             //setup buttons at the top of the page which are used to sort the list based on the button pushed
@@ -68,15 +74,15 @@ namespace MiCareDBapp.Droid
             Button IncomeBtn = view.FindViewById<Button>(Resource.Id.IncomeTextACFI);
             Button ExpirationDateBtn = view.FindViewById<Button>(Resource.Id.ExpirationDateTextACFI);
 
-            //setup Spinner
+            //setup Spinner to sort facilities
             Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
             spinner.Clickable = false;
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);//array found in Resources/values/
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
-            //setup Month Spinner
+            //setup Month Spinner for the AVG income per resident monthly widget
             Spinner MonthSpinner = view.FindViewById<Spinner>(Resource.Id.MonthSpinner);
             MonthSpinner.Clickable = false;
             MonthSpinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_MonthItemSelected);
@@ -84,37 +90,45 @@ namespace MiCareDBapp.Droid
             MonthSpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             MonthSpinner.Adapter = MonthSpinnerAdapter;
 
+            //create new WebClient class object which can provide methods to push and recieve data from an online resource via a url
             client = new WebClient();
-            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
+            //set the url to push and pull data from, via the a Uri class object
+            //the online resource is a php file hosted on heroku, these php files read write and pull database tables
+            url = new Uri("https://capstonephpcode198.herokuapp.com/PullData.php");
 
+            //setup toast message which is pop up message which informs the user that data is being pulled
             toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
 
             //setup graph button
             Button GraphButton = view.FindViewById<Button>(Resource.Id.GraphButton);
-            GraphButton.Enabled = false;
+            GraphButton.Enabled = false;//disabled untill data is pulled
             GraphButton.Click += delegate {
                 var transaction = ChildFragmentManager.BeginTransaction();
-                ACFIGraph info = new ACFIGraph(displayItems);//display to get all data
+                ACFIGraph info = new ACFIGraph(displayItems);//displayItems to use all data
                 info.Show(transaction, "dialog fragment");
             };
 
             //setup search bar
             SearchView SearchItems = view.FindViewById<SearchView>(Resource.Id.searchData);
-            //an X apears next the search upon a submitted query, this X closes the current search
+            //an X apears next the search upon a submitted query, this X closes the current search, SearchCloseBtn button variable is associated with this
+            //find the resource id's associated with the search and close buttons for the search bar widget
             int searchBtnID = SearchItems.Context.Resources.GetIdentifier("android:id/search_button", null, null);
             int closeBtnID = SearchItems.Context.Resources.GetIdentifier("android:id/search_close_btn", null, null);
             var SearchOpenBtn = view.FindViewById<ImageView>(searchBtnID);
             var SearchCloseBtn = view.FindViewById<ImageView>(closeBtnID);
             SearchItems.SetIconifiedByDefault(false);//shows hint
-            SearchItems.Enabled = false;
+            SearchItems.Enabled = false;//disable untill data is pulled
             SearchOpenBtn.Enabled = false;
             SearchItems.QueryTextSubmit += delegate {
+                //this search bar allows the user to search via resident id
                 string searchID = SearchItems.Query;
                 foreach (ACFIFunding item in dataItems) {
+                    //use searchItems list to hold all items while items get removed from the dataItems list if they don't match the search credentials
                     if (!searchItems.Contains(item)) {
                         searchItems.Add(item);
                     }
                 }
+                //if search credentials match or don't match, remove or add items from dataItems list
                 foreach (ACFIFunding item in searchItems) {
                     if (dataItems.Contains(item) && (!String.Equals(item.GetResidentID().ToString(), searchID))) {
                         dataItems.Remove(item);
@@ -125,6 +139,7 @@ namespace MiCareDBapp.Droid
                 SearchItems.ClearFocus();
                 adapter.NotifyDataSetChanged();
             };
+            //when the search bar close button is pressed, add all items from searchItems into dataItems
             SearchCloseBtn.Click += delegate {
                 foreach (ACFIFunding item in searchItems) {
                     if (!dataItems.Contains(item)) {
@@ -136,32 +151,34 @@ namespace MiCareDBapp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
-            //setup progress bar
+            //setup progress bar for data pulling
             ProgressBar ClientProgress = view.FindViewById<ProgressBar>(Resource.Id.ClientProgress);
-
+            //show progress percentage on the bar
             client.UploadProgressChanged += delegate (object sender, UploadProgressChangedEventArgs e) {
                 ClientProgress.Progress += e.ProgressPercentage;
             };
 
+            //refresh button pulls data from database
             Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
             RefreshBtn.Click += delegate {
-                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
-                toastMessage.Show();
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);//change refresh icon colour to lighter shade of green
+                toastMessage.Show();//show toast message
                 spinner.SetSelection(0);
+                //clear lists, to make way for updated data
                 dataItems.Clear();
                 displayItems.Clear();
                 spinner.Clickable = false;
 
                 NameValueCollection values = new NameValueCollection();
                 values.Add("Type", "ACFI");
-                //call php 
+                //call php file and use UploadValuesAsync with the value of Type=ACFI so the php file knows to pull ACFI data
                 client.UploadValuesAsync(url, values);
             };
 
             client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
                 Activity.RunOnUiThread(() => {
                     string json = Encoding.UTF8.GetString(e.Result);
-                    dataItems = JsonConvert.DeserializeObject<List<ACFIFunding>>(json);
+                    dataItems = JsonConvert.DeserializeObject<List<ACFIFunding>>(json);//use json to create a list of data objects from the output of the php file
                     int[] residentIDArray = new int[dataItems.Count];
                     int count = 0;
                     //put all resident id values into an array
@@ -169,14 +186,14 @@ namespace MiCareDBapp.Droid
                     {
                         residentIDArray[count] = item.GetResidentID();
                         count++;
-                        displayItems.Add(item);
+                        displayItems.Add(item);//display items holds all of the data objects for safe keeping, for when dataItems objects get removed
                     }
                     //get distinct resident id values in its own array
                     var distinctResidentIDvals = residentIDArray.Distinct();
                     bool isGreen = false;
                     bool isRed = false;
                     decimal sum = 0;
-                    //foreach distinct resident id value check if the rows for a resident id should be green, yellow or red
+                    //foreach distinct resident id value check if the rows for a resident id should be green, yellow or red, this is beacuse some resident id's correspond with multiple rows
                     foreach (int ID in distinctResidentIDvals) {
                         sum = 0;
                         foreach (ACFIFunding item in dataItems.Where(x => x.GetResidentID() == ID)) {
@@ -199,7 +216,7 @@ namespace MiCareDBapp.Droid
                             item.SetRed(isRed);
                         }
                     }
-                    adapter = new ACFIViewAdapter(this.Context, dataItems);//this
+                    adapter = new ACFIViewAdapter(this.Context, dataItems);//setup adapter
                     NumItems.Text = dataItems.Count.ToString();
                     dataList.Adapter = adapter;
                     RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIcon);
@@ -213,6 +230,7 @@ namespace MiCareDBapp.Droid
                 });
             };
 
+            //sort the items based on residentID
             ResidentBtn.Click += delegate {
                 if (clickNumResident == 0)
                 {
@@ -233,6 +251,7 @@ namespace MiCareDBapp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
+            //sort the items based on score
             ScoreBtn.Click += delegate {
                 if (clickNumScore == 0)
                 {
@@ -253,6 +272,7 @@ namespace MiCareDBapp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
+            //sort the items based on income
             IncomeBtn.Click += delegate {
                 if (clickNumIncome == 0)
                 {
@@ -273,6 +293,7 @@ namespace MiCareDBapp.Droid
                 adapter.NotifyDataSetChanged();
             };
 
+            //sport the items based on expiration date
             ExpirationDateBtn.Click += delegate {
                 if (clickExpirationDate == 0) {
                     dataItems.Sort(delegate (ACFIFunding one, ACFIFunding two) {
@@ -296,10 +317,11 @@ namespace MiCareDBapp.Droid
             return view;
         }
 
+        //the spinner for selecting months for the AVG income per resident monthly textview
         private void Spinner_MonthItemSelected(object sender, AdapterView.ItemSelectedEventArgs e) {
             Spinner spinner = (Spinner)sender;
-            int position = e.Position;
-            if (position == 0) {
+            int position = e.Position;//get spinner position
+            if (position == 0) {//if default position, no month selected
                 AvgIncome.Text = "";
             } else { 
                 decimal totalAmount = 0;
@@ -317,19 +339,18 @@ namespace MiCareDBapp.Droid
                 AvgIncome.Text = " $ " + avgValue.ToString();
             }
         }
-
+        //the spinner for selecting a facility
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
             int ID;
-            int position = e.Position;
+            int position = e.Position;//get spinner position
             searchItems.Clear();
             foreach (ACFIFunding item in displayItems)
-            {
+            {//foreach data item, add or remove depending on if it is associated with the chosen facility
                 ID = item.GetFacilityID();
                 if (ID == position)
                 {
-                    item.Show(false);
                     if (!dataItems.Contains(item))
                     {
                         dataItems.Add(item);
@@ -337,7 +358,6 @@ namespace MiCareDBapp.Droid
                 }
                 else
                 {
-                    item.Show(true);
                     if (position > 0)
                     {
                         dataItems.Remove(item);
@@ -354,7 +374,7 @@ namespace MiCareDBapp.Droid
             }
             adapter.NotifyDataSetChanged();
         }
-
+        //a public notify adapter method which is used in the Settings.cs file to update all fragment kpi's depending on changed settings, eg. text size
         public void NotifyAdapter() {
             adapter.NotifyDataSetChanged();
         }

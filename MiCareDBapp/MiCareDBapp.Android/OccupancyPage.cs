@@ -44,14 +44,20 @@ namespace MiCareDBapp.Droid
         private Toast toastMessage;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            //OnCreate takes a Bundle parameter, which is a dictionary for storing and passing state information 
+            //and objects between activities If the bundle is not null, this indicates the activity is restarting 
+            //and it should restore its state from the previous instance. "https:/docs.microsoft.com/en-us/xamarin/android/app-fundamentals/activity-lifecycle/"
             base.OnCreateView(inflater, container, savedInstanceState);
+            //Once on create has finished, android will call OnStart which will start the activity
 
+            //sets the layout of the main menu to the OccupancyPage.axml file which is located in Resources/layout/
             View view = inflater.Inflate(Resource.Layout.OccupancyPage, container, false);
 
+            //setup lists for occupancy data
             dataItems = new List<OccupancyData>();
             displayItems = new List<OccupancyData>();
 
-            //setup adapter
+            //setup custom list adapter, more info found in OccupancyViewAdapter.cs
             dataList = view.FindViewById<ListView>(Resource.Id.DataList);
             adapter = new OccupancyViewAdapter(this.Context, dataItems);
 
@@ -65,27 +71,31 @@ namespace MiCareDBapp.Droid
             Button SupportedBtn = view.FindViewById<Button>(Resource.Id.SupportedTextOccupancy);
             Button TotalBedDaysBtn = view.FindViewById<Button>(Resource.Id.BedDaysTextOccupancy);
 
-            //setup textview
+            //setup textview for the total beds of a selected facility 
             TotalBedsValue = view.FindViewById<TextView>(Resource.Id.TotalBedsValue);
 
-            //setup Spinner
+            //setup Spinner to sort facilities
             Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
             spinner.Clickable = false;
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);//array found in Resources/values/
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
+            //create new WebClient class object which can provide methods to push and recieve data from an online resource via a url
             client = new WebClient();
-            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
+            //set the url to push and pull data from, via the a Uri class object
+            //the online resource is a php file hosted on heroku, these php files read write and pull database tables
+            url = new Uri("https://capstonephpcode198.herokuapp.com/PullData.php");
 
+            //setup toast message which is pop up message which informs the user that data is being pulled
             toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
 
             //setup graph button
             Button GraphButton = view.FindViewById<Button>(Resource.Id.GraphButton);
-            GraphButton.Enabled = false;
+            GraphButton.Enabled = false;//disabled untill data is pulled
             GraphButton.Click += delegate {
-                if (facilityForGraph > 0) {
+                if (facilityForGraph > 0) {//only graph one facility at a time
                     var transaction = ChildFragmentManager.BeginTransaction();
                     OccupancyGraph info = new OccupancyGraph(dataItems, facilityForGraph);
                     info.Show(transaction, "dialog fragment");
@@ -97,34 +107,35 @@ namespace MiCareDBapp.Droid
 
             //setup progress bar
             ProgressBar ClientProgress = view.FindViewById<ProgressBar>(Resource.Id.ClientProgress);
-
+            //show progress percentage on the bar
             client.UploadProgressChanged += delegate (object sender, UploadProgressChangedEventArgs e) {
                 ClientProgress.Progress += e.ProgressPercentage;
             };
-
+            //refresh button pulls data from database
             Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
             RefreshBtn.Click += delegate {
-                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);//change refresh icon colour to lighter shade of green
                 toastMessage.Show();
                 spinner.SetSelection(0);
+                //clear lists, to make way for updated data
                 dataItems.Clear();
                 displayItems.Clear();
                 spinner.Clickable = false;
 
                 NameValueCollection values = new NameValueCollection();
                 values.Add("Type", "Occupancy");
-                //call php 
+                //call php file and use UploadValuesAsync with the value of Type=Occupancy so the php file knows to pull occupancy data
                 client.UploadValuesAsync(url, values);
             };
 
             client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
                 Activity.RunOnUiThread(() => {
                     string json = Encoding.UTF8.GetString(e.Result);
-                    dataItems = JsonConvert.DeserializeObject<List<OccupancyData>>(json);
-                    adapter = new OccupancyViewAdapter(this.Context, dataItems);
+                    dataItems = JsonConvert.DeserializeObject<List<OccupancyData>>(json);//use json to create a list of data objects from the output of the php file
+                    adapter = new OccupancyViewAdapter(this.Context, dataItems);//setup adapter
                     foreach (OccupancyData item in dataItems)
                     {
-                        displayItems.Add(item);
+                        displayItems.Add(item);//display items holds all of the data objects for safe keeping, for when dataItems objects get removed
                     }
                     NumItems.Text = dataItems.Count.ToString();
                     dataList.Adapter = adapter;
@@ -135,7 +146,7 @@ namespace MiCareDBapp.Droid
                     adapter.NotifyDataSetChanged();
                 });
             };
-
+            //sort data via date
             DateBtn.Click += delegate {
                 if (clickNumDate == 0) {
                     dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
@@ -153,7 +164,7 @@ namespace MiCareDBapp.Droid
                 }
                 adapter.NotifyDataSetChanged();
             };
-
+            //sort data via actual beds
             ActualBedsBtn.Click += delegate {
                 if (clickNumActualBeds == 0) {
                     dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
@@ -173,7 +184,7 @@ namespace MiCareDBapp.Droid
                 }
                 adapter.NotifyDataSetChanged();
             };
-
+            //sort data via occupancy rate
             OccupancyRateBtn.Click += delegate {
                 if (clickNumOccupancyRate == 0)
                 {
@@ -194,7 +205,7 @@ namespace MiCareDBapp.Droid
                 }
                 adapter.NotifyDataSetChanged();
             };
-
+            //sort data via supported percentage
             SupportedBtn.Click += delegate {
                 if (clickNumSupported == 0) {
                     dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
@@ -214,7 +225,7 @@ namespace MiCareDBapp.Droid
                 }
                 adapter.NotifyDataSetChanged();
             };
-
+            //sort data via total bed days
             TotalBedDaysBtn.Click += delegate {
                 if (clickNumTotalBedDays == 0) {
                     dataItems.Sort(delegate (OccupancyData one, OccupancyData two) {
@@ -237,18 +248,18 @@ namespace MiCareDBapp.Droid
 
             return view;
         }
-
+        //the spinner for selecting a facility
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
             int ID;
-            int position = e.Position;
+            int position = e.Position;//get spinner position
             int getOnce = 0;
-            facilityForGraph = position;
+            facilityForGraph = position;//assign to global variable to be used when making the graphs
             foreach (OccupancyData item in displayItems) {
                 ID = item.GetFacilityID();
-                if (ID == position) {
-                    item.Show(false);
+                if (ID == position)
+                {//foreach data item, add or remove depending on if it is associated with the chosen facility
                     if (getOnce == 0) {
                         TotalBedsValue.Text = item.GetTotalBeds().ToString();
                         getOnce++;
@@ -258,7 +269,6 @@ namespace MiCareDBapp.Droid
                         dataItems.Add(item);
                     }
                 } else {
-                    item.Show(true);
                     if (position > 0)
                     {
                         dataItems.Remove(item);
@@ -279,7 +289,7 @@ namespace MiCareDBapp.Droid
             }
             adapter.NotifyDataSetChanged();
         }
-
+        //a public notify adapter method which is used in the Settings.cs file to update all fragment kpi's depending on changed settings, eg. text size
         public void NotifyAdapter()
         {
             adapter.NotifyDataSetChanged();

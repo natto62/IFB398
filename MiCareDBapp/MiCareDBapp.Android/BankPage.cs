@@ -44,14 +44,20 @@ namespace MiCareDBapp.Droid
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            //OnCreate takes a Bundle parameter, which is a dictionary for storing and passing state information 
+            //and objects between activities If the bundle is not null, this indicates the activity is restarting 
+            //and it should restore its state from the previous instance. "https:/docs.microsoft.com/en-us/xamarin/android/app-fundamentals/activity-lifecycle/"
             base.OnCreateView(inflater, container, savedInstanceState);
+            //Once on create has finished, android will call OnStart which will start the activity
 
+            //sets the layout of the main menu to the BankPage.axml file which is located in Resources/layout/
             View view = inflater.Inflate(Resource.Layout.BankPage, container, false);
 
+            //setup lists for bank balance data 
             dataItems = new List<BankBalance>();
             displayItems = new List<BankBalance>();
 
-            //setup adapter
+            //setup custom list adapter, more info found in BankViewAdapter.cs
             dataList = view.FindViewById<ListView>(Resource.Id.DataList);
             adapter = new BankViewAdapter(this.Context, dataItems);
 
@@ -65,46 +71,53 @@ namespace MiCareDBapp.Droid
             //setup bank balance textview
             BankBalanceView = view.FindViewById<TextView>(Resource.Id.BankBalanceValue);
 
-            //setup progress bar
-            ProgressBar ClientProgress = view.FindViewById<ProgressBar>(Resource.Id.ClientProgress);
-
             //setup graph button
             GraphButton = view.FindViewById<Button>(Resource.Id.GraphButton);
-            GraphButton.Enabled = false;
+            GraphButton.Enabled = false;//disabled untill data is pulled
             GraphButton.Click += delegate {
                 var transaction = ChildFragmentManager.BeginTransaction();
                 BankBalanceGraph info = new BankBalanceGraph(dataItems);
                 info.Show(transaction, "dialog fragment");
             };
 
+            //create new WebClient class object which can provide methods to push and recieve data from an online resource via a url
             client = new WebClient();
-            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
+            //set the url to push and pull data from, via the a Uri class object
+            //the online resource is a php file hosted on heroku, these php files read write and pull database tables
+            url = new Uri("https://capstonephpcode198.herokuapp.com/PullData.php");
 
+            //setup progress bar
+            ProgressBar ClientProgress = view.FindViewById<ProgressBar>(Resource.Id.ClientProgress);
+            //show progress percentage on the bar
+            client.UploadProgressChanged += delegate (object sender, UploadProgressChangedEventArgs e) {
+                ClientProgress.Progress += e.ProgressPercentage;
+            };
+
+            //setup toast message which is pop up message which informs the user that data is being pulled
             toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
 
+            //refresh button pulls data from database
             Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
             RefreshBtn.Click += delegate {
-                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);//change refresh icon colour to lighter shade of green
                 toastMessage.Show();
+                //clear lists, to make way for updated data
                 dataItems.Clear();
                 displayItems.Clear();
                 GraphButton.Enabled = false;
 
                 NameValueCollection values = new NameValueCollection();
                 values.Add("Type", "Bank");
-                //call php 
+                //call php file and use UploadValuesAsync with the value of Type=Bank so the php file knows to pull bank balance data
                 client.UploadValuesAsync(url, values);
             };
-
-            client.UploadProgressChanged += delegate (object sender, UploadProgressChangedEventArgs e) {
-                ClientProgress.Progress += e.ProgressPercentage;
-            };
+            
 
             client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
                 Activity.RunOnUiThread(() => {
                     string json = Encoding.UTF8.GetString(e.Result);
-                    dataItems = JsonConvert.DeserializeObject<List<BankBalance>>(json);
-                    adapter = new BankViewAdapter(this.Context, dataItems);//this
+                    dataItems = JsonConvert.DeserializeObject<List<BankBalance>>(json);//use json to create a list of data objects from the output of the php file
+                    adapter = new BankViewAdapter(this.Context, dataItems);//setup adapter
 
                     //create variables used to find the latest bank balance value
                     DateTime latestDate = new DateTime(1000, 1, 1);
@@ -129,7 +142,7 @@ namespace MiCareDBapp.Droid
                     adapter.NotifyDataSetChanged();
                 });
             };
-
+            //sort items based on balance
             BalanceBtn.Click += delegate {
                 if (clickNumBalance == 0) {
                     dataItems.Sort(delegate (BankBalance one, BankBalance two) {
@@ -144,7 +157,7 @@ namespace MiCareDBapp.Droid
                 }
                 adapter.NotifyDataSetChanged();
             };
-
+            //sort items based on date
             DateBtn.Click += delegate {
                 if (clickNumDate == 0)
                 {
@@ -165,7 +178,7 @@ namespace MiCareDBapp.Droid
 
             return view;
         }
-
+        //a public notify adapter method which is used in the Settings.cs file to update all fragment kpi's depending on changed settings, eg. text size
         public void NotifyAdapter()
         {
             adapter.NotifyDataSetChanged();

@@ -53,8 +53,15 @@ namespace MiCareDBapp.Droid
 
         //create a pop up window with more information
         void SignUp_ItemClick(object sender, EventArgs e) {
+            //fragment manager manages fragments in android, handles transactions between fragments, 
+            //a transaction is a way to add, replace or remove fragments
+            //more info on fragments: https:/developer.android.com/guide/components/fragments
+            //it represents a portion of the user interface such as a pop up window
             FragmentTransaction transaction = FragmentManager.BeginTransaction();
+
+            //Go to SignUp.cs for more
             SignUp SignUpPopUp = new SignUp();
+            //show the dialog fragment which will be a pop up window
             SignUpPopUp.Show(transaction, "dialog fragment");
         }
 

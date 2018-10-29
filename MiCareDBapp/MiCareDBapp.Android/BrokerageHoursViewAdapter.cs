@@ -52,7 +52,7 @@ namespace MiCareDBapp.Droid
             {
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.BrokerageHoursTable, null, false);
             }
-
+            //retrieve the shared preferences to edit the row attributes such as text size, colour or if the the data has to be sorted by date
             ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
             string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
             ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
@@ -91,10 +91,10 @@ namespace MiCareDBapp.Droid
                     return DateTime.Compare(one.GetDate(), two.GetDate());
                 });
             }
-
+            //for every item
             txtDateBrokerage.Text = Items[position].GetDate().ToShortDateString();
             txtHoursBrokerage.Text = Items[position].GetBrokerageHours().ToString();
-
+            //set indicator colours
             if (Items[position].IsGreen())
             {
                 if (NightSwitchMode)

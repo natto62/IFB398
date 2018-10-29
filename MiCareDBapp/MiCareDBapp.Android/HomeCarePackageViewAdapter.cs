@@ -47,7 +47,7 @@ namespace MiCareDBapp.Droid
             if (row == null) {
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.HomeCarePackageTable, null, false);
             }
-
+            //retrieve the shared preferences to edit the row attributes such as text size, colour or if the the data has to be sorted by date
             ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
             string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
             ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
@@ -82,25 +82,23 @@ namespace MiCareDBapp.Droid
             }
 
             if (NightSwitchMode) {
-              //  row.SetBackgroundColor(Color.Black);
                 txtFNameHomeCare.SetTextColor(Color.White);
                 txtLNameHomeCare.SetTextColor(Color.White);
                 txtPackageLevelHomeCare.SetTextColor(Color.White);
                 txtPackageIncomeHomeCare.SetTextColor(Color.White);
             } else {
-               // row.SetBackgroundColor(Color.White);
                 txtFNameHomeCare.SetTextColor(Color.Black);
                 txtLNameHomeCare.SetTextColor(Color.Black);
                 txtPackageLevelHomeCare.SetTextColor(Color.Black);
                 txtPackageIncomeHomeCare.SetTextColor(Color.Black);
             }
 
-
+            //for every item
             txtFNameHomeCare.Text = Items[position].GetResidentFirstName();
             txtLNameHomeCare.Text = Items[position].GetResidentLastName();
             txtPackageLevelHomeCare.Text = Items[position].GetPackageLevel().ToString();
             txtPackageIncomeHomeCare.Text = "$ " + Items[position].GetPackageIncome().ToString();
-
+            //set indicator colours
             if (Items[position].IsGreen()){
                 if (NightSwitchMode) {
                     row.SetBackgroundColor(Color.DarkGreen);

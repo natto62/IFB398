@@ -27,13 +27,23 @@ namespace MiCareDBapp.Droid
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            //Called to have the fragment instantiate its user interface view
+            //LayoutInflater: The LayoutInflater object that can be used to inflate any views in the fragment
+            //ViewGroup: If non-null, this is the parent view that the fragment's UI should be attached to. The fragment should not add the view itself, but this can be used to generate the LayoutParams of the view.
+            //Bundle: If non-null, this fragment is being re-constructed from a previous saved state as given here.
+            //reference: https:/developer.android.com/reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater,%20android.view.ViewGroup,%20android.os.Bundle)
             base.OnCreateView(inflater, container, savedInstanceState);
 
+            //the view being inflated is SignUp.axml from Resources/layout/
             var view = inflater.Inflate(Resource.Layout.SignUp, container, false);
 
+            //create new WebClient class object which can provide methods to push and recieve data from an online resource via a url
             client = new WebClient();
+            //set the url to push and pull data from, via the a Uri class object
+            //the online resource is a php file hosted on heroku, these php files read write and pull database tables
             url = new Uri("https://capstonephpcode198.herokuapp.com/SignUp.php");
 
+            //A list for the text fields
             List<EditText> EditTextList = new List<EditText>(); 
 
             //edit text widgets where users can input data
@@ -81,9 +91,9 @@ namespace MiCareDBapp.Droid
                     SignUpBtn.Enabled = true;
                 }
                 if (signUpYes) {
-                    // User newUser = new User();
                     SignUpTxt.Text = "Creating User please wait...";
-                    //add post values to send to the php file
+
+                    //add post values to send to the php file to input into database
                     NameValueCollection values = new NameValueCollection();
                     values.Add("FName", FNameTxt.Text);
                     values.Add("LName", LNameTxt.Text);
@@ -98,6 +108,7 @@ namespace MiCareDBapp.Droid
         }
 
         private void UploadValuesFinish(object sender, UploadValuesCompletedEventArgs e) {
+            //outputs message to user if the user has been entered into the database or if the email already exists, messages are in SignUp.php
             string json = Encoding.UTF8.GetString(e.Result);
             SignUpBtn.Enabled = true;
             SignUpTxt.Text = json;
@@ -106,7 +117,9 @@ namespace MiCareDBapp.Droid
         public override void OnActivityCreated(Bundle savedInstanceState) {
 
             base.OnActivityCreated(savedInstanceState);
+            //setup animations and color properties
             Dialog.Window.SetBackgroundDrawable(new ColorDrawable(Color.Transparent));
+            //animation can be found in styles.xml in Resources/values/
             Dialog.Window.Attributes.WindowAnimations = Resource.Style.SignInUpAnimation;
         }
     }

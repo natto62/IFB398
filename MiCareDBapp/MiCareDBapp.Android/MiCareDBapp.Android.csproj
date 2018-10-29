@@ -79,7 +79,7 @@
   <ItemGroup>
     <Compile Include="ACFIPage.cs" />
     <Compile Include="ACFIViewAdapter.cs" />
-    <Compile Include="Activity1.cs" />
+    <Compile Include="SlidingTabFinancial.cs" />
     <Compile Include="AgencyUsagePage.cs" />
     <Compile Include="AgencyUsageViewAdapter.cs" />
     <Compile Include="BankPage.cs" />
@@ -87,7 +87,6 @@
     <Compile Include="BrokerageHoursPage.cs" />
     <Compile Include="BrokerageHoursViewAdapter.cs" />
     <Compile Include="Data.cs" />
-    <Compile Include="FinanceMenu.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="HomeCarePackagePage.cs" />
     <Compile Include="HomeCarePackageViewAdapter.cs" />
@@ -95,8 +94,6 @@
     <Compile Include="IncomeViewAdapter.cs" />
     <Compile Include="IntroPage.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="MoreInfo.cs" />
-    <Compile Include="OccupancyMenu.cs" />
     <Compile Include="OccupancyPage.cs" />
     <Compile Include="OccupancyViewAdapter.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -211,15 +208,6 @@
     <AndroidResource Include="Resources\layout\BrokerageHoursTable.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\DataPage.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\DataPage2.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\FinancialDataList.axml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\Graph.axml" />
   </ItemGroup>
   <ItemGroup>
@@ -239,9 +227,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\IntroPage.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\OccupancyDataList.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\OccupancyPage.axml" />

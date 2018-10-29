@@ -52,7 +52,7 @@ namespace MiCareDBapp.Droid
             {
                 row = LayoutInflater.From(Context).Inflate(Resource.Layout.SalariesWagesTable, null, false);
             }
-
+            //retrieve the shared preferences to edit the row attributes such as text size, colour or if the the data has to be sorted by date
             ISharedPreferences getidpreferences = Application.Context.GetSharedPreferences("UserInformation", FileCreationMode.Private);
             string UserID = getidpreferences.GetString("LatestUserID", String.Empty);
             ISharedPreferences preferences = Application.Context.GetSharedPreferences("UserInformation" + UserID, FileCreationMode.Private);
@@ -105,12 +105,12 @@ namespace MiCareDBapp.Droid
                 });
             }
 
-
+            //for every item
             txtDateSalariesWages.Text = Items[position].GetDate().ToShortDateString();
             txtRosteredCostSalariesWages.Text = "$ " + Items[position].GetActualCost().ToString("#,#", CultureInfo.InvariantCulture);
             txtVarianceSalariesWages.Text = "$ " + Items[position].GetVariance().ToString("#,#", CultureInfo.InvariantCulture);
             txtBudgetSalariesWages.Text = "$ " + Items[position].GetBudget().ToString("#,#", CultureInfo.InvariantCulture);
-
+            //set indicator colours
             if (Items[position].IsGreen())
             {
                 if (NightSwitchMode)

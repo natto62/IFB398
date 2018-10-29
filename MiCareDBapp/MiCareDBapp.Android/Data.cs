@@ -13,81 +13,7 @@ using Android;
 
 namespace MiCareDBapp.Droid
 {
-    public class FinanceData {
-        protected string FirstName;
-        protected string LastName;
-        protected int Age;
-        protected string Gender;
-        protected double Income;
-        protected string Colour;
-
-        //each time an object is created, this value increments by 1
-        public static int NumberOfIncomeData;
-
-        //constructor accepts a name string input and a income float input
-        public FinanceData(string FirstNameInput, string LastNameInput, int AgeInput, string GenerInput, double IncomeInput) {
-            this.FirstName = FirstNameInput;
-            this.LastName = LastNameInput;
-            this.Age = AgeInput;
-            this.Gender = GenerInput;
-            this.Income = IncomeInput;
-            NumberOfIncomeData++;
-        }
-
-        //retrieve first name value
-        public string GetFirstName() {
-            return FirstName;
-        }
-
-        //retrieve last name value
-        public string GetLastName() {
-            return LastName;
-        }
-
-        //retrieve age value as string
-        public string GetAge()  {
-            return Age.ToString();
-        }
-
-        //retrieve gender value
-        public string GetGender() {
-            return Gender;
-        }
-
-        //retrieve income value as string
-        public string GetIncome() {
-            return Income.ToString();
-        }
-
-        //retrieve income value as double
-        public double GetIncomeAsDouble() {
-            return Income;
-        }
-
-        //retrieve the number of income data available
-        public int GetNumOfData() {
-            return NumberOfIncomeData;
-        }
-
-        //if the income is above or equal to 500.00 return true
-        public bool IsGreen() {
-            if (Income >= 500.0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        //if the income is less than 250.00 return true
-        public bool IsRed() {
-            if (Income < 250.0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-
+    //The following classes represent the different kpi's, all of the variable names and types in these classes have to match the column names and data types of the respective tables in the database
     public class ACFIFunding {
 
         public int acfiID { get; set; }
@@ -97,7 +23,7 @@ namespace MiCareDBapp.Droid
         public decimal income { get; set; }
         public DateTime date { get; set; }
         public DateTime expiration { get; set; }
-        protected bool show = true;
+
         private bool green = false;
         private bool red = false;
 
@@ -125,7 +51,7 @@ namespace MiCareDBapp.Droid
             return facilityID;
         }
 
-        //the red gren indicaters are done in ACFIPage.cs
+        //the red/yellow/gren indicaters are done in ACFIPage.cs
         public void SetGreen(bool value) {
             green = value;
         }
@@ -141,25 +67,12 @@ namespace MiCareDBapp.Droid
             return red;
         }
 
-        public void Show(bool value)
-        {
-            show = value;
-        }
-
-        public bool GetShow()
-        {
-            return show;
-        }
-
     }
 
     public class BankBalance {
 
         public DateTime date { get; set; }
         public decimal balance { get; set; }
-        //public int facilityID { get; set; }
-        protected bool show = true;
-
 
         public decimal GetBankBalance() {
             return balance;
@@ -197,24 +110,13 @@ namespace MiCareDBapp.Droid
             }
         }
 
-        public void Show(bool value) {
-            show = value;
-        }
-
-        public bool GetShow() {
-            return show;
-        }
-
-
     }
 
     public class AgencyUsageData {
 
         public decimal Amount { get; set; }
         public DateTime date { get; set; }
-        
         public int FacilityID { get; set; }
-        protected bool show = true;
 
         public DateTime GetDate() {
             return date;
@@ -255,26 +157,14 @@ namespace MiCareDBapp.Droid
                 return false;
             }
         }
-
-        public void Show(bool value)
-        {
-            show = value;
-        }
-
-        public bool GetShow()
-        {
-            return show;
-        }
     }
 
     public class BrokerageHoursData {
 
         public DateTime date { get; set; }
-        // protected int InvoiceID;
         public decimal hours { get; set; }
         public int facilityID { get; set; }
         public string location { get; set; }
-        protected bool show = true;
 
         public DateTime GetDate() {
             return date;
@@ -319,16 +209,6 @@ namespace MiCareDBapp.Droid
                 return false;
             }
         }
-
-        public void Show(bool value)
-        {
-            show = value;
-        }
-
-        public bool GetShow()
-        {
-            return show;
-        }
     }
 
     public class HomeCarePackageData {
@@ -339,7 +219,6 @@ namespace MiCareDBapp.Droid
         public string residentLastName { get; set; }
         public int packageLevel { get; set; }
         public decimal packageIncome { get; set; }
-        protected bool show = true;
 
         public int GetResidentID() {
             return residentID;
@@ -364,18 +243,6 @@ namespace MiCareDBapp.Droid
 
         public decimal GetPackageIncome() {
             return packageIncome;
-        }
-
-        //HCP Income against budget will be calculated through sum of Package_Income
-
-        public void Show(bool value)
-        {
-            show = value;
-        }
-
-        public bool GetShow()
-        {
-            return show;
         }
 
         //if the income is above or equal to 250.00 return true
@@ -415,8 +282,6 @@ namespace MiCareDBapp.Droid
         public int occupancy { get; set; }
         public int concessional { get; set; }
         public int totalbeds { get; set; }
-        protected bool show = true;
-
 
         public DateTime GetDate() {
             return date;
@@ -495,16 +360,6 @@ namespace MiCareDBapp.Droid
             }
         }
 
-        public void Show(bool value)
-        {
-            show = value;
-        }
-
-        public bool GetShow()
-        {
-            return show;
-        }
-
     }
 
     public class StaffData {
@@ -516,7 +371,6 @@ namespace MiCareDBapp.Droid
         public decimal alAccrued { get; set; }
         public decimal lslAccrued { get; set; }
         public decimal slAccrued { get; set; }
-        protected bool show = true;
 
         public int GetStaffID() {
             return staffID;
@@ -574,21 +428,11 @@ namespace MiCareDBapp.Droid
             }
         }
 
-        public void Show(bool value)
-        {
-            show = value;
-        }
-
-        public bool GetShow() {
-            return show;
-        }
-
     }
 
     public class IncomeData {
 
         public DateTime date { get; set; }
-        // protected int InvoiceID;
         public decimal totalPackageIncome { get; set; }
         public decimal businessService { get; set; }
         public decimal settlementService { get; set; }
@@ -596,7 +440,6 @@ namespace MiCareDBapp.Droid
         public string location { get; set; }
         public int facilityID { get; set; }
         protected static string type = "";
-        protected bool show = true;
 
 
         public DateTime GetDate() {
@@ -682,16 +525,6 @@ namespace MiCareDBapp.Droid
                 return false;
             }
         }
-
-        public void Show(bool value)
-        {
-            show = value;
-        }
-
-        public bool GetShow()
-        {
-            return show;
-        }
     }
 
     public class SalariesWagesData {
@@ -701,7 +534,6 @@ namespace MiCareDBapp.Droid
         public int facilityID { get; set; }
         public decimal rosteredCost { get; set; }
         public decimal budget { get; set; }
-        protected bool show = true;
 
 
         public DateTime GetDate() {
@@ -748,16 +580,6 @@ namespace MiCareDBapp.Droid
             {
                 return false;
             }
-        }
-
-        public void Show(bool value)
-        {
-            show = value;
-        }
-
-        public bool GetShow()
-        {
-            return show;
         }
 
     }

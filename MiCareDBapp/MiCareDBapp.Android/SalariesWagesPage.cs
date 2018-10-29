@@ -37,15 +37,20 @@ namespace MiCareDBapp.Droid
         private Toast toastMessage;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
+        {   //OnCreate takes a Bundle parameter, which is a dictionary for storing and passing state information 
+            //and objects between activities If the bundle is not null, this indicates the activity is restarting 
+            //and it should restore its state from the previous instance. "https:/docs.microsoft.com/en-us/xamarin/android/app-fundamentals/activity-lifecycle/"
             base.OnCreateView(inflater, container, savedInstanceState);
+            //Once on create has finished, android will call OnStart which will start the activity
 
+            //sets the layout of the main menu to the SalariesWagesPage.axml file which is located in Resources/layout/
             View view = inflater.Inflate(Resource.Layout.SalariesWagesPage, container, false);
 
+            //setup lists for salaries and wages data
             dataItems = new List<SalariesWagesData>();
             displayItems = new List<SalariesWagesData>();
 
-            //setup adapter
+            //setup custom list adapter, more info found in SalariesWagesViewAdapter.cs
             dataList = view.FindViewById<ListView>(Resource.Id.DataList);
             adapter = new SalariesWagesViewAdapter(this.Context, dataItems);
 
@@ -58,22 +63,26 @@ namespace MiCareDBapp.Droid
             Button BudgetBtn = view.FindViewById<Button>(Resource.Id.BudgetTextSalariesWages);
             Button VarianceBtn = view.FindViewById<Button>(Resource.Id.VarianceTextSalariesWages);
 
-            //setup Spinner
+            //setup Spinner to sort facilities
             Spinner spinner = view.FindViewById<Spinner>(Resource.Id.FacilitySpinner);
             spinner.Clickable = false;
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(Spinner_ItemSelected);
-            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);
+            var SpinnerAdapter = ArrayAdapter.CreateFromResource(view.Context, Resource.Array.FacilityArray, Android.Resource.Layout.SimpleSpinnerItem);//array found in Resources/values/
             SpinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = SpinnerAdapter;
 
+            //create new WebClient class object which can provide methods to push and recieve data from an online resource via a url
             client = new WebClient();
-            url = new Uri("https://capstonephpcode198.herokuapp.com/new2.php");
+            //set the url to push and pull data from, via the a Uri class object
+            //the online resource is a php file hosted on heroku, these php files read write and pull database tables
+            url = new Uri("https://capstonephpcode198.herokuapp.com/PullData.php");
 
+            //setup toast message which is pop up message which informs the user that data is being pulled
             toastMessage = Toast.MakeText(this.Context, "Fetching data", ToastLength.Long);
 
             //setup graph button
             Button GraphButton = view.FindViewById<Button>(Resource.Id.GraphButton);
-            GraphButton.Enabled = false;
+            GraphButton.Enabled = false;//disabled untill data is pulled
             GraphButton.Click += delegate {
                 var transaction = ChildFragmentManager.BeginTransaction();
                 SalariesWagesGraph info = new SalariesWagesGraph(displayItems);
@@ -82,34 +91,35 @@ namespace MiCareDBapp.Droid
 
             //setup progress bar
             ProgressBar ClientProgress = view.FindViewById<ProgressBar>(Resource.Id.ClientProgress);
-
+            //show progress percentage on the bar
             client.UploadProgressChanged += delegate (object sender, UploadProgressChangedEventArgs e) {
                 ClientProgress.Progress += e.ProgressPercentage;
             };
-
+            //refresh button pulls data from database
             Button RefreshBtn = view.FindViewById<Button>(Resource.Id.RefreshButton);
             RefreshBtn.Click += delegate {
-                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);
+                RefreshBtn.SetBackgroundResource(Resource.Drawable.RefreshButtonIconClicked);//change refresh icon colour to lighter shade of green
                 toastMessage.Show();
                 spinner.SetSelection(0);
+                //clear lists, to make way for updated data
                 dataItems.Clear();
                 displayItems.Clear();
                 spinner.Clickable = false;
 
                 NameValueCollection values = new NameValueCollection();
                 values.Add("Type", "Salaries");
-                //call php 
+                //call php file and use UploadValuesAsync with the value of Type=Salaries so the php file knows to pull salaries and wages data
                 client.UploadValuesAsync(url, values);
             };
 
             client.UploadValuesCompleted += delegate (object sender, UploadValuesCompletedEventArgs e) {
                 Activity.RunOnUiThread(() => {
                     string json = Encoding.UTF8.GetString(e.Result);
-                    dataItems = JsonConvert.DeserializeObject<List<SalariesWagesData>>(json);
-                    adapter = new SalariesWagesViewAdapter(this.Context, dataItems);//this
+                    dataItems = JsonConvert.DeserializeObject<List<SalariesWagesData>>(json);//use json to create a list of data objects from the output of the php file
+                    adapter = new SalariesWagesViewAdapter(this.Context, dataItems);//setup adapter
                     foreach (SalariesWagesData item in dataItems)
                     {
-                        displayItems.Add(item);
+                        displayItems.Add(item);//display items holds all of the data objects for safe keeping, for when dataItems objects get removed
                     }
                     NumItems.Text = dataItems.Count.ToString();
                     dataList.Adapter = adapter;
@@ -120,7 +130,7 @@ namespace MiCareDBapp.Droid
                     adapter.NotifyDataSetChanged();
                 });
             };
-
+            //sort data via date
             DateBtn.Click += delegate {
                 if (clickNumDate == 0)
                 {
@@ -141,7 +151,7 @@ namespace MiCareDBapp.Droid
                 }
                 adapter.NotifyDataSetChanged();
             };
-
+            //sort data via actual cost
             ActualCostBtn.Click += delegate {
                 if (clickNumActual == 0)
                 {
@@ -162,7 +172,7 @@ namespace MiCareDBapp.Droid
                 }
                 adapter.NotifyDataSetChanged();
             };
-
+            //sort data via budget
             BudgetBtn.Click += delegate {
                 if (clickNumBudget == 0) {
                     dataItems.Sort(delegate (SalariesWagesData one, SalariesWagesData two) {
@@ -181,7 +191,7 @@ namespace MiCareDBapp.Droid
                 }
                 adapter.NotifyDataSetChanged();
             };
-
+            //sort data via variance
             VarianceBtn.Click += delegate {
                 if (clickNumVariance == 0) {
                     dataItems.Sort(delegate (SalariesWagesData one, SalariesWagesData two) {
@@ -201,19 +211,18 @@ namespace MiCareDBapp.Droid
 
             return view;
         }
-
+        //the spinner for selecting a facility
         void Spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
             int ID;
-            int position = e.Position;
+            int position = e.Position;//get spinner position
             Console.WriteLine(position.ToString());
             foreach (SalariesWagesData item in displayItems)
             {
                 ID = item.GetFacilityID();
                 if (ID == position)
-                {
-                    item.Show(false);
+                {//foreach data item, add or remove depending on if it is associated with the chosen facility
                     if (!dataItems.Contains(item))
                     {
                         dataItems.Add(item);
@@ -221,7 +230,6 @@ namespace MiCareDBapp.Droid
                 }
                 else
                 {
-                    item.Show(true);
                     if (position > 0)
                     {
                         dataItems.Remove(item);
@@ -238,7 +246,7 @@ namespace MiCareDBapp.Droid
             }
             adapter.NotifyDataSetChanged();
         }
-
+        //a public notify adapter method which is used in the Settings.cs file to update all fragment kpi's depending on changed settings, eg. text size
         public void NotifyAdapter()
         {
             adapter.NotifyDataSetChanged();
