@@ -1217,7 +1217,7 @@ namespace MiCareDBapp.Droid
                     new ColumnItem{ Value = (double) PrinsWillemAlexanderLodgeActualCost}
                 }),
                 LabelPlacement = LabelPlacement.Outside,
-                LabelFormatString = "{0}",
+                LabelFormatString = "{0:N2}",
                 FillColor = OxyColors.DarkBlue
             };
 
@@ -1372,7 +1372,7 @@ namespace MiCareDBapp.Droid
                     new ColumnItem{ Value = (double) PrinsWillemAlexanderLodgeALAverage}
                 }),
                 LabelPlacement = LabelPlacement.Outside,
-                LabelFormatString = "{0}",
+                LabelFormatString = "{0:N2}",
                 FillColor = OxyColors.LightSeaGreen
             };
 
@@ -1386,7 +1386,7 @@ namespace MiCareDBapp.Droid
                     new ColumnItem{ Value = (double) PrinsWillemAlexanderLodgeLSLAverage}
                 }),
                 LabelPlacement = LabelPlacement.Outside,
-                LabelFormatString = "{0}",
+                LabelFormatString = "{0:N2}",
                 FillColor = OxyColors.DarkBlue
             };
 
@@ -1400,7 +1400,7 @@ namespace MiCareDBapp.Droid
                     new ColumnItem{ Value = (double) PrinsWillemAlexanderLodgeSLAverage}
                 }),
                 LabelPlacement = LabelPlacement.Outside,
-                LabelFormatString = "{0}",
+                LabelFormatString = "{0:N2}",
                 FillColor = OxyColors.OrangeRed
             };
 
